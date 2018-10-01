@@ -1,7 +1,3 @@
-# Pip requirements
-bs4
-tqdm
-numpy
-pyyaml
-nbformat
-nbclean
+# Pip requirements for notebooks / Binderhub
+matplotlib
+datascience

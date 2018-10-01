@@ -1,0 +1,6 @@
+# Pip requirements to build textbook
+# See 'requirements.txt' for notebook requirements
+tqdm
+pyyaml
+nbformat
+nbclean
