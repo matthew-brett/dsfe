@@ -1,14 +1,14 @@
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "en-US"
-title                    : "Textbooks with Jupyter"
+locale                   : "en-UK"
+title                    : "Data Science for Everyone"
 title_separator          : "-"
-name                     : "Chris Holdgraf"
+name                     : "Matthew Brett"
 description              : ""
-url                      : "https://predictablynoisy.com" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "/textbooks-with-jupyter" # the subpath of your site, e.g. "/blog". Defaults to "/"
-repository               : # GitHub username/repo-name for this site
+url                      : "https://matthew-brett.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl                  : "/dsfe" # the subpath of your site, e.g. "/blog". Defaults to "/"
+repository               : "matthew-brett/dsfe" # GitHub username/repo-name for this site
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 footer                   : false # Whether to include a footer with the built site
 masthead                 : true  # Whether to include a masthead (header/navbar) with the site.
@@ -18,8 +18,8 @@ hub_url                  : "https://mybinder.org"  # The URL for your JupyterHub
 hub_name                 : "JupyterHub"  # The name of your JupyterHub (used for the button in the NavBar. If an empty string, no button is shown)
 hub_type                 : "binder"  # ['binder', 'jupyterhub']  Whether to build interact links for a BinderHub or a JupyterHub
 textbook_repo_base       : "https://github.com/"  # The site on which the textbook repository is hosted
-textbook_repo_org        : "choldgraf"  # The username or organization that owns this repository
-textbook_repo_name       : "textbooks-with-jupyter"  # The name of the repository on the web
+textbook_repo_org        : "matthew-brett"  # The username or organization that owns this repository
+textbook_repo_name       : "dsfe"  # The name of the repository on the web
 textbook_repo_branch     : "master"  # The branch on which your textbook is hosted.
 number_chapters          : false  # Whether to number the chapers in the sidebar for the textbook
 chapter_titles           : true  # Whether to include the title of the chapter at the top of each chapter
@@ -103,10 +103,10 @@ analytics:
 
 # Site Author
 author:
-  name             : "Chris Holdgraf"
+  name             : "Matthew Brett"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : ""
-  location         : "Berkeley, CA."
+  location         : "Birmingham, UK."
   email            :
   uri              :
   home             : # null (default), "absolute or relative url to link to author home"
