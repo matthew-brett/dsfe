@@ -1,10 +1,15 @@
 ---
 layout: single
-title: About Prob 140
+title: About Data Science for Everyone
 permalink: /about/
 ---
 
-## About the Jupyter Jekyll Textbook Template
+## About the *Data Science for Everyone* textbook
 
-This template repository was created with support from the Data Science
-Education Program and the Berkeley Institute for Data Science at UC Berkeley.
+This is the textbook for the course "Data Science for Everyone" at the University of Birmingham.
+
+The course is a "Widening Horizons Module", meaning that it is a course
+intended for students of any discipline.  The course covers some basic
+programming and uses some very basic mathematics, but you do not need to have
+any previous experience in programming, or great interest / ability in
+mathematics.
