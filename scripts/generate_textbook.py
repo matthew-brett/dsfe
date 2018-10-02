@@ -6,6 +6,7 @@ import yaml
 from nbclean import NotebookCleaner
 import nbformat as nbf
 from tqdm import tqdm
+import numpy as np
 from glob import glob
 import argparse
 DESCRIPTION = ("Convert a collection of Jupyter Notebooks into Jekyll "
@@ -78,7 +79,7 @@ def _clean_lines(lines, filepath):
         # Adding escape slashes since Jekyll removes them
         # Make sure we have at least two dollar signs and they
         # Aren't right next to each other
-        dollars = [i for i, char in enumerate(line) if char == '$']
+        dollars = np.where(['$' == char for char in line])[0]
         if len(dollars) > 2 and all(ii > 1 for ii in (dollars[1:] - dollars[:1])):
             for char in inline_replace_chars:
                 line = line.replace('\\{}'.format(char), '\\\\{}'.format(char))
