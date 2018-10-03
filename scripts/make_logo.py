@@ -23,7 +23,8 @@ plt.close()
 nx.draw(G, pos,
         node_color=range(n_nodes),
         edge_color=range(n_edges)[::-1],
-        width=4,
+        node_size=1200,
+        width=10,
         cmap=n_cm,
         edge_cmap=e_cm,
         with_labels=False)
