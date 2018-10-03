@@ -34,7 +34,7 @@ import pandas as pd
 # A tiny function to read a file directly from a URL
 from urllib.request import urlopen
 
-def read_url(url): 
+def read_url(url):
     return urlopen(url).read().decode()
 ```
 
