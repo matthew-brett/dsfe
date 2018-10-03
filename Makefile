@@ -16,5 +16,11 @@ runall:
 clean:
 	python scripts/clean.py
 
+# You need Ruby and Gem.  Then:
+# gem install --user bundler jekyll
+# # To avoid a compilation error for nokogiri
+# bundle config build.nokogiri --use-system-libraries
+# bundle install
+
 serve:
 	bundle exec jekyll serve
