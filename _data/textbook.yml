@@ -5,16 +5,6 @@ chapters:
   url: /
 - children:
   - class: level_1
-    title: Adding markdown files
-    url: chapters/introduction/markdown
-  - class: level_1
-    title: Adding notebooks
-    url: chapters/introduction/notebooks
-  class: level_0
-  title: Quickstart
-  url: chapters/introduction/intro
-- children:
-  - class: level_1
     title: 1.1 Introduction
     url: chapters/01/1/intro
   - class: level_2
@@ -92,4 +82,4 @@ chapters:
   class: level_0
   title: 4. Data Types
   url: chapters/04/Types
-first_chapter_url: chapters/introduction/intro
+first_chapter_url: chapters/01/what-is-data-science
