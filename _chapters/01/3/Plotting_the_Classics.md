@@ -59,6 +59,27 @@ print(alice_text[:500])
 ```
 
 
+{:.output_stream}
+```
+﻿Project Gutenberg’s Alice’s Adventures in Wonderland, by Lewis Carroll
+
+This eBook is for the use of anyone anywhere at no cost and with
+almost no restrictions whatsoever.  You may copy it, give it away or
+re-use it under the terms of the Project Gutenberg License included
+with this eBook or online at www.gutenberg.org
+
+
+Title: Alice’s Adventures in Wonderland
+
+Author: Lewis Carroll
+
+Posting Date: June 25, 2008 [EBook #11]
+Release Date: March, 1994
+Last Updated: October 6, 2016
+
+
+```
+
 You might want to check this is the same as the text you see by opening the
 URL in your browser:
 [https://www.gutenberg.org/files/11/11-0.txt](https://www.gutenberg.org/files/11/11-0.txt).
@@ -89,4 +110,85 @@ times during this course.
 # Show the first few words of each chapter in a table.
 pd.DataFrame(alice_chapters, columns=['Chapters'])
 ```
+
+
+
+
+
+<div markdown="0">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chapters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>I. Down the Rabbit-Hole\r\n\r\nAlice was begin...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>II. The Pool of Tears\r\n\r\n‘Curiouser and cu...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>III. A Caucus-Race and a Long Tale\r\n\r\nThey...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>IV. The Rabbit Sends in a Little Bill\r\n\r\nI...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>V. Advice from a Caterpillar\r\n\r\nThe Caterp...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>VI. Pig and Pepper\r\n\r\nFor a minute or two ...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>VII. A Mad Tea-Party\r\n\r\nThere was a table ...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>VIII. The Queen’s Croquet-Ground\r\n\r\nA larg...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>IX. The Mock Turtle’s Story\r\n\r\n‘You can’t ...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>X. The Lobster Quadrille\r\n\r\nThe Mock Turtl...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>XI. Who Stole the Tarts?\r\n\r\nThe King and Q...</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>XII. Alice’s Evidence\r\n\r\n\r\n‘Here!’ cried...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
 
