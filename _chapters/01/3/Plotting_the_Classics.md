@@ -12,6 +12,9 @@ redirect_from:
   - 'chapters/01/3/plotting-the-classics'
 ---
 
+This page is largely derived from `Plotting_the_Classics` of the UC Berkeley
+course \- see the `license.md` file.
+
 In this example, we will explore statistics for: *Alice's Adventures in
 Wonderland* by Lewis Carroll.  The text of any book can be read by a computer
 at great speed.  Books published before 1923 are currently in the *public

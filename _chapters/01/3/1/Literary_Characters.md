@@ -12,6 +12,9 @@ redirect_from:
   - 'chapters/01/3/1/literary-characters'
 ---
 
+This page is largely derived from `Literary_Characters` of the UC Berkeley
+course \- see the `license.md` file.
+
 In *Alice's Adventures in Wonderland*, Alice follows a white rabbit down a
 rabbit hole, and finds herself in Wonderland.  After various adventures, she
 finds herself at a tea party with the March Hare and the Hatter.  Afterwards,
@@ -39,7 +42,8 @@ counts = pd.DataFrame.from_dict({
 cum_counts = counts.cumsum()
 
 # Add the chapter numbers
-cum_counts['Chapter'] = np.arange(1, 13)
+number_of_chapters = len(alice_chapters)
+cum_counts['Chapter'] = np.arange(number_of_chapters)
 
 # Do the plot
 cum_counts.plot(x='Chapter')
