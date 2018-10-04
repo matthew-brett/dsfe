@@ -6,7 +6,7 @@ permalink: /
 
 This is the website for the course "Data Science for Everyone" at the University of Birmingham.
 
-* [Course textbook](chapters/introduction/intro)
+* [Course textbook](chapters/01/what-is-data-science)
 * [License](license) for the materials on this site.
 
 For those with access, please see the [Canvas course
