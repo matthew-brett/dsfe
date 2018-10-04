@@ -39,7 +39,7 @@ def read_url(url):
 ```
 
 This page is largely derived from `Another_Kind_Of_Character` of the UC
-Berkeley course \- see the [license](/license) file.
+Berkeley course \- see the license file on the main website.
 
 ```{python}
 # HIDDEN
