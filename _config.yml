@@ -156,7 +156,6 @@ exclude:
   - Gemfile
   - Gruntfile.js
   - gulpfile.js
-  - LICENSE
   - log
   - node_modules
   - package.json
