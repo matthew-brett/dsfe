@@ -13,7 +13,7 @@ redirect_from:
 ---
 
 This page is largely derived from `Another_Kind_Of_Character` of the UC
-Berkeley course \- see the [license](./license) file.
+Berkeley course \- see the license file on the main website.
 
 In some situations, the relationships between quantities allow us to make
 predictions. This text will explore how to make accurate predictions based on
@@ -170,7 +170,7 @@ plt.scatter(chars_periods['Number of periods'],
 
 {:.output_data_text}
 ```
-<matplotlib.collections.PathCollection at 0x115c8b128>
+<matplotlib.collections.PathCollection at 0x108d96160>
 ```
 
 
