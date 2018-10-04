@@ -21,6 +21,8 @@ rebuild-notebooks: write-rmd runall
 clean:
 	python scripts/clean.py
 
+ship: clean rebuild-notebooks textbook
+
 # You need Ruby and Gem.  Then:
 # gem install --user bundler jekyll
 # # To avoid a compilation error for nokogiri
