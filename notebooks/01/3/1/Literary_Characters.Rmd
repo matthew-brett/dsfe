@@ -76,7 +76,8 @@ counts = pd.DataFrame.from_dict({
 cum_counts = counts.cumsum()
 
 # Add the chapter numbers
-cum_counts['Chapter'] = np.arange(1, 13)
+number_of_chapters = len(alice_chapters)
+cum_counts['Chapter'] = np.arange(number_of_chapters)
 
 # Do the plot
 cum_counts.plot(x='Chapter')
