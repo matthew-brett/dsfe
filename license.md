@@ -1,10 +1,16 @@
+---
+layout: single
+title: License
+permalink: /license
+---
+
 # License
 
 ## Not-otherwise-specified license
 
 When not specified otherwise, the material for this course is licensed under
 the CC-BY 4.0 license, available at
-https://creativecommons.org/licenses/by/4.0/
+<https://creativecommons.org/licenses/by/4.0>.
 
 Please check carefully whether the licenses below may apply.
 
@@ -18,7 +24,7 @@ Specifically, the versions of the Berkeley pages that I am using here come from
 last commit in that repository that is licensed with a Creative Commons
 CC-BY-NC license \-
 [64b20f0](https://github.com/data-8/textbook/commit/64b20f0).  The subsequent
-commit \- [710ed4e](https://github.com/data-8/textbook/commit/710ed4e)
+commit \- [710ed4e](https://github.com/data-8/textbook/commit/710ed4e) \-
 relicensed the work with a CC-BY-NC-ND license, forbidding derivative works.
 
 I've indicated every page derived from the Berkeley course, at the top of the
@@ -30,7 +36,7 @@ for commit
 ## Website machinery
 
 The overall machinery to build the website comes from
-https://github.com/choldgraf/textbooks-with-jupyter. That license below covers
+<https://github.com/choldgraf/textbooks-with-jupyter>. The license below covers
 the files used to build the site, but not the content.
 
 MIT License

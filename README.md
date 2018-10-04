@@ -37,7 +37,12 @@ c.ContentsManager.default_jupytext_formats = "ipynb,Rmd"
 ```
 
 I also turned off autosave globally, by following the instructions [in this
-stackoverflow answer](https://stackoverflow.com/a/45980165).
+stackoverflow answer](https://stackoverflow.com/a/45980165).  It suggests
+adding the following line to `~/.jupyter/custom/custom.js`:
+
+```
+Jupyter.notebook.set_autosave_interval(0); // disable autosave
+```
 
 At the moment, I'm editing and committing the resulting `.Rmd` and `.ipynb`
 files, but a better workflow would be to build the `.ipynb` files

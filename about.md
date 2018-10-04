@@ -1,7 +1,7 @@
 ---
 layout: single
 title: About Data Science for Everyone
-permalink: /about/
+permalink: /about
 ---
 
 ## About the *Data Science for Everyone* textbook
