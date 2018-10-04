@@ -18,6 +18,8 @@ parser.add_argument("--overwrite", action='store_true', help="Overwrite md files
 parser.add_argument("--execute", action='store_true', help="Execute notebooks before converting to MD.")
 parser.set_defaults(overwrite=False, execute=False)
 
+CONTENT_EXTS = ('.ipynb', '.md', '.Rmd')
+
 
 def _markdown_to_files(path_markdown, indent=2):
     """Takes a markdown file containing chapters/sub-headings and
@@ -119,7 +121,8 @@ def _generate_sidebar(files):
 def _copy_non_content_files():
     """Copy non-markdown/notebook files in the notebooks/ folder into Chapters so relative links work."""
     all_files = glob(op.join(NOTEBOOKS_FOLDER, '**', '*'), recursive=True)
-    non_content_files = [ii for ii in all_files if not any(ii.endswith(ext) for ext in ['.ipynb', '.md'])]
+    non_content_files = [ii for ii in all_files
+                         if not any(ii.endswith(ext) for ext in CONTENT_EXTS)]
     for ifile in non_content_files:
         if op.isdir(ifile):
             continue
