@@ -10,8 +10,13 @@ help:
 textbook:
 	python scripts/generate_textbook.py
 
+write-rmd:
+	bash scripts/write_rmds.sh
+
 runall:
 	python scripts/execute_all_notebooks.py
+
+rebuild-notebooks: write-rmd runall
 
 clean:
 	python scripts/clean.py
