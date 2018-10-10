@@ -23,6 +23,27 @@ div.interact-context {
   font-weight: 600;
 }
 
+/* Download button */
+
+article.page .notebook-link,article.page .previous_page,article.page .next_page
+{
+  background-color:#477DCA;
+  border-radius:3px;
+  color:#FFF;
+  display:inline-block;
+  font-size:1.2em;
+  font-weight:700;
+  padding:.4em 1em;
+  margin-bottom: .5em;
+}
+
+article.page .notebook-link:hover,article.page .notebook-link:focus,article.page .previous_page:hover,article.page .next_page:hover
+{
+  text-decoration:none;
+}
+
+/* Next page */
+
 article.page .next_page {
   float: right;
 }
