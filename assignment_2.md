@@ -20,7 +20,10 @@ You will now see a list of files and directories.  Click on "Desktop", and
 select `Literary_Characters.ipynb`.  You should see the same notebook as you
 saw before, when you clicked "Interact".
 
-Click on the top cell of the notebook, and press shift at the same time as Enter (or Return).  Keep doing that until you have gone through every cell.  It should run the same way as it did in class, but this time, on your own computer.
+Click on the top cell of the notebook, and press shift at the same time as
+Enter (or Return).  Keep doing that until you have gone through every cell.
+It should run the same way as it did in class, but this time, on your own
+computer.
 
 Now see if you can read in the novel "Dracula" by Bram Stoker.  You can find
 the full text of this book at
