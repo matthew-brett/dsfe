@@ -16,6 +16,10 @@ write-rmd:
 runall:
 	python scripts/execute_all_notebooks.py
 
+check:
+	# See: https://github.com/mwouts/jupytext/issues/95
+	./scripts/check_jpts.sh
+
 rebuild-notebooks: write-rmd runall
 
 clean:
