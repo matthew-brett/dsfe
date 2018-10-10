@@ -1,7 +1,7 @@
 ---
 jupyter:
   jupytext_format_version: '1.0'
-  jupytext_formats: Rmd:rmarkdown
+  jupytext_formats: Rmd:rmarkdown,ipynb
   kernelspec:
     display_name: Python 3
     language: python
@@ -43,13 +43,13 @@ Berkeley course \- see the license file on the main website.
 
 ```{python}
 # HIDDEN
-# Read the text of Alice, split into chapters.
-alice_url = 'https://www.gutenberg.org/files/11/11-0.txt'
-alice_text = read_url(alice_url)
+# Read the text of Pride and Prejudice, split into chapters.
+book_url = 'http://www.gutenberg.org/cache/epub/42671/pg42671.txt'
+book_text = read_url(book_url)
 # Break the text into Chapters
-alice_chapters = alice_text.split('CHAPTER ')
+book_chapters = book_text.split('CHAPTER ')
 # Drop the first "Chapter" - it's the Project Gutenberg header
-alice_chapters = alice_chapters[1:]
+book_chapters = book_chapters[1:]
 ```
 
 In some situations, the relationships between quantities allow us to make
@@ -62,14 +62,14 @@ first use the computer to get some information that would be tedious to
 acquire by hand. In the context of novels, the word "character" has a second
 meaning: a printed symbol such as a letter or number or punctuation symbol.
 Here, we ask the computer to count the number of characters and the number of
-periods in each chapter of *Alice's Adventures in Wonderland*.
+periods in each chapter of *Pride and Prejudice*.
 
 ```{python}
 # In each chapter, count the number of all characters;
 # Also count the number of periods.
 chars_periods = pd.DataFrame.from_dict({
-        'Number of chars in chapter': [len(s) for s in alice_chapters],
-        'Number of periods': np.char.count(alice_chapters, '.')
+        'Number of chars in chapter': [len(s) for s in book_chapters],
+        'Number of periods': np.char.count(book_chapters, '.')
     })
 ```
 
@@ -100,9 +100,9 @@ Notice how the blue points are roughly clustered around a straight line.
 
 Now look at all the chapters that contain about 100 periods. The plot shows
 that those chapters contain about 10,000 characters to about 15,000
-characters, roughly. That's about 100 to 150 characters per period.
+characters, roughly. That's about 90 to 150 characters per period.
 
 Indeed, it appears from looking at the plot that the chapters tend to have
 somewhere between 100 and 150 characters between periods, as a very rough
-estimate. Perhaps these Lewis Carroll and Alice were announcing something
-familiar to us now: the original 140-character limit of Twitter.
+estimate. Perhaps Jane Austen was announcing something familiar to us now: the
+original 140-character limit of Twitter.
