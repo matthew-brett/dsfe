@@ -3,6 +3,5 @@ matplotlib
 pandas
 scipy
 ipython
-datascience
 # To allow downloading of Notebook as zip file
 nbzip
