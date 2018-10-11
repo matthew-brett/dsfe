@@ -104,7 +104,8 @@ Try running the cell with shift-Enter.
 If you get an error, look very carefully at the code - like all programming
 languages, Python is very fussy about little things like commas and brackets.
 Check [the original][litchar] to see if you can see the difference between
-your current code and the original code cell.
+your current code and the original code cell.  Get someone else to have a
+look, if you get stuck, you will be surprised how much difference it makes.
 
 When you succeed in running the cell, have a look at the graph.
 
