@@ -67,12 +67,13 @@ We are going to look for these character names:
 * Harker (for Jonathan Harker, the hero),
 * Mina (for Mina Murray, Harker's fiancé),
 * Seward (for John Seward, Harker's friend),
-* Helsing (for Abraham Van Helsing, Seward's teacher, and all-round expert).
+* Helsing (for Abraham Van Helsing, Seward's teacher, and all-round expert),
+* Quincey (for Quincey Morris, an American cowboy and explorer).
 
-I know, only the female character has a first name, I can only apologize on
-behalf of Mr Stoker.  And Jane Austen, actually.  But hey.
+I know, only the female and the American characters have first names, I can
+only apologize on behalf of Mr Stoker.  And Jane Austen, actually.  But hey.
 
-Now
+Now look for the cell starting with:
 
 ```{python}
 # Count how many times the characters appear in each chapter.
