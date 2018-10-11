@@ -116,11 +116,11 @@ class Build:
         for base in self.bases:
             nbb = pjoin(self.notebooks_folder, base)
             if nbb + '.md' in self.nb_files:
-                rebuild = rebuild or self.process_md(base)
+                rebuild = self.process_md(base) or rebuild
             elif nbb + self.nb_txt_ext in self.nb_files:
-                rebuild = rebuild or self.process_nb_txt(base)
+                rebuild = self.process_nb_txt(base) or rebuild
             elif nbb + '.ipynb' in self.nb_files:
-                rebuild = rebuild or self.process_ipynb(base)
+                rebuild = self.process_ipynb(base) or rebuild
             else:
                 # Now we must have chapters with deleted source.
                 self._delete_built(base, self.built_exts)
@@ -133,8 +133,8 @@ class Build:
         tbb = pjoin(self.textbook_folder, base)
         nbb = pjoin(self.notebooks_folder, base)
         to_delete = list(self.built_exts)
-        build_ok = all(same_e_later(
-            tbb + ext, nbb + in_ext) for ext in out_exts)
+        build_ok = all(same_e_later(tbb + out_ext, nbb + in_ext)
+                       for out_ext in out_exts)
         if build_ok:
             to_delete = [ext for ext in self.built_exts
                          if ext not in out_exts]
