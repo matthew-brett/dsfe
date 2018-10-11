@@ -114,7 +114,6 @@ class Build:
     def process_pages(self):
         rebuild = False
         for base in self.bases:
-            tbb = pjoin(self.textbook_folder, base)
             nbb = pjoin(self.notebooks_folder, base)
             if nbb + '.md' in self.nb_files:
                 rebuild = rebuild or self.process_md(base)
@@ -148,7 +147,6 @@ class Build:
         return self._process_in_ext(base, '.ipynb', ('.md',))
 
     def process_nb_txt(self, base):
-        tbb = pjoin(self.textbook_folder, base)
         nbb = pjoin(self.notebooks_folder, base)
         nb_src = nbb + self.nb_txt_ext
         nb_built = nbb + '.ipynb'
