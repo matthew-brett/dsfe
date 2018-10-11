@@ -1,7 +1,12 @@
 ---
 jupyter:
-  jupytext_format_version: '1.0'
-  jupytext_formats: Rmd:rmarkdown,ipynb
+  jupytext:
+    formats: Rmd:rmarkdown,ipynb
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.0'
+      jupytext_version: 0.8.1
   kernelspec:
     display_name: Python 3
     language: python
@@ -102,3 +107,12 @@ times during this course.
 # Show the first few words of each chapter in a table.
 pd.DataFrame(book_chapters, columns=['Chapters'])
 ```
+
+This is your first view of a data frame.  Ignore the first column for now - it
+is just a row number.  The second column shows the first few characters of the
+text in the chapter.   The text starts with the chapter number in Roman
+numerals.  You might want to check the text from the link above to reassure
+yourself that this comes from the text we downloaded.  Next you see some odd
+characters with backslashes, such as `\r` and `\n`.  These are representations
+of new lines, or paragraph marks.  Last you will see the beginning of the
+first sentence of the chapter.
