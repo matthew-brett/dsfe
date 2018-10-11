@@ -20,7 +20,8 @@ check:
 	# See: https://github.com/mwouts/jupytext/issues/95
 	./scripts/check_jpts.sh
 
-rebuild-notebooks: write-rmd runall
+rebuild-notebooks:
+	python scripts/rebuild_notebooks.py
 
 clean:
 	python scripts/clean.py
