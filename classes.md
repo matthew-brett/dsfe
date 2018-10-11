@@ -20,9 +20,11 @@ permalink: /classes
 
 ## The second day
 
-* [Why code?](to_code)
+* [Why code?](chapters/02/to_code)
 * The Jupyter Notebook
 * [Plotting the Classics](chapters/01/Plotting_the_Classics)
 * [Literary Characters](chapters/01/Literary_Characters)
 * [Another Kind of Character](chapters/01/Another_Kind_Of_Character)
+* [Expressions](chapters/02/Expressions)
+* [Names](chapters/02/Names)
 * [Second assignment](assignment_2)

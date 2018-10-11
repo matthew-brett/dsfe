@@ -20,8 +20,8 @@ Various elements of this course are derived from the
 [excellent textbook](https://www.inferentialthinking.com) for UC Berkeley's course
 [Foundations of Data Science](http://data8.org).
 
-Specifically, the versions of the Berkeley pages that I am using here come from
-last commit in that repository that is licensed with a Creative Commons
+Specifically, the versions of the Berkeley pages that I am using here come
+from last commit in that repository that is licensed with a Creative Commons
 CC-BY-NC license \-
 [64b20f0](https://github.com/data-8/textbook/commit/64b20f0).  The subsequent
 commit \- [710ed4e](https://github.com/data-8/textbook/commit/710ed4e) \-

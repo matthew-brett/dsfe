@@ -8,3 +8,7 @@
   * [1.3 Plotting the Classics](notebooks/01/Plotting_the_Classics.ipynb)
     * [1.3.1 Literary Characters](notebooks/01/Literary_Characters.ipynb)
     * [1.3.2 Another Kind of Character](notebooks/01/Another_Kind_Of_Character.ipynb)
+  * [1.2 Why Data Science?](notebooks/01/2/why-data-science.md)
+* [2. Programming](notebooks/02/to_code.md)
+  * [2.1 Expressions](notebooks/02/Expressions.ipynb)
+  * [2.2 Names](notebooks/02/Names.ipynb)

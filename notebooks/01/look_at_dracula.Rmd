@@ -40,8 +40,8 @@ def read_url(url):
 
 ```{python}
 # HIDDEN
-# Read the text of Pride and Prejudice, split into chapters.
-book_url = 'http://www.gutenberg.org/ebooks/42671.txt.utf-8'
+# Read the text of Alice, split into chapters.
+book_url = 'http://www.gutenberg.org/ebooks/345.txt.utf-8'
 book_text = read_url(book_url)
 # Break the text into Chapters
 book_chapters = book_text.split('CHAPTER ')
@@ -66,12 +66,12 @@ times their names are mentioned in each chapter.
 ```{python}
 # Count how many times the characters appear in each chapter.
 counts = pd.DataFrame.from_dict({
-        'Elizabeth': np.char.count(book_chapters, 'Elizabeth'),
-        'Darcy': np.char.count(book_chapters, 'Darcy'),
-        'Lydia': np.char.count(book_chapters, 'Lydia'),
-        'Wickham': np.char.count(book_chapters, 'Wickham'),
-        'Bingley': np.char.count(book_chapters, 'Bingley'),
-        'Jane': np.char.count(book_chapters, 'Jane')},
+        'Count': np.char.count(book_chapters, 'Count'),
+        'Harker': np.char.count(book_chapters, 'Harker'),
+        'Mina': np.char.count(book_chapters, 'Mina'),
+        'Seward': np.char.count(book_chapters, 'Seward'),
+        'Helsing': np.char.count(book_chapters, 'Helsing'),
+        'Quincey': np.char.count(book_chapters, 'Quincey')},
     )
 
 # The cumulative counts:
