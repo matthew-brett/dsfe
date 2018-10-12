@@ -26,8 +26,8 @@ repeated actions, or actions that are only performed, if a condition is met.
 
 There was a time in your academic life, when you did not need code, because
 the sets of steps you needed to do were so repetitive and well understood,
-that someone could design a simple graphical interface that could express all
-the options that you needed.
+that someone could design a simple graphical interface (GUI) that could
+express all the options that you needed.
 
 At least, it seemed that way.  If you have not found out already, graphical
 user interfaces can trip you up.  They can make you feel like you understand
@@ -36,7 +36,7 @@ steps, without keeping track of what you are doing, so it is easy to make
 mistakes, and hard to check what you did.  But the worst thing about graphical
 interfaces is, they make easy things easy, but difficult things, impossible.
 
-You will soon find, that most work, that is worth doing, is difficult.  If you
+You will soon find, that most work that is worth doing, is difficult.  If you
 want to do something interesting, that has not been done before, you will
 often need code.
 
