@@ -36,11 +36,15 @@ form that you use, you will need to move it around, rearrange it, fix it.
 You will be doing a series of logical steps, and these steps are most clearly
 expressed, in code.
 
+Put another way, [You can't do data science in a
+GUI](https://www.youtube.com/watch?v=cpbtcsGE0OA).
+
+Luckily, coding can be [very
+rewarding](http://asterisk.dynevor.org/joys-of-craft.html) in terms of
+pleasure and profit.
+
 Luckily, we are not the only ones who know we need code.  Many people,
 including many scientists, have been working on languages and libraries and
 tools, to make our coding life simpler, clearer, and more efficient.
 
 You will be learning some of the main tools and libraries on this course.
-
-Put another way, [You can't do data science in a
-GUI](https://www.youtube.com/watch?v=cpbtcsGE0OA).
