@@ -40,6 +40,8 @@ You will soon find, that most work, that is worth doing, is difficult.  If you
 want to do something interesting, that has not been done before, you will
 often need code.
 
+![GUIs and code]({{ site.baseurl }}/images/gui_and_code.png)
+
 We need code more than we did ten years ago, because we have much more data,
 and the data is of many different types.  If you want to load the data into a
 form that you use, you will need to move it around, rearrange it, fix it.
@@ -51,3 +53,6 @@ including many scientists, have been working on languages and libraries and
 tools, to make our coding life simpler, clearer, and more efficient.
 
 You will be learning some of the main tools and libraries on this course.
+
+Put another way, [You can't do data science in a
+GUI](https://www.youtube.com/watch?v=cpbtcsGE0OA).
