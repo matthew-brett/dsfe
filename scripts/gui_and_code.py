@@ -19,7 +19,7 @@ def normalize(vals):
     return vals / max(vals)
 
 
-fig, (easy_ax, hard_ax) = plt.subplots(1, 2)
+fig, (easy_ax, hard_ax) = plt.subplots(1, 2, figsize=(11, 6))
 x = np.arange(100)
 gui = sigmoid(x, 15, 3) + x * 0.25
 easy_ax.plot(x, normalize(gui) * 85, label='GUI')
@@ -33,4 +33,4 @@ hard_ax.plot(x, normalize(sigmoid(x, 50, 20)) * 100, label='Code')
 hard_ax.set_xlabel('Experience')
 hard_ax.legend()
 hard_ax.set_title('Hard tasks');
-fig.savefig(pjoin(here, '..', 'images', 'gui_and_code.png'), dpi=300)
+fig.savefig(pjoin(here, '..', 'images', 'gui_and_code.png'), dpi=150)
