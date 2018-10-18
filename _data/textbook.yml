@@ -33,12 +33,43 @@ chapters:
   url: chapters/01/what-is-data-science
 - children:
   - class: level_1
-    title: 2.1 Expressions
+    title: 2.1 A sampling problem
+    url: chapters/02/sampling_problem
+  - class: level_1
+    title: 2.2 A simpler problem
+    url: chapters/02/three_girls
+  - class: level_1
+    title: 2.3 Expressions
     url: chapters/02/Expressions
   - class: level_1
-    title: 2.2 Names
+    title: 2.4 Names
     url: chapters/02/Names
+  - class: level_1
+    title: 2.5 Call expressions
+    url: chapters/02/Calls
   class: level_0
   title: 2. Programming
   url: chapters/02/to_code
+- children:
+  - class: level_1
+    title: 3.1 Numbers
+    url: chapters/03/Numbers
+  - class: level_1
+    title: 3.2 Strings
+    url: chapters/03/Strings
+  - class: level_1
+    title: 3.3 Comparison
+    url: chapters/03/Comparison
+  - class: level_1
+    title: 3.4 Arrays
+    url: chapters/03/Arrays
+  - class: level_1
+    title: 3.5 Ranges
+    url: chapters/03/Ranges
+  - class: level_1
+    title: 3.6 More on arrays
+    url: chapters/03/More_on_Arrays
+  class: level_0
+  title: 3. Data types
+  url: chapters/03/data_types
 first_chapter_url: chapters/01/what-is-data-science
