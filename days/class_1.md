@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Class 1
-permalink: /class_1
+permalink: /days/class_1
 ---
 
 # Day 1 (the second day)
