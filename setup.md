@@ -19,7 +19,7 @@ started using the [Python language](https://www.python.org) for data analysis.
 All the packages we will be using are free and open-source; Anaconda is just a
 platform that makes it easy to install these packages on your computer.
 
-You will need the "Python 3.6" version of the Anaconda distribution.
+You will need the "Python 3.7" version of the Anaconda distribution.
 
 * Go to <https://www.anaconda.com/download>
 * Choose your operating system (Windows, Mac, Linux):
