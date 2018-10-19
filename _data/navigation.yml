@@ -1,6 +1,8 @@
 # main links
 main:
-  - title: "Classes"
-    url: /classes
   - title: "About"
     url: /about
+  - title: "Syllabus"
+    url: /syllabus
+  - title: "Classes"
+    url: /classes

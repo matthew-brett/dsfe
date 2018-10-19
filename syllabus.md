@@ -1,3 +1,9 @@
+---
+layout: single
+title: Syllabus
+permalink: /syllabus
+---
+
 # Syllabus
 
 ## Programming
