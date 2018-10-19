@@ -31,6 +31,11 @@ Then we need to count the number of girls.
 
 We do this many many times, and see how often we get a count of 3.
 
+For example, we can run the following cell 4 times, to get 4 random numbers.
+We can chose to consider any random number less than or equal to 0.5 to be a
+girl.  If we count how many random numbers (of 4) are less then or equal to
+0.5, we
+
 
 
 {:.input_area}
@@ -44,11 +49,14 @@ np.random.uniform()
 
 {:.output_data_text}
 ```
-0.485136637823122
+0.5289147394557308
 ```
 
 
 
 As we will soon see, we are using a *call expression* here.  `np.random.uniform()` *calls* the function, and returns a random number, between 0 and 1.
 
-It's inconvenient to have to run this cell many times.   We really need some machinery to make the computer do that for us.  We need *expressions*, *names*, *call expressions, *comparisons* and *arrays*.  We will deal with those next.
+It's inconvenient to have to run this cell many times.   We really need some
+machinery to make the computer do that for us.  We need *expressions*,
+*names*, *call expressions*, *comparisons* and *arrays*.  We will deal with
+those next.

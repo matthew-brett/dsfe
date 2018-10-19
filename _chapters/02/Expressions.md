@@ -1,13 +1,13 @@
 ---
 interact_link: notebooks/02/Expressions.ipynb
-title: '2.1 Expressions'
+title: '2.3 Expressions'
 permalink: 'chapters/02/Expressions'
 previouschapter:
-  url: chapters/02/to_code
-  title: '2. Programming'
+  url: chapters/02/three_girls
+  title: '2.2 A simpler problem'
 nextchapter:
   url: chapters/02/Names
-  title: '2.2 Names'
+  title: '2.4 Names'
 redirect_from:
   - 'chapters/02/expressions'
 ---
@@ -57,11 +57,13 @@ will show a `SyntaxError` error. The *Syntax* of a language is its set of
 grammar rules, and a `SyntaxError` indicates that an expression structure
 doesn't match any of the rules of the language.
 
+Try executing the next line after removing the `#` character at the beginning
+of the line
+
 
 
 {:.input_area}
 ```python
-# Try executing the next line after removeing the #
 # 3 * * 4
 ```
 
@@ -109,11 +111,13 @@ Python expressions obey the same familiar rules of *precedence* as in algebra:
 multiplication and division occur before addition and subtraction. Parentheses
 can be used to group together smaller expressions within a larger expression.
 
+Multiplication has precedence (we do `2 * 3` before adding to 1).
+
 
 
 {:.input_area}
 ```python
-1 + 2 * 3 * 4 * 5 / 6 ** 3 + 7 + 8 - 9 + 10
+1 + 2 * 3
 ```
 
 
@@ -122,16 +126,19 @@ can be used to group together smaller expressions within a larger expression.
 
 {:.output_data_text}
 ```
-17.555555555555557
+7
 ```
 
 
+
+We can use parentheses to group expressions that should be evaluated first.
+Here we force `1 + 2` *before* the multiplication by 3.
 
 
 
 {:.input_area}
 ```python
-1 + 2 * (3 * 4 * 5 / 6) ** 3 + 7 + 8 - 9 + 10
+(1 + 2) * 3
 ```
 
 
@@ -140,7 +147,7 @@ can be used to group together smaller expressions within a larger expression.
 
 {:.output_data_text}
 ```
-2017.0
+9
 ```
 
 
@@ -150,10 +157,11 @@ can be used to group together smaller expressions within a larger expression.
 Here, from the Washington Post in the early 1980s, is a graph that attempts to
 compare the earnings of doctors with the earnings of other professionals over
 a few decades. Do we really need to see two heads (one with a stethoscope) on
-each bar? Edward Tufte, Professor at Yale and one of the world's experts on
-visualizing quantitative information, coined the term "chartjunk" for such
-unnecessary embellishments. This graph is also an example of the "low
-data-to-ink ratio" that Tufte deplores.
+each bar? [Edward Tufte](https://en.wikipedia.org/wiki/Edward_Tufte),
+Professor at Yale and one of the world's experts on visualizing quantitative
+information, coined the term "chartjunk" for such unnecessary embellishments.
+This graph is also an example of the "low data-to-ink ratio" that Tufte
+deplores.
 
 ![Washington Post graph]({{ site.baseurl }}/images/bad_post_graph.png)
 

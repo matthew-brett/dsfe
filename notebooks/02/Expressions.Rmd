@@ -37,6 +37,7 @@ programming language. Learning the grammar rules is essential, and the same
 rules used in the most basic programs are also central to more sophisticated
 programs.
 
+
 Programs are made up of *expressions*, which describe to the computer how to
 combine pieces of data. For example, a multiplication expression consists of a
 `*` symbol between two numerical expressions. Expressions, such as `3 * 4`,
@@ -54,8 +55,10 @@ will show a `SyntaxError` error. The *Syntax* of a language is its set of
 grammar rules, and a `SyntaxError` indicates that an expression structure
 doesn't match any of the rules of the language.
 
+Try executing the next line after removing the `#` character at the beginning
+of the line
+
 ```{python}
-# Try executing the next line after removeing the #
 # 3 * * 4
 ```
 
@@ -89,12 +92,17 @@ Python expressions obey the same familiar rules of *precedence* as in algebra:
 multiplication and division occur before addition and subtraction. Parentheses
 can be used to group together smaller expressions within a larger expression.
 
-```{python}
-1 + 2 * 3 * 4 * 5 / 6 ** 3 + 7 + 8 - 9 + 10
-```
+Multiplication has precedence (we do `2 * 3` before adding to 1).
 
 ```{python}
-1 + 2 * (3 * 4 * 5 / 6) ** 3 + 7 + 8 - 9 + 10
+1 + 2 * 3
+```
+
+We can use parentheses to group expressions that should be evaluated first.
+Here we force `1 + 2` *before* the multiplication by 3.
+
+```{python}
+(1 + 2) * 3
 ```
 
 ### Example ###
@@ -102,10 +110,11 @@ can be used to group together smaller expressions within a larger expression.
 Here, from the Washington Post in the early 1980s, is a graph that attempts to
 compare the earnings of doctors with the earnings of other professionals over
 a few decades. Do we really need to see two heads (one with a stethoscope) on
-each bar? Edward Tufte, Professor at Yale and one of the world's experts on
-visualizing quantitative information, coined the term "chartjunk" for such
-unnecessary embellishments. This graph is also an example of the "low
-data-to-ink ratio" that Tufte deplores.
+each bar? [Edward Tufte](https://en.wikipedia.org/wiki/Edward_Tufte),
+Professor at Yale and one of the world's experts on visualizing quantitative
+information, coined the term "chartjunk" for such unnecessary embellishments.
+This graph is also an example of the "low data-to-ink ratio" that Tufte
+deplores.
 
 ![Washington Post graph]({{ site.baseurl }}/images/bad_post_graph.png)
 

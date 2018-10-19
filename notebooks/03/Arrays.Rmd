@@ -1,15 +1,26 @@
 ---
-interact_link: notebooks/03/Arrays.ipynb
-title: '3.4 Arrays'
-permalink: 'chapters/03/Arrays'
-previouschapter:
-  url: chapters/03/Comparison
-  title: '3.3 Comparison'
-nextchapter:
-  url: chapters/03/Ranges
-  title: '3.5 Ranges'
-redirect_from:
-  - 'chapters/03/arrays'
+jupyter:
+  anaconda-cloud: {}
+  jupytext:
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.0'
+      jupytext_version: 0.8.1
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+  language_info:
+    codemirror_mode:
+      name: ipython
+      version: 3
+    file_extension: .py
+    mimetype: text/x-python
+    name: python
+    nbconvert_exporter: python
+    pygments_lexer: ipython3
+    version: 3.5.2
 ---
 
 # Arrays
@@ -20,13 +31,9 @@ with arrays in this class.
 The `numpy` package, abbreviated `np` in programs, provides Python programmers
 with convenient and powerful functions for creating and manipulating arrays.
 
-
-
-{:.input_area}
-```python
+```{python}
 import numpy as np
 ```
-
 
 Arrays often contain numbers, but the can also contain strings or other types
 of values.  However, a single array can only contain a single kind of data.
@@ -34,35 +41,16 @@ of values.  However, a single array can only contain a single kind of data.
 
 For example:
 
-
-
-{:.input_area}
-```python
+```{python}
 english_parts_of_speech = np.array(["noun", "pronoun", "verb", "adverb", "adjective", "conjunction", "preposition", "interjection"])
 english_parts_of_speech
 ```
-
-
-
-
-
-{:.output_data_text}
-```
-array(['noun', 'pronoun', 'verb', 'adverb', 'adjective', 'conjunction',
-       'preposition', 'interjection'], 
-      dtype='<U12')
-```
-
-
 
 Returning to the temperature data, we create arrays of average daily [high
 temperatures](http://berkeleyearth.lbl.gov/auto/Regional/TMAX/Text/global-land-TMAX-Trend.txt)
 for the decades surrounding 1850, 1900, 1950, and 2000.
 
-
-
-{:.input_area}
-```python
+```{python}
 baseline_high = 14.48
 highs = np.array([baseline_high - 0.880,
                   baseline_high - 0.093,
@@ -71,41 +59,17 @@ highs = np.array([baseline_high - 0.880,
 highs
 ```
 
-
-
-
-
-{:.output_data_text}
-```
-array([ 13.6  ,  14.387,  14.585,  15.164])
-```
-
-
-
 Arrays can be used in arithmetic expressions to compute over their contents.
 When an array is combined with a single number, that number is combined with
 each element of the array. Therefore, we can convert all of these temperatures
 to Fahrenheit by writing the familiar conversion formula.
 
-
-
-{:.input_area}
-```python
+```{python}
 (9/5) * highs + 32
 ```
 
-
-
-
-
-{:.output_data_text}
-```
-array([ 56.48  ,  57.8966,  58.253 ,  59.2952])
-```
-
-
-
 <img src="{{ site.baseurl }}/images/array_arithmetic.png">
+
 
 Arrays also have *methods*, which are functions that operate on the array
 values. The `mean` of a collection of numbers is its average value: the sum
@@ -113,59 +77,17 @@ divided by the length. Each pair of parentheses in the examples below is part
 of a call expression; it's calling a function with no arguments to perform a
 computation on the array called `highs`.
 
-
-
-{:.input_area}
-```python
+```{python}
 highs.size
 ```
 
-
-
-
-
-{:.output_data_text}
-```
-4
-```
-
-
-
-
-
-{:.input_area}
-```python
+```{python}
 highs.sum()
 ```
 
-
-
-
-
-{:.output_data_text}
-```
-57.736000000000004
-```
-
-
-
-
-
-{:.input_area}
-```python
+```{python}
 highs.mean()
 ```
-
-
-
-
-
-{:.output_data_text}
-```
-14.434000000000001
-```
-
-
 
 #### Functions on Arrays
 
@@ -175,23 +97,9 @@ For example, the `diff` function computes the difference between each adjacent
 pair of elements in an array. The first element of the `diff` is the second
 element minus the first.
 
-
-
-{:.input_area}
-```python
+```{python}
 np.diff(highs)
 ```
-
-
-
-
-
-{:.output_data_text}
-```
-array([ 0.787,  0.198,  0.579])
-```
-
-
 
 The [full Numpy reference](http://docs.scipy.org/doc/numpy/reference/) lists
 these functions exhaustively, but only a small subset are used commonly for
