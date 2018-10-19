@@ -1,4 +1,6 @@
 # main links
 main:
+  - title: "Classes"
+    url: /classes
   - title: "About"
-    url: /about/
+    url: /about
