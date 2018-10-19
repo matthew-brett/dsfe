@@ -13,4 +13,6 @@ permalink: /days/class_2
 * [A simpler problem](../chapters/02/three_girls)
 * [Expressions](../chapters/02/Expressions)
 
+We also discussed *simulation* - see the first part of the [simulation chapter of the Berkeley textbook](https://www.inferentialthinking.com/chapters/09/3/Simulation) for more background.
+
 I will add the assignment by Saturday 20th October, after I see how far we get.
