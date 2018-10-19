@@ -22,3 +22,5 @@ There are two main sets of tools in data science:
 Both languages have *Notebook environments*.
 
 We will be using the [Jupyter Notebook](https://jupyter.org) with Python.
+
+To get set up for the class, see [the setup instructions](setup)

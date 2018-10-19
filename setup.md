@@ -26,11 +26,11 @@ You will need the "Python 3.6" version of the Anaconda distribution.
 
   ![](images/anaconda_platforms.png)
 
-* Choose the Python 3.6 64-bit graphical installer, unless you know you need a
-  32-bit installer.  The details of what you see will vary a little depending
+* Choose the Python 3.7 64-bit graphical installer, unless you know you need
+  a 32-bit installer.  The details of what you see will vary a little depending
   on your platform - here's what you see for Windows:
 
-  ![](images/anaconda_python36.png)
+  ![](images/anaconda_python37.png)
 
   Notice that the default download is 64-bit (which is what we want).  Linux
   doesn't have a graphical installer, but if you use Linux, you'll be used to
