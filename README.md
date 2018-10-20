@@ -47,3 +47,19 @@ Jupyter.notebook.set_autosave_interval(0); // disable autosave
 At the moment, I'm editing and committing the resulting `.Rmd` and `.ipynb`
 files, but a better workflow would be to build the `.ipynb` files
 automatically.
+
+## Workflow
+
+### Developing
+
+* `make serve` to run the local server serving `_site` directory.
+* Attach browser to <http://localhost:4000/dsfe/> as suggested in output of
+  `make serve`.
+* Edit files
+* `make rebuild-notebooks`
+* Review in browser
+
+### Shipping
+
+* Final check
+* Ship with `make github`

@@ -6,3 +6,5 @@ pyyaml
 nbformat
 nbclean
 jupytext>=0.8
+# To allow static build / upload
+ghp-import

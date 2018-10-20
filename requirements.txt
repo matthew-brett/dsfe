@@ -3,7 +3,5 @@ matplotlib
 pandas
 scipy
 ipython
-# To allow static build / upload
-ghp-import
 # To allow downloading of Notebook as zip file
 nbzip
