@@ -15,4 +15,4 @@ permalink: /days/class_2
 
 We also discussed *simulation* - see the first part of the [simulation chapter of the Berkeley textbook](https://www.inferentialthinking.com/chapters/09/3/Simulation) for more background.
 
-I will add the assignment by Saturday 20th October, after I see how far we get.
+Assignment is [assignment 3](../assignments/assignment_3)
