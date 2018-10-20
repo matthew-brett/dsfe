@@ -23,6 +23,12 @@ check:
 rebuild-notebooks:
 	python scripts/rebuild_notebooks.py
 
+build: rebuild-notebooks
+	bundle exec jekyll build
+
+github: build
+	ghp-import -n _site -p -f
+
 clean:
 	python scripts/clean.py
 
