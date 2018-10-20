@@ -8,6 +8,7 @@ import nbformat as nbf
 from tqdm import tqdm
 import numpy as np
 from glob import glob
+from uuid import uuid4
 import argparse
 DESCRIPTION = ("Convert a collection of Jupyter Notebooks into Jekyll "
                "markdown suitable for a course textbook.")
@@ -148,6 +149,22 @@ def _between_symbols(string, c1, c2):
     return string[string.index(c1)+1:string.index(c2)]
 
 
+def _case_sensitive_fs(path):
+    """ True when filesystem at `path` is case sensitive, False otherwise
+    """
+    root = op.join(path, uuid4().hex)
+    fnames = [root + suffix for suffix in 'aA']
+    try:
+        for fname in fnames:
+            with open(fname, 'wt') as fobj:
+                fobj.write('text')
+        written = glob(root + '*')
+    finally:
+        for fname in written:
+            os.unlink(fname)
+    return len(written) == 2
+
+
 if __name__ == '__main__':
     args = parser.parse_args()
     overwrite = bool(args.overwrite)
@@ -184,6 +201,7 @@ if __name__ == '__main__':
     # --- Loop through all ipynb/md files, convert to md as necessary and copy. ---
     n_skipped_files = 0
     n_built_files = 0
+    cased_fs = _case_sensitive_fs(TEXTBOOK_FOLDER_NAME)
     for ix_file, (title, link, level) in tqdm(list(enumerate(files))):
         if len(link) == 0:
             continue
@@ -266,15 +284,22 @@ if __name__ == '__main__':
         if link.endswith('.ipynb'):
             yaml_fm += ['interact_link: {}'.format(link.lstrip('./'))]
         yaml_fm += ["title: '{}'".format(title)]
-        yaml_fm += ["permalink: '{}'".format(_prepare_link(link))]
+        page_link = _prepare_link(link)
+        yaml_fm += ["permalink: '{}'".format(page_link)]
         yaml_fm += ['previouschapter:']
         yaml_fm += ['  url: {}'.format(_prepare_link(prev_page_link).replace('"', "'"))]
         yaml_fm += ["  title: '{}'".format(prev_file_title)]
         yaml_fm += ['nextchapter:']
         yaml_fm += ['  url: {}'.format(_prepare_link(next_page_link).replace('"', "'"))]
         yaml_fm += ["  title: '{}'".format(next_file_title)]
+        # In case pre-existing links are sanitized
+        sanitized = page_link.lower().replace('_', '-')
+        if not cased_fs and page_link.lower() == sanitized:
+            raise RuntimeError('Redirect {} clashes with page {} '
+                               'on case-insensitive FS'.format(
+                                   sanitized, page_link))
         yaml_fm += ["redirect_from:"]
-        yaml_fm += ["  - '{}'".format(_prepare_link(link).lower().replace('_', '-'))]  # In case pre-existing links are sanitized
+        yaml_fm += ["  - '{}'".format(sanitized)]
         if ix_file == 0 and site_yaml.get('textbook_only') is True:
             yaml_fm += ["  - '/'"]
         yaml_fm += ['---']
