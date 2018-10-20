@@ -103,10 +103,12 @@ Operators and call expressions can be used together in an expression. The
 *percent difference* between two values is used to compare values for which
 neither one is obviously `initial` or `changed`. For example, in 2014 Florida
 farms produced 2.72 billion eggs while Iowa farms produced 16.25 billion eggs
-\footnote{http://quickstats.nass.usda.gov/}. The percent difference is 100
-times the absolute value of the difference between the values, divided by
-their average. In this case, the difference is larger than the average, and so
-the percent difference is greater than 100.
+[^eggs].  The percent difference is 100 times the absolute value of the
+difference between the values, divided by their average. In this case, the
+difference is larger than the average, and so the percent difference is
+greater than 100.
+
+[^eggs]: <http://quickstats.nass.usda.gov>
 
 
 

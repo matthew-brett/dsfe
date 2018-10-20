@@ -175,7 +175,7 @@ R.
 ![Ross Ihaka's version of Post graph]({{ site.baseurl }}/images/ihaka_fixed_post_graph.png)
 
 In the period 1939 to 1963, the doctors' incomes went up from \\$3,262 to
-\$25,050. So during that period the average increase in income per year was
+\\$25,050. So during that period the average increase in income per year was
 about \\$900.
 
 
