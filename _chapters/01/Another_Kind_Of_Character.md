@@ -6,8 +6,8 @@ previouschapter:
   url: chapters/01/Literary_Characters
   title: '1.3.1 Literary Characters'
 nextchapter:
-  url: 
-  title: ''
+  url: chapters/02/to_code
+  title: '2. Programming'
 redirect_from:
   - 'chapters/01/another-kind-of-character'
 ---

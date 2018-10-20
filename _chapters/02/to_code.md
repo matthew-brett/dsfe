@@ -2,11 +2,11 @@
 title: '2. Programming'
 permalink: 'chapters/02/to_code'
 previouschapter:
-  url: chapters/01/2/why-data-science
-  title: '1.2 Why Data Science?'
+  url: chapters/01/Another_Kind_Of_Character
+  title: '1.3.2 Another Kind of Character'
 nextchapter:
-  url: chapters/02/Expressions
-  title: '2.1 Expressions'
+  url: chapters/02/sampling_problem
+  title: '2.1 A sampling problem'
 redirect_from:
   - 'chapters/02/to-code'
 ---
