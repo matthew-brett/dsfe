@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>What is Data Science - Data Science for Everyone</title>
-<meta name="description" content="What is Data Science">
+<!-- begin _includes/seo.html --><title>Comparisons - Data Science for Everyone</title>
+<meta name="description" content="Comparisons">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="What is Data Science">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/01/what-is-data-science">
+<meta property="og:title" content="Comparisons">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/03/Comparison">
 
 
-  <meta property="og:description" content="What is Data Science">
+  <meta property="og:description" content="Comparisons">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/01/what-is-data-science">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/03/Comparison">
 
 
 
@@ -380,15 +380,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="What is Data Science">
-      <meta itemprop="description" content="What is Data Science">
+      <meta itemprop="headline" content="Comparisons">
+      <meta itemprop="description" content="Comparisons">
       <meta itemprop="datePublished" content="October 20, 2018">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">What is Data Science
+            <h1 id="page-title" class="page__title" itemprop="headline">Comparisons
 </h1>
           </header>
         
@@ -404,20 +404,134 @@
           
           <!-- INTERACT LINKS -->
 
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/03/Comparison.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F03%2FComparison.ipynb">Interact</a>
+
 
           
-<p>See also <a href="https://www.inferentialthinking.com/chapters/01/what-is-data-science">What is Data Science</a> for the UC Berkeley course.</p>
+<p>A <em>Boolean</em> value is a value that can only be True or False.  It is called
+“Boolean” after the mathematician and logician <a href="https://en.wikipedia.org/wiki/George_Boole">George
+Boole</a></p>
 
-<ul>
-  <li>Exploration</li>
-  <li>Prediction</li>
-  <li>
-    <p>Inference</p>
-  </li>
-  <li>Statistics</li>
-  <li>Computing</li>
-  <li>Domain knowledge</li>
-</ul>
+<p>Boolean values most often arise from comparison operators. Python includes a
+variety of operators that compare values. For example, <code class="highlighter-rouge">3</code> is larger than <code class="highlighter-rouge">1 +
+1</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<p>The value <code class="highlighter-rouge">True</code> indicates that the comparison is valid; Python has confirmed
+this simple fact about the relationship between <code class="highlighter-rouge">3</code> and <code class="highlighter-rouge">1+1</code>. The full set of
+common comparison operators are listed below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comparison</th>
+      <th>Operator</th>
+      <th>True example</th>
+      <th>False Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Less than</td>
+      <td>&lt;</td>
+      <td>2 &lt; 3</td>
+      <td>2 &lt; 2</td>
+    </tr>
+    <tr>
+      <td>Greater than</td>
+      <td>&gt;</td>
+      <td>3&gt;2</td>
+      <td>3&gt;3</td>
+    </tr>
+    <tr>
+      <td>Less than or equal</td>
+      <td>&lt;=</td>
+      <td>2 &lt;= 2</td>
+      <td>3 &lt;= 2</td>
+    </tr>
+    <tr>
+      <td>Greater or equal</td>
+      <td>&gt;=</td>
+      <td>3 &gt;= 3</td>
+      <td>2 &gt;= 3</td>
+    </tr>
+    <tr>
+      <td>Equal</td>
+      <td>==</td>
+      <td>3 == 3</td>
+      <td>3 == 2</td>
+    </tr>
+    <tr>
+      <td>Not equal</td>
+      <td>!=</td>
+      <td>3 != 2</td>
+      <td>2 != 2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Here are some more examples:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">4</span> <span class="o">&lt;</span> <span class="mi">5</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">4</span> <span class="o">&lt;</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">4</span> <span class="o">&lt;=</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<p>Notice the <code class="highlighter-rouge">==</code> in the table above.</p>
+
+<p>The double equals <code class="highlighter-rouge">==</code> is different from the single <code class="highlighter-rouge">=</code> that we saw before
+in assignment.   Here is assignment.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<p>Notice it does not display a value.</p>
+
+<p><code class="highlighter-rouge">==</code> is different - it’s a comparison operator like <code class="highlighter-rouge">&lt;</code> or <code class="highlighter-rouge">&gt;</code>.  It checks
+whether two values are equal, and returns True or False:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">==</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<p>Strings can also be compared, and their order is alphabetical. A shorter
+string is less than a longer string that begins with the shorter string.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"Dog"</span> <span class="o">&gt;</span> <span class="s">"Catastrophe"</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"Catastrophe"</span> <span class="o">&gt;</span> <span class="s">"Cat"</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
 
           
         </section>
@@ -434,11 +548,11 @@
         
   <nav class="pagination">
     
-      <a href="" class="pagination--pager" title="
+      <a href="/dsfe/chapters/03/Strings" class="pagination--pager" title="3.2 Strings
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/01/1/intro" class="pagination--pager" title="1.1 Introduction
+      <a href="/dsfe/chapters/03/Arrays" class="pagination--pager" title="3.4 Arrays
 ">Next</a>
     
   </nav>

@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>What is Data Science - Data Science for Everyone</title>
-<meta name="description" content="What is Data Science">
+<!-- begin _includes/seo.html --><title>2.4 Names - Data Science for Everyone</title>
+<meta name="description" content="        This page is largely derived from Names of the UC    Berkeley course - see the license file on the main website.    ">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="What is Data Science">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/01/what-is-data-science">
+<meta property="og:title" content="2.4 Names">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/02/Names">
 
 
-  <meta property="og:description" content="What is Data Science">
+  <meta property="og:description" content="        This page is largely derived from Names of the UC    Berkeley course - see the license file on the main website.    ">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/01/what-is-data-science">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/02/Names">
 
 
 
@@ -380,15 +380,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="What is Data Science">
-      <meta itemprop="description" content="What is Data Science">
+      <meta itemprop="headline" content="2.4 Names">
+      <meta itemprop="description" content="        This page is largely derived from Names of the UC    Berkeley course - see the license file on the main website.    ">
       <meta itemprop="datePublished" content="October 20, 2018">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">What is Data Science
+            <h1 id="page-title" class="page__title" itemprop="headline">2.4 Names
 </h1>
           </header>
         
@@ -404,20 +404,82 @@
           
           <!-- INTERACT LINKS -->
 
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/02/Names.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F02%2FNames.ipynb">Interact</a>
 
-          
-<p>See also <a href="https://www.inferentialthinking.com/chapters/01/what-is-data-science">What is Data Science</a> for the UC Berkeley course.</p>
 
-<ul>
-  <li>Exploration</li>
-  <li>Prediction</li>
-  <li>
-    <p>Inference</p>
-  </li>
-  <li>Statistics</li>
-  <li>Computing</li>
-  <li>Domain knowledge</li>
-</ul>
+          <div class="note">
+    <p>
+    This page is largely derived from <code>Names</code> of the UC
+    Berkeley course - see the license file on the main website.
+    </p>
+</div>
+
+<p>Names are given to values in Python using an <em>assignment</em> statement. In an
+assignment, a name is followed by <code class="highlighter-rouge">=</code>, which is followed by any expression.
+The value of the expression to the right of <code class="highlighter-rouge">=</code> is <em>assigned</em> to the name.
+Once a name has a value assigned to it, the value will be substituted for that
+name in future expressions.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
+</code></pre></div></div>
+
+<p>A previously assigned name can be used in the expression to the right of <code class="highlighter-rouge">=</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">quarter</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span>
+<span class="n">half</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">quarter</span>
+<span class="n">half</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5
+</code></pre></div></div>
+
+<p>However, only the current value of an expression is assigned to a name. If
+that value changes later, names that were defined in terms of that value will
+not change automatically.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">quarter</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">half</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5
+</code></pre></div></div>
+
+<p>Names must start with a letter, but can contain both letters and numbers. A
+name cannot contain a space; instead, it is common to use an underscore
+character <code class="highlighter-rouge">_</code> to replace each space. Names are only as useful as you make
+them; it’s up to the programmer to choose names that are easy to interpret.
+Typically, more meaningful names can be invented than <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code>. For
+example, let’s say you were calculating the 20% Value Added Tax for a
+restaurant bill, as well as 15% tip, on top of that.  The following names
+clarify the meaning of the various quantities involved.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">meal_price</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">vat_rate</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">vat</span> <span class="o">=</span> <span class="n">meal_price</span> <span class="o">*</span> <span class="n">vat_rate</span>
+<span class="n">meal_price_with_vat</span> <span class="o">=</span> <span class="n">meal_price</span> <span class="o">+</span> <span class="n">vat</span>
+<span class="n">meal_price_with_vat</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30.0
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tip_rate</span> <span class="o">=</span> <span class="mf">0.15</span>
+<span class="n">tip</span> <span class="o">=</span> <span class="n">meal_price_with_vat</span> <span class="o">*</span> <span class="n">tip_rate</span>
+<span class="n">meal_price_total</span> <span class="o">=</span> <span class="n">meal_price_with_vat</span> <span class="o">+</span> <span class="n">tip</span>
+<span class="n">meal_price_total</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>34.5
+</code></pre></div></div>
+
 
           
         </section>
@@ -434,11 +496,11 @@
         
   <nav class="pagination">
     
-      <a href="" class="pagination--pager" title="
+      <a href="/dsfe/chapters/02/Expressions" class="pagination--pager" title="2.3 Expressions
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/01/1/intro" class="pagination--pager" title="1.1 Introduction
+      <a href="/dsfe/chapters/02/Calls" class="pagination--pager" title="2.5 Call expressions
 ">Next</a>
     
   </nav>

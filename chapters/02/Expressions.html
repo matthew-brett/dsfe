@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>What is Data Science - Data Science for Everyone</title>
-<meta name="description" content="What is Data Science">
+<!-- begin _includes/seo.html --><title>2.3 Expressions - Data Science for Everyone</title>
+<meta name="description" content="        This page is largely derived from Expressions of the UC    Berkeley course - see the license file on the main website.    ">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="What is Data Science">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/01/what-is-data-science">
+<meta property="og:title" content="2.3 Expressions">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/02/Expressions">
 
 
-  <meta property="og:description" content="What is Data Science">
+  <meta property="og:description" content="        This page is largely derived from Expressions of the UC    Berkeley course - see the license file on the main website.    ">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/01/what-is-data-science">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/02/Expressions">
 
 
 
@@ -380,15 +380,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="What is Data Science">
-      <meta itemprop="description" content="What is Data Science">
+      <meta itemprop="headline" content="2.3 Expressions">
+      <meta itemprop="description" content="        This page is largely derived from Expressions of the UC    Berkeley course - see the license file on the main website.    ">
       <meta itemprop="datePublished" content="October 20, 2018">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">What is Data Science
+            <h1 id="page-title" class="page__title" itemprop="headline">2.3 Expressions
 </h1>
           </header>
         
@@ -400,24 +400,204 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#example">Example</a></li>
+</ul>
+    </nav>
+  </aside>
+
 
           
           <!-- INTERACT LINKS -->
 
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/02/Expressions.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F02%2FExpressions.ipynb">Interact</a>
 
-          
-<p>See also <a href="https://www.inferentialthinking.com/chapters/01/what-is-data-science">What is Data Science</a> for the UC Berkeley course.</p>
 
-<ul>
-  <li>Exploration</li>
-  <li>Prediction</li>
-  <li>
-    <p>Inference</p>
-  </li>
-  <li>Statistics</li>
-  <li>Computing</li>
-  <li>Domain knowledge</li>
-</ul>
+          <div class="note">
+    <p>
+    This page is largely derived from <code>Expressions</code> of the UC
+    Berkeley course - see the license file on the main website.
+    </p>
+</div>
+
+<p>Programming languages are much simpler than human languages. Nonetheless,
+there are some rules of grammar to learn in any language, and that is where we
+will begin. In this text, we will use the <a href="https://www.python.org/">Python</a>
+programming language. Learning the grammar rules is essential, and the same
+rules used in the most basic programs are also central to more sophisticated
+programs.</p>
+
+<p>Programs are made up of <em>expressions</em>, which describe to the computer how to
+combine pieces of data. For example, a multiplication expression consists of a
+<code class="highlighter-rouge">*</code> symbol between two numerical expressions. Expressions, such as <code class="highlighter-rouge">3 * 4</code>,
+are <em>evaluated</em> by the computer. The value (the result of <em>evaluation</em>) of the
+last expression in each cell, <code class="highlighter-rouge">12</code> in this case, is displayed below the cell.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
+</code></pre></div></div>
+
+<p>The grammar rules of a programming language are rigid. In Python, the <code class="highlighter-rouge">*</code>
+symbol cannot appear twice in a row. The computer will not try to interpret an
+expression that differs from its prescribed expression structures. Instead, it
+will show a <code class="highlighter-rouge">SyntaxError</code> error. The <em>Syntax</em> of a language is its set of
+grammar rules, and a <code class="highlighter-rouge">SyntaxError</code> indicates that an expression structure
+doesn’t match any of the rules of the language.</p>
+
+<p>Try executing the next line after removing the <code class="highlighter-rouge">#</code> character at the beginning
+of the line</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 3 * * 4</span>
+</code></pre></div></div>
+
+<p>Small changes to an expression can change its meaning entirely. Below, the
+space between the <code class="highlighter-rouge">*</code>’s has been removed. Because <code class="highlighter-rouge">**</code> appears between two
+numerical expressions, the expression is a well-formed <em>exponentiation</em>
+expression (the first number raised to the power of the second: 3 times 3
+times 3 times 3). The symbols <code class="highlighter-rouge">*</code> and <code class="highlighter-rouge">**</code> are called <em>operators</em>, and the
+values they combine are called <em>operands</em>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">**</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>81
+</code></pre></div></div>
+
+<p><strong>Common Operators.</strong> Data science often involves combining numerical values,
+and the set of operators in a programming language are designed to so that
+expressions can be used to express any sort of arithmetic. In Python, the
+following operators are essential.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Expression Type</th>
+      <th>Operator</th>
+      <th>Example</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Addition</td>
+      <td><code class="highlighter-rouge">+</code></td>
+      <td><code class="highlighter-rouge">2 + 3</code></td>
+      <td><code class="highlighter-rouge">5</code></td>
+    </tr>
+    <tr>
+      <td>Subtraction</td>
+      <td><code class="highlighter-rouge">-</code></td>
+      <td><code class="highlighter-rouge">2 - 3</code></td>
+      <td><code class="highlighter-rouge">-1</code></td>
+    </tr>
+    <tr>
+      <td>Multiplication</td>
+      <td><code class="highlighter-rouge">*</code></td>
+      <td><code class="highlighter-rouge">2 * 3</code></td>
+      <td><code class="highlighter-rouge">6</code></td>
+    </tr>
+    <tr>
+      <td>Division</td>
+      <td><code class="highlighter-rouge">/</code></td>
+      <td><code class="highlighter-rouge">7 / 3</code></td>
+      <td><code class="highlighter-rouge">2.66667</code></td>
+    </tr>
+    <tr>
+      <td>Remainder</td>
+      <td><code class="highlighter-rouge">%</code></td>
+      <td><code class="highlighter-rouge">7 % 3</code></td>
+      <td><code class="highlighter-rouge">1</code></td>
+    </tr>
+    <tr>
+      <td>Exponentiation</td>
+      <td><code class="highlighter-rouge">**</code></td>
+      <td><code class="highlighter-rouge">2 ** 0.5</code></td>
+      <td><code class="highlighter-rouge">1.41421</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Python expressions obey the same familiar rules of <em>precedence</em> as in algebra:
+multiplication and division occur before addition and subtraction. Parentheses
+can be used to group together smaller expressions within a larger expression.</p>
+
+<p>Multiplication has precedence (we do <code class="highlighter-rouge">2 * 3</code> before adding to 1).</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7
+</code></pre></div></div>
+
+<p>We can use parentheses to group expressions that should be evaluated first.
+Here we force <code class="highlighter-rouge">1 + 2</code> <em>before</em> the multiplication by 3.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9
+</code></pre></div></div>
+
+<h3 id="example">Example</h3>
+
+<p>Here, from the Washington Post in the early 1980s, is a graph that attempts to
+compare the earnings of doctors with the earnings of other professionals over
+a few decades. Do we really need to see two heads (one with a stethoscope) on
+each bar? <a href="https://en.wikipedia.org/wiki/Edward_Tufte">Edward Tufte</a>,
+Professor at Yale and one of the world’s experts on visualizing quantitative
+information, coined the term “chartjunk” for such unnecessary embellishments.
+This graph is also an example of the “low data-to-ink ratio” that Tufte
+deplores.</p>
+
+<p><img src="/dsfe/images/bad_post_graph.png" alt="Washington Post graph" /></p>
+
+<p>Most importantly, the horizontal axis of the graph is is not drawn to scale.
+This has a significant effect on the shape of the bar graphs. When drawn to
+scale and shorn of decoration, the graphs reveal trends that are quite
+different from the apparently linear growth in the original. The elegant graph
+below is due to Ross Ihaka, one of the originators of the statistical system
+R.</p>
+
+<p><img src="/dsfe/images/ihaka_fixed_post_graph.png" alt="Ross Ihaka's version of Post graph" /></p>
+
+<p>In the period 1939 to 1963, the doctors’ incomes went up from \$3,262 to
+$25,050. So during that period the average increase in income per year was
+about \$900.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">25050</span> <span class="o">-</span> <span class="mi">3262</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1963</span> <span class="o">-</span> <span class="mi">1939</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>907.8333333333334
+</code></pre></div></div>
+
+<p>In Ross Ihaka’s graph you can see that in this period, the doctors’ incomes
+rise roughly linearly at a fairly steady rate. That rate is about \$900, as we
+have just calculated.</p>
+
+<p>But in the period 1963 to 1976, the rate is more than three times as high:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">62799</span> <span class="o">-</span> <span class="mi">25050</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1976</span> <span class="o">-</span> <span class="mi">1963</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2903.769230769231
+</code></pre></div></div>
+
+<p>That is why the graph rises much more steeply after 1963.</p>
+
+<p>This chapter introduces many types of expressions. Learning to program
+involves trying out everything you learn in combination, investigating the
+behavior of the computer. What happens if you divide by zero? What happens if
+you divide twice in a row? You don’t always need to ask an expert (or the
+Internet); many of these details can be discovered by trying them out
+yourself.</p>
 
           
         </section>
@@ -434,11 +614,11 @@
         
   <nav class="pagination">
     
-      <a href="" class="pagination--pager" title="
+      <a href="/dsfe/chapters/02/three_girls" class="pagination--pager" title="2.2 A simpler problem
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/01/1/intro" class="pagination--pager" title="1.1 Introduction
+      <a href="/dsfe/chapters/02/Names" class="pagination--pager" title="2.4 Names
 ">Next</a>
     
   </nav>

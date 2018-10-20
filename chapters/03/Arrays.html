@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>What is Data Science - Data Science for Everyone</title>
-<meta name="description" content="What is Data Science">
+<!-- begin _includes/seo.html --><title>Arrays - Data Science for Everyone</title>
+<meta name="description" content="Arrays">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="What is Data Science">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/01/what-is-data-science">
+<meta property="og:title" content="Arrays">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/03/Arrays">
 
 
-  <meta property="og:description" content="What is Data Science">
+  <meta property="og:description" content="Arrays">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/01/what-is-data-science">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/03/Arrays">
 
 
 
@@ -380,15 +380,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="What is Data Science">
-      <meta itemprop="description" content="What is Data Science">
+      <meta itemprop="headline" content="Arrays">
+      <meta itemprop="description" content="Arrays">
       <meta itemprop="datePublished" content="October 20, 2018">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">What is Data Science
+            <h1 id="page-title" class="page__title" itemprop="headline">Arrays
 </h1>
           </header>
         
@@ -404,20 +404,252 @@
           
           <!-- INTERACT LINKS -->
 
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/03/Arrays.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F03%2FArrays.ipynb">Interact</a>
+
 
           
-<p>See also <a href="https://www.inferentialthinking.com/chapters/01/what-is-data-science">What is Data Science</a> for the UC Berkeley course.</p>
+<p>While there are many kinds of collections in Python, we will work primarily
+with arrays in this class.</p>
 
-<ul>
-  <li>Exploration</li>
-  <li>Prediction</li>
-  <li>
-    <p>Inference</p>
-  </li>
-  <li>Statistics</li>
-  <li>Computing</li>
-  <li>Domain knowledge</li>
-</ul>
+<p>The <code class="highlighter-rouge">numpy</code> package, abbreviated <code class="highlighter-rouge">np</code> in programs, provides Python programmers
+with convenient and powerful functions for creating and manipulating arrays.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<p>Arrays often contain numbers, but the can also contain strings or other types
+of values.  However, a single array can only contain a single kind of data.
+(It usually doesn’t make sense to group together unlike data anyway.)</p>
+
+<p>For example:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">english_parts_of_speech</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s">"noun"</span><span class="p">,</span> <span class="s">"pronoun"</span><span class="p">,</span> <span class="s">"verb"</span><span class="p">,</span> <span class="s">"adverb"</span><span class="p">,</span> <span class="s">"adjective"</span><span class="p">,</span> <span class="s">"conjunction"</span><span class="p">,</span> <span class="s">"preposition"</span><span class="p">,</span> <span class="s">"interjection"</span><span class="p">])</span>
+<span class="n">english_parts_of_speech</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['noun', 'pronoun', 'verb', 'adverb', 'adjective', 'conjunction',
+       'preposition', 'interjection'], 
+      dtype='&lt;U12')
+</code></pre></div></div>
+
+<p>Returning to the temperature data, we create arrays of average daily <a href="http://berkeleyearth.lbl.gov/auto/Regional/TMAX/Text/global-land-TMAX-Trend.txt">high
+temperatures</a>
+for the decades surrounding 1850, 1900, 1950, and 2000.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">baseline_high</span> <span class="o">=</span> <span class="mf">14.48</span>
+<span class="n">highs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">baseline_high</span> <span class="o">-</span> <span class="mf">0.880</span><span class="p">,</span>
+                  <span class="n">baseline_high</span> <span class="o">-</span> <span class="mf">0.093</span><span class="p">,</span>
+                  <span class="n">baseline_high</span> <span class="o">+</span> <span class="mf">0.105</span><span class="p">,</span>
+                  <span class="n">baseline_high</span> <span class="o">+</span> <span class="mf">0.684</span><span class="p">])</span>
+<span class="n">highs</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 13.6  ,  14.387,  14.585,  15.164])
+</code></pre></div></div>
+
+<p>Arrays can be used in arithmetic expressions to compute over their contents.
+When an array is combined with a single number, that number is combined with
+each element of the array. Therefore, we can convert all of these temperatures
+to Fahrenheit by writing the familiar conversion formula.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">highs</span> <span class="o">+</span> <span class="mi">32</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 56.48  ,  57.8966,  58.253 ,  59.2952])
+</code></pre></div></div>
+
+<p><img src="/dsfe/images/array_arithmetic.png" /></p>
+
+<p>Arrays also have <em>methods</em>, which are functions that operate on the array
+values. The <code class="highlighter-rouge">mean</code> of a collection of numbers is its average value: the sum
+divided by the length. Each pair of parentheses in the examples below is part
+of a call expression; it’s calling a function with no arguments to perform a
+computation on the array called <code class="highlighter-rouge">highs</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">highs</span><span class="o">.</span><span class="n">size</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">highs</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>57.736000000000004
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">highs</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14.434000000000001
+</code></pre></div></div>
+
+<h4 id="functions-on-arrays">Functions on Arrays</h4>
+
+<p>Numpy provides various useful functions for operating on arrays.</p>
+
+<p>For example, the <code class="highlighter-rouge">diff</code> function computes the difference between each adjacent
+pair of elements in an array. The first element of the <code class="highlighter-rouge">diff</code> is the second
+element minus the first.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">highs</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 0.787,  0.198,  0.579])
+</code></pre></div></div>
+
+<p>The <a href="http://docs.scipy.org/doc/numpy/reference/">full Numpy reference</a> lists
+these functions exhaustively, but only a small subset are used commonly for
+data processing applications. These are grouped into different packages within
+<code class="highlighter-rouge">np</code>. Learning this vocabulary is an important part of learning the Python
+language, so refer back to this list often as you work through examples and
+problems.</p>
+
+<p>However, you <strong>don’t need to memorize these</strong>.  Use this as a reference.</p>
+
+<p>Each of these functions takes an array as an argument and returns a single
+value.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Function</strong></th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">np.prod</code></td>
+      <td>Multiply all elements together</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.sum</code></td>
+      <td>Add all elements together</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.all</code></td>
+      <td>Test whether all elements are true values (non-zero numbers are true)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.any</code></td>
+      <td>Test whether any elements are true values (non-zero numbers are true)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.count_nonzero</code></td>
+      <td>Count the number of non-zero elements</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each of these functions takes an array as an argument and returns an array of values.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Function</strong></th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">np.diff</code></td>
+      <td>Difference between adjacent elements</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.round</code></td>
+      <td>Round each number to the nearest integer (whole number)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.cumprod</code></td>
+      <td>A cumulative product: for each element, multiply all elements so far</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.cumsum</code></td>
+      <td>A cumulative sum: for each element, add all elements so far</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.exp</code></td>
+      <td>Exponentiate each element</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.log</code></td>
+      <td>Take the natural logarithm of each element</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.sqrt</code></td>
+      <td>Take the square root of each element</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.sort</code></td>
+      <td>Sort the elements</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each of these functions takes an array of strings and returns an array.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Function</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">np.char.lower</code></td>
+      <td>Lowercase each element</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.char.upper</code></td>
+      <td>Uppercase each element</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.char.strip</code></td>
+      <td>Remove spaces at the beginning or end of each element</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.char.isalpha</code></td>
+      <td>Whether each element is only letters (no numbers or symbols)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.char.isnumeric</code></td>
+      <td>Whether each element is only numeric (no letters)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each of these functions takes both an array of strings and a <em>search string</em>; each returns an array.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Function</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">np.char.count</code></td>
+      <td>Count the number of times a search string appears among the elements of an array</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.char.find</code></td>
+      <td>The position within each element that a search string is found first</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.char.rfind</code></td>
+      <td>The position within each element that a search string is found last</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">np.char.startswith</code></td>
+      <td>Whether each element starts with the search string</td>
+    </tr>
+  </tbody>
+</table>
 
           
         </section>
@@ -434,11 +666,11 @@
         
   <nav class="pagination">
     
-      <a href="" class="pagination--pager" title="
+      <a href="/dsfe/chapters/03/Comparison" class="pagination--pager" title="3.3 Comparison
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/01/1/intro" class="pagination--pager" title="1.1 Introduction
+      <a href="/dsfe/chapters/03/Ranges" class="pagination--pager" title="3.5 Ranges
 ">Next</a>
     
   </nav>

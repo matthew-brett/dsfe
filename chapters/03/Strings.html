@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>What is Data Science - Data Science for Everyone</title>
-<meta name="description" content="What is Data Science">
+<!-- begin _includes/seo.html --><title>Strings - Data Science for Everyone</title>
+<meta name="description" content="Strings">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="What is Data Science">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/01/what-is-data-science">
+<meta property="og:title" content="Strings">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/03/Strings">
 
 
-  <meta property="og:description" content="What is Data Science">
+  <meta property="og:description" content="Strings">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/01/what-is-data-science">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/03/Strings">
 
 
 
@@ -380,15 +380,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="What is Data Science">
-      <meta itemprop="description" content="What is Data Science">
+      <meta itemprop="headline" content="Strings">
+      <meta itemprop="description" content="Strings">
       <meta itemprop="datePublished" content="October 20, 2018">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">What is Data Science
+            <h1 id="page-title" class="page__title" itemprop="headline">Strings
 </h1>
           </header>
         
@@ -404,20 +404,61 @@
           
           <!-- INTERACT LINKS -->
 
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/03/Strings.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F03%2FStrings.ipynb">Interact</a>
+
 
           
-<p>See also <a href="https://www.inferentialthinking.com/chapters/01/what-is-data-science">What is Data Science</a> for the UC Berkeley course.</p>
+<p>Much of the world’s data is text, and a piece of text represented in a
+computer is called a <em>string</em>. A string can represent a word, a sentence, or
+even the contents of every book in a library. Since text can include numbers
+(like this: 5) or truth values (True), a string can also describe those
+things.</p>
 
-<ul>
-  <li>Exploration</li>
-  <li>Prediction</li>
-  <li>
-    <p>Inference</p>
-  </li>
-  <li>Statistics</li>
-  <li>Computing</li>
-  <li>Domain knowledge</li>
-</ul>
+<p>The meaning of an expression depends both upon its structure and the types of
+values that are being combined. So, for instance, adding two strings together
+produces another string. This expression is still an addition expression, but
+it is combining a different type of value.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"data"</span> <span class="o">+</span> <span class="s">"science"</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'datascience'
+</code></pre></div></div>
+
+<p>Addition is completely literal; it combines these two strings together without
+regard for their contents. It doesn’t add a space because these are different
+words; that’s up to the programmer (you) to specify.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"data"</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="s">"science"</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'data science'
+</code></pre></div></div>
+
+<p>Single and double quotes can both be used to create strings: <code class="highlighter-rouge">'hi'</code> and <code class="highlighter-rouge">"hi"</code>
+are identical expressions. Double quotes are often preferred because they
+allow you to include apostrophes inside of strings.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"This won't work with a single-quoted string!"</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"This won't work with a single-quoted string!"
+</code></pre></div></div>
+
+<p>Why not? Try it out.</p>
+
+<p>The <code class="highlighter-rouge">str</code> function returns a string representation of any value. Using this
+function, strings can be constructed that have embedded values.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"That's "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s">' '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"That's 2 True"
+</code></pre></div></div>
+
 
           
         </section>
@@ -434,11 +475,11 @@
         
   <nav class="pagination">
     
-      <a href="" class="pagination--pager" title="
+      <a href="/dsfe/chapters/03/Numbers" class="pagination--pager" title="3.1 Numbers
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/01/1/intro" class="pagination--pager" title="1.1 Introduction
+      <a href="/dsfe/chapters/03/Comparison" class="pagination--pager" title="3.3 Comparison
 ">Next</a>
     
   </nav>
