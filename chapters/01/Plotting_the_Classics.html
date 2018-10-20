@@ -1,0 +1,1014 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>1.3 Plotting the Classics - Data Science for Everyone</title>
+<meta name="description" content="This page is largely derived from Plotting_the_Classics of the UC Berkeleycourse - see the license file on the main website.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="1.3 Plotting the Classics">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/01/Plotting_the_Classics">
+
+
+  <meta property="og:description" content="This page is largely derived from Plotting_the_Classics of the UC Berkeleycourse - see the license file on the main website.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2018-10-20T12:07:16+01:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/01/Plotting_the_Classics">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--textbook">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" class="textbook" role="main">
+  <div id="textbook_wrapper">
+    
+  <div class="sidebar sticky textbook">
+  
+  
+    <img src="/dsfe/images/dsfe_logo.png" class="textbook_logo" />
+    
+
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/"><span class="nav__sub-title">Home</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/01/what-is-data-science"><span class="nav__sub-title">1. Data Science</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/1/intro" class="level_1">1.1 Introduction</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/1/1/computational-tools" class="level_2">1.1.1 Computational Tools</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/1/2/statistical-techniques" class="level_2">1.1.2 Statistical Techniques</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/2/why-data-science" class="level_1">1.2 Why Data Science?</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Plotting_the_Classics" class="level_1">1.3 Plotting the Classics</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Literary_Characters" class="level_2">1.3.1 Literary Characters</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Another_Kind_Of_Character" class="level_2">1.3.2 Another Kind of Character</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/02/to_code"><span class="nav__sub-title">2. Programming</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/sampling_problem" class="level_1">2.1 A sampling problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/three_girls" class="level_1">2.2 A simpler problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Expressions" class="level_1">2.3 Expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Names" class="level_1">2.4 Names</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Calls" class="level_1">2.5 Call expressions</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/03/data_types"><span class="nav__sub-title">3. Data types</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Numbers" class="level_1">3.1 Numbers</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Strings" class="level_1">3.2 Strings</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Comparison" class="level_1">3.3 Comparison</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Arrays" class="level_1">3.4 Arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Ranges" class="level_1">3.5 Ranges</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/More_on_Arrays" class="level_1">3.6 More on arrays</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+
+  
+  </div>
+
+
+    <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="headline" content="1.3 Plotting the Classics">
+      <meta itemprop="description" content="This page is largely derived from Plotting_the_Classics of the UC Berkeleycourse - see the license file on the main website.">
+      <meta itemprop="datePublished" content="October 20, 2018">
+      
+
+      <div class="page__inner-wrap">
+        
+          <header>
+            <h1 id="page-title" class="page__title" itemprop="headline">1.3 Plotting the Classics
+</h1>
+          </header>
+        
+
+        <section class="page__content" itemprop="text">
+          
+            
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+
+          
+          <!-- INTERACT LINKS -->
+
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/01/Plotting_the_Classics.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F01%2FPlotting_the_Classics.ipynb">Interact</a>
+
+
+          <p>This page is largely derived from <code class="highlighter-rouge">Plotting_the_Classics</code> of the UC Berkeley
+course - see the license file on the main website.</p>
+
+<p>In this example, we will explore statistics for: <em>Pride and Prejudice</em>
+by Jane Austen.  The text of any book can be read by a computer at great
+speed.  Books published before 1923 are currently in the <em>public domain</em>,
+meaning that everyone has the right to copy or use the text in any way.
+<a href="http://www.gutenberg.org/">Project Gutenberg</a> is a website that publishes
+public domain books online. Using Python, we can load the text of these books
+directly from the web.</p>
+
+<p>This example is meant to illustrate some of the broad themes of this text.
+Don’t worry if the details of the program don’t yet make sense. Instead, focus
+on interpreting the images generated below. Later sections of the text will
+describe most of the features of the Python programming language used below.</p>
+
+<p>First, we read the text of of the book into the memory of the computer.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Get the text for Pride and Prejudice</span>
+<span class="n">book_url</span> <span class="o">=</span> <span class="s">'http://www.gutenberg.org/ebooks/42671.txt.utf-8'</span>
+<span class="n">book_text</span> <span class="o">=</span> <span class="n">read_url</span><span class="p">(</span><span class="n">book_url</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>On the last line, Python gets the text of the book (<code class="highlighter-rouge">read_url(book_url)</code>) and
+gives it a name (<code class="highlighter-rouge">book_text</code>). In Python, a name cannot contain any spaces,
+and so we will often use an underscore <code class="highlighter-rouge">_</code> to stand in for a space. The <code class="highlighter-rouge">=</code> in
+gives a name (on the left) to the result of some computation
+described on the right.</p>
+
+<p>A <em>uniform resource locator</em> or <em>URL</em> is an address on the Internet for some
+content; in this case, the text of a book. The <code class="highlighter-rouge">#</code> symbol starts a comment,
+which is ignored by the computer but helpful for people reading the code.</p>
+
+<p>Now we have the text attached to the name <code class="highlighter-rouge">book_text</code>, we can ask Python to
+show us how the text starts:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Show the first 500 characters of the text</span>
+<span class="k">print</span><span class="p">(</span><span class="n">book_text</span><span class="p">[:</span><span class="mi">500</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>﻿The Project Gutenberg eBook, Pride and Prejudice, by Jane Austen, Edited
+by R. W. (Robert William) Chapman
+
+
+This eBook is for the use of anyone anywhere at no cost and with
+almost no restrictions whatsoever.  You may copy it, give it away or
+re-use it under the terms of the Project Gutenberg License included
+with this eBook or online at www.gutenberg.org
+
+
+
+
+
+Title: Pride and Prejudice
+
+
+Author: Jane Austen
+
+Editor: R. W. (Robert William) Chapman
+
+Release Date: May 9, 2013 
+
+</code></pre></div></div>
+
+<p>You might want to check this is the same as the text you see by opening the
+URL in your browser: <a href="http://www.gutenberg.org/ebooks/42671.txt.utf-8">http://www.gutenberg.org/ebooks/42671.txt.utf-8</a></p>
+
+<p>Now we have the text in memory, we can start to analyze it.  First we break
+the text into chapters.  Don’t worry about the details of the code, we will
+cover these in the rest of the course.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Break the text into Chapters</span>
+<span class="n">book_chapters</span> <span class="o">=</span> <span class="n">book_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'CHAPTER '</span><span class="p">)</span>
+<span class="c"># Drop the first "Chapter" - it's the Project Gutenberg header</span>
+<span class="n">book_chapters</span> <span class="o">=</span> <span class="n">book_chapters</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</code></pre></div></div>
+
+<p>We can show the first half-line or so for each chapter, by putting the
+chapters into a <em>table</em>.  You will see these tables or <em>data frames</em> many
+times during this course.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Show the first few words of each chapter in a table.</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'Chapters'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chapters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>I.\r\n\r\n\r\nIt is a truth universally acknow...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>II.\r\n\r\n\r\nMr. Bennet was among the earlie...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>III.\r\n\r\n\r\nNot all that Mrs. Bennet, howe...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>IV.\r\n\r\n\r\nWhen Jane and Elizabeth were al...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>V.\r\n\r\n\r\nWithin a short walk of Longbourn...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>VI.\r\n\r\n\r\nThe ladies of Longbourn soon wa...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>VII.\r\n\r\n\r\nMr. Bennet's property consiste...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>VIII.\r\n\r\n\r\nAt five o'clock the two ladie...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>IX.\r\n\r\n\r\nElizabeth passed the chief of t...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>X.\r\n\r\n\r\nThe day passed much as the day b...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>XI.\r\n\r\n\r\nWhen the ladies removed after d...</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>XII.\r\n\r\n\r\nIn consequence of an agreement...</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>XIII.\r\n\r\n\r\n"I hope, my dear," said Mr. B...</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>XIV.\r\n\r\n\r\nDuring dinner, Mr. Bennet scar...</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>XV.\r\n\r\n\r\nMr. Collins was not a sensible ...</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>XVI.\r\n\r\n\r\nAs no objection was made to th...</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>XVII.\r\n\r\n\r\nElizabeth related to Jane the...</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>XVIII.\r\n\r\n\r\nTill Elizabeth entered the d...</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>XIX.\r\n\r\n\r\nThe next day opened a new scen...</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>XX.\r\n\r\n\r\nMr. Collins was not left long t...</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>XXI.\r\n\r\n\r\nThe discussion of Mr. Collins'...</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>XXII.\r\n\r\n\r\nThe Bennets were engaged to d...</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>XXIII.\r\n\r\n\r\nElizabeth was sitting with h...</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>I.\r\n\r\n\r\nMiss Bingley's letter arrived, a...</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>II.\r\n\r\n\r\nAfter a week spent in professio...</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>III.\r\n\r\n\r\nMrs. Gardiner's caution to Eli...</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>IV.\r\n\r\n\r\nWith no greater events than the...</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>V.\r\n\r\n\r\nEvery object in the next day's j...</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>VI.\r\n\r\n\r\nMr. Collins's triumph in conseq...</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>VII.\r\n\r\n\r\nSir William staid only a week ...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>IX.\r\n\r\n\r\nElizabeth was sitting by hersel...</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>X.\r\n\r\n\r\nMore than once did Elizabeth in ...</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>XI.\r\n\r\n\r\nWhen they were gone, Elizabeth,...</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>XII.\r\n\r\n\r\nElizabeth awoke the next morni...</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>XIII.\r\n\r\n\r\nIf Elizabeth, when Mr. Darcy ...</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>XIV.\r\n\r\n\r\nThe two gentlemen left Rosings...</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>XV.\r\n\r\n\r\nOn Saturday morning Elizabeth a...</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>XVI.\r\n\r\n\r\nIt was the second week in May,...</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>XVII.\r\n\r\n\r\nElizabeth's impatience to acq...</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>XVIII.\r\n\r\n\r\nThe first week of their retu...</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>XIX.\r\n\r\n\r\nHad Elizabeth's opinion been a...</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>I.\r\n\r\n\r\nElizabeth, as they drove along, ...</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>II.\r\n\r\n\r\nElizabeth had settled it that M...</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>III.\r\n\r\n\r\nConvinced as Elizabeth now was...</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>IV.\r\n\r\n\r\nElizabeth had been a good deal ...</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>V.\r\n\r\n\r\n"I have been thinking it over ag...</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>VI.\r\n\r\n\r\nThe whole party were in hopes o...</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>VII.\r\n\r\n\r\nTwo days after Mr. Bennet's re...</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>VIII.\r\n\r\n\r\nMr. Bennet had very often wis...</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>IX.\r\n\r\n\r\nTheir sister's wedding day arri...</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>X.\r\n\r\n\r\nElizabeth had the satisfaction o...</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>XI.\r\n\r\n\r\nMr. Wickham was so perfectly sa...</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>XII.\r\n\r\n\r\nAs soon as they were gone, Eli...</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>XIII.\r\n\r\n\r\nA few days after this visit, ...</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>XIV.\r\n\r\n\r\nOne morning, about a week afte...</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>XV.\r\n\r\n\r\nThe discomposure of spirits, wh...</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>XVI.\r\n\r\n\r\nInstead of receiving any such ...</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>XVII.\r\n\r\n\r\n"My dear Lizzy, where can you...</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>XVIII.\r\n\r\n\r\nElizabeth's spirits soon ris...</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>XIX.\r\n\r\n\r\nHappy for all her maternal fee...</td>
+    </tr>
+  </tbody>
+</table>
+<p>61 rows × 1 columns</p>
+</div>
+</div>
+
+<p>This is your first view of a data frame.  Ignore the first column for now - it
+is just a row number.  The second column shows the first few characters of the
+text in the chapter.   The text starts with the chapter number in Roman
+numerals.  You might want to check the text from the link above to reassure
+yourself that this comes from the text we downloaded.  Next you see some odd
+characters with backslashes, such as <code class="highlighter-rouge">\r</code> and <code class="highlighter-rouge">\n</code>.  These are representations
+of new lines, or paragraph marks.  Last you will see the beginning of the
+first sentence of the chapter.</p>
+
+          
+        </section>
+
+        <footer class="page__meta">
+          
+          
+
+
+        </footer>
+
+        
+
+        
+  <nav class="pagination">
+    
+      <a href="/dsfe/chapters/01/2/why-data-science" class="pagination--pager" title="1.2 Why Data Science?
+">Previous</a>
+    
+    
+      <a href="/dsfe/chapters/01/Literary_Characters" class="pagination--pager" title="1.3.1 Literary Characters
+">Next</a>
+    
+  </nav>
+
+
+      </div>
+
+      
+    </article>
+  </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

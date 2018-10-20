@@ -1,0 +1,7 @@
+# Pip requirements for notebooks / Binderhub
+matplotlib
+pandas
+scipy
+ipython
+# To allow downloading of Notebook as zip file
+nbzip

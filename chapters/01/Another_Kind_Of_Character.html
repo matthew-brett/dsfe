@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>1.3.2 Another Kind of Character - Data Science for Everyone</title>
+<meta name="description" content="This page is largely derived from Another_Kind_Of_Character of the UCBerkeley course - see the license file on the main website.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="1.3.2 Another Kind of Character">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/01/Another_Kind_Of_Character">
+
+
+  <meta property="og:description" content="This page is largely derived from Another_Kind_Of_Character of the UCBerkeley course - see the license file on the main website.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2018-10-20T12:07:16+01:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/01/Another_Kind_Of_Character">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--textbook">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" class="textbook" role="main">
+  <div id="textbook_wrapper">
+    
+  <div class="sidebar sticky textbook">
+  
+  
+    <img src="/dsfe/images/dsfe_logo.png" class="textbook_logo" />
+    
+
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/"><span class="nav__sub-title">Home</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/01/what-is-data-science"><span class="nav__sub-title">1. Data Science</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/1/intro" class="level_1">1.1 Introduction</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/1/1/computational-tools" class="level_2">1.1.1 Computational Tools</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/1/2/statistical-techniques" class="level_2">1.1.2 Statistical Techniques</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/2/why-data-science" class="level_1">1.2 Why Data Science?</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Plotting_the_Classics" class="level_1">1.3 Plotting the Classics</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Literary_Characters" class="level_2">1.3.1 Literary Characters</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Another_Kind_Of_Character" class="level_2">1.3.2 Another Kind of Character</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/02/to_code"><span class="nav__sub-title">2. Programming</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/sampling_problem" class="level_1">2.1 A sampling problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/three_girls" class="level_1">2.2 A simpler problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Expressions" class="level_1">2.3 Expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Names" class="level_1">2.4 Names</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Calls" class="level_1">2.5 Call expressions</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/03/data_types"><span class="nav__sub-title">3. Data types</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Numbers" class="level_1">3.1 Numbers</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Strings" class="level_1">3.2 Strings</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Comparison" class="level_1">3.3 Comparison</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Arrays" class="level_1">3.4 Arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Ranges" class="level_1">3.5 Ranges</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/More_on_Arrays" class="level_1">3.6 More on arrays</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+
+  
+  </div>
+
+
+    <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="headline" content="1.3.2 Another Kind of Character">
+      <meta itemprop="description" content="This page is largely derived from Another_Kind_Of_Character of the UCBerkeley course - see the license file on the main website.">
+      <meta itemprop="datePublished" content="October 20, 2018">
+      
+
+      <div class="page__inner-wrap">
+        
+          <header>
+            <h1 id="page-title" class="page__title" itemprop="headline">1.3.2 Another Kind of Character
+</h1>
+          </header>
+        
+
+        <section class="page__content" itemprop="text">
+          
+            
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+
+          
+          <!-- INTERACT LINKS -->
+
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/01/Another_Kind_Of_Character.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F01%2FAnother_Kind_Of_Character.ipynb">Interact</a>
+
+
+          <p>This page is largely derived from <code class="highlighter-rouge">Another_Kind_Of_Character</code> of the UC
+Berkeley course - see the license file on the main website.</p>
+
+<p>In some situations, the relationships between quantities allow us to make
+predictions. This text will explore how to make accurate predictions based on
+incomplete information and develop methods for combining multiple sources of
+uncertain information to make decisions.</p>
+
+<p>As an example of visualizing information derived from multiple sources, let us
+first use the computer to get some information that would be tedious to
+acquire by hand. In the context of novels, the word “character” has a second
+meaning: a printed symbol such as a letter or number or punctuation symbol.
+Here, we ask the computer to count the number of characters and the number of
+periods in each chapter of <em>Pride and Prejudice</em>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># In each chapter, count the number of all characters;</span>
+<span class="c"># Also count the number of periods.</span>
+<span class="n">chars_periods</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span>
+        <span class="s">'Number of chars in chapter'</span><span class="p">:</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">book_chapters</span><span class="p">],</span>
+        <span class="s">'Number of periods'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="s">'.'</span><span class="p">)</span>
+    <span class="p">})</span>
+</code></pre></div></div>
+
+<p>Here are the data. Each row of the table corresponds to one chapter of the
+novel and displays the number of characters as well as the number of periods
+in the chapter. Not surprisingly, chapters with fewer characters also tend to
+have fewer periods, in general – the shorter the chapter, the fewer sentences
+there tend to be, and vice versa. The relation is not entirely predictable,
+however, as sentences are of varying lengths and can involve other punctuation
+such as question marks.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">chars_periods</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Number of chars in chapter</th>
+      <th>Number of periods</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4613</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4420</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9746</td>
+      <td>106</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6045</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5390</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>13287</td>
+      <td>114</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>11492</td>
+      <td>111</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>11274</td>
+      <td>109</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9971</td>
+      <td>119</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>12798</td>
+      <td>126</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>9160</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>4020</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>9654</td>
+      <td>93</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>6576</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>9956</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>19475</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7436</td>
+      <td>69</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>29704</td>
+      <td>270</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>10845</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>9374</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>11521</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>10181</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>9807</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>11066</td>
+      <td>113</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>8774</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>13227</td>
+      <td>126</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>7374</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>8390</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>14010</td>
+      <td>127</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>7187</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>8652</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>10602</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>12251</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>18487</td>
+      <td>130</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>12033</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>7958</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>6080</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>8962</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>9400</td>
+      <td>104</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>13260</td>
+      <td>110</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>11172</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>28068</td>
+      <td>237</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>13622</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>10296</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>17642</td>
+      <td>153</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>22976</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>12995</td>
+      <td>110</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>12730</td>
+      <td>124</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>12922</td>
+      <td>111</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>11463</td>
+      <td>106</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>17676</td>
+      <td>168</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>16463</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>9104</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>13287</td>
+      <td>125</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>15712</td>
+      <td>163</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>9672</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>13976</td>
+      <td>131</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>13952</td>
+      <td>149</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>9020</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>26470</td>
+      <td>269</td>
+    </tr>
+  </tbody>
+</table>
+<p>61 rows × 2 columns</p>
+</div>
+</div>
+
+<p>In the plot below, there is a dot for each chapter in the book. The horizontal
+axis represents the number of periods and the vertical axis represents the
+number of characters.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">chars_periods</span><span class="p">[</span><span class="s">'Number of periods'</span><span class="p">],</span>
+            <span class="n">chars_periods</span><span class="p">[</span><span class="s">'Number of chars in chapter'</span><span class="p">],</span>
+            <span class="n">color</span><span class="o">=</span><span class="s">'darkblue'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.collections.PathCollection at 0x1284cceb8&gt;
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/01/Another_Kind_Of_Character_6_1.png" alt="png" /></p>
+
+<p>Notice how the blue points are roughly clustered around a straight line.</p>
+
+<p>Now look at all the chapters that contain about 100 periods. The plot shows
+that those chapters contain about 10,000 characters to about 15,000
+characters, roughly. That’s about 90 to 150 characters per period.</p>
+
+<p>Indeed, it appears from looking at the plot that the chapters tend to have
+somewhere between 100 and 150 characters between periods, as a very rough
+estimate. Perhaps Jane Austen was announcing something familiar to us now: the
+original 140-character limit of Twitter.</p>
+
+          
+        </section>
+
+        <footer class="page__meta">
+          
+          
+
+
+        </footer>
+
+        
+
+        
+  <nav class="pagination">
+    
+      <a href="/dsfe/chapters/01/Literary_Characters" class="pagination--pager" title="1.3.1 Literary Characters
+">Previous</a>
+    
+    
+      <a href="/dsfe/chapters/02/to_code" class="pagination--pager" title="
+  Programming
+
+">Next</a>
+    
+  </nav>
+
+
+      </div>
+
+      
+    </article>
+  </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

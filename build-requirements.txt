@@ -1,0 +1,10 @@
+# Pip requirements
+bs4
+tqdm
+numpy
+pyyaml
+nbformat
+nbclean
+jupytext>=0.8
+# To allow static build / upload
+ghp-import
