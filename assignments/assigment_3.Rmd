@@ -3,19 +3,16 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Statistical Techniques - Data Science for Everyone</title>
-<meta name="description" content="Statistical Techniques">
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
+<meta name="description" content="">
 
 
 
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="Statistical Techniques">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/01/1/2/statistical-techniques">
-
-
-  <meta property="og:description" content="Statistical Techniques">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/assignments/assigment_3.Rmd">
 
 
 
@@ -23,7 +20,6 @@
 
 
 
-  <meta property="article:published_time" content="2018-10-20T18:02:12+01:00">
 
 
 
@@ -34,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/01/1/2/statistical-techniques">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/assignments/assigment_3.Rmd">
 
 
 
@@ -103,11 +99,61 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
   </head>
 
-  <body class="layout--textbook">
+  <body class="layout--single">
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
 <![endif]-->
+
+    
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/dsfe/">
+          <img src="/dsfe/images/dsfe_logo.png" class="masthead_logo" />
+          Data Science for Everyone
+        </a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+            </li>
+          
+          
+            <li class="masthead__menu-item">
+              <a href="/dsfe/chapters/01/what-is-data-science">Textbook</a>
+            </li>
+          
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
 
     
 
@@ -116,338 +162,186 @@
 
 
 
-<div id="main" class="textbook" role="main">
-  <div id="textbook_wrapper">
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     
-  <div class="sidebar sticky textbook">
-  
-  
-    <img src="/dsfe/images/dsfe_logo.png" class="textbook_logo" />
+    
+    
     
 
-    
+    <div class="page__inner-wrap">
+      
+        <header>
+          <!--  -->
+          
+        </header>
       
 
-<nav class="nav__list">
-  
-  <input id="ac-toc" name="accordion-toc" type="checkbox" />
-  <label for="ac-toc">Toggle Menu</label>
-  <ul class="nav__items">
-    
-      <li>
+      <section class="page__content" itemprop="text">
         
-          
-          
+        # Assignment 3
 
-          <a href="/dsfe/"><span class="nav__sub-title">Home</span></a>
-        
 
-        
-      </li>
-    
-      <li>
-        
-          
-          
+For this assignment, you will need the information in:
 
-          <a href="/dsfe/chapters/01/what-is-data-science"><span class="nav__sub-title">1. Data Science</span></a>
-        
+* [Expressions](https://matthew-brett.github.io/dsfe/chapters/02/Expressions)
+* [Names](https://matthew-brett.github.io/dsfe/chapters/02/Names).
 
-        
-        <ul>
-          
-            
-            
 
-            
-            
+Don't forget to execute the cells in the notebook, that I've written for you.
 
-            
 
-            <li><a href="/dsfe/chapters/01/1/intro" class="level_1">1.1 Introduction</a></li>
-          
-            
-            
+## Comments
 
-            
-            
 
-            
+In what follows, you will see me using *comments*.  Comments start with a hash character - `#`.  Python ignores everything after the hash character.  This is useful to write text for you or others to read, inside your code.
 
-            <li><a href="/dsfe/chapters/01/1/1/computational-tools" class="level_2">1.1.1 Computational Tools</a></li>
-          
-            
-            
 
-            
-            
+For example, try executing the following cell.
 
-            
+```{python}
+# This is just a comment.  Python ignores it.  It's just for show.
+```
 
-            <li><a href="/dsfe/chapters/01/1/2/statistical-techniques" class="level_2">1.1.2 Statistical Techniques</a></li>
-          
-            
-            
+Nothing happens - Python ignored everything after the hash character.
 
-            
-            
 
-            
+## The problem
 
-            <li><a href="/dsfe/chapters/01/2/why-data-science" class="level_1">1.2 Why Data Science?</a></li>
-          
-            
-            
 
-            
-            
+The problem is my bank.
 
-            
+I have a credit card debt of £500.
 
-            <li><a href="/dsfe/chapters/01/Plotting_the_Classics" class="level_1">1.3 Plotting the Classics</a></li>
-          
-            
-            
+Let's give that debt amount, a *name*:
 
-            
-            
+```{python}
+# This is the amount I owe at the moment
+my_debt = 500
+```
 
-            
+At the moment, the bank is nice enough to charge me 10% interest per year.   Let's give that a name too.
 
-            <li><a href="/dsfe/chapters/01/Literary_Characters" class="level_2">1.3.1 Literary Characters</a></li>
-          
-            
-            
+```{python}
+interest_rate = 0.1
+```
 
-            
-            
+The amount of interest, after one year, is therefore:
 
-            
+```{python}
+interest = my_debt * interest_rate
+interest
+```
 
-            <li><a href="/dsfe/chapters/01/Another_Kind_Of_Character" class="level_2">1.3.2 Another Kind of Character</a></li>
-          
-        </ul>
-        
-      </li>
-    
-      <li>
-        
-          
-          
+Then my total new debt will be:
 
-          <a href="/dsfe/chapters/02/to_code"><span class="nav__sub-title">2. Programming</span></a>
-        
+```{python}
+my_debt + interest
+```
 
-        
-        <ul>
-          
-            
-            
+I can also calculate my total new debt all in one go by multiplying by `1 + interest_rate` - in my case - `1.1`.
 
-            
-            
+```{python}
+debt_increaser = 1 + interest_rate
+debt_increaser
+```
 
-            
+```{python}
+my_debt * debt_increaser
+```
 
-            <li><a href="/dsfe/chapters/02/sampling_problem" class="level_1">2.1 A sampling problem</a></li>
-          
-            
-            
+## Now your turn
 
-            
-            
 
-            
+Add your code to the cell below, and execute it, to show my total debt after two years.  Your code will probably start with:
 
-            <li><a href="/dsfe/chapters/02/three_girls" class="level_1">2.2 A simpler problem</a></li>
-          
-            
-            
+```
+my_debt * debt_increaser
+```
 
-            
-            
+```{python}
+# Show my debt after two years.
+# Your code below this comment
+```
 
-            
+Fill in the next cell, in the same way, to show my debt after three years.
 
-            <li><a href="/dsfe/chapters/02/Expressions" class="level_1">2.3 Expressions</a></li>
-          
-            
-            
+```{python}
+# Show my debt after three years.
+```
 
-            
-            
+Now show my debt after 10 years.   You might want to use the *power* operator `**` to do this.
 
-            
+```{python}
+# Show my debt after ten years.
+```
 
-            <li><a href="/dsfe/chapters/02/Names" class="level_1">2.4 Names</a></li>
-          
-            
-            
+## An offer from the bank
 
-            
-            
 
-            
+The bank has just sent me a nice letter explaining that they are going to start charging me interest every week instead of every year.   They value me as a customer, so, instead of dividing the annual interest rate by 52, they are going to divide it by 53 instead.   But - is that a good offer?
 
-            <li><a href="/dsfe/chapters/02/Calls" class="level_1">2.5 Call expressions</a></li>
-          
-        </ul>
-        
-      </li>
-    
-      <li>
-        
-          
-          
 
-          <a href="/dsfe/chapters/03/data_types"><span class="nav__sub-title">3. Data types</span></a>
-        
+Here is their proposed weekly interest rate:
+
+```{python}
+weekly_interest_rate = interest_rate / 53
+weekly_interest_rate
+```
+
+That corresponds to:
+
+```{python}
+weekly_debt_increaser = 1 + weekly_interest_rate
+weekly_debt_increaser
+```
+
+So, starting from my original debt, I will owe this much after one week:
+
+```{python}
+# What I owe, after one week, on the new deal
+my_debt * weekly_debt_increaser
+```
+
+Fill in the cell below, to show how much I will owe after 52 weeks.  You will probably want `**` here again.
+
+```{python}
+# Show my debt after 52 weeks, on the new deal
+```
+
+## For extra cool points
+
+
+Can you calculate roughly what the weekly interest rate has to be, in order to correspond to the 10% annual interest that I started with?   There are several ways to do this, but you can try trial and error, if you like.
+
+```{python}
+# Your code to estimate the right weekly interest rate.
+```
 
         
-        <ul>
-          
-            
-            
+      </section>
 
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Numbers" class="level_1">3.1 Numbers</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Strings" class="level_1">3.2 Strings</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Comparison" class="level_1">3.3 Comparison</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Arrays" class="level_1">3.4 Arrays</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Ranges" class="level_1">3.5 Ranges</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/More_on_Arrays" class="level_1">3.6 More on arrays</a></li>
-          
-        </ul>
+      <footer class="page__meta">
         
-      </li>
-    
-  </ul>
-</nav>
-
-    
-
-  
-  </div>
+        
 
 
-    <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="Statistical Techniques">
-      <meta itemprop="description" content="Statistical Techniques">
-      <meta itemprop="datePublished" content="October 20, 2018">
+        
+      </footer>
+
       
 
-      <div class="page__inner-wrap">
-        
-          <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">Statistical Techniques
-</h1>
-          </header>
-        
-
-        <section class="page__content" itemprop="text">
-          
-            
-
-<!-- TOC will only show up if it has at least one item -->
-
-
-
-          
-          <!-- INTERACT LINKS -->
-
-
-          
-<p>See also <a href="https://www.inferentialthinking.com/chapters/01/1/2/statistical-techniques">Statistical techniques</a> from the UC
-Berkeley course.</p>
-
-<ul>
-  <li>Statistics - conclusions from incomplete information</li>
-  <li>Hypothesis testing, confidence intervals, prediction</li>
-  <li>Computing as basis and extension of statistical methods.</li>
-  <li>The range of data</li>
-  <li>The problems of real data.</li>
-  <li>Benefits of resampling</li>
-</ul>
-
-          
-        </section>
-
-        <footer class="page__meta">
-          
-          
-
-
-        </footer>
-
-        
-
-        
-  <nav class="pagination">
-    
-      <a href="/dsfe/chapters/01/1/1/computational-tools" class="pagination--pager" title="1.1.1 Computational Tools
-">Previous</a>
-    
-    
-      <a href="/dsfe/chapters/01/2/why-data-science" class="pagination--pager" title="1.2 Why Data Science?
-">Next</a>
-    
-  </nav>
-
-
-      </div>
-
       
-    </article>
-  </div>
+
+    </div>
+
+    
+  </article>
+
+  
+  
 </div>
 
     </div>
