@@ -13,5 +13,5 @@ permalink: /days/class_1
   tutorial is also useful.
 * [Plotting the Classics](../chapters/01/Plotting_the_Classics)
 * [Literary Characters](../chapters/01/Literary_Characters)
-* [Exercise 2](../exercise_2)
-* [Second assignment](../assignment_2)
+* [Exercise 2](../exercises/exercise_2)
+* [Second assignment](../assignments/assignment_2)

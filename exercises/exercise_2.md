@@ -1,20 +1,22 @@
 ---
 layout: single
 title: Exercise 2
-permalink: /exercise_2
+permalink: /exercises/exercise_2
+redirect_from: /exercise_2
 ---
 
 # Making your own notebooks
 
-This exercise is to get y'all ready for the [assignment](assignment_2).
+This exercise is to practice downloading and editing Notebooks from the class.
+We will do this often for exercises in class, and for assignments.
 
 ## Getting ready
 
 Go to the [Literary Characters][litchar] page. Click
 on "Download notebook" to download the notebook to your computer.
 
-[litchar]: chapters/01/Literary_Characters
-[anotherchar]: chapters/02/Another_Kind_Of_Character
+[litchar]: ../chapters/01/Literary_Characters
+[anotherchar]: ../chapters/02/Another_Kind_Of_Character
 
 I suggest you download to your `Desktop` folder.
 

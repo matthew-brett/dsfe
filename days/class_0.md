@@ -9,4 +9,4 @@ permalink: /days/class_0
 * [What is data science?](../what)
 * [Why study data science?](../why)
 * [About the course](../course)
-* [First assignment](../assignment_1)
+* [First assignment](../assignments/assignment_1)
