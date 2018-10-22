@@ -1,7 +1,8 @@
 ---
 layout: single
 title: Assignment 2
-permalink: /assignment_2
+permalink: /assignments/assignment_2
+redirect_from: /assignment_2
 ---
 
 # Second assignment
@@ -15,8 +16,8 @@ Zombies](https://en.wikipedia.org/wiki/Pride_and_Prejudice_and_Zombies).
 Go to the [Literary Characters][litchar] page. Click
 on "Download notebook" to download the notebook to your computer.
 
-[litchar]: chapters/01/Literary_Characters
-[anotherchar]: chapters/01/Another_Kind_Of_Character
+[litchar]: ../chapters/01/Literary_Characters
+[anotherchar]: ../chapters/01/Another_Kind_Of_Character
 
 I suggest you download to your `Desktop` folder.
 
