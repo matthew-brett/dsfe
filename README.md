@@ -60,14 +60,14 @@ Associate this branch with your fork:
 git push my-gh-user rewrite-intro-pages -u
 ```
 
-where the `-u` flag stores the association of this branch with your fork,
+The `-u` flag above stores the association of this branch with your fork,
 referenced by `my-gh-user`.
 
 ## Installing stuff for building / serving the repository files
 
 If you use [Conda](https://conda.io/docs) then you might make a Conda
 environment for working on the repo.  I don't, I use pip, and I make a
-virtual environment.  You can do that, thusly:
+virtual environment.  You can do that like this:
 
 ```
 python3 -m venv my-venv
@@ -105,15 +105,15 @@ Finally, check that you can run the local website server with:
 make serve
 ```
 
-Copy/paste the URL that comes up, and check you get can load the local website copy in your browser, with this URL.
-
+Copy the URL that comes up, and paste into your browser's URL bar, to check
+you get can load the local website copy.
 
 ## Configuring Jupyter to save / load in R Markdown
 
 I'm using the excellent [Jupytext](https://github.com/mwouts/jupytext) to make
-my life easier, editing Jupyter Notebooks.  Jupytext automates saving Notebook
-files as Markdown (and other formats), and loading them from edited Markdown
-(and other formats).
+it easier to edit Jupyter Notebooks.  Jupytext automates saving Notebook files
+as Markdown (and other formats), and loading them from edited Markdown (and
+other formats).
 
 You need to configure Jupyter to use it.  If you don't have a Jupyter
 configuration, do:
@@ -135,7 +135,7 @@ stackoverflow answer](https://stackoverflow.com/a/45980165).  This stops
 autosave saving over any edits that I am making in the Markdown source.
 
 **Be careful** - if you are used to autosave in Jupyter, you can easily lose
-work, with autosave disabled.
+work when you disable autosave.
 
 ```
 mkdir -p ~/.jupyter/custom
@@ -223,4 +223,5 @@ git clone https://gist.github.com/faa9ccc0d7cb2936263f16192106a98a
 ```
 
 Have a look at the `.plist` file inside, and follow the instructions in the
-comments, to set this up, and mount the image automatically, when you log in.
+comments, to set this up.  When you have followed the instructions, you should
+find that the system mounts the image automatically when you log in.
