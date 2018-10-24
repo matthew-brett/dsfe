@@ -198,9 +198,21 @@ neither of which are case-sensitive by default.  This causes problems with
 file-names for the built files - see
 <https://github.com/choldgraf/jupyter-book/pull/27>.
 
+You can check if you are on a case-sensitive file-system with:
+
+```
+mkdir tmp
+touch tmp/abcd.txt
+touch tmp/abcD.txt
+ls tmp/ab*.txt
+```
+
+If you see only one file listed, you're on a case-insensitive file-system, and
+this will cause problems for editing and uploading the files in this repo.
+
 You can solve this by:
 
-* Making *disk image* with a case-sensitive file-system on it.
+* Making a *disk image* with a case-sensitive file-system on it.
 * Mounting the disk image
 * Working inside the mounted disk image.
 
