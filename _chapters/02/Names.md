@@ -12,14 +12,9 @@ redirect_from:
   - 'chapters/02/names'
 ---
 
-<div class="note">
-    <p>
-    This page is largely derived from <code>Names</code> of the UC
-    Berkeley course - see the license file on the main website.
-    </p>
-</div>
+We have already seen [expressions](Expressions).
 
-Names are given to values in Python using an *assignment* statement. In an
+Python gives names to values in Python using an *assignment* statement. In an
 assignment, a name is followed by `=`, which is followed by any expression.
 The value of the expression to the right of `=` is *assigned* to the name.
 Once a name has a value assigned to it, the value will be substituted for that
@@ -141,3 +136,5 @@ meal_price_total
 ```
 
 
+
+{% data8page Names %}

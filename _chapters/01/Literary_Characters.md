@@ -12,9 +12,6 @@ redirect_from:
   - 'chapters/01/literary-characters'
 ---
 
-This page is largely derived from `Literary_Characters` of the UC Berkeley
-course \- see the license file on the main website.
-
 [Pride and Prejudice](https://en.wikipedia.org/wiki/Pride_and_Prejudice) is
 the story of five sisters: Jane, Elizabeth, Mary, Kitty and Lydia, and their
 journey through the social life of the mid-17th century.  You may remember
@@ -62,4 +59,10 @@ In the plot above, the horizontal axis shows chapter numbers and the vertical
 axis shows how many times each character has been mentioned up to and
 including that chapter.
 
-Notice first that Elizabeth and Darcy are the main characters.  Around chapter 13 we see Wickham and Lydia spike up, as they run away together, and mentions of Darcy flatten off, when goes to look for them.   Around chapter 50 we see Jane and Bingley being mentioned at a very similar rate, as Bingley proposes, and Jane accepts.
+Notice first that Elizabeth and Darcy are the main characters.  Around chapter
+13 we see Wickham and Lydia spike up, as they run away together, and mentions
+of Darcy flatten off, when goes to look for them.   Around chapter 50 we see
+Jane and Bingley being mentioned at a very similar rate, as Bingley proposes,
+and Jane accepts.
+
+{% data8page Literary_Characters %}

@@ -405,3 +405,5 @@ yourself that this comes from the text we downloaded.  Next you see some odd
 characters with backslashes, such as `\r` and `\n`.  These are representations
 of new lines, or paragraph marks.  Last you will see the beginning of the
 first sentence of the chapter.
+
+{% data8page Plotting_the_Classics %}

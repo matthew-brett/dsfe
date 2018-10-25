@@ -11,7 +11,6 @@ permalink: /days/class_2
 * Some revision on changing stuff in Notebooks - [Exercise 2](../exercises/exercise_2)
 * [A sampling problem](../chapters/02/sampling_problem)
 * [A simpler problem](../chapters/02/three_girls)
-* [Expressions](../chapters/02/Expressions)
 
 We also discussed *simulation* - see the first part of the [simulation chapter of the Berkeley textbook](https://www.inferentialthinking.com/chapters/09/3/Simulation) for more background.
 

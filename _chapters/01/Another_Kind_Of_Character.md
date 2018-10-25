@@ -416,7 +416,7 @@ plt.scatter(chars_periods['Number of periods'],
 
 {:.output_data_text}
 ```
-<matplotlib.collections.PathCollection at 0x1284cceb8>
+<matplotlib.collections.PathCollection at 0x1149f04e0>
 ```
 
 
@@ -435,3 +435,5 @@ Indeed, it appears from looking at the plot that the chapters tend to have
 somewhere between 100 and 150 characters between periods, as a very rough
 estimate. Perhaps Jane Austen was announcing something familiar to us now: the
 original 140-character limit of Twitter.
+
+{% data8page Another_Kind_Of_Character %}

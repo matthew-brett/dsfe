@@ -6,6 +6,7 @@ permalink: /days/class_3
 
 # Day 3 (the fourth day)
 
+* [Expressions](../chapters/02/Expressions)
 * [Names](../chapters/02/Names)
 * [Call expressions](../chapters/02/Calls)
 * [Data types](../chapters/03/data_types)
@@ -15,3 +16,5 @@ permalink: /days/class_3
 * [Arrays](../chapters/03/Arrays)
 * [Ranges](../chapters/03/Ranges)
 * [More on arrays](../chapters/03/More_on_Arrays)
+
+I will post the assignment on Saturday (27th).

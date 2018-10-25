@@ -12,13 +12,6 @@ redirect_from:
   - 'chapters/02/expressions'
 ---
 
-<div class="note">
-    <p>
-    This page is largely derived from <code>Expressions</code> of the UC
-    Berkeley course - see the license file on the main website.
-    </p>
-</div>
-
 Programming languages are much simpler than human languages. Nonetheless,
 there are some rules of grammar to learn in any language, and that is where we
 will begin. In this text, we will use the [Python](https://www.python.org/)
@@ -26,7 +19,7 @@ programming language. Learning the grammar rules is essential, and the same
 rules used in the most basic programs are also central to more sophisticated
 programs.
 
-Programs are made up of *expressions*, which describe to the computer how to
+Programs are contain *expressions*, which describe to the computer how to
 combine pieces of data. For example, a multiplication expression consists of a
 `*` symbol between two numerical expressions. Expressions, such as `3 * 4`,
 are *evaluated* by the computer. The value (the result of *evaluation*) of the
@@ -152,6 +145,15 @@ Here we force `1 + 2` *before* the multiplication by 3.
 
 
 
+In the expression above, the `1 + 2` is a sub-expression within the whole
+expression `(1 + 2) * 3`.  When Python sees this line, it finds the expression
+`(1 + 2)` and evaluates that to get `3`.  Then it evaluates `3 * 3` to get
+`9`.
+
+As you learn to program, you will learn to think about what Python is doing,
+and the logical steps it follows.  Over time, you will find it easier to
+predict what it will do, and understand why.
+
 ### Example
 
 Here, from the Washington Post in the early 1980s, is a graph that attempts to
@@ -228,3 +230,5 @@ behavior of the computer. What happens if you divide by zero? What happens if
 you divide twice in a row? You don't always need to ask an expert (or the
 Internet); many of these details can be discovered by trying them out
 yourself.
+
+{% data8page Expressions %}

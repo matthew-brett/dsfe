@@ -24,8 +24,8 @@ license file on the main website.
 
 ## The problem - was jury selection biased?
 
-In 1963, in Talladega County in Alabama, a young black man called Robert Swain
-was convicted of raping a white woman and was sentenced to death [^dp-note].
+In 1963, a court in Talladega County, Alabama convicted a young black man called
+Robert Swain of raping a white woman and sentenced him to death [^dp-note].
 He appealed his sentence, citing among other factors the all-white jury. At
 the time, only men aged 21 or older were allowed to serve on juries in
 Talladega County. In the county, 26% of the eligible jurors were black, but
