@@ -28,9 +28,13 @@ class Data8Page < Liquid::Tag
         parameters.strip!
 
         <<EOT
-<div markdown="1" class="note">
-This page has content from the `#{parameters}` page of the UC Berkeley course.
-See the Berkeley course section of the [license]({{ site.baseurl }}/license)
+<div class="isa_info">
+<i class="fa fa-info-circle"></i>
+This page has content from the
+<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/#{parameters}.ipynb">
+#{parameters}</a>
+notebook from the UC Berkeley course.  See the Berkeley course section of the
+<a href="{{ site.baseurl }}/license">license</a>
 </div>
 EOT
     end
