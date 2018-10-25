@@ -216,7 +216,6 @@ plugins:
 
 scholar:
   style: apa
-  bibliography: data_science.bib
 
 # mimic GitHub Pages with --safe
 whitelist:

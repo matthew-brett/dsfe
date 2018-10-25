@@ -1,5 +1,8 @@
 .PHONY: help textbook clean serve
 
+BIBLIOGRAPHIES= _data-science-bib/data_science.bib \
+				_bibliography/course.bib
+
 help:
 	@echo "Please use 'make <target>' where <target> is one of:"
 	@echo "  textbook    to convert the `notebooks/` folder into Jekyll markdown in `chapters/`"
@@ -23,7 +26,7 @@ check:
 rebuild-notebooks:
 	python scripts/rebuild_notebooks.py
 
-build: rebuild-notebooks
+build: rebuild-notebooks bibliography
 	bundle exec jekyll build
 
 github: build
@@ -31,6 +34,7 @@ github: build
 
 clean:
 	python scripts/clean.py
+	rm _bibliography/references.bib
 
 ship: clean rebuild-notebooks textbook
 
@@ -40,5 +44,8 @@ ship: clean rebuild-notebooks textbook
 # bundle config build.nokogiri --use-system-libraries
 # bundle install
 
-serve:
+serve: bibliography
 	bundle exec jekyll serve
+
+bibliography: $(BIBLIOGRAPHIES)
+	cat $(BIBLIOGRAPHIES) > _bibliography/references.bib
