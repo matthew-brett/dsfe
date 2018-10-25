@@ -34,8 +34,8 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/01/Plotting_the_Classics",
         "teaser":null},{
-        "title": "What is Data Science",
-        "excerpt":"See also What is Data Science for the UC Berkeley course.   Exploration  Prediction      Inference     Statistics  Computing  Domain knowledge","categories": [],
+        "title": "What is data science?",
+        "excerpt":"The question sounds simple - what is data science? - but it has proved hardto answer. Here is our definition: Data science is a modern approach to data analysis with a foundation in codeand algorithms. Because it is a hard question with many answers, this page spends some timediscussing why...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/01/what-is-data-science",
         "teaser":null},{

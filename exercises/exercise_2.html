@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Class 1 - Data Science for Everyone</title>
+<!-- begin _includes/seo.html --><title>Exercise 2 - Data Science for Everyone</title>
 <meta name="description" content="">
 
 
@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="Class 1">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/days/class_1">
+<meta property="og:title" content="Exercise 2">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/exercises/exercise_2">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/days/class_1">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/exercises/exercise_2">
 
 
 
@@ -166,7 +166,7 @@
   
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Class 1">
+    <meta itemprop="headline" content="Exercise 2">
     
     
     
@@ -174,7 +174,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Class 1
+          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Exercise 2
 </h1> -->
           
         </header>
@@ -182,19 +182,112 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="day-1-the-second-day">Day 1 (the second day)</h1>
+        <h1 id="making-your-own-notebooks">Making your own notebooks</h1>
+
+<p>This exercise is to practice downloading and editing Notebooks from the class.
+We will do this often for exercises in class, and for assignments.</p>
+
+<h2 id="getting-ready">Getting ready</h2>
+
+<p>Go to the <a href="../chapters/01/Literary_Characters">Literary Characters</a> page. Click
+on “Download notebook” to download the notebook to your computer.</p>
+
+<p>I suggest you download to your <code class="highlighter-rouge">Desktop</code> folder.</p>
+
+<p>Start the Jupyter Notebook (on Windows, press the Windows key and type
+Jupyter Notebook).</p>
+
+<p>You will now see a list of files and directories.  Click on “Desktop”, and
+select <code class="highlighter-rouge">Literary_Characters.ipynb</code>.  You should see a version of the notebook
+that you saw on the <a href="../chapters/01/Literary_Characters">Literary Characters</a> page.</p>
+
+<p>Click on the top cell of the notebook, and press shift at the same time as
+Enter (or Return).  Keep doing that until you have gone through every cell.
+It should run the same way as it did in class, but this time, on your own
+computer.</p>
+
+<h2 id="the-exercise">The exercise</h2>
+
+<p>Now see if you can read in the novel <a href="https://en.wikipedia.org/wiki/Alice%27s_Adventures_in_Wonderland">Alice in
+Wonderland</a>
+by Lewis Carroll.</p>
+
+<p>You can find the full text of this book at
+<a href="https://www.gutenberg.org/files/11/11-0.txt">https://www.gutenberg.org/files/11/11-0.txt</a>.</p>
+
+<h3 id="rename-the-notebook">Rename the notebook</h3>
+
+<p>Go to the <em>File</em> menu, chose <em>Rename</em> and type in <code class="highlighter-rouge">alice</code>.</p>
+
+<h3 id="change-the-url-to-point-to-alice-in-wonderland">Change the URL to point to Alice in Wonderland</h3>
+
+<p>In the notebook, replace this text:</p>
+
+<pre><code class="language-{python}">book_url = 'http://www.gutenberg.org/ebooks/42671.txt.utf-8'
+</code></pre>
+
+<p>with:</p>
+
+<pre><code class="language-{python}">book_url = 'https://www.gutenberg.org/files/11/11-0.txt'
+</code></pre>
+
+<p>Type shift with Enter to run the cell.  This will read in the text of
+“Alice” instead of “Pride and Prejudice”.</p>
+
+<h3 id="change-the-character-names-to-look-for">Change the character names to look for</h3>
+
+<p>In <em>Alice’s Adventures in Wonderland</em>, Alice follows a white rabbit down a
+rabbit hole, and finds herself in Wonderland.  After various adventures, she
+finds herself at a tea party with the March Hare and the Hatter.  Afterwards,
+she wanders into the royal court of the playing cards, including the Queen and
+King of Hearts.</p>
+
+<p>We are going to look for these character names:</p>
 
 <ul>
-  <li><a href="../chapters/02/to_code">Why code?</a></li>
-  <li><a href="https://www.dataquest.io/blog/jupyter-notebook-tutorial">The Jupyter
-Notebook</a>. We
-covered up to around the end of the “Cells” section, but the rest of the
-tutorial is also useful.</li>
-  <li><a href="../chapters/01/Plotting_the_Classics">Plotting the Classics</a></li>
-  <li><a href="../chapters/01/Literary_Characters">Literary Characters</a></li>
-  <li><a href="../exercises/exercise_2">Exercise 2</a></li>
-  <li><a href="../assignments/assignment_2">Second assignment</a></li>
+  <li>Rabbit</li>
+  <li>Hatter</li>
+  <li>Hare (for the March Hare)</li>
+  <li>Queen (for the Queen of Hearts)</li>
+  <li>King (for the King of Hearts)</li>
+  <li>Cheshire (for the Cheshire Cat)</li>
 </ul>
+
+<p>Now look for the cell starting with:</p>
+
+<pre><code class="language-{python}"># Count how many times the characters appear in each chapter.
+</code></pre>
+
+<p>Replace <code class="highlighter-rouge">'Elizabeth'</code> with <code class="highlighter-rouge">'Rabbit'</code>, so the first few lines of the cell look
+like this:</p>
+
+<pre><code class="language-{python}"># Count how many times the characters appear in each chapter.
+counts = pd.DataFrame.from_dict({
+        'Rabbit': np.char.count(alice_chapters, 'Rabbit'),
+</code></pre>
+
+<p>Notice I replaced <code class="highlighter-rouge">'Elizabeth'</code> twice, once at the beginning and once at the
+end of the line.</p>
+
+<p>Now continue replacing:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">'Darcy'</code> with <code class="highlighter-rouge">'Hatter'</code></li>
+  <li><code class="highlighter-rouge">'Lydia'</code> with <code class="highlighter-rouge">'Hare'</code></li>
+  <li><code class="highlighter-rouge">'Wickham'</code> with <code class="highlighter-rouge">'Queen'</code></li>
+  <li><code class="highlighter-rouge">'Bingley'</code> with <code class="highlighter-rouge">'King'</code></li>
+  <li><code class="highlighter-rouge">'Jane'</code> with <code class="highlighter-rouge">'Jack'</code></li>
+</ul>
+
+<p>Try running the cell with shift-Enter.</p>
+
+<p>If you get an error, look very carefully at the code - like all programming
+languages, Python is very fussy about little things like commas and brackets.
+Check <a href="../chapters/01/Literary_Characters">the original</a> to see if you can see the difference between
+your current code and the original code cell.</p>
+
+<p>When you succeed in running the cell, have a look at the graph.  Does it show
+you anything about what happens in the book?</p>
 
         
       </section>

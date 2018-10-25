@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Assignment 3 - Data Science for Everyone</title>
+<!-- begin _includes/seo.html --><title>Assignment 2 - Data Science for Everyone</title>
 <meta name="description" content="">
 
 
@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="Assignment 3">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/assignments/assignment_3/">
+<meta property="og:title" content="Assignment 2">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/assignments/assignment_2">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/assignments/assignment_3/">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/assignments/assignment_2">
 
 
 
@@ -166,7 +166,7 @@
   
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Assignment 3">
+    <meta itemprop="headline" content="Assignment 2">
     
     
     
@@ -174,7 +174,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Assignment 3
+          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Assignment 2
 </h1> -->
           
         </header>
@@ -182,13 +182,120 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="assignment-3">Assignment 3</h1>
+        <h1 id="second-assignment">Second assignment</h1>
 
-<p>Download <a href="/dsfe/assignments/assignment_3.ipynb">this notebook</a> to
-your Desktop (or wherever you like).   Open it with the Jupyter Notebook.
-Follow the instructions in the Notebook, filling in the bits of code you need.</p>
+<p>If you squint your eyes and look sideways, this exercise is a little like the
+classic <a href="https://en.wikipedia.org/wiki/Pride_and_Prejudice_and_Zombies">Pride and Prejudice and
+Zombies</a>.</p>
 
-<p>Don’t forget to save the Notebook when you have finished.</p>
+<h2 id="getting-ready">Getting ready</h2>
+
+<p>Go to the <a href="../chapters/01/Literary_Characters">Literary Characters</a> page. Click
+on “Download notebook” to download the notebook to your computer.</p>
+
+<p>I suggest you download to your <code class="highlighter-rouge">Desktop</code> folder.</p>
+
+<p>Start the Jupyter Notebook (on Windows, press the Windows key and type
+Jupyter Notebook).</p>
+
+<p>You will now see a list of files and directories.  Click on “Desktop”, and
+select <code class="highlighter-rouge">Literary_Characters.ipynb</code>.  You should see a version of the notebook
+that you saw on the <a href="../chapters/01/Literary_Characters">Literary Characters</a> page.</p>
+
+<p>Click on the top cell of the notebook, and press shift at the same time as
+Enter (or Return).  Keep doing that until you have gone through every cell.
+It should run the same way as it did in class, but this time, on your own
+computer.</p>
+
+<h2 id="the-exercise">The exercise</h2>
+
+<p>Now see if you can read in the novel
+<a href="https://en.wikipedia.org/wiki/Dracula">Dracula</a> by Bram Stoker.  You can find
+the full text of this book at <a href="http://www.gutenberg.org/ebooks/345.txt.utf-8">http://www.gutenberg.org/ebooks/345.txt.utf-8</a>.</p>
+
+<h3 id="rename-the-notebook">Rename the notebook</h3>
+
+<p>Go to the <em>File</em> menu, chose <em>Rename</em> and type in <code class="highlighter-rouge">look_at_dracula</code>.</p>
+
+<h3 id="change-the-url-to-point-to-bram-stokers-dracula">Change the URL to point to Bram Stoker’s Dracula</h3>
+
+<p>In the notebook, replace this text:</p>
+
+<pre><code class="language-{python}">book_url = 'http://www.gutenberg.org/ebooks/42671.txt.utf-8'
+</code></pre>
+
+<p>with:</p>
+
+<pre><code class="language-{python}">book_url = 'http://www.gutenberg.org/ebooks/345.txt.utf-8'
+</code></pre>
+
+<p>Type shift with Enter to run the cell.  This will read in the text of
+“Dracula” instead of “Pride and Prejudice”.</p>
+
+<h3 id="change-the-character-names-to-look-for">Change the character names to look for</h3>
+
+<p>We are going to look for these character names:</p>
+
+<ul>
+  <li>Count (for Count Dracula),</li>
+  <li>Harker (for Jonathan Harker, the hero),</li>
+  <li>Mina (for Mina Murray, Harker’s fiancé),</li>
+  <li>Seward (for John Seward, Harker’s friend),</li>
+  <li>Helsing (for Abraham Van Helsing, Seward’s teacher, and all-round expert),</li>
+  <li>Quincey (for Quincey Morris, an American cowboy and explorer).</li>
+</ul>
+
+<p>I know, only the female and the American characters have first names, I can
+only apologize on behalf of Mr Stoker.  And Jane Austen, actually.  But hey.</p>
+
+<p>Now look for the cell starting with:</p>
+
+<pre><code class="language-{python}"># Count how many times the characters appear in each chapter.
+</code></pre>
+
+<p>Replace <code class="highlighter-rouge">'Elizabeth'</code> with <code class="highlighter-rouge">'Count'</code>, so the first few lines of the cell look
+like this:</p>
+
+<pre><code class="language-{python}"># Count how many times the characters appear in each chapter.
+counts = pd.DataFrame.from_dict({
+        'Count': np.char.count(alice_chapters, 'Count'),
+</code></pre>
+
+<p>Notice I replaced <code class="highlighter-rouge">'Elizabeth'</code> twice, once at the beginning and once at the
+end of the line.</p>
+
+<p>Now continue replacing:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">'Darcy'</code> with <code class="highlighter-rouge">'Harker'</code></li>
+  <li><code class="highlighter-rouge">'Lydia'</code> with <code class="highlighter-rouge">'Mina'</code></li>
+  <li><code class="highlighter-rouge">'Wickham'</code> with <code class="highlighter-rouge">'Seward'</code></li>
+  <li><code class="highlighter-rouge">'Bingley'</code> with <code class="highlighter-rouge">'Helsing'</code></li>
+  <li><code class="highlighter-rouge">'Jane'</code> with <code class="highlighter-rouge">'Quincy'</code></li>
+</ul>
+
+<p>Try running the cell with shift-Enter.</p>
+
+<p>If you get an error, look very carefully at the code - like all programming
+languages, Python is very fussy about little things like commas and brackets.
+Check <a href="../chapters/01/Literary_Characters">the original</a> to see if you can see the difference between
+your current code and the original code cell.  Get someone else to have a
+look, if you get stuck, you will be surprised how much difference it makes.</p>
+
+<p>When you succeed in running the cell, have a look at the graph.</p>
+
+<p>In roughly what chapter does the Count (Dracula) start to have a big role?
+How about Van Helsing?</p>
+
+<h3 id="is-there-something-funny-about-the-chapters">Is there something funny about the chapters?</h3>
+
+<p>You may notice that all the characters seem to start rather late in the
+chapter sequence.  Investigate to see why this is.  You may want to look at
+the chapter lengths, using the code in <a href="../chapters/01/Another_Kind_Of_Character">Another Kind of
+Character</a>, and by looking at the original text at
+<a href="http://www.gutenberg.org/ebooks/345.txt.utf-8">http://www.gutenberg.org/ebooks/345.txt.utf-8</a>.  If you can, put an
+explanation with some code at the end of the notebook to say what you think is
+going on.</p>
 
         
       </section>
