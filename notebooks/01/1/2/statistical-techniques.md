@@ -12,9 +12,9 @@ confidence intervals, and tools for prediction of new data.
 
 Because we are doing data science, we will take a rather different approach
 from standard statistical teaching.  Data science puts coding at the heart of
-data analysis.  This gives us a much more powerful set of tools than have been
-available in the past.  This has great benefits for analysis, but also for
-teaching.
+data analysis. Coding gives us a much more powerful set of tools than have
+been available in the past.  This has great benefits for analysis, but also
+for teaching.
 
 The benefits for analysis are that we can get, clean, and analyze a much wider
 range of data.  It becomes natural to extend our methods of analysis to
