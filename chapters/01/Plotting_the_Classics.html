@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-10-25T10:39:27+01:00">
+  <meta property="article:published_time" content="2018-10-25T23:20:06+01:00">
 
 
 
@@ -428,8 +428,8 @@ describe most of the features of the Python programming language used below.</p>
 
 <p>First, we read the text of of the book into the memory of the computer.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Get the text for Pride and Prejudice</span>
-<span class="n">book_url</span> <span class="o">=</span> <span class="s">'http://www.gutenberg.org/ebooks/42671.txt.utf-8'</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the text for Pride and Prejudice
+</span><span class="n">book_url</span> <span class="o">=</span> <span class="s">'http://www.gutenberg.org/ebooks/42671.txt.utf-8'</span>
 <span class="n">book_text</span> <span class="o">=</span> <span class="n">read_url</span><span class="p">(</span><span class="n">book_url</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -446,8 +446,8 @@ which is ignored by the computer but helpful for people reading the code.</p>
 <p>Now we have the text attached to the name <code class="highlighter-rouge">book_text</code>, we can ask Python to
 show us how the text starts:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Show the first 500 characters of the text</span>
-<span class="k">print</span><span class="p">(</span><span class="n">book_text</span><span class="p">[:</span><span class="mi">500</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show the first 500 characters of the text
+</span><span class="k">print</span><span class="p">(</span><span class="n">book_text</span><span class="p">[:</span><span class="mi">500</span><span class="p">])</span>
 </code></pre></div></div>
 
 <div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>﻿The Project Gutenberg eBook, Pride and Prejudice, by Jane Austen, Edited
@@ -481,18 +481,18 @@ URL in your browser: <a href="http://www.gutenberg.org/ebooks/42671.txt.utf-8">h
 the text into chapters.  Don’t worry about the details of the code, we will
 cover these in the rest of the course.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Break the text into Chapters</span>
-<span class="n">book_chapters</span> <span class="o">=</span> <span class="n">book_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'CHAPTER '</span><span class="p">)</span>
-<span class="c"># Drop the first "Chapter" - it's the Project Gutenberg header</span>
-<span class="n">book_chapters</span> <span class="o">=</span> <span class="n">book_chapters</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Break the text into Chapters
+</span><span class="n">book_chapters</span> <span class="o">=</span> <span class="n">book_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'CHAPTER '</span><span class="p">)</span>
+<span class="c1"># Drop the first "Chapter" - it's the Project Gutenberg header
+</span><span class="n">book_chapters</span> <span class="o">=</span> <span class="n">book_chapters</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 </code></pre></div></div>
 
 <p>We can show the first half-line or so for each chapter, by putting the
 chapters into a <em>table</em>.  You will see these tables or <em>data frames</em> many
 times during this course.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Show the first few words of each chapter in a table.</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'Chapters'</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show the first few words of each chapter in a table.
+</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'Chapters'</span><span class="p">])</span>
 </code></pre></div></div>
 
 <div>
@@ -776,6 +776,16 @@ yourself that this comes from the text we downloaded.  Next you see some odd
 characters with backslashes, such as <code class="highlighter-rouge">\r</code> and <code class="highlighter-rouge">\n</code>.  These are representations
 of new lines, or paragraph marks.  Last you will see the beginning of the
 first sentence of the chapter.</p>
+
+<div class="isa_info">
+<i class="fa fa-info-circle"></i>
+This page has content from the
+<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Plotting_the_Classics.ipynb">
+Plotting_the_Classics</a>
+notebook from the UC Berkeley course.  See the Berkeley course section of the
+<a href="{{ site.baseurl }}/license">license</a>
+</div>
+
 
           
         </section>

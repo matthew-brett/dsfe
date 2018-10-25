@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
 <meta property="og:title" content="Data Science for Everyone">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/01/Another_Kind_Of_Character.Rmd">
+<meta property="og:url" content="http://localhost:4000/dsfe/notebooks/01/Another_Kind_Of_Character.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/01/Another_Kind_Of_Character.Rmd">
+<link rel="canonical" href="http://localhost:4000/dsfe/notebooks/01/Another_Kind_Of_Character.Rmd">
 
 
 
@@ -43,7 +43,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Matthew Brett",
-      "url": "https://matthew-brett.github.io/dsfe",
+      "url": "http://localhost:4000/dsfe",
       "sameAs": null
     }
   </script>
@@ -118,17 +118,17 @@
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+              <a href="http://localhost:4000/dsfe/about" >About</a>
             </li>
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+              <a href="http://localhost:4000/dsfe/syllabus" >Syllabus</a>
             </li>
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+              <a href="http://localhost:4000/dsfe/classes" >Classes</a>
             </li>
           
           
@@ -270,6 +270,16 @@ somewhere between 100 and 150 characters between periods, as a very rough
 estimate. Perhaps Jane Austen was announcing something familiar to us now: the
 original 140-character limit of Twitter.
 
+<div class="isa_info">
+<i class="fa fa-info-circle"></i>
+This page has content from the
+<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Another_Kind_Of_Character.ipynb">
+Another_Kind_Of_Character</a>
+notebook from the UC Berkeley course.  See the Berkeley course section of the
+<a href="{{ site.baseurl }}/license">license</a>
+</div>
+
+
         
       </section>
 
@@ -385,7 +395,7 @@ function addParamToInternalLinks(hub) {
   var links = $("a").each(function() {
     var href = this.href;
     // If the link is an internal link...
-    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://localhost:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
@@ -491,6 +501,13 @@ $(document).ready(function () {
   // Add copy button to code blocks
   addCopyButtonToCode();
   // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>
+ param given
   updateInteractLink();
 });
 </script>

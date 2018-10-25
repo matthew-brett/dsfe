@@ -23,9 +23,7 @@ discussing why we have this definition, instead of another.
 > -- Donoho (2015) "50 years of data science".
 
 
-But 
-
-See also [What is Data Science](https://www.inferentialthinking.com/chapters/01/what-is-data-science) for the UC Berkeley course.
+## Elements of data science
 
 * Exploration
 * Prediction
@@ -34,3 +32,8 @@ See also [What is Data Science](https://www.inferentialthinking.com/chapters/01/
 * Statistics
 * Computing
 * Domain knowledge
+
+For an alternative view, see [What is Data
+Science?](https://www.inferentialthinking.com/chapters/01/what-is-data-science)
+from the UC Berkeley course.
+

@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
 <meta property="og:title" content="Data Science for Everyone">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/02/Names.Rmd">
+<meta property="og:url" content="http://localhost:4000/dsfe/notebooks/02/Names.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/02/Names.Rmd">
+<link rel="canonical" href="http://localhost:4000/dsfe/notebooks/02/Names.Rmd">
 
 
 
@@ -43,7 +43,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Matthew Brett",
-      "url": "https://matthew-brett.github.io/dsfe",
+      "url": "http://localhost:4000/dsfe",
       "sameAs": null
     }
   </script>
@@ -118,17 +118,17 @@
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+              <a href="http://localhost:4000/dsfe/about" >About</a>
             </li>
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+              <a href="http://localhost:4000/dsfe/syllabus" >Syllabus</a>
             </li>
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+              <a href="http://localhost:4000/dsfe/classes" >Classes</a>
             </li>
           
           
@@ -181,14 +181,9 @@
 
       <section class="page__content" itemprop="text">
         
-        <div class="note">
-    <p>
-    This page is largely derived from <code>Names</code> of the UC
-    Berkeley course - see the license file on the main website.
-    </p>
-</div>
+        We have already seen [expressions](Expressions).
 
-Names are given to values in Python using an *assignment* statement. In an
+Python gives names to values in Python using an *assignment* statement. In an
 assignment, a name is followed by `=`, which is followed by any expression.
 The value of the expression to the right of `=` is *assigned* to the name.
 Once a name has a value assigned to it, the value will be substituted for that
@@ -240,6 +235,16 @@ tip = meal_price_with_vat * tip_rate
 meal_price_total = meal_price_with_vat + tip
 meal_price_total
 ```
+
+<div class="isa_info">
+<i class="fa fa-info-circle"></i>
+This page has content from the
+<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Names.ipynb">
+Names</a>
+notebook from the UC Berkeley course.  See the Berkeley course section of the
+<a href="{{ site.baseurl }}/license">license</a>
+</div>
+
 
         
       </section>
@@ -356,7 +361,7 @@ function addParamToInternalLinks(hub) {
   var links = $("a").each(function() {
     var href = this.href;
     // If the link is an internal link...
-    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://localhost:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {

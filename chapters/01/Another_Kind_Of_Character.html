@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-10-25T10:39:27+01:00">
+  <meta property="article:published_time" content="2018-10-25T23:20:06+01:00">
 
 
 
@@ -425,9 +425,9 @@ meaning: a printed symbol such as a letter or number or punctuation symbol.
 Here, we ask the computer to count the number of characters and the number of
 periods in each chapter of <em>Pride and Prejudice</em>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># In each chapter, count the number of all characters;</span>
-<span class="c"># Also count the number of periods.</span>
-<span class="n">chars_periods</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># In each chapter, count the number of all characters;
+# Also count the number of periods.
+</span><span class="n">chars_periods</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span>
         <span class="s">'Number of chars in chapter'</span><span class="p">:</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">book_chapters</span><span class="p">],</span>
         <span class="s">'Number of periods'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="s">'.'</span><span class="p">)</span>
     <span class="p">})</span>
@@ -789,7 +789,7 @@ number of characters.</p>
             <span class="n">color</span><span class="o">=</span><span class="s">'darkblue'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.collections.PathCollection at 0x1284cceb8&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.collections.PathCollection at 0x1149f04e0&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/01/Another_Kind_Of_Character_6_1.png" alt="png" /></p>
@@ -804,6 +804,16 @@ characters, roughly. That’s about 90 to 150 characters per period.</p>
 somewhere between 100 and 150 characters between periods, as a very rough
 estimate. Perhaps Jane Austen was announcing something familiar to us now: the
 original 140-character limit of Twitter.</p>
+
+<div class="isa_info">
+<i class="fa fa-info-circle"></i>
+This page has content from the
+<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Another_Kind_Of_Character.ipynb">
+Another_Kind_Of_Character</a>
+notebook from the UC Berkeley course.  See the Berkeley course section of the
+<a href="{{ site.baseurl }}/license">license</a>
+</div>
+
 
           
         </section>

@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
 <meta property="og:title" content="Data Science for Everyone">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/01/Literary_Characters.Rmd">
+<meta property="og:url" content="http://localhost:4000/dsfe/notebooks/01/Literary_Characters.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/01/Literary_Characters.Rmd">
+<link rel="canonical" href="http://localhost:4000/dsfe/notebooks/01/Literary_Characters.Rmd">
 
 
 
@@ -43,7 +43,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Matthew Brett",
-      "url": "https://matthew-brett.github.io/dsfe",
+      "url": "http://localhost:4000/dsfe",
       "sameAs": null
     }
   </script>
@@ -118,17 +118,17 @@
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+              <a href="http://localhost:4000/dsfe/about" >About</a>
             </li>
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+              <a href="http://localhost:4000/dsfe/syllabus" >Syllabus</a>
             </li>
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+              <a href="http://localhost:4000/dsfe/classes" >Classes</a>
             </li>
           
           
@@ -212,9 +212,6 @@ book_chapters = book_text.split('CHAPTER ')
 book_chapters = book_chapters[1:]
 ```
 
-This page is largely derived from `Literary_Characters` of the UC Berkeley
-course \- see the license file on the main website.
-
 [Pride and Prejudice](https://en.wikipedia.org/wiki/Pride_and_Prejudice) is
 the story of five sisters: Jane, Elizabeth, Mary, Kitty and Lydia, and their
 journey through the social life of the mid-17th century.  You may remember
@@ -254,7 +251,21 @@ In the plot above, the horizontal axis shows chapter numbers and the vertical
 axis shows how many times each character has been mentioned up to and
 including that chapter.
 
-Notice first that Elizabeth and Darcy are the main characters.  Around chapter 13 we see Wickham and Lydia spike up, as they run away together, and mentions of Darcy flatten off, when goes to look for them.   Around chapter 50 we see Jane and Bingley being mentioned at a very similar rate, as Bingley proposes, and Jane accepts.
+Notice first that Elizabeth and Darcy are the main characters.  Around chapter
+13 we see Wickham and Lydia spike up, as they run away together, and mentions
+of Darcy flatten off, when goes to look for them.   Around chapter 50 we see
+Jane and Bingley being mentioned at a very similar rate, as Bingley proposes,
+and Jane accepts.
+
+<div class="isa_info">
+<i class="fa fa-info-circle"></i>
+This page has content from the
+<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Literary_Characters.ipynb">
+Literary_Characters</a>
+notebook from the UC Berkeley course.  See the Berkeley course section of the
+<a href="{{ site.baseurl }}/license">license</a>
+</div>
+
 
         
       </section>
@@ -371,7 +382,7 @@ function addParamToInternalLinks(hub) {
   var links = $("a").each(function() {
     var href = this.href;
     // If the link is an internal link...
-    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://localhost:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {

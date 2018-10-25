@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Statistical Techniques - Data Science for Everyone</title>
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
 <meta name="description" content="">
 
 
@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="Statistical Techniques">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/01/1/2/statistical-techniques/">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="http://localhost:4000/dsfe/drafts/three_girls.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/01/1/2/statistical-techniques/">
+<link rel="canonical" href="http://localhost:4000/dsfe/drafts/three_girls.Rmd">
 
 
 
@@ -43,7 +43,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Matthew Brett",
-      "url": "https://matthew-brett.github.io/dsfe",
+      "url": "http://localhost:4000/dsfe",
       "sameAs": null
     }
   </script>
@@ -118,17 +118,17 @@
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+              <a href="http://localhost:4000/dsfe/about" >About</a>
             </li>
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+              <a href="http://localhost:4000/dsfe/syllabus" >Syllabus</a>
             </li>
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+              <a href="http://localhost:4000/dsfe/classes" >Classes</a>
             </li>
           
           
@@ -166,7 +166,7 @@
   
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Statistical Techniques">
+    
     
     
     
@@ -174,8 +174,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Statistical Techniques
-</h1> -->
+          <!--  -->
           
         </header>
       
@@ -183,18 +182,6 @@
       <section class="page__content" itemprop="text">
         
         
-<p>See also <a href="https://www.inferentialthinking.com/chapters/01/1/2/statistical-techniques">Statistical techniques</a> from the UC
-Berkeley course.</p>
-
-<ul>
-  <li>Statistics - conclusions from incomplete information</li>
-  <li>Hypothesis testing, confidence intervals, prediction</li>
-  <li>Computing as basis and extension of statistical methods.</li>
-  <li>The range of data</li>
-  <li>The problems of real data.</li>
-  <li>Benefits of resampling</li>
-</ul>
-
         
       </section>
 
@@ -310,7 +297,7 @@ function addParamToInternalLinks(hub) {
   var links = $("a").each(function() {
     var href = this.href;
     // If the link is an internal link...
-    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://localhost:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
