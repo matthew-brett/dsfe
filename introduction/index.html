@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
 <meta property="og:title" content="The Data 8 Course Template">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/introduction/">
+<meta property="og:url" content="http://localhost:4000/dsfe/introduction/">
 
 
   <meta property="og:description" content="Welcome to the Data 8 course template! This is a template site that can beused to deploy Data 8 for your institution. Click the links above to accesspages for different parts of the course, which you can customize as you like.If you’d like intructions on how to fork and modify this template for yourData 8 course, see the Zero to Data 8 guide.">
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/introduction/">
+<link rel="canonical" href="http://localhost:4000/dsfe/introduction/">
 
 
 
@@ -47,7 +47,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Matthew Brett",
-      "url": "https://matthew-brett.github.io/dsfe",
+      "url": "http://localhost:4000/dsfe",
       "sameAs": null
     }
   </script>
@@ -122,19 +122,23 @@
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+              <a href="http://localhost:4000/dsfe/about" >About</a>
             </li>
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+              <a href="http://localhost:4000/dsfe/syllabus" >Syllabus</a>
             </li>
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+              <a href="http://localhost:4000/dsfe/classes" >Classes</a>
             </li>
           
+          
+            <li class="masthead__menu-item">
+              <a href="/dsfe/chapters/01/what-is-data-science">Textbook</a>
+            </li>
           
           
         </ul>
@@ -316,7 +320,7 @@ function addParamToInternalLinks(hub) {
   var links = $("a").each(function() {
     var href = this.href;
     // If the link is an internal link...
-    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://localhost:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
