@@ -23,13 +23,61 @@ jupyter:
     version: 3.6.5
 ---
 
-We have already seen [expressions](Expressions).
+You have already seen [expressions](Expressions).
 
-Python gives names to values in Python using an *assignment* statement. In an
-assignment, a name is followed by `=`, which is followed by any expression.
-The value of the expression to the right of `=` is *assigned* to the name.
-Once a name has a value assigned to it, the value will be substituted for that
-name in future expressions.
+You saw in [variables](variables) that we often want to give names to the
+results of expressions.
+
+Now we get a little more formal about what that looks like in Python.
+
+When Python gives a name to a value, that is an *assignment statement*.
+
+A *statement* is a piece of code that performs an action.
+
+Here is an assignment statement:
+
+```{python}
+x = 4
+```
+
+Let's break the statement down in more detail.
+
+The statement has three parts:
+
+1. A *left hand side* (LHS), to the left of the equals sign `=`.  In the
+   expression above, the LHS is `x`;
+2. The equals sign `=`;
+3. The *right hand side* (RHS), to the right of the equals sign.  This is an
+   *expression*, that gives a value.  In our case, the RHS is 4.
+
+The assignment statement gives a *name* (on the LHS) to a *value* (on the
+RHS).
+
+Whenever you see a name, then `=`, then an expression, that is an assignment
+statement.
+
+It is often useful to describe what Python statements are doing, in words.
+
+For the expression above, we can say "x gets the value 4".
+
+We call `x` a *variable*.
+
+Once a variable gets a value, the name *evaluates* to its value.
+
+For example, here we ask Python to evaluate an expression:
+
+```
+3 * x + 2
+```
+
+`3 * x + 2` is an *expression*.  By entering the expression in a cell on its
+own, we ask Python to *evaluate* the expression.  First it evaluates the
+variable `x` to get 4.  Then it evaluates the rest to get `3 * 4 + 2` = 14.
+
+Remember, an assignment gives a name (on the LHS) to the value (on the RHS).
+
+Here are two assignment statements, giving values to the names `a` and `b`.
+Then we use these variaables in an expression.  The Notebook shows the result.
 
 ```{python}
 a = 10
@@ -37,7 +85,11 @@ b = 20
 a + b
 ```
 
-A previously assigned name can be used in the expression to the right of `=`.
+In the expression `a + b` above, Python evaluates the variable `a` to get 10,
+it evaluates the variable `b` to get 20, and then adds them, to give the final
+result of the expression.
+
+A variable can be used in the expression to the right of `=`.
 
 ```{python}
 quarter = 1/4
@@ -45,21 +97,34 @@ half = 2 * quarter
 half
 ```
 
-However, only the current value of an expression is assigned to a name. If
-that value changes later, names that were defined in terms of that value will
-not change automatically.
+We can change the value for variables.  Here we change the value of variable
+`quarter` from 0.25 to 4.
 
 ```{python}
 quarter = 4
+```
+
+Now we have changed the value of `quarter` What do you think will happen to
+the value of `half` above?  Will it change, or will it stay the same?
+
+Remember that an expression evaluates its variables before returning the
+result.  In the cell above, the expression `half = 2 * quarter` evaluated
+`quarter`, to get 0.25, and then evalulated 2 * 0.25, to give 0.5.  When we
+changed `quarter` in the next cell, it did not affect the value that we have
+already given to `half`:
+
+```{python}
 half
 ```
 
-Names must start with a letter, but can contain both letters and numbers. A
-name cannot contain a space; instead, it is common to use an underscore
-character `_` to replace each space. Names are only as useful as you make
-them; it's up to the programmer to choose names that are easy to interpret.
-Typically, more meaningful names can be invented than `a` and `b`. For
-example, let's say you were calculating the 20% Value Added Tax for a
+## Rules for variable names
+
+Variable names must start with a letter, but can contain both letters and
+numbers. A name cannot contain a space; instead, it is common to use an
+underscore character `_` to replace each space. Names are only as useful as
+you make them; it's up to the programmer to choose names that are easy to
+interpret.  Typically, more meaningful names can be invented than `a` and `b`.
+For example, let's say you were calculating the 20% Value Added Tax for a
 restaurant bill, as well as 15% tip, on top of that.  The following names
 clarify the meaning of the various quantities involved.
 
@@ -76,6 +141,102 @@ tip_rate = 0.15
 tip = meal_price_with_vat * tip_rate
 meal_price_total = meal_price_with_vat + tip
 meal_price_total
+```
+
+## For reflection
+
+Here are some assignment statements. Are these valid names?  Why - or why not?
+When you have an answer, try the names in a Notebook cell, and see what you
+get:
+
+```
+five = 5
+```
+
+```
+Five = 5
+```
+
+```
+five_Point_three = 5
+```
+
+```
+five3 = 5
+```
+
+```
+_five_ = 5
+```
+
+```
+five_3 = 5
+```
+
+```
+five.3 = 5
+```
+
+```
+3five = 5
+```
+
+```
+five-point-three = 5
+```
+
+Try and work out what each of these expressions will return.  Are they valid
+expressions?  Will they give an error?  When you have the answer, try entering
+the expression as cells in the Notebook:
+
+```
+a = 5
+b = 3
+a + b * 4
+```
+
+```
+a = 5
+b = 3
+a + b * 4
+```
+
+```
+a = 5
+a = a + 3
+a
+```
+
+```
+a = 5
+b = a + 3
+a = 3
+b
+```
+
+```
+first_variable = 5
+second_variable = first_variable + 3
+first_variable = 3
+second_variable
+```
+
+```
+a = 5
+a * 3 * c
+```
+
+```
+a = 5
+a 5 + 4 * 3
+```
+
+This one is more tricky, and uses stuff you have not yet seen.  Ask your
+instructors if you get stuck:
+
+```
+my_variable == 5
+my_variable * 4
 ```
 
 {% data8page Names %}

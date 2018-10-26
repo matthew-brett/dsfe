@@ -39,10 +39,13 @@ chapters:
     title: 2.3 Expressions
     url: chapters/02/Expressions
   - class: level_1
-    title: 2.4 Names
+    title: 2.4 Variables
+    url: chapters/02/variables
+  - class: level_1
+    title: 2.5 Names
     url: chapters/02/Names
   - class: level_1
-    title: 2.5 Call expressions
+    title: 2.6 Call expressions
     url: chapters/02/Calls
   class: level_0
   title: 2. Programming

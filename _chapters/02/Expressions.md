@@ -6,8 +6,8 @@ previouschapter:
   url: chapters/02/three_girls
   title: '2.2 A simpler problem'
 nextchapter:
-  url: chapters/02/Names
-  title: '2.4 Names'
+  url: chapters/02/variables
+  title: '2.4 Variables'
 redirect_from:
   - 'chapters/02/expressions'
 ---
@@ -19,11 +19,10 @@ programming language. Learning the grammar rules is essential, and the same
 rules used in the most basic programs are also central to more sophisticated
 programs.
 
-Programs are contain *expressions*, which describe to the computer how to
-combine pieces of data. For example, a multiplication expression consists of a
-`*` symbol between two numerical expressions. Expressions, such as `3 * 4`,
-are *evaluated* by the computer. The value (the result of *evaluation*) of the
-last expression in each cell, `12` in this case, is displayed below the cell.
+Programs contain *expressions*.
+
+You can think of an expression as a recipe that returns a value.  For example,
+this is an expression:
 
 
 
@@ -42,6 +41,15 @@ last expression in each cell, `12` in this case, is displayed below the cell.
 ```
 
 
+
+Notice that the Notebook displays the value.  This the *value* that the
+expression returns.
+
+An expression can describe to the computer how to combine pieces of data. In
+our example, we have a multiplication expression that consists of a `*` symbol
+between two numerical expressions. Expressions, such as `3 * 4`, are
+*evaluated* by the computer. The value (the result of *evaluation*) of the
+last expression in each cell, `12` in this case, is displayed below the cell.
 
 The grammar rules of a programming language are rigid. In Python, the `*`
 symbol cannot appear twice in a row. The computer will not try to interpret an

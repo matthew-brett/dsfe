@@ -49,3 +49,10 @@ serve: bibliography
 
 bibliography: $(BIBLIOGRAPHIES)
 	cat $(BIBLIOGRAPHIES) > _bibliography/references.bib
+
+
+make continuous:
+	while true; do \
+		make rebuild-notebooks; \
+		sleep 5; \
+	done

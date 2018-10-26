@@ -6,7 +6,11 @@ permalink: /days/class_3
 
 # Day 3 (the fourth day)
 
+* [A sampling problem](../chapters/02/sampling_problem)
+* [A simpler problem](../chapters/02/three_girls)
+
 * [Expressions](../chapters/02/Expressions)
+* [Variables](../chapters/02/variables)
 * [Names](../chapters/02/Names)
 * [Call expressions](../chapters/02/Calls)
 * [Data types](../chapters/03/data_types)
