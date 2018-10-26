@@ -224,6 +224,9 @@ if __name__ == '__main__':
     IMAGES_FOLDER = op.join(SITE_ROOT, 'images')
     MARKDOWN_FILE = op.join(SITE_ROOT, 'SUMMARY.md')
 
+    if not op.isdir(TEXTBOOK_FOLDER):
+        os.mkdir(TEXTBOOK_FOLDER)
+
     # Load the yaml for this site
     with open(CONFIG_FILE, 'r') as ff:
         site_yaml = yaml.load(ff.read())
@@ -241,7 +244,7 @@ if __name__ == '__main__':
     # --- Loop through all ipynb/md files, convert to md as necessary and copy. ---
     n_skipped_files = 0
     n_built_files = 0
-    cased_fs = _case_sensitive_fs(TEXTBOOK_FOLDER_NAME)
+    cased_fs = _case_sensitive_fs(TEXTBOOK_FOLDER)
     for ix_file, (title, link, level) in tqdm(list(enumerate(files))):
         if len(link) == 0:
             continue
