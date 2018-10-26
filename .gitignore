@@ -106,3 +106,8 @@ venv.bak/
 # Jekyll
 _site/
 .sass-cache/
+
+# Build stuff
+_chapters/
+_data/textbook.yml
+images/chapters/
