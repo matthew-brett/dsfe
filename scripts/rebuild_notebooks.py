@@ -14,13 +14,15 @@
 import os
 import sys
 from os.path import (abspath, join as pjoin, splitext, sep as fsep,
-                     getmtime, isfile, dirname)
+                     getmtime, isfile, dirname, isdir)
 from subprocess import check_call
 
 
 def searchfor(path, extensions):
     """ Search `path` recursively for files with given `extensions`
     """
+    if not isdir(path):
+        return
     for entry in os.scandir(path):
         if entry.name.startswith('.'):
             continue
