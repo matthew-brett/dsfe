@@ -51,8 +51,8 @@ bibliography: $(BIBLIOGRAPHIES)
 	cat $(BIBLIOGRAPHIES) > _bibliography/references.bib
 
 
-make continuous:
+make continuous-build:
 	while true; do \
-		make rebuild-notebooks; \
+		(make rebuild-notebooks || tput bel) ; \
 		sleep 5; \
 	done

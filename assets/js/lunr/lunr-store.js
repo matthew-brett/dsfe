@@ -1,24 +1,4 @@
 var store = [{
-        "title": "1.1.1 Computational Tools",
-        "excerpt":"Computational Tools This text uses the Python 3 programming language, along with a standard set ofnumerical and data visualization tools that are used widely in commercialapplications, scientific experiments, and open-source projects. Python hasrecruited enthusiasts from many professions that use data to draw conclusions.By learning the Python language, you will join...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/dsfe/chapters/01/1/1/computational-tools",
-        "teaser":null},{
-        "title": "1.1.2 Statistical Techniques",
-        "excerpt":"Statistical Techniques Modern data analysis involves techniques from several fields, includingstatistics and machine learning. Statistics is the body of knowledge about drawing conclusions from incompleteinformation. Put another way, statistics allows us to reason about data inthe presence of uncertainty. Among the statistical tools that we will use are: hypothesis testing,confidence...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/dsfe/chapters/01/1/2/statistical-techniques",
-        "teaser":null},{
-        "title": "1.1 Introduction",
-        "excerpt":"Chapter 1: Introduction See also Introduction to DataScience for the UCBerkeley course.   Relationship of statistics, computer science, real data  Computation and randomization  Programming as basis  Required background","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/dsfe/chapters/01/1/intro",
-        "teaser":null},{
-        "title": "1.2 Why Data Science?",
-        "excerpt":"Why Data Science? Most important decisions are made with only partial information and uncertainoutcomes. However, the degree of uncertainty for many decisions can be reducedsharply by public access to large data sets and the computational toolsrequired to analyze them effectively. Data-driven decision making has alreadytransformed a tremendous breadth of industries,...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/dsfe/chapters/01/2/why-data-science",
-        "teaser":null},{
         "title": "1.3.2 Another Kind of Character",
         "excerpt":"This page is largely derived from Another_Kind_Of_Character of the UCBerkeley course - see the license file on the main website. In some situations, the relationships between quantities allow us to makepredictions. This text will explore how to make accurate predictions based onincomplete information and develop methods for combining multiple sources...","categories": [],
         "tags": [],
@@ -34,12 +14,32 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/01/Plotting_the_Classics",
         "teaser":null},{
+        "title": "1.1.1 Computational Tools",
+        "excerpt":"Computational Tools This text uses the Python 3 programming language, along with a standard set ofnumerical and data visualization tools that are used widely in commercialapplications, scientific experiments, and open-source projects. Python hasrecruited enthusiasts from many professions that use data to draw conclusions.By learning the Python language, you will join...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/01/computational-tools",
+        "teaser":null},{
+        "title": "1.1 Introduction",
+        "excerpt":"Chapter 1: Introduction See also Introduction to DataScience for the UCBerkeley course.   Relationship of statistics, computer science, real data  Computation and randomization  Programming as basis  Required background","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/01/intro",
+        "teaser":null},{
+        "title": "1.1.2 Statistical Techniques",
+        "excerpt":"Statistical Techniques Modern data analysis involves techniques from several fields, includingstatistics and machine learning. Statistics is the body of knowledge about drawing conclusions from incompleteinformation. Put another way, statistics allows us to reason about data inthe presence of uncertainty. Among the statistical tools that we will use are: hypothesis testing,confidence...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/01/statistical-techniques",
+        "teaser":null},{
         "title": "1. Data Science",
         "excerpt":"What is data science? The question sounds simple - what is data science? - but it has proved hardto answer. Here is our definition: Data science is a modern approach to data analysis with a foundation in codeand algorithms. Because it is a hard question with many answers, this page...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/01/what-is-data-science",
         "teaser":null},{
-        "title": "2.5 Call expressions",
+        "title": "1.2 Why Data Science?",
+        "excerpt":"Why Data Science? Most important decisions are made with only partial information and uncertainoutcomes. However, the degree of uncertainty for many decisions can be reducedsharply by public access to large data sets and the computational toolsrequired to analyze them effectively. Data-driven decision making has alreadytransformed a tremendous breadth of industries,...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/01/why-data-science",
+        "teaser":null},{
+        "title": "2.6 Call expressions",
         "excerpt":"Call expressions invoke functions, which are named operations. The name ofthe function appears first, followed by expressions in parentheses. abs(-12)12round(5 - 1.3)4max(2, 2 + 3, 4)5In this last example, the max function is called on three arguments: 2,5, and 4. The value of each expression within parentheses is passed to...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/02/Calls",
