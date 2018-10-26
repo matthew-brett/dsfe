@@ -70,7 +70,7 @@ One section of the article is "Who are these people":
 > quantities of formless data and make analysis possible. ... Data scientists’
 > most basic, universal skill is the ability to write code.
 
-These were scientists who had worked on data in their own fields:
+Most had come to code through their scientific work:
 
 > Some of the best and brightest data scientists are PhDs in esoteric fields
 > like ecology and systems biology. George Roumeliotis, the head of a data
