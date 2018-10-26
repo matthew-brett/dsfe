@@ -1,4 +1,4 @@
-.PHONY: help textbook clean serve
+.PHONY: help textbook clean serve bibliography
 
 BIBLIOGRAPHIES= _data-science-bib/data_science.bib \
 				_bibliography/course.bib
@@ -26,7 +26,12 @@ check:
 rebuild-notebooks:
 	python scripts/rebuild_notebooks.py
 
-build: rebuild-notebooks bibliography
+bibliography: $(BIBLIOGRAPHIES)
+	cat $(BIBLIOGRAPHIES) > _bibliography/references.bib
+
+components: bibliography rebuild-notebooks textbook
+
+build: components
 	bundle exec jekyll build
 
 github: build
@@ -44,12 +49,8 @@ ship: clean rebuild-notebooks textbook
 # bundle config build.nokogiri --use-system-libraries
 # bundle install
 
-serve: bibliography
+serve: components
 	bundle exec jekyll serve
-
-bibliography: $(BIBLIOGRAPHIES)
-	cat $(BIBLIOGRAPHIES) > _bibliography/references.bib
-
 
 make continuous-build:
 	while true; do \
