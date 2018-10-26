@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-10-26T13:49:25+01:00">
+  <meta property="article:published_time" content="2018-10-26T16:47:16+01:00">
 
 
 
@@ -416,9 +416,14 @@
     <nav class="toc">
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#data-science-is-important">Data science is important</a></li>
-  <li><a href="#data-science-is-very-important">Data science is very important</a></li>
+  <li><a href="#does-data-science-matter">Does data science matter?</a></li>
+  <li><a href="#the-origins-of-data-science">The origins of data science</a></li>
+  <li><a href="#a-new-culture">A new culture</a></li>
+  <li><a href="#whats-new-in-data-science">What’s new in data science?</a></li>
+  <li><a href="#why-now">Why now?</a></li>
   <li><a href="#elements-of-data-science">Elements of data science</a></li>
+  <li><a href="#conclusion">Conclusion</a></li>
+  <li><a href="#references">References</a></li>
 </ul>
     </nav>
   </aside>
@@ -430,51 +435,185 @@
 
           <h1 id="what-is-data-science">What is data science?</h1>
 
-<p>The question sounds simple - <em>what is data science?</em> - but it has proved hard
-to answer.</p>
+<p>The combination of the words <em>data</em> and <em>science</em> do not give much hint as to what <em>data science</em> might mean.  Most science has data, and most work in science is analyzing data.</p>
 
-<p>Here is our definition:</p>
+<p>Because the name <em>data science</em> can cover such a broad range of subjects, it
+has proved difficult to define.</p>
+
+<p>We can make the definition very broad.  For example, the UC Berkeley data
+science textbook has <a href="https://www.inferentialthinking.com/chapters/01/what-is-data-science">this
+definition</a></p>
+
+<blockquote>
+  <p>Data Science is about drawing useful conclusions from large and diverse data
+sets through exploration, prediction, and inference.</p>
+</blockquote>
+
+<p>Defined this way, data science lays claim to a lot of previous subjects, including all of statistics and machine learning.</p>
+
+<p>As you will see, we do not think this very broad definition really captures what is really new in the data science movement.  We prefer to define data science as a new <em>culture</em> of data analysis - like this:</p>
 
 <blockquote>
   <p>Data science is a modern approach to data analysis with a foundation in code
 and algorithms.</p>
 </blockquote>
 
-<p>Because it is a hard question with many answers, this page spends some time
-discussing why we have this definition, instead of another.</p>
+<p>Why do we choose this definition?  And does it matter?</p>
 
-<h2 id="data-science-is-important">Data science is important</h2>
+<p>We start with the second question - does data science matter?  Then we explore the first question, by looking the origins of data science.</p>
+
+<h2 id="does-data-science-matter">Does data science matter?</h2>
+
+<p>For a subject that is hard to define, data science looms large in planning for education, and science.</p>
+
+<p>David Donoho is an eminent statistician at Stanford University.  He recently
+wrote an article reflecting on data science, how it was defined, and what it
+could mean.  He was worried that data science would be defined in a narrow way, as something to do with big data and machine learning, but he was worried because he thought that data science should be:</p>
+
+<blockquote>
+  <p>… the really important intellectual event of the next fifty years”</p>
+</blockquote>
+
+<p><a href="#donoho201550">(Donoho, 2015)</a></p>
+
+<p>For Donoho, data science is the rediscovery of the powerful methods of data
+exploration and analysis practiced and described by statisticians such as John
+W. Tukey <a href="#tukey1962future">(Tukey, 1962)</a>.  These methods will be revolutionary for the future of data analysis.</p>
+
+<p>Meanwhile, educators, especially in the United States, have concluded that data
+science techniques are fundamental to the future of education.   A 2018 report
+of the National Academies of Science Engineering and Medicine recommended that all undergraduates develop a “basic understanding of data science”:</p>
 
 <blockquote>
   <p>… academic institutions should encourage the development of a basic
-understanding of data science in all undergraduates – A 2018 report from
-the US National Academies of Sciences, Engineering and Medicine.</p>
+understanding of data science in all undergraduates</p>
 </blockquote>
 
-<h2 id="data-science-is-very-important">Data science is very important</h2>
+<p><a href="#natacad2018ds">(National Academies of Sciences &amp; Medicine, 2018)</a></p>
+
+<h2 id="the-origins-of-data-science">The origins of data science</h2>
+
+<p>The phrase “data science” has been around for a long time <a href="#press2013history">(Press, 2013)</a> but we argue that the term in its current use is very
+recent.  As it is currently used, the phrase “data science” comes from the job
+title “data scientist”, and the job title came from the tech industry.  D.J.
+Patil, at LinkedIn, and Jeff Hammerbacher, at Facebook, noticed that they had
+a “new breed* of data analysts - these were scientists who could code. Thomas
+Davenport and Patil later described this phenomenon in a famous article “Data
+Scientist: The Sexiest Job of the 21st Century” <a href="#davenport2012data">(Davenport &amp; Patil, 2012)</a>.  One section of the article is “Who are these people”:</p>
 
 <blockquote>
-  <p>… the really important intellectual event of the next fifty years”
-– Donoho (2015) “50 years of data science”.</p>
+  <p>… what data scientists do is make discoveries while swimming in data …
+At ease in the digital realm, they are able to bring structure to large
+quantities of formless data and make analysis possible. … Data scientists’
+most basic, universal skill is the ability to write code.</p>
 </blockquote>
+
+<p>Most of these people had not studied programming as a degree:</p>
+
+<blockquote>
+  <p>Some of the best and brightest data scientists are PhDs in esoteric fields
+like ecology and systems biology. George Roumeliotis, the head of a data
+science team at Intuit in Silicon Valley, holds a doctorate in astrophysics.</p>
+</blockquote>
+
+<p>These people needed a new job title, because they were so much more effective
+than other data analysts.  Because they could code, they were able to analyze
+a much wider range of data, and they could build things to do difficult tasks
+such as the analysis of big data sets.</p>
+
+<p>Soon after these articles, data scientist started to become a very valuable job title, with many companies competing to find people who could do this work.</p>
+
+<h2 id="a-new-culture">A new culture</h2>
+
+<p>Data scientists in industry were not doing anything new, in an academic sense.
+They were applying skills that they had learned in academia.  Central to these
+skills was the ability to build analyses in code.  It turned out that doing
+this led naturally to many of the powerful practices discovered and described
+by statisticians like John W. Tukey <a href="#tukey1962future">(Tukey, 1962)</a> and Leo Breiman
+<a href="#breiman2001statistical">(Breiman, 2001)</a>.</p>
+
+<h2 id="whats-new-in-data-science">What’s new in data science?</h2>
+
+<p>What are these practices, that make data scientists in so effective in industry and academia?</p>
+
+<p>The foundation is code.  At heart, the novelty in the work of data scientists is not novelty at all - it is just the discovery that being able to use code makes a huge difference to the analyses that you can do, and the conclusions that you can draw. Analysis based on code is:</p>
+
+<ul>
+  <li>Versatile.  Code allows us to analyze big, messy, mixed, and complex data
+- put more simply, it allows us to analyze real data.</li>
+  <li>Realistic.  When you have the flexibility of code, you can be realistic
+about the real work of analysis, because you can do that work.  The real work of analysis is cleaning, reorganizing, collating and exploring.</li>
+  <li>Collaborative.  Programmers have been working for many years on methods for
+effective collaboration.  Data scientists learn these methods, and apply them, so they become more transparent, more efficient, and better at working together in teams.</li>
+  <li>Reproducible.  Much analysis that does not use code, uses graphical
+interfaces.  These are famous for making it difficult to record your analysis, or describe it to someone else.  Analyses based on code are naturally reproducible, because you can run the code again, to produce the same result, and you can give someone your code, so they can do the same thing.</li>
+  <li>Easier to understand.  Coding allows us to shift our emphasis from the
+relatively difficult mathematics behind the old-school statistical tests,
+such as t-test and ANOVA, to more direct methods such as resampling,
+including permutation tests and bootstrap estimation.  Code gives us
+a language to describe these methods in a simple and direct way, and this
+makes the ideas clearer and easier to generalize.</li>
+</ul>
+
+<h2 id="why-now">Why now?</h2>
+
+<p>Donoho and others have pointed out that much of what is distinctive in the new
+culture of data analysis was already part of the analysis described by John W.
+Tukey, in the mid-20th century.  Why have these methods only now started to
+take hold?   We believe it is largely to do with the advances in the tools of
+scientific computing.  Over the last 20 years we have seen the growth of a new
+generation of programming languages with clear, powerful syntax, such as
+Python.  The originators of the R programming language were thinking
+specifically of data analysis when designing the language.  Both of these
+languages are free, and open source, so they have benefited from the explosion
+of productivity in <a href="https://en.wikipedia.org/wiki/Open-source_software_development">open-source
+software</a>.  As
+these languages have developed, they have attracted more scientist-programmers,
+who build new libraries for data analysis and statistics.  Meanwhile
+programmers in industry have learned the hard way, how difficult it can be to
+write clear and effective code, and there is a substantial body of thought and
+practice on process for writing and sharing code.  This process has spread into
+the world of open-source programming, especially in academia, leading to
+a great increase in the quality and efficiency of academic code.  The
+combination of richer, clearer languages, better libraries, and better working
+process have made it possible to do much more with code than was previously
+possible.  As a result, many more scientists can write good code, and
+therefore, many more scientists use code for data analysis.  Eventually, these
+scientists appeared in companies that needed sophisticated data analysis, and
+showed how effective these skills could be.  These were the data scientists described by Patil and Hammerbacher.</p>
 
 <h2 id="elements-of-data-science">Elements of data science</h2>
 
+<p>If we are right, then data science is defined by what data scientists do.  What do do they do?</p>
+
 <ul>
-  <li>Exploration</li>
-  <li>Prediction</li>
-  <li>
-    <p>Inference</p>
-  </li>
-  <li>Statistics</li>
-  <li>Computing</li>
-  <li>Domain knowledge</li>
+  <li>They collate data from many sources;</li>
+  <li>They clean up messy data, and use it to try to recover meaningful
+information.  But they are sceptical, and know when the data cannot be trusted for strong conclusions.</li>
+  <li>They explore data, to find errors, and unexpected patterns.  They will likely
+use different ways to make graphs and graphics from the data, to diagnose and
+summarize.</li>
+  <li>They work hard to understand the process that generated the data, to make
+their conclusions meaningful.</li>
+  <li>They understand variation, and the problems and limitations for drawing
+conclusions from noisy and incomplete data.</li>
+  <li>They often try and predict what new data will look like, from old data.  They
+will use old and new methods to do this, including methods from machine
+learning and statistics.</li>
 </ul>
 
-<p>For an alternative view, see <a href="https://www.inferentialthinking.com/chapters/01/what-is-data-science">What is Data
-Science?</a>
-from the UC Berkeley course.</p>
+<h2 id="conclusion">Conclusion</h2>
 
+<p>Data science is new, and we are still working what it is.  At the moment, it is best defined by what a data scientist does.  A data scientist uses programming as the basis for a deeper, more flexible approach to data analysis.  That is what we will try to teach you on this course.</p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="donoho201550">Donoho, D. (2015). 50 years of Data Science. In <i>Princeton NJ, Tukey Centennial Workshop</i>. Retrieved from http://courses.csail.mit.edu/18.337/2015/docs/50YearsDataScience.pdf</span></li>
+<li><span id="tukey1962future">Tukey, J. W. (1962). The future of data analysis. <i>The Annals of Mathematical Statistics</i>, <i>33</i>(1), 1–67. Retrieved from http://projecteuclid.org/euclid.aoms/1177704711</span></li>
+<li><span id="natacad2018ds">National Academies of Sciences, E., &amp; Medicine. (2018). <i>Data Science for Undergraduates: Opportunities and Options</i>. Washington, DC: The National Academies Press. https://doi.org/10.17226/25104</span></li>
+<li><span id="press2013history">Press, G. (2013). A Very Short History Of Data Science. Forbes.</span></li>
+<li><span id="davenport2012data">Davenport, T. H., &amp; Patil, D. J. (2012). Data scientist: the sexiest job of the 21st century. <i>Harvard Business Review</i>, <i>90</i>(10), 70–76. Retrieved from https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century</span></li>
+<li><span id="breiman2001statistical">Breiman, L. (2001). Statistical modeling: The two cultures (with comments and a rejoinder by the author). <i>Statistical Science</i>, <i>16</i>(3), 199–231. Retrieved from https://projecteuclid.org/euclid.ss/1009213726</span></li></ol>
 
           
         </section>
