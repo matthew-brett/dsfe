@@ -35,17 +35,18 @@ could mean.  He was worried that data science would be defined in a narrow way,
 in terms of big data and machine learning. He was worried because he
 thought that data science was important - that it should be:
 
-> ... the really important intellectual event of the next fifty years"
+> ... the really important intellectual event of the next fifty years.
 
 {% cite donoho201550 %}
 
 For Donoho, data science is the rediscovery of the powerful methods of data
-exploration and analysis practiced and described by statisticians such as John
-W. Tukey {% cite tukey1962future %}.  These methods will be revolutionary for the future of data analysis.
+exploration and analysis used and taught by statisticians such as John W. Tukey
+{% cite tukey1962future %}.  These methods will be revolutionary for the future
+of data analysis.
 
 Meanwhile, educators, especially in the United States, have concluded that data
 science techniques are fundamental to the future of education.   A 2018 report
-of the National Academies of Science Engineering and Medicine recommended that all undergraduates develop a "basic understanding of data science":
+of the National Academies of Science Engineering and Medicine recommended that:
 
 > ... academic institutions should encourage the development of a basic
 > understanding of data science in all undergraduates
@@ -68,18 +69,19 @@ Scientist: The Sexiest Job of the 21st Century" {% cite davenport2012data %}.  O
 > quantities of formless data and make analysis possible. ... Data scientists’
 > most basic, universal skill is the ability to write code.
 
-Most of these people had not studied programming as a degree:
+Most of these people had come to code through their scientific work:
 
 > Some of the best and brightest data scientists are PhDs in esoteric fields
 > like ecology and systems biology. George Roumeliotis, the head of a data
 > science team at Intuit in Silicon Valley, holds a doctorate in astrophysics.
 
 These people needed a new job title, because they were so much more effective
-than other data analysts.  Because they could code, they were able to analyze
-a much wider range of data, and they could build things to do difficult tasks
+than other data analysts.  Because they could code, they were able to analyze a
+much wider range of data, and they could build programs to do difficult tasks
 such as the analysis of big data sets.
 
-Soon after these articles, data scientist started to become a very valuable job title, with many companies competing to find people who could do this work.
+Soon after these articles, data scientist started to become a very valuable job
+title, with many companies competing to find people who could do this work.
 
 ## A new culture
 
@@ -119,32 +121,34 @@ Tukey, in the mid-20th century.  Why have these methods only now started to
 take hold?   We believe it is largely to do with the advances in the tools of
 scientific computing.  Over the last 20 years we have seen the growth of a new
 generation of programming languages with clear, powerful syntax, such as
-Python.  The originators of the R programming language were thinking
-specifically of data analysis when designing the language.  Both of these
-languages are free, and open source, so they have benefited from the explosion
-of productivity in [open-source
+Python.  Another language widely used in data science is R, the statistical
+programming language. The originators of R were thinking specifically of data
+analysis when designing the language.  Python and R are free, and open source,
+so they have benefited from the explosion of productivity in [open-source
 software](https://en.wikipedia.org/wiki/Open-source_software_development).  As
 these languages have developed, they have attracted more scientist-programmers,
 who build new libraries for data analysis and statistics.  Meanwhile
 programmers in industry have learned the hard way, how difficult it can be to
 write clear and effective code, and there is a substantial body of thought and
-practice on process for writing and sharing code.  This process has spread into
-the world of open-source programming, especially in academia, leading to
-a great increase in the quality and efficiency of academic code.  The
-combination of richer, clearer languages, better libraries, and better working
-process have made it possible to do much more with code than was previously
-possible.  As a result, many more scientists can write good code, and
-therefore, many more scientists use code for data analysis.  Eventually, these
-scientists appeared in companies that needed sophisticated data analysis, and
-showed how effective these skills could be.  These were the data scientists described by Patil and Hammerbacher.
+practice on process for writing and sharing code.  This process spread into the
+world of open-source programming, leading to a great increase in the quality
+and efficiency of academic code.  The combination of richer, clearer languages,
+better libraries, and better working process have made it possible to do much
+more with code than was previously possible.  As a result, many more scientists
+can write good code, and therefore, many more scientists use code for data
+analysis.  Eventually, these scientists appeared in companies that had
+difficult problems in data analysis, and showed how effective these skills
+could be.  These were the data scientists described by Patil and Hammerbacher.
 
 ## Elements of data science
 
-If we are right, then data science is defined by what data scientists do.  What do do they do?
+If we are right, then data science is defined by what data scientists do.  What
+do do they do?
 
 * They collate data from many sources;
 * They clean up messy data, and use it to try to recover meaningful
-  information.  But they are sceptical, and know when the data cannot be trusted for strong conclusions.
+  information.  But they are sceptical, and know when the data cannot be
+  trusted for strong conclusions.
 * They explore data, to find errors, and unexpected patterns.  They will likely
   use different ways to make graphs and graphics from the data, to diagnose and
   summarize.
