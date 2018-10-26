@@ -62,14 +62,15 @@ title "data scientist", and the job title came from the tech industry.  D.J.
 Patil, at LinkedIn, and Jeff Hammerbacher, at Facebook, noticed that they had
 a "new breed* of data analysts - these were scientists who could code. Thomas
 Davenport and Patil later described this phenomenon in a famous article "Data
-Scientist: The Sexiest Job of the 21st Century" {% cite davenport2012data %}.  One section of the article is "Who are these people":
+Scientist: The Sexiest Job of the 21st Century" {% cite davenport2012data %}.
+One section of the article is "Who are these people":
 
 > ... what data scientists do is make discoveries while swimming in data ...
 > At ease in the digital realm, they are able to bring structure to large
 > quantities of formless data and make analysis possible. ... Data scientists’
 > most basic, universal skill is the ability to write code.
 
-Most of these people had come to code through their scientific work:
+These were scientists who had worked on data in their own fields:
 
 > Some of the best and brightest data scientists are PhDs in esoteric fields
 > like ecology and systems biology. George Roumeliotis, the head of a data

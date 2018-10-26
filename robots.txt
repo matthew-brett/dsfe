@@ -1,1 +1,1 @@
-Sitemap: https://matthew-brett.github.io/dsfe/sitemap.xml
+Sitemap: http://localhost:4000/dsfe/sitemap.xml
