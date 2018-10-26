@@ -46,6 +46,12 @@ git remote add my-gh-user https://github.com/my-gh-user/dsfe.git
 git fetch my-gh-user
 ```
 
+Get the submodules for the repository (you'll need these for the build):
+
+```
+git submodule update --init
+```
+
 Start by making some branch to work on, linked to your fork.  Use a name to
 match the kind of changes you are about to make, like `rewrite-intro-pages`:
 
