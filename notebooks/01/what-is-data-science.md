@@ -12,9 +12,9 @@ definition](https://www.inferentialthinking.com/chapters/01/what-is-data-science
 > Data Science is about drawing useful conclusions from large and diverse data
 > sets through exploration, prediction, and inference.
 
-Defined this way, data science lays claim to a lot of previous subjects, including all of statistics and machine learning.
-
-As you will see, we do not think this very broad definition really captures what is really new in the data science movement.  We prefer to define data science as a new *culture* of data analysis - like this:
+As you will see, we do not think this very broad definition captures what is
+really new in the data science movement.  We prefer to define data science as
+a new *culture* of data analysis - like this:
 
 > Data science is a modern approach to data analysis with a foundation in code
 > and algorithms.
