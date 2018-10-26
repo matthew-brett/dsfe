@@ -1,3 +1,7 @@
+---
+redirect_from: 'chapters/01/where-is-data-science'
+---
+
 # What is data science?
 
 The question sounds simple - *what is data science?* - but it has proved hard

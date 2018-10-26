@@ -1,3 +1,7 @@
+---
+redirect_from: 'chapters/01/1/2/statistical-techniques'
+---
+
 Statistical Techniques
 ----------------------
 

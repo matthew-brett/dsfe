@@ -1,3 +1,7 @@
+---
+redirect_from: 'chapters/01/2/why-data-science'
+---
+
 Why Data Science?
 =================
 

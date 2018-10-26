@@ -1,3 +1,7 @@
+---
+redirect_from: 'chapters/01/1/intro'
+---
+
 Chapter 1: Introduction
 =======================
 

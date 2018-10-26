@@ -1,3 +1,7 @@
+---
+redirect_from: 'chapters/01/1/1/computational-tools'
+---
+
 # Computational Tools
 
 This text uses the Python 3 programming language, along with a standard set of
