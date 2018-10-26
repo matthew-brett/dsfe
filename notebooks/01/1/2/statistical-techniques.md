@@ -1,7 +1,8 @@
 Statistical Techniques
 ----------------------
 
-Modern data analysis involves techniques from several fields.
+Modern data analysis involves techniques from several fields, including
+statistics and machine learning.
 
 Statistics is the body of knowledge about drawing conclusions from incomplete
 information.  Put another way, statistics allows us to reason about data in

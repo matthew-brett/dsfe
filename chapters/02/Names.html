@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2.4 Names - Data Science for Everyone</title>
-<meta name="description" content="We have already seen expressions.">
+<!-- begin _includes/seo.html --><title>2.5 Names - Data Science for Everyone</title>
+<meta name="description" content="You have already seen expressions.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="2.4 Names">
+<meta property="og:title" content="2.5 Names">
 <meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/02/Names">
 
 
-  <meta property="og:description" content="We have already seen expressions.">
+  <meta property="og:description" content="You have already seen expressions.">
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-10-25T23:25:55+01:00">
+  <meta property="article:published_time" content="2018-10-26T08:41:29+01:00">
 
 
 
@@ -279,7 +279,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/02/Names" class="level_1">2.4 Names</a></li>
+            <li><a href="/dsfe/chapters/02/variables" class="level_1">2.4 Variables</a></li>
           
             
             
@@ -289,7 +289,17 @@
 
             
 
-            <li><a href="/dsfe/chapters/02/Calls" class="level_1">2.5 Call expressions</a></li>
+            <li><a href="/dsfe/chapters/02/Names" class="level_1">2.5 Names</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Calls" class="level_1">2.6 Call expressions</a></li>
           
         </ul>
         
@@ -380,15 +390,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="2.4 Names">
-      <meta itemprop="description" content="We have already seen expressions.">
-      <meta itemprop="datePublished" content="October 25, 2018">
+      <meta itemprop="headline" content="2.5 Names">
+      <meta itemprop="description" content="You have already seen expressions.">
+      <meta itemprop="datePublished" content="October 26, 2018">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">2.4 Names
+            <h1 id="page-title" class="page__title" itemprop="headline">2.5 Names
 </h1>
           </header>
         
@@ -400,6 +410,16 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#rules-for-variable-names">Rules for variable names</a></li>
+  <li><a href="#for-reflection">For reflection</a></li>
+</ul>
+    </nav>
+  </aside>
+
 
           
           <!-- INTERACT LINKS -->
@@ -410,13 +430,61 @@
     <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F02%2FNames.ipynb">Interact</a>
 
 
-          <p>We have already seen <a href="Expressions">expressions</a>.</p>
+          <p>You have already seen <a href="Expressions">expressions</a>.</p>
 
-<p>Python gives names to values in Python using an <em>assignment</em> statement. In an
-assignment, a name is followed by <code class="highlighter-rouge">=</code>, which is followed by any expression.
-The value of the expression to the right of <code class="highlighter-rouge">=</code> is <em>assigned</em> to the name.
-Once a name has a value assigned to it, the value will be substituted for that
-name in future expressions.</p>
+<p>You saw in <a href="variables">variables</a> that we often want to give names to the
+results of expressions.</p>
+
+<p>Now we get a little more formal about what that looks like in Python.</p>
+
+<p>When Python gives a name to a value, that is an <em>assignment statement</em>.</p>
+
+<p>A <em>statement</em> is a piece of code that performs an action.</p>
+
+<p>Here is an assignment statement:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<p>Let’s break the statement down in more detail.</p>
+
+<p>The statement has three parts:</p>
+
+<ol>
+  <li>A <em>left hand side</em> (LHS), to the left of the equals sign <code class="highlighter-rouge">=</code>.  In the
+expression above, the LHS is <code class="highlighter-rouge">x</code>;</li>
+  <li>The equals sign <code class="highlighter-rouge">=</code>;</li>
+  <li>The <em>right hand side</em> (RHS), to the right of the equals sign.  This is an
+<em>expression</em>, that gives a value.  In our case, the RHS is 4.</li>
+</ol>
+
+<p>The assignment statement gives a <em>name</em> (on the LHS) to a <em>value</em> (on the
+RHS).</p>
+
+<p>Whenever you see a name, then <code class="highlighter-rouge">=</code>, then an expression, that is an assignment
+statement.</p>
+
+<p>It is often useful to describe what Python statements are doing, in words.</p>
+
+<p>For the expression above, we can say “x gets the value 4”.</p>
+
+<p>We call <code class="highlighter-rouge">x</code> a <em>variable</em>.</p>
+
+<p>Once a variable gets a value, the name <em>evaluates</em> to its value.</p>
+
+<p>For example, here we ask Python to evaluate an expression:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3 * x + 2
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">3 * x + 2</code> is an <em>expression</em>.  By entering the expression in a cell on its
+own, we ask Python to <em>evaluate</em> the expression.  First it evaluates the
+variable <code class="highlighter-rouge">x</code> to get 4.  Then it evaluates the rest to get <code class="highlighter-rouge">3 * 4 + 2</code> = 14.</p>
+
+<p>Remember, an assignment gives a name (on the LHS) to the value (on the RHS).</p>
+
+<p>Here are two assignment statements, giving values to the names <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code>.
+Then we use these variaables in an expression.  The Notebook shows the result.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
@@ -426,7 +494,11 @@ name in future expressions.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
 </code></pre></div></div>
 
-<p>A previously assigned name can be used in the expression to the right of <code class="highlighter-rouge">=</code>.</p>
+<p>In the expression <code class="highlighter-rouge">a + b</code> above, Python evaluates the variable <code class="highlighter-rouge">a</code> to get 10,
+it evaluates the variable <code class="highlighter-rouge">b</code> to get 20, and then adds them, to give the final
+result of the expression.</p>
+
+<p>A variable can be used in the expression to the right of <code class="highlighter-rouge">=</code>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">quarter</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span>
 <span class="n">half</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">quarter</span>
@@ -436,23 +508,35 @@ name in future expressions.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5
 </code></pre></div></div>
 
-<p>However, only the current value of an expression is assigned to a name. If
-that value changes later, names that were defined in terms of that value will
-not change automatically.</p>
+<p>We can change the value for variables.  Here we change the value of variable
+<code class="highlighter-rouge">quarter</code> from 0.25 to 4.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">quarter</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">half</span>
+</code></pre></div></div>
+
+<p>Now we have changed the value of <code class="highlighter-rouge">quarter</code> What do you think will happen to
+the value of <code class="highlighter-rouge">half</code> above?  Will it change, or will it stay the same?</p>
+
+<p>Remember that an expression evaluates its variables before returning the
+result.  In the cell above, the expression <code class="highlighter-rouge">half = 2 * quarter</code> evaluated
+<code class="highlighter-rouge">quarter</code>, to get 0.25, and then evalulated 2 * 0.25, to give 0.5.  When we
+changed <code class="highlighter-rouge">quarter</code> in the next cell, it did not affect the value that we have
+already given to <code class="highlighter-rouge">half</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">half</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5
 </code></pre></div></div>
 
-<p>Names must start with a letter, but can contain both letters and numbers. A
-name cannot contain a space; instead, it is common to use an underscore
-character <code class="highlighter-rouge">_</code> to replace each space. Names are only as useful as you make
-them; it’s up to the programmer to choose names that are easy to interpret.
-Typically, more meaningful names can be invented than <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code>. For
-example, let’s say you were calculating the 20% Value Added Tax for a
+<h2 id="rules-for-variable-names">Rules for variable names</h2>
+
+<p>Variable names must start with a letter, but can contain both letters and
+numbers. A name cannot contain a space; instead, it is common to use an
+underscore character <code class="highlighter-rouge">_</code> to replace each space. Names are only as useful as
+you make them; it’s up to the programmer to choose names that are easy to
+interpret.  Typically, more meaningful names can be invented than <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code>.
+For example, let’s say you were calculating the 20% Value Added Tax for a
 restaurant bill, as well as 15% tip, on top of that.  The following names
 clarify the meaning of the various quantities involved.</p>
 
@@ -473,6 +557,85 @@ clarify the meaning of the various quantities involved.</p>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>34.5
+</code></pre></div></div>
+
+<h2 id="for-reflection">For reflection</h2>
+
+<p>Here are some assignment statements. Are these valid names?  Why - or why not?
+When you have an answer, try the names in a Notebook cell, and see what you
+get:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>five = 5
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Five = 5
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>five_Point_three = 5
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>five3 = 5
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_five_ = 5
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>five_3 = 5
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>five.3 = 5
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3five = 5
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>five-point-three = 5
+</code></pre></div></div>
+
+<p>Try and work out what each of these expressions will return.  Are they valid
+expressions?  Will they give an error?  When you have the answer, try entering
+the expression as cells in the Notebook:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 5
+b = 3
+a + b * 4
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 5
+b = 3
+a + b * 4
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 5
+a = a + 3
+a
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 5
+b = a + 3
+a = 3
+b
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>first_variable = 5
+second_variable = first_variable + 3
+first_variable = 3
+second_variable
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 5
+a * 3 * c
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 5
+a 5 + 4 * 3
+</code></pre></div></div>
+
+<p>This one is more tricky, and uses stuff you have not yet seen.  Ask your
+instructors if you get stuck:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my_variable == 5
+my_variable * 4
 </code></pre></div></div>
 
 <div class="isa_info">
@@ -500,11 +663,11 @@ notebook from the UC Berkeley course.  See the Berkeley course section of the
         
   <nav class="pagination">
     
-      <a href="/dsfe/chapters/02/Expressions" class="pagination--pager" title="2.3 Expressions
+      <a href="/dsfe/chapters/02/variables" class="pagination--pager" title="2.4 Variables
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/02/Calls" class="pagination--pager" title="2.5 Call expressions
+      <a href="/dsfe/chapters/02/Calls" class="pagination--pager" title="2.6 Call expressions
 ">Next</a>
     
   </nav>

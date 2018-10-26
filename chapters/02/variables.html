@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>  Data types - Data Science for Everyone</title>
-<meta name="description" content="Types of things">
+<!-- begin _includes/seo.html --><title>2.4 Variables - Data Science for Everyone</title>
+<meta name="description" content="Variables are - things that vary.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="  Data types">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/03/data_types">
+<meta property="og:title" content="2.4 Variables">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/02/variables">
 
 
-  <meta property="og:description" content="Types of things">
+  <meta property="og:description" content="Variables are - things that vary.">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/03/data_types">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/02/variables">
 
 
 
@@ -390,17 +390,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="  Data types">
-      <meta itemprop="description" content="Types of things">
+      <meta itemprop="headline" content="2.4 Variables">
+      <meta itemprop="description" content="Variables are - things that vary.">
       <meta itemprop="datePublished" content="October 26, 2018">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline"><ol>
-  <li>Data types</li>
-</ol>
+            <h1 id="page-title" class="page__title" itemprop="headline">2.4 Variables
 </h1>
           </header>
         
@@ -412,44 +410,114 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#variables-in-expressions">Variables in expressions</a></li>
+</ul>
+    </nav>
+  </aside>
+
 
           
           <!-- INTERACT LINKS -->
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/03/data_types.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F03%2Fdata_types.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/02/variables.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F02%2Fvariables.ipynb">Interact</a>
 
 
-          <h1 id="types-of-things">Types of things</h1>
+          <p>Variables are - things that vary.</p>
 
-<p>Every object in Python, has a type.</p>
+<p>You remember variables like $x$ and $y$ from mathematics.</p>
 
-<p>We can show what type of thing something is, by calling <code class="highlighter-rouge">type</code>, like this:</p>
+<p>In mathematics, we can use names, such as $x$ and $y$, to represent any value.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<p>In the piece of mathematics below, we define $y$ given any value for $x$:</p>
+
+<script type="math/tex; mode=display">y = 3x + 2</script>
+
+<p>When we have some value for $x$, we can get the corresponding value of $y$.</p>
+
+<p>We give $x$ some value:</p>
+
+<script type="math/tex; mode=display">x = 4</script>
+
+<p>We apply the rule above to give a value to $y$:</p>
+
+<script type="math/tex; mode=display">y = 3 * x + 2 \\
+= 3 * 4 + 2 \\
+= 14</script>
+
+<p>“x” is a name that refers to a value.  We use the name to <em>represent</em> the
+value.  In the expression above, $x$ represents the value 4.  Of course we
+could give $x$ any value.</p>
+
+<p>Variables in Python work in the same way.</p>
+
+<p>Variables are <em>names</em> given to <em>values</em>.  We can use the name to refer to the
+value in calculations.</p>
+
+<p>For example, here I say that the <em>name</em> <code class="highlighter-rouge">x</code> refers to the <em>value</em> 4:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int
+<p>Now I can calculate a value, using that name:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float
+<h2 id="variables-in-expressions">Variables in expressions</h2>
+
+<p>This is an <em>expression</em>.  You have seen expressions with numbers, but here we
+have an expression with numbers and a variable.  When Python sees the variable
+name <code class="highlighter-rouge">x</code> in this expression, it <em>evaluates</em> <code class="highlighter-rouge">x</code>, and gets the value that it
+refers to.  After Python has evaluated <code class="highlighter-rouge">x</code> to get 4, it ends up with this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">2</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int
+<p>I can also give a name to the <em>result</em> of this expression - such as <code class="highlighter-rouge">y</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span>
 </code></pre></div></div>
 
-<p>If you get stuck in some code, it is often useful to check what types the objects are.</p>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span>
+</code></pre></div></div>
 
-<p>We will use multiple types when analyzing data.  We cover some of the common ones, in this chapter.</p>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14
+</code></pre></div></div>
+
+<p>If I change <code class="highlighter-rouge">x</code>, I change the result:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="n">y</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>17
+</code></pre></div></div>
+
+<p>Variables are essential in mathematics, to express general rules for
+calculation.  For the same reason, variables are essential in Python.</p>
+
+<p>In mathematics, we usually prefer variables with very short names - $x$ or $y$
+or $p$.  This makes them easier to read on the page.</p>
+
+<p>In Python, and other programming languages, we can use variables with longer
+names, and we usually do, because we use so many variables.  Giving them
+longer names helps us remember what the variables are for.</p>
+
+<p><a href="Names">Next</a> we go into more detail about names and expressions.</p>
 
           
         </section>
@@ -466,11 +534,11 @@
         
   <nav class="pagination">
     
-      <a href="/dsfe/chapters/02/Calls" class="pagination--pager" title="2.5 Call expressions
+      <a href="/dsfe/chapters/02/Expressions" class="pagination--pager" title="2.3 Expressions
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/03/Numbers" class="pagination--pager" title="3.1 Numbers
+      <a href="/dsfe/chapters/02/Names" class="pagination--pager" title="2.5 Names
 ">Next</a>
     
   </nav>
