@@ -168,6 +168,43 @@ def _case_sensitive_fs(path):
     return len(written) == 2
 
 
+def _split_yaml(lines):
+    default = [], lines
+    for i, line in enumerate(line.strip() for line in lines):
+        if line == '---':
+            break
+        if line != '':
+            return default
+    else:  # No yaml start
+        return default
+    yaml_start = i + 1
+    for j, line in enumerate(line.strip() for line in lines[yaml_start:]):
+        if line == '---':
+            break
+    else:  # No yaml end
+        return default
+    yaml_end = yaml_start + j
+    return lines[yaml_start:yaml_end], lines[yaml_end + 1:]
+
+
+def test__split_yaml():
+    # Run with
+    # pytest scripts/generate_notebook.py
+    assert _split_yaml([]) == ([], [])
+    assert _split_yaml(['foo\n', 'bar\n']) == ([], ['foo\n', 'bar\n'])
+    assert _split_yaml(['---\n', 'foo\n', 'bar\n']) == ([], ['---\n', 'foo\n', 'bar\n'])
+    exp = ['---\n', 'foo\n', '---\n']
+    assert _split_yaml(exp) == (['foo\n'], [])
+    assert (_split_yaml(['---\n', 'foo\n', '---\n', 'baz\n', 'barf\n']) ==
+            (['foo\n'], ['baz\n', 'barf\n']))
+    assert (_split_yaml(['---\n', 'foo\n', 'bar\n', '---\n', 'baz\n', 'barf\n']) ==
+            (['foo\n', 'bar\n'], ['baz\n', 'barf\n']))
+    assert (_split_yaml(['\n', '\n', '---\n', 'foo\n', '---\n', 'baz\n', 'barf\n']) ==
+            (['foo\n'], ['baz\n', 'barf\n']))
+    assert (_split_yaml(['   \n', ' \n', '---\n', 'foo\n', '---\n', 'baz\n', 'barf\n']) ==
+            (['foo\n'], ['baz\n', 'barf\n']))
+
+
 if __name__ == '__main__':
     args = parser.parse_args()
     overwrite = bool(args.overwrite)
@@ -280,9 +317,11 @@ if __name__ == '__main__':
             lines = ff.readlines()
         lines = _clean_lines(lines, new_file_path)
 
+        # Split off original yaml
+        yaml_orig, lines = _split_yaml(lines)
+
         # Front-matter YAML
-        yaml_fm = []
-        yaml_fm += ['---']
+        yaml_fm = ['---']
 
         if link.endswith('.ipynb'):
             yaml_fm += ['interact_link: {}'.format(link.lstrip('./'))]
@@ -305,8 +344,9 @@ if __name__ == '__main__':
         yaml_fm += ["  - '{}'".format(sanitized)]
         if ix_file == 0 and site_yaml.get('textbook_only') is True:
             yaml_fm += ["  - '/'"]
-        yaml_fm += ['---']
         yaml_fm = [ii + '\n' for ii in yaml_fm]
+        # Add back any original YaML, and end marker
+        yaml_fm += yaml_orig + ['---\n']
         lines = yaml_fm + lines
 
         # Write the result
