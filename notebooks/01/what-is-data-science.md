@@ -154,7 +154,10 @@ If we are right, then data science is defined by what data scientists do.  What 
 
 ## Conclusion
 
-Data science is new, and we are still working what it is.  At the moment, it is best defined by what a data scientist does.  A data scientist uses programming as the basis for a deeper, more flexible approach to data analysis.  That is what we will try to teach you on this course.
+Data science is new, and we are still working out what it is.  At the moment,
+it is best defined by what a data scientist does.  A data scientist uses
+programming as the basis for a deeper, more flexible approach to data analysis.
+That is what we will try to teach you on this course.
 
 ## References
 
