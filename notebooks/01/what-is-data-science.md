@@ -21,15 +21,19 @@ a new *culture* of data analysis - like this:
 
 Why do we choose this definition?  And does it matter?
 
-We start with the second question - does data science matter?  Then we explore the first question, by looking the origins of data science.
+We start with the second question.  If data science is important, then we need
+the right definition in order to chose what we do and teach.
 
 ## Does data science matter?
 
-For a subject that is hard to define, data science looms large in planning for education, and science.
+For a subject that is hard to define, data science looms large in planning for
+education, and science.
 
 David Donoho is an eminent statistician at Stanford University.  He recently
 wrote an article reflecting on data science, how it was defined, and what it
-could mean.  He was worried that data science would be defined in a narrow way, as something to do with big data and machine learning, but he was worried because he thought that data science should be:
+could mean.  He was worried that data science would be defined in a narrow way,
+in terms of big data and machine learning. He was worried because he
+thought that data science was important - that it should be:
 
 > ... the really important intellectual event of the next fifty years"
 
