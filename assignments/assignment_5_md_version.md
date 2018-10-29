@@ -1,5 +1,6 @@
 ```python
-# This is just for you so that you can see where the numbers are coming from
+"""This is just for you so that you can see where the numbers are coming from.
+It should be downloaded with the jupyter notebook, separately each file."""
 np.random.seed(12345)
 
 cars = np.random.randint(500,8000,size=500)
@@ -29,7 +30,7 @@ value using a numpy function
 
 ```python
 cars = np.load('./cars.npy')
-value = np.load('./value.npy')
+value_per_pounds = np.load('./value.npy')
 ```
 
 Now he choose from the array the cars, which cost more, than the lower bound he
@@ -43,7 +44,7 @@ He did the same to get rid of the value/price ratios, which are not relevant at
 this point.
 
 ```python
-cool_cars_value = value[cars>1500]
+cool_cars_value = value_per_pounds[cars>1500]
 ```
 
 He really wanted to optimise the quality of his car for the price, therefore he
@@ -56,28 +57,19 @@ been displayed in the new array.
 price_value = cool_cars * cool_cars_value
 ```
 
-Luckily python knows how to get the maximum value of an array, using the
-[max()](https://docs.python.org/3/library/functions.html#max) function, so Dan
-used that command.
+Luckily numpy knows how to get the index of the maximum value of an array, using
+the
+[np.argmax()](https://docs.scipy.org/doc/numpy-1.15.1/reference/generated/numpy.argmax.html)
+function.
 
 ```python
-best_value = max(price_value)
-best_value
+best_value_index = np.argmax(price_value)
 ```
 
-But Dan just realised that he could not interpret the price_value number, but he
-knew the cars from price, hence he wanted to find its price. He used the
-[np.where()](https://docs.scipy.org/doc/numpy-1.15.1/reference/generated/numpy.where.html)
-function to do this.
+Thereby he knew the price of he car he wants to buy.
 
 ```python
-np.where(price_value == best_value)
-```
-
-So he could see the price of he best price/value car:
-
-```python
-cool_cars[329]
+cool_cars[best_value_index]
 ```
 
 Dan was really happy that he finally did all the analysis and he can buy his new
