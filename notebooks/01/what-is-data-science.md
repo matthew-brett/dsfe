@@ -60,7 +60,7 @@ press2013history %} but we argue that the term in its current use is very
 recent.  As it is currently used, the phrase "data science" comes from the job
 title "data scientist", and the job title came from the tech industry.  D.J.
 Patil, at LinkedIn, and Jeff Hammerbacher, at Facebook, noticed that they had
-a "new breed* of data analysts - these were scientists who could code. Thomas
+a "new breed" of data analysts - these were scientists who could code. Thomas
 Davenport and Patil later described this phenomenon in a famous article "Data
 Scientist: The Sexiest Job of the 21st Century" {% cite davenport2012data %}.
 One section of the article is "Who are these people":
