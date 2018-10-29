@@ -169,22 +169,18 @@ def _case_sensitive_fs(path):
 
 
 def _split_yaml(lines):
-    default = [], lines
-    for i, line in enumerate(line.strip() for line in lines):
-        if line == '---':
-            break
-        if line != '':
-            return default
-    else:  # No yaml start
-        return default
-    yaml_start = i + 1
-    for j, line in enumerate(line.strip() for line in lines[yaml_start:]):
-        if line == '---':
-            break
-    else:  # No yaml end
-        return default
-    yaml_end = yaml_start + j
-    return lines[yaml_start:yaml_end], lines[yaml_end + 1:]
+    yaml0 = None
+    for i, L in enumerate(lines):
+        L = L.strip()
+        if yaml0 is None:
+            if L == '---':
+                yaml0 = i
+            elif L:
+                break
+        elif L == '---':
+            return lines[yaml0 + 1:i], lines[i + 1:]
+    return [], lines
+
 
 
 def test__split_yaml():
