@@ -34,7 +34,13 @@ components: bibliography rebuild-notebooks textbook
 build: components
 	bundle exec jekyll build
 
-github: build
+kill-server:
+	bash scripts/kill_server.sh
+
+check-site:
+	bash scripts/check_site.sh
+
+github: kill-server build check-site
 	ghp-import -n _site -p -f
 
 clean:

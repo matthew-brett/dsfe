@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
 <meta property="og:title" content="Data Science for Everyone">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/Untitled.Rmd">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/days/notebook_class_4.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/Untitled.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/days/notebook_class_4.Rmd">
 
 
 
@@ -181,7 +181,291 @@
 
       <section class="page__content" itemprop="text">
         
-        
+        # Notebook for class 4
+
+This is the notebook I was typing into in class 4, with some notes.
+
+First we explored different data types.
+
+```{python}
+my_float = 1.0
+```
+
+```{python}
+my_float
+```
+
+We can see what type of thing a variable refers to with the `type` function.  We will see more of functions later.
+
+```{python}
+type(my_float)
+```
+
+Notice the lack of a decimal point in the following statement.
+
+```{python}
+my_other_thing = 1
+```
+
+This gives us an `int`:
+
+```{python}
+my_other_thing
+```
+
+```{python}
+type(my_other_thing)
+```
+
+We are about to make a string.  Here I am trying to make the string "I love Python", but I get an error - why?
+
+```{python}
+my_string = I love python
+```
+
+It looked there was a problem with the spaces, so I replace the spaces with underscores:
+
+```{python}
+my_string = I_love_python
+```
+
+Now it becomes clear that Python thought that I was trying to refer to a variable name that does not exist.
+
+Here's a string - it needs quotes:
+
+```{python}
+my_string = "I love python"
+```
+
+```{python}
+my_string
+```
+
+```{python}
+type(my_string)
+```
+
+Notice that Python displays strings with quotes, by default (at least in the Notebook):
+
+```{python}
+'I love python'
+```
+
+If you use the `print` function, it does not add the quotes.
+
+```{python}
+print(my_string)
+```
+
+Here I go through the class exercise:
+
+```{python}
+a = 1.0
+b = 1
+c = 'Hello'
+```
+
+Here I add a float to itself:
+
+```{python}
+a + a
+```
+
+The addition produces a `float`:
+
+```{python}
+type(a + a)
+```
+
+Adding two `int`s gives an `int`:
+
+```{python}
+b + b
+```
+
+Adding two strings concatenates the strings:
+
+```{python}
+c + c
+```
+
+Adding a `float` to an `int` gives a `float`:
+
+```{python}
+a + b
+```
+
+Python won't let you add `float`s (or `int`s) to a string:
+
+```{python}
+a + c
+```
+
+Remember *assignment* - a name, followed by `=`, followed by an expression:
+
+```{python}
+a = 1
+```
+
+It sets the value of `a` (in this case):
+
+```{python}
+a
+```
+
+Here is a *comparison* expression.  `<` is a *comparison operator*, and returns the result of the comparison _less than_.
+
+```{python}
+a < 10
+```
+
+Here we look at the value returned from this expression:
+
+```{python}
+my_logical = a < 10
+```
+
+```{python}
+my_logical
+```
+
+It's a `bool` type (Boolean).
+
+```{python}
+type(my_logical)
+```
+
+Booleans can be either `True` or `False`:
+
+```{python}
+a > 10
+```
+
+Remember assignment (again). It has the single `=` between the name (on the left) and the expression (on the right).
+
+```{python}
+a = 1
+```
+
+Here is something very different - an equality comparison operator.  This is two equals signs: `==`.  It's an expression.  It tests whether the thing on the left is equal to the thing on the right, returning `True` or `False`.
+
+```{python}
+a == 1
+```
+
+Now we consider *call expressions*.
+
+```{python}
+a = 2 / 3
+```
+
+```{python}
+a
+```
+
+Here we *call* the function `round`, with the *argument* `a` - the number we want it to round.
+
+```{python}
+round(a)
+```
+
+We can pass `round` two arguments.  The second argument is the number of decimal points we want it to round to.
+
+```{python}
+round(a, 2)
+```
+
+We can also give this argument a *name*.  In that case, it is called a *keyword argument*.
+
+```{python}
+round(a, ndigits=2)
+```
+
+To find what the names of the arguments are, look at the help:
+
+```{python}
+round?
+```
+
+We have to get the name of the argument right, otherwise Python
+complains.
+
+```{python}
+round(a, number_of_digits=2)
+```
+
+Check the names, from the help:
+
+```{python}
+round?
+```
+
+Now we get on to arrays.
+
+```{python}
+import numpy as np
+```
+
+Here I am calling a function with no arguments.  It's a call expression, but in this case, the function needs no arguments.  It returns a single random number:
+
+```{python}
+np.random.uniform()
+```
+
+Once we have checked the help, we find there is a `size` argument, that we can specify.  This allows us to ask for 100 random numbers.
+
+```{python}
+np.random.uniform(size=100)
+```
+
+Here I put these into a variable:
+
+```{python}
+randoms = np.random.uniform(size=100)
+```
+
+It's a new type - `array`:
+
+```{python}
+type(randoms)
+```
+
+One of the things that `array`s have, is a *length*.  We can get that with the `len` function:
+
+```{python}
+len(randoms)
+```
+
+```{python}
+randoms
+```
+
+Here we do a comparison on a single random number:
+
+```{python}
+a_random = np.random.uniform()
+a_random
+```
+
+For our simulation, we want to check whether the random number is less than 0.26.  If so, we label this as a black juror.
+
+```{python}
+a_random < 0.26
+```
+
+We want to do this 100 times.  We can do this with arrays, in one shot:
+
+```{python}
+black_yn = randoms < 0.26
+black_yn
+```
+
+Now we can use the `np.count_nonzero` function to count how many `True` values there are.   This is our first simulation of a jury pool, of 100 jurors.
+
+```{python}
+np.count_nonzero(black_yn)
+```
+
         
       </section>
 
