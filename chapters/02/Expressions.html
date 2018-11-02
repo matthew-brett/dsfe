@@ -1,11 +1,866 @@
-<!DOCTYPE html>
-<html lang="en-US">
-  <meta charset="utf-8">
-  <title>Redirecting&hellip;</title>
-  <link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/02/Expressions">
-  <script>location="https://matthew-brett.github.io/dsfe/chapters/02/Expressions"</script>
-  <meta http-equiv="refresh" content="0; url=https://matthew-brett.github.io/dsfe/chapters/02/Expressions">
-  <meta name="robots" content="noindex">
-  <h1>Redirecting&hellip;</h1>
-  <a href="https://matthew-brett.github.io/dsfe/chapters/02/Expressions">Click here if you are not redirected.</a>
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>2.3 Expressions - Data Science for Everyone</title>
+<meta name="description" content="Programming languages are much simpler than human languages. Nonetheless,there are some rules of grammar to learn in any language, and that is where wewill begin. In this text, we will use the Pythonprogramming language. Learning the grammar rules is essential, and the samerules used in the most basic programs are also central to more sophisticatedprograms.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="2.3 Expressions">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/02/Expressions">
+
+
+  <meta property="og:description" content="Programming languages are much simpler than human languages. Nonetheless,there are some rules of grammar to learn in any language, and that is where wewill begin. In this text, we will use the Pythonprogramming language. Learning the grammar rules is essential, and the samerules used in the most basic programs are also central to more sophisticatedprograms.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2018-11-02T07:42:12+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/02/Expressions">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--textbook">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" class="textbook" role="main">
+  <div id="textbook_wrapper">
+    
+  <div class="sidebar sticky textbook">
+  
+  
+    <img src="/dsfe/images/dsfe_logo.png" class="textbook_logo" />
+    
+
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/"><span class="nav__sub-title">Home</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/01/what-is-data-science"><span class="nav__sub-title">1. Data Science</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/intro" class="level_1">1.1 Introduction</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/computational-tools" class="level_2">1.1.1 Computational Tools</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/statistical-techniques" class="level_2">1.1.2 Statistical Techniques</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/why-data-science" class="level_1">1.2 Why Data Science?</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Plotting_the_Classics" class="level_1">1.3 Plotting the Classics</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Literary_Characters" class="level_2">1.3.1 Literary Characters</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Another_Kind_Of_Character" class="level_2">1.3.2 Another Kind of Character</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/02/to_code"><span class="nav__sub-title">2. Programming</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/sampling_problem" class="level_1">2.1 A sampling problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/three_girls" class="level_1">2.2 A simpler problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Expressions" class="level_1">2.3 Expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/variables" class="level_1">2.4 Variables</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Names" class="level_1">2.5 Names</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Calls" class="level_1">2.6 Call expressions</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/03/data_types"><span class="nav__sub-title">3. Data types</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Numbers" class="level_1">3.1 Numbers</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Strings" class="level_1">3.2 Strings</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Comparison" class="level_1">3.3 Comparison</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Arrays" class="level_1">3.4 Arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Ranges" class="level_1">3.5 Ranges</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/More_on_Arrays" class="level_1">3.6 More on arrays</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+
+  
+  </div>
+
+
+    <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="headline" content="2.3 Expressions">
+      <meta itemprop="description" content="Programming languages are much simpler than human languages. Nonetheless,there are some rules of grammar to learn in any language, and that is where wewill begin. In this text, we will use the Pythonprogramming language. Learning the grammar rules is essential, and the samerules used in the most basic programs are also central to more sophisticatedprograms.">
+      <meta itemprop="datePublished" content="November 02, 2018">
+      
+
+      <div class="page__inner-wrap">
+        
+          <header>
+            <h1 id="page-title" class="page__title" itemprop="headline">2.3 Expressions
+</h1>
+          </header>
+        
+
+        <section class="page__content" itemprop="text">
+          
+            
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#example">Example</a></li>
+</ul>
+    </nav>
+  </aside>
+
+
+          
+          <!-- INTERACT LINKS -->
+
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/02/Expressions.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F02%2FExpressions.ipynb">Interact</a>
+
+
+          <p>Programming languages are much simpler than human languages. Nonetheless,
+there are some rules of grammar to learn in any language, and that is where we
+will begin. In this text, we will use the <a href="https://www.python.org/">Python</a>
+programming language. Learning the grammar rules is essential, and the same
+rules used in the most basic programs are also central to more sophisticated
+programs.</p>
+
+<p>Programs contain <em>expressions</em>.</p>
+
+<p>You can think of an expression as a recipe that returns a value.  For example,
+this is an expression:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
+</code></pre></div></div>
+
+<p>Notice that the Notebook displays the value.  This the <em>value</em> that the
+expression returns.</p>
+
+<p>An expression can describe to the computer how to combine pieces of data. In
+our example, we have a multiplication expression that consists of a <code class="highlighter-rouge">*</code> symbol
+between two numerical expressions. Expressions, such as <code class="highlighter-rouge">3 * 4</code>, are
+<em>evaluated</em> by the computer. The value (the result of <em>evaluation</em>) of the
+last expression in each cell, <code class="highlighter-rouge">12</code> in this case, is displayed below the cell.</p>
+
+<p>The grammar rules of a programming language are rigid. In Python, the <code class="highlighter-rouge">*</code>
+symbol cannot appear twice in a row. The computer will not try to interpret an
+expression that differs from its prescribed expression structures. Instead, it
+will show a <code class="highlighter-rouge">SyntaxError</code> error. The <em>Syntax</em> of a language is its set of
+grammar rules, and a <code class="highlighter-rouge">SyntaxError</code> indicates that an expression structure
+doesn’t match any of the rules of the language.</p>
+
+<p>Try executing the next line after removing the <code class="highlighter-rouge">#</code> character at the beginning
+of the line</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 3 * * 4
+</span></code></pre></div></div>
+
+<p>Small changes to an expression can change its meaning entirely. Below, the
+space between the <code class="highlighter-rouge">*</code>’s has been removed. Because <code class="highlighter-rouge">**</code> appears between two
+numerical expressions, the expression is a well-formed <em>exponentiation</em>
+expression (the first number raised to the power of the second: 3 times 3
+times 3 times 3). The symbols <code class="highlighter-rouge">*</code> and <code class="highlighter-rouge">**</code> are called <em>operators</em>, and the
+values they combine are called <em>operands</em>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">**</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>81
+</code></pre></div></div>
+
+<p><strong>Common Operators.</strong> Data science often involves combining numerical values,
+and the set of operators in a programming language are designed to so that
+expressions can be used to express any sort of arithmetic. In Python, the
+following operators are essential.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Expression Type</th>
+      <th>Operator</th>
+      <th>Example</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Addition</td>
+      <td><code class="highlighter-rouge">+</code></td>
+      <td><code class="highlighter-rouge">2 + 3</code></td>
+      <td><code class="highlighter-rouge">5</code></td>
+    </tr>
+    <tr>
+      <td>Subtraction</td>
+      <td><code class="highlighter-rouge">-</code></td>
+      <td><code class="highlighter-rouge">2 - 3</code></td>
+      <td><code class="highlighter-rouge">-1</code></td>
+    </tr>
+    <tr>
+      <td>Multiplication</td>
+      <td><code class="highlighter-rouge">*</code></td>
+      <td><code class="highlighter-rouge">2 * 3</code></td>
+      <td><code class="highlighter-rouge">6</code></td>
+    </tr>
+    <tr>
+      <td>Division</td>
+      <td><code class="highlighter-rouge">/</code></td>
+      <td><code class="highlighter-rouge">7 / 3</code></td>
+      <td><code class="highlighter-rouge">2.66667</code></td>
+    </tr>
+    <tr>
+      <td>Remainder</td>
+      <td><code class="highlighter-rouge">%</code></td>
+      <td><code class="highlighter-rouge">7 % 3</code></td>
+      <td><code class="highlighter-rouge">1</code></td>
+    </tr>
+    <tr>
+      <td>Exponentiation</td>
+      <td><code class="highlighter-rouge">**</code></td>
+      <td><code class="highlighter-rouge">2 ** 0.5</code></td>
+      <td><code class="highlighter-rouge">1.41421</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Python expressions obey the same familiar rules of <em>precedence</em> as in algebra:
+multiplication and division occur before addition and subtraction. Parentheses
+can be used to group together smaller expressions within a larger expression.</p>
+
+<p>Multiplication has precedence (we do <code class="highlighter-rouge">2 * 3</code> before adding to 1).</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7
+</code></pre></div></div>
+
+<p>We can use parentheses to group expressions that should be evaluated first.
+Here we force <code class="highlighter-rouge">1 + 2</code> <em>before</em> the multiplication by 3.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9
+</code></pre></div></div>
+
+<p>In the expression above, the <code class="highlighter-rouge">1 + 2</code> is a sub-expression within the whole
+expression <code class="highlighter-rouge">(1 + 2) * 3</code>.  When Python sees this line, it finds the expression
+<code class="highlighter-rouge">(1 + 2)</code> and evaluates that to get <code class="highlighter-rouge">3</code>.  Then it evaluates <code class="highlighter-rouge">3 * 3</code> to get
+<code class="highlighter-rouge">9</code>.</p>
+
+<p>As you learn to program, you will learn to think about what Python is doing,
+and the logical steps it follows.  Over time, you will find it easier to
+predict what it will do, and understand why.</p>
+
+<h3 id="example">Example</h3>
+
+<p>Here, from the Washington Post in the early 1980s, is a graph that attempts to
+compare the earnings of doctors with the earnings of other professionals over
+a few decades. Do we really need to see two heads (one with a stethoscope) on
+each bar? <a href="https://en.wikipedia.org/wiki/Edward_Tufte">Edward Tufte</a>,
+Professor at Yale and one of the world’s experts on visualizing quantitative
+information, coined the term “chartjunk” for such unnecessary embellishments.
+This graph is also an example of the “low data-to-ink ratio” that Tufte
+deplores.</p>
+
+<p><img src="/dsfe/images/bad_post_graph.png" alt="Washington Post graph" /></p>
+
+<p>Most importantly, the horizontal axis of the graph is is not drawn to scale.
+This has a significant effect on the shape of the bar graphs. When drawn to
+scale and shorn of decoration, the graphs reveal trends that are quite
+different from the apparently linear growth in the original. The elegant graph
+below is due to Ross Ihaka, one of the originators of the statistical system
+R.</p>
+
+<p><img src="/dsfe/images/ihaka_fixed_post_graph.png" alt="Ross Ihaka's version of Post graph" /></p>
+
+<p>In the period 1939 to 1963, the doctors’ incomes went up from \$3,262 to
+\$25,050. So during that period the average increase in income per year was
+about \$900.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">25050</span> <span class="o">-</span> <span class="mi">3262</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1963</span> <span class="o">-</span> <span class="mi">1939</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>907.8333333333334
+</code></pre></div></div>
+
+<p>In Ross Ihaka’s graph you can see that in this period, the doctors’ incomes
+rise roughly linearly at a fairly steady rate. That rate is about \$900, as we
+have just calculated.</p>
+
+<p>But in the period 1963 to 1976, the rate is more than three times as high:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">62799</span> <span class="o">-</span> <span class="mi">25050</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1976</span> <span class="o">-</span> <span class="mi">1963</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2903.769230769231
+</code></pre></div></div>
+
+<p>That is why the graph rises much more steeply after 1963.</p>
+
+<p>This chapter introduces many types of expressions. Learning to program
+involves trying out everything you learn in combination, investigating the
+behavior of the computer. What happens if you divide by zero? What happens if
+you divide twice in a row? You don’t always need to ask an expert (or the
+Internet); many of these details can be discovered by trying them out
+yourself.</p>
+
+<div class="isa_info">
+<i class="fa fa-info-circle"></i>
+This page has content from the
+<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Expressions.ipynb">
+Expressions</a>
+notebook from the UC Berkeley course.  See the Berkeley course section of the
+<a href="{{ site.baseurl }}/license">license</a>
+</div>
+
+
+          
+        </section>
+
+        <footer class="page__meta">
+          
+          
+
+
+        </footer>
+
+        
+
+        
+  <nav class="pagination">
+    
+      <a href="/dsfe/chapters/02/three_girls" class="pagination--pager" title="2.2 A simpler problem
+">Previous</a>
+    
+    
+      <a href="/dsfe/chapters/02/variables" class="pagination--pager" title="2.4 Variables
+">Next</a>
+    
+  </nav>
+
+
+      </div>
+
+      
+    </article>
+  </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
 </html>
