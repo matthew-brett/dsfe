@@ -34,7 +34,11 @@ components: bibliography rebuild-notebooks textbook
 build: components
 	bundle exec jekyll build
 
-github: build
+kill-server:
+	bash scripts/kill_server.sh
+
+github: kill-server build
+	grep -r localhost:4000 _site && exit 1
 	ghp-import -n _site -p -f
 
 clean:
