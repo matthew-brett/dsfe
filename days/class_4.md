@@ -11,8 +11,9 @@ permalink: /days/class_4
 
 ## Agenda
 
-* comparisons (``>``, ``==``)
 * data types (ints, floats, strings, logical)
+* [exercise 3](../exercises/exercise_3)
+* comparisons (``>``, ``==``)
 * call expressions - `round`
 * keyword arguments - `ndigits`
 * arrays.
