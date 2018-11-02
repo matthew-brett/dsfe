@@ -17,9 +17,8 @@ permalink: /days/class_4
 * call expressions - `round`
 * keyword arguments - `ndigits`
 * arrays.
-* axes.
-* three girls.
-* a white jury.
+
+See the [notebook from class](notebook_class_4.ipynb).
 
 ## Background
 
