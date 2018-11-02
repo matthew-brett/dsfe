@@ -12,10 +12,13 @@ permalink: /days/class_4
 ## Agenda
 
 * comparisons (``>``, ``==``)
-* data types (numbers, logical)
-* call expressions.
-* keyword arguments.
+* data types (ints, floats, strings, logical)
+* call expressions - `round`
+* keyword arguments - `ndigits`
 * arrays.
+* axes.
+* three girls.
+* a white jury.
 
 ## Background
 
