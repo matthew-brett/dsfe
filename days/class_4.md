@@ -9,6 +9,16 @@ permalink: /days/class_4
 * [A sampling problem](../chapters/02/sampling_problem)
 * [A simpler problem](../chapters/02/three_girls)
 
+## Agenda
+
+* comparisons (``>``, ``==``)
+* data types (numbers, logical)
+* call expressions.
+* keyword arguments.
+* arrays.
+
+## Background
+
 * [Call expressions](../chapters/02/Calls)
 * [Data types](../chapters/03/data_types)
 * [Numbers](../chapters/03/Numbers)
