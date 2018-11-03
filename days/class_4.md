@@ -30,3 +30,7 @@ See the [notebook from class](notebook_class_4.ipynb).
 * [Arrays](../chapters/03/Arrays)
 * [Ranges](../chapters/03/Ranges)
 * [More on arrays](../chapters/03/More_on_Arrays)
+
+## Assignment
+
+Assignment is [assignment 5](../assignments/assignment_5)
