@@ -37,8 +37,10 @@ build: components
 kill-server:
 	bash scripts/kill_server.sh
 
-github: kill-server build
-	grep -r localhost:4000 _site && exit 1
+check-site:
+	bash scripts/check_site.sh
+
+github: kill-server build check-site
 	ghp-import -n _site -p -f
 
 clean:
