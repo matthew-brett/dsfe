@@ -3,19 +3,16 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>  Data types - Data Science for Everyone</title>
-<meta name="description" content="Types of things">
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
+<meta name="description" content="">
 
 
 
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="  Data types">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/03/data_types">
-
-
-  <meta property="og:description" content="Types of things">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/03/reply_supreme.Rmd">
 
 
 
@@ -23,7 +20,6 @@
 
 
 
-  <meta property="article:published_time" content="2018-11-03T23:57:07+00:00">
 
 
 
@@ -34,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/03/data_types">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/03/reply_supreme.Rmd">
 
 
 
@@ -103,11 +99,61 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
   </head>
 
-  <body class="layout--textbook">
+  <body class="layout--single">
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
 <![endif]-->
+
+    
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/dsfe/">
+          <img src="/dsfe/images/dsfe_logo.png" class="masthead_logo" />
+          Data Science for Everyone
+        </a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+            </li>
+          
+          
+            <li class="masthead__menu-item">
+              <a href="/dsfe/chapters/01/what-is-data-science">Textbook</a>
+            </li>
+          
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
 
     
 
@@ -116,391 +162,205 @@
 
 
 
-<div id="main" class="textbook" role="main">
-  <div id="textbook_wrapper">
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     
-  <div class="sidebar sticky textbook">
-  
-  
-    <img src="/dsfe/images/dsfe_logo.png" class="textbook_logo" />
+    
+    
     
 
-    
+    <div class="page__inner-wrap">
+      
+        <header>
+          <!--  -->
+          
+        </header>
       
 
-<nav class="nav__list">
-  
-  <input id="ac-toc" name="accordion-toc" type="checkbox" />
-  <label for="ac-toc">Toggle Menu</label>
-  <ul class="nav__items">
-    
-      <li>
+      <section class="page__content" itemprop="text">
         
-          
-          
+        Our task from has been to reply to the Supreme Court on their judgment
+in the appeal of Robert Swain.
 
-          <a href="/dsfe/"><span class="nav__sub-title">Home</span></a>
-        
 
-        
-      </li>
-    
-      <li>
-        
-          
-          
+Remember, Robert Swain appealed his death sentence, for rape, on the
+basis that the jury selection was biased against black people.
 
-          <a href="/dsfe/chapters/01/what-is-data-science"><span class="nav__sub-title">1. Data Science</span></a>
-        
 
-        
-        <ul>
-          
-            
-            
+His trial had a jury pool, of 100, from which the jury had to be
+selected.  That jury pool should be representative of the local
+population.
 
-            
-            
+The jury pool had 8 black people, but the local population was 26%
+black.
 
-            
+If the jury pool was representative, we would expect about 26 of 100
+people to be back.  Our question is what we mean by *about* 26 of 100.
 
-            <li><a href="/dsfe/chapters/01/intro" class="level_1">1.1 Introduction</a></li>
-          
-            
-            
+The Supreme Court thought that the difference between expected (26) and
+actual (8) was small. But was it?  Does 8 of 100 fit somewhere in our
+description of *about* 26 of 100?
 
-            
-            
 
-            
+To answer this, we are going to *simulate* making a jury pool.
 
-            <li><a href="/dsfe/chapters/01/computational-tools" class="level_2">1.1.1 Computational Tools</a></li>
-          
-            
-            
+Our *model* is that the jurors have been randomly selected from the
+population.  That is, for any one juror, there is a 0.26 probability
+that they are black.
 
-            
-            
+First we make one jury pool, of 100, to remind ourselves of the task.
 
-            
+Then we make 10 jury pools of 100, to get warmed up.
 
-            <li><a href="/dsfe/chapters/01/statistical-techniques" class="level_2">1.1.2 Statistical Techniques</a></li>
-          
-            
-            
+Finally we make 10000 jury pools, each of 100 members, and see what we
+get.
 
-            
-            
+```{python}
+# Import the array library
+import numpy as np
+# Make the floating point numbers print nicely.
+# This does not affect the calculations, only the display.
+np.set_printoptions(precision=2, suppress=True)
+```
 
-            
+Here is one jury pool, and the number of black people we get in our simulation.
 
-            <li><a href="/dsfe/chapters/01/why-data-science" class="level_1">1.2 Why Data Science?</a></li>
-          
-            
-            
+```{python}
+# Make 100 random numbers between 0 and 1
+randoms = np.random.uniform(size=100)
+# Say values < 0.26 correspond to black jurors.
+black_yn = randoms < 0.26
+# We now have True for black jurors and False otherwise.
+# Count the number of Trues
+np.count_nonzero(black_yn)
+```
 
-            
-            
+That is one estimate, for the number of black people we can expect, if
+our model is correct.  We can run that a few times to get a range of
+values.   If we run it only a few times, we might be unlucky, and get
+some results that are not representative.  It is safer to run it a huge
+number of times, to make sure we've got an idea of the variation.
 
-            
 
-            <li><a href="/dsfe/chapters/01/Plotting_the_Classics" class="level_1">1.3 Plotting the Classics</a></li>
-          
-            
-            
+We do that, by using a two-dimensional array.
 
-            
-            
+We will start by making 10 jury pools, to get warmed up.  Later we will
+use a much higher number.
 
-            
+```{python}
+# Make an array with 10 rows, and 100 columns.
+# Each row corresponds to one jury pool
+randoms_2d = np.random.uniform(size=(10, 100))
+```
 
-            <li><a href="/dsfe/chapters/01/Literary_Characters" class="level_2">1.3.1 Literary Characters</a></li>
-          
-            
-            
+Next we label each element in the array as True (black juror) or False
+(white juror).
 
-            
-            
+```{python}
+# Set True for black jurors
+black_yn_2d = randoms_2d < 0.26
+```
 
-            
+We count how many True value we have in each *row*:
 
-            <li><a href="/dsfe/chapters/01/Another_Kind_Of_Character" class="level_2">1.3.2 Another Kind of Character</a></li>
-          
-        </ul>
-        
-      </li>
-    
-      <li>
-        
-          
-          
+```{python}
+black_counts = np.count_nonzero(black_yn_2d, axis=1)
+black_counts
+```
 
-          <a href="/dsfe/chapters/02/to_code"><span class="nav__sub-title">2. Programming</span></a>
-        
+Each of these values is one estimate for how many black jurors we should expect, if our model is right.  Already we get the feeling that 8 is rather unlikely, if our model is correct.  But - how unlikely?
 
-        
-        <ul>
-          
-            
-            
 
-            
-            
+To get a better estimate, let us do the same thing, but with 10000 jury
+pools, and therefore, 10000 estimates.
 
-            
+```{python}
+randoms_2d_big = np.random.uniform(size=(10000, 100))
+black_yn_big = randoms_2d_big < 0.26
+black_counts_big = np.count_nonzero(black_yn_big, axis=1)
+```
 
-            <li><a href="/dsfe/chapters/02/sampling_problem" class="level_1">2.1 A sampling problem</a></li>
-          
-            
-            
+If you ran this cell yourself, you will notice that it runs very fast,
+in much less than a second, on a reasonable laptop.
 
-            
-            
 
-            
+We now have 10000 estimates, one for each row in the original array, and therefore, one for each simulated jury pool.
 
-            <li><a href="/dsfe/chapters/02/three_girls" class="level_1">2.2 A simpler problem</a></li>
-          
-            
-            
+Remember, the function `len` shows us the length of the value.
 
-            
-            
+```{python}
+len(black_counts_big)
+```
 
-            
+Next we want to have a look at the spread of these values.  To do this, we plot a histogram.  Here is how to do that, in Python:
 
-            <li><a href="/dsfe/chapters/02/Expressions" class="level_1">2.3 Expressions</a></li>
-          
-            
-            
+```{python}
+# Load the plotting library
+import matplotlib.pyplot as plt
+```
 
-            
-            
+```{python}
+# A special command to tell the Notebook to show us
+# the plots inside the Notebook
+# %matplotlib inline
+```
 
-            
+```{python}
+# Do the histogram of our 10000 estimates.
+plt.hist(black_counts_big)
+```
 
-            <li><a href="/dsfe/chapters/02/variables" class="level_1">2.4 Variables</a></li>
-          
-            
-            
+It looks as if 8 is nowhere on the spread of our estimates.  How many
+times did we get a value less than or equal to 8, in all our 10000
+estimates?
 
-            
-            
+```{python}
+counts_are_low = black_counts_big < 9
+np.count_nonzero(counts_are_low)
+```
 
-            
+In 10000 random jury pools, we never see a value as low as 8.  We can
+ask Numpy to show us the minimum value that we do see, by using the
+`np.min` function:
 
-            <li><a href="/dsfe/chapters/02/Names" class="level_1">2.5 Names</a></li>
-          
-            
-            
+```{python}
+np.min(black_counts_big)
+```
 
-            
-            
+We have run an analysis assuming that the jurors were selected at
+random.  On that assumption, a count of 8 jurors in 1000 is incredibly
+unlikely.  It is so unlikely, that we never get a number as low as 8, in
+10000 repeats.   That makes us think that the probability of getting
+8 black people in a jury pool of 100, is less than 1 in 10000 or:
 
-            
-
-            <li><a href="/dsfe/chapters/02/Calls" class="level_1">2.6 Call expressions</a></li>
-          
-        </ul>
-        
-      </li>
-    
-      <li>
-        
-          
-          
-
-          <a href="/dsfe/chapters/03/data_types"><span class="nav__sub-title">3. Data types</span></a>
-        
+```{python}
+1 / 10000
+```
 
         
-        <ul>
-          
-            
-            
+      </section>
 
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Numbers" class="level_1">3.1 Numbers</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Strings" class="level_1">3.2 Strings</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Comparison" class="level_1">3.3 Comparison</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Arrays" class="level_1">3.4 Arrays</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Ranges" class="level_1">3.5 Ranges</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/More_on_Arrays" class="level_1">3.6 More on arrays</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/arrays_and_axes" class="level_1">3.7 Arrays and axes</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/reply_supreme" class="level_1">3.8 Reply to the Supreme Court</a></li>
-          
-        </ul>
+      <footer class="page__meta">
         
-      </li>
-    
-  </ul>
-</nav>
-
-    
-
-  
-  </div>
+        
 
 
-    <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="  Data types">
-      <meta itemprop="description" content="Types of things">
-      <meta itemprop="datePublished" content="November 03, 2018">
+        
+      </footer>
+
       
 
-      <div class="page__inner-wrap">
-        
-          <header>
-            <h1 id="page-title" class="page__title" itemprop="headline"><ol>
-  <li>Data types</li>
-</ol>
-</h1>
-          </header>
-        
-
-        <section class="page__content" itemprop="text">
-          
-            
-
-<!-- TOC will only show up if it has at least one item -->
-
-
-
-          
-          <!-- INTERACT LINKS -->
-
-    
-    
-    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/03/data_types.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F03%2Fdata_types.ipynb">Interact</a>
-
-
-          <h1 id="types-of-things">Types of things</h1>
-
-<p>Every object in Python, has a type.</p>
-
-<p>We can show what type of thing something is, by calling <code class="highlighter-rouge">type</code>, like this:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int
-</code></pre></div></div>
-
-<p>If you get stuck in some code, it is often useful to check what types the objects are.</p>
-
-<p>We will use multiple types when analyzing data.  We cover some of the common ones, in this chapter.</p>
-
-          
-        </section>
-
-        <footer class="page__meta">
-          
-          
-
-
-        </footer>
-
-        
-
-        
-  <nav class="pagination">
-    
-      <a href="/dsfe/chapters/02/Calls" class="pagination--pager" title="2.6 Call expressions
-">Previous</a>
-    
-    
-      <a href="/dsfe/chapters/03/Numbers" class="pagination--pager" title="3.1 Numbers
-">Next</a>
-    
-  </nav>
-
-
-      </div>
-
       
-    </article>
-  </div>
+
+    </div>
+
+    
+  </article>
+
+  
+  
 </div>
 
     </div>

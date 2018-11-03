@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>1.1.2 Statistical Techniques - Data Science for Everyone</title>
-<meta name="description" content="Statistical Techniques">
+<!-- begin _includes/seo.html --><title>3.7 Arrays and axes - Data Science for Everyone</title>
+<meta name="description" content="  We return to Numpy arrays.  Arrays can be two-dimensional.  An array with two dimensions has rows and columns.  The rows andcolumns are the two axes of the array.  We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="1.1.2 Statistical Techniques">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/01/statistical-techniques">
+<meta property="og:title" content="3.7 Arrays and axes">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/03/arrays_and_axes">
 
 
-  <meta property="og:description" content="Statistical Techniques">
+  <meta property="og:description" content="  We return to Numpy arrays.  Arrays can be two-dimensional.  An array with two dimensions has rows and columns.  The rows andcolumns are the two axes of the array.  We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/01/statistical-techniques">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/03/arrays_and_axes">
 
 
 
@@ -410,15 +410,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="1.1.2 Statistical Techniques">
-      <meta itemprop="description" content="Statistical Techniques">
+      <meta itemprop="headline" content="3.7 Arrays and axes">
+      <meta itemprop="description" content="  We return to Numpy arrays.  Arrays can be two-dimensional.  An array with two dimensions has rows and columns.  The rows andcolumns are the two axes of the array.  We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.">
       <meta itemprop="datePublished" content="November 03, 2018">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">1.1.2 Statistical Techniques
+            <h1 id="page-title" class="page__title" itemprop="headline">3.7 Arrays and axes
 </h1>
           </header>
         
@@ -434,7 +434,9 @@
     <nav class="toc">
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#statistical-techniques">Statistical Techniques</a></li>
+  <li><a href="#starting-with-one-dimension">Starting with one dimension</a></li>
+  <li><a href="#two-dimensions">Two-dimensions</a></li>
+  <li><a href="#operations-on-axes">Operations on axes</a></li>
 </ul>
     </nav>
   </aside>
@@ -443,43 +445,190 @@
           
           <!-- INTERACT LINKS -->
 
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/03/arrays_and_axes.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F03%2Farrays_and_axes.ipynb">Interact</a>
 
-          <h2 id="statistical-techniques">Statistical Techniques</h2>
 
-<p>Modern data analysis involves techniques from several fields, including
-statistics and machine learning.</p>
+          <ul>
+  <li>We return to Numpy <code class="highlighter-rouge">array</code>s.</li>
+  <li>Arrays can be two-dimensional.</li>
+  <li>An array with two dimensions has <em>rows</em> and <em>columns</em>.  The rows and
+columns are the two <em>axes</em> of the array.</li>
+  <li>We can ask Numpy to do operations over rows or columns, using the
+<code class="highlighter-rouge">axis</code> keyword argument.</li>
+</ul>
 
-<p>Statistics is the body of knowledge about drawing conclusions from incomplete
-information.  Put another way, statistics allows us to reason about data in
-the presence of uncertainty.</p>
+<h2 id="starting-with-one-dimension">Starting with one dimension</h2>
 
-<p>Among the statistical tools that we will use are: hypothesis testing,
-confidence intervals, and tools for prediction of new data.</p>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># We need Numpy
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
 
-<p>Because we are doing data science, we will take a rather different approach
-from standard statistical teaching.  Data science puts coding at the heart of
-data analysis. Coding gives us a much more powerful set of tools than have
-been available in the past.  This has great benefits for analysis, but also
-for teaching.</p>
+<p>Here I make an array that contains three random numbers, using the <code class="highlighter-rouge">size</code> keyword argument:</p>
 
-<p>The benefits for analysis are that we can get, clean, and analyze a much wider
-range of data.  It becomes natural to extend our methods of analysis to
-techniques based in computation, like machine learning.</p>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">three_randoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">three_randoms</span>
+</code></pre></div></div>
 
-<p>The benefits for teaching are two-fold.  The first benefit is our ability to
-analyze real data.  The greater power and range of our tools allow us to
-analyze real-world, messy data instead of cleaned-up toy datasets, so you are
-better prepared to analyze the real data you will soon have to deal with in
-your education and work.  The second benefit is that an emphasis on
-computation allows us to use richer, simpler and more powerful techniques,
-based in resampling, that are easier to explain, and have a deeper
-relationship to the models that we are using.  We will rely much less on
-mathematics, and that gives us time to explain the ideas in another way, and
-in more depth.</p>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 0.63262018,  0.68145099,  0.44234445])
+</code></pre></div></div>
 
-<p>See the <a href="https://www.inferentialthinking.com/chapters/01/1/2/statistical-techniques">Statistical
-techniques</a>
-page from the UC Berkeley course, for more discussion.</p>
+<p>Remember, this is a value of type <code class="highlighter-rouge">array</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">three_randoms</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numpy.ndarray
+</code></pre></div></div>
+
+<p>We can compare all the values in this array to a single number.   In that case, we get a new array, with a <code class="highlighter-rouge">True</code> value in the positions where the comparison was True, and <code class="highlighter-rouge">False</code> values otherwise:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">randoms_compared</span> <span class="o">=</span> <span class="n">three_randoms</span> <span class="o">&lt;</span> <span class="mf">0.5</span>
+<span class="n">randoms_compared</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False, False,  True], dtype=bool)
+</code></pre></div></div>
+
+<p>We also found that we can apply functions to these arrays.  For example, we found that <code class="highlighter-rouge">np.count_nonzero</code> returns the number of elements that are not 0.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">randoms_compared</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<p>This works because the function considers <code class="highlighter-rouge">False</code> to be equal to 0 and <code class="highlighter-rouge">True</code> to be equal to 1:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<h2 id="two-dimensions">Two-dimensions</h2>
+
+<p>The array <code class="highlighter-rouge">three_randoms</code> is a one dimensional array, with three elements.</p>
+
+<p>We can also create two-dimensional arrays.   Here is an array with 10 <em>rows</em> and 3 <em>columns</em>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bigger_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">bigger_array</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ 0.05585871,  0.05413727,  0.32041905],
+       [ 0.63915922,  0.51826351,  0.30616903],
+       [ 0.83548946,  0.28252578,  0.08659505],
+       [ 0.13685017,  0.39565442,  0.56529214],
+       [ 0.83557117,  0.61090886,  0.30468829],
+       [ 0.89748368,  0.36905224,  0.94437477],
+       [ 0.22942176,  0.82711608,  0.87900059],
+       [ 0.04418512,  0.54216864,  0.08840114],
+       [ 0.34922277,  0.48093163,  0.41591925],
+       [ 0.38223329,  0.30090181,  0.60076348]])
+</code></pre></div></div>
+
+<p>Notice that we made the one-dimensional array with <code class="highlighter-rouge">size=3</code>.  We make the two-dimensional array by passing two numbers to <code class="highlighter-rouge">size</code>.  We pass two numbers with something like <code class="highlighter-rouge">size=(10, 3)</code>, as we did above.  We haven’t covered this way of specifying a pair of numbers yet.  For the moment, we hope you will take our word for it.</p>
+
+<p>You can probably predict what will happen when we compare this two-dimensional array to 0.5.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bigger_compared</span> <span class="o">=</span> <span class="n">bigger_array</span> <span class="o">&lt;</span> <span class="mf">0.5</span>
+<span class="n">bigger_compared</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ True,  True,  True],
+       [False, False,  True],
+       [False,  True,  True],
+       [ True,  True, False],
+       [False, False,  True],
+       [False,  True, False],
+       [ True, False, False],
+       [ True, False,  True],
+       [ True,  True,  True],
+       [ True,  True, False]], dtype=bool)
+</code></pre></div></div>
+
+<p>As before, there is now a True at each position where there number was less than 0.5, with False everywhere else.</p>
+
+<p>Can you predict what will happen with <code class="highlighter-rouge">np.count_nonzero</code>?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>18
+</code></pre></div></div>
+
+<p>You can probably see that <code class="highlighter-rouge">np.count_nonzero</code> is counting the number of True values in any position in the array.</p>
+
+<h2 id="operations-on-axes">Operations on axes</h2>
+
+<p>What if we want to see how many True values there are in each column?</p>
+
+<p>To do this, we need the <code class="highlighter-rouge">axis</code> keyword to <code class="highlighter-rouge">np.count_nonzero</code>, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([6, 6, 6])
+</code></pre></div></div>
+
+<p>You will see that we have one value per column, where each value is the count of True values in that column.</p>
+
+<p>Why <code class="highlighter-rouge">axis=0</code>?</p>
+
+<p>The array has two dimensions, and therefore, two <em>axes</em>.  The first axis
+is the rows, the second axis is the columns.</p>
+
+<p>Why <code class="highlighter-rouge">0</code>?  Python thinks of sequences as starting at position 0.  The
+element at position 0 is the first element in the sequence.  Thus,
+<code class="highlighter-rouge">axis=0</code> means the first axis.</p>
+
+<p>Now imagine looking down the first axis in our array.  The first axis is
+the rows, so we are looking down the rows.  First you see the first
+element in the first row, then you see the first element in the second
+row, and so on.  So, if we are doing a count of not-0 elements over the
+first axis (rows), we do this:</p>
+
+<ul>
+  <li>count the number of not-0 element going down the first element in the
+row, then</li>
+  <li>count the number of not-0 element going down the second element in the
+row, then</li>
+  <li>count the number of not-0 element going down the third element in the
+row.</li>
+</ul>
+
+<p>The result is three values, one for each element in the row.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([6, 6, 6])
+</code></pre></div></div>
+
+<p>Because of the reasoning above, these the counts for each column (there are 3 columns).</p>
+
+<p>What if we want the counts for each row?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 1, 2, 2, 1, 1, 1, 2, 3, 2])
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">axis=1</code> asks for the count over the second axis.  If we look over the
+second axis, we look over the first element in the first row, then the
+second element in the first row, then the third element in the first
+row.  So, counting over <code class="highlighter-rouge">axis=1</code>, gives the counts for each row.   We
+get one count for each row, so 10 counts.</p>
 
           
         </section>
@@ -496,11 +645,11 @@ page from the UC Berkeley course, for more discussion.</p>
         
   <nav class="pagination">
     
-      <a href="/dsfe/chapters/01/computational-tools" class="pagination--pager" title="1.1.1 Computational Tools
+      <a href="/dsfe/chapters/03/More_on_Arrays" class="pagination--pager" title="3.6 More on arrays
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/01/why-data-science" class="pagination--pager" title="1.2 Why Data Science?
+      <a href="/dsfe/chapters/03/reply_supreme" class="pagination--pager" title="3.8 Reply to the Supreme Court
 ">Next</a>
     
   </nav>

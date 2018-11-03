@@ -3,19 +3,16 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>  Data types - Data Science for Everyone</title>
-<meta name="description" content="Types of things">
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
+<meta name="description" content="">
 
 
 
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="  Data types">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/03/data_types">
-
-
-  <meta property="og:description" content="Types of things">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/03/arrays_and_axes.Rmd">
 
 
 
@@ -23,7 +20,6 @@
 
 
 
-  <meta property="article:published_time" content="2018-11-03T23:57:07+00:00">
 
 
 
@@ -34,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/03/data_types">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/03/arrays_and_axes.Rmd">
 
 
 
@@ -103,11 +99,61 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
   </head>
 
-  <body class="layout--textbook">
+  <body class="layout--single">
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
 <![endif]-->
+
+    
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/dsfe/">
+          <img src="/dsfe/images/dsfe_logo.png" class="masthead_logo" />
+          Data Science for Everyone
+        </a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+            </li>
+          
+          
+            <li class="masthead__menu-item">
+              <a href="/dsfe/chapters/01/what-is-data-science">Textbook</a>
+            </li>
+          
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
 
     
 
@@ -116,391 +162,190 @@
 
 
 
-<div id="main" class="textbook" role="main">
-  <div id="textbook_wrapper">
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     
-  <div class="sidebar sticky textbook">
-  
-  
-    <img src="/dsfe/images/dsfe_logo.png" class="textbook_logo" />
+    
+    
     
 
-    
+    <div class="page__inner-wrap">
+      
+        <header>
+          <!--  -->
+          
+        </header>
       
 
-<nav class="nav__list">
-  
-  <input id="ac-toc" name="accordion-toc" type="checkbox" />
-  <label for="ac-toc">Toggle Menu</label>
-  <ul class="nav__items">
-    
-      <li>
+      <section class="page__content" itemprop="text">
         
-          
-          
+        * We return to Numpy `array`s.
+* Arrays can be two-dimensional.
+* An array with two dimensions has *rows* and *columns*.  The rows and
+  columns are the two *axes* of the array.
+* We can ask Numpy to do operations over rows or columns, using the
+  `axis` keyword argument.
 
-          <a href="/dsfe/"><span class="nav__sub-title">Home</span></a>
-        
 
-        
-      </li>
-    
-      <li>
-        
-          
-          
+## Starting with one dimension
 
-          <a href="/dsfe/chapters/01/what-is-data-science"><span class="nav__sub-title">1. Data Science</span></a>
-        
+```{python}
+# We need Numpy
+import numpy as np
+```
 
-        
-        <ul>
-          
-            
-            
+Here I make an array that contains three random numbers, using the `size` keyword argument:
 
-            
-            
+```{python}
+three_randoms = np.random.uniform(size=3)
+three_randoms
+```
 
-            
+Remember, this is a value of type `array`:
 
-            <li><a href="/dsfe/chapters/01/intro" class="level_1">1.1 Introduction</a></li>
-          
-            
-            
+```{python}
+type(three_randoms)
+```
 
-            
-            
+We can compare all the values in this array to a single number.   In that case, we get a new array, with a `True` value in the positions where the comparison was True, and `False` values otherwise:
 
-            
+```{python}
+randoms_compared = three_randoms < 0.5
+randoms_compared
+```
 
-            <li><a href="/dsfe/chapters/01/computational-tools" class="level_2">1.1.1 Computational Tools</a></li>
-          
-            
-            
+We also found that we can apply functions to these arrays.  For example, we found that `np.count_nonzero` returns the number of elements that are not 0.
 
-            
-            
+```{python}
+np.count_nonzero(randoms_compared)
+```
 
-            
+This works because the function considers `False` to be equal to 0 and `True` to be equal to 1:
 
-            <li><a href="/dsfe/chapters/01/statistical-techniques" class="level_2">1.1.2 Statistical Techniques</a></li>
-          
-            
-            
+```{python}
+np.count_nonzero(False)
+```
 
-            
-            
+```{python}
+np.count_nonzero(True)
+```
 
-            
+## Two-dimensions
 
-            <li><a href="/dsfe/chapters/01/why-data-science" class="level_1">1.2 Why Data Science?</a></li>
-          
-            
-            
 
-            
-            
+The array `three_randoms` is a one dimensional array, with three elements.
 
-            
 
-            <li><a href="/dsfe/chapters/01/Plotting_the_Classics" class="level_1">1.3 Plotting the Classics</a></li>
-          
-            
-            
+We can also create two-dimensional arrays.   Here is an array with 10 *rows* and 3 *columns*.
 
-            
-            
+```{python}
+bigger_array = np.random.uniform(size=(10, 3))
+bigger_array
+```
 
-            
+Notice that we made the one-dimensional array with `size=3`.  We make the two-dimensional array by passing two numbers to `size`.  We pass two numbers with something like `size=(10, 3)`, as we did above.  We haven't covered this way of specifying a pair of numbers yet.  For the moment, we hope you will take our word for it.
 
-            <li><a href="/dsfe/chapters/01/Literary_Characters" class="level_2">1.3.1 Literary Characters</a></li>
-          
-            
-            
 
-            
-            
+You can probably predict what will happen when we compare this two-dimensional array to 0.5.
 
-            
+```{python}
+bigger_compared = bigger_array < 0.5
+bigger_compared
+```
 
-            <li><a href="/dsfe/chapters/01/Another_Kind_Of_Character" class="level_2">1.3.2 Another Kind of Character</a></li>
-          
-        </ul>
-        
-      </li>
-    
-      <li>
-        
-          
-          
+As before, there is now a True at each position where there number was less than 0.5, with False everywhere else.
 
-          <a href="/dsfe/chapters/02/to_code"><span class="nav__sub-title">2. Programming</span></a>
-        
 
-        
-        <ul>
-          
-            
-            
+Can you predict what will happen with `np.count_nonzero`?
 
-            
-            
+```{python}
+np.count_nonzero(bigger_compared)
+```
 
-            
+You can probably see that `np.count_nonzero` is counting the number of True values in any position in the array.
 
-            <li><a href="/dsfe/chapters/02/sampling_problem" class="level_1">2.1 A sampling problem</a></li>
-          
-            
-            
 
-            
-            
+## Operations on axes
 
-            
 
-            <li><a href="/dsfe/chapters/02/three_girls" class="level_1">2.2 A simpler problem</a></li>
-          
-            
-            
+What if we want to see how many True values there are in each column?
 
-            
-            
+To do this, we need the `axis` keyword to `np.count_nonzero`, like this:
 
-            
+```{python}
+np.count_nonzero(bigger_compared, axis=0)
+```
 
-            <li><a href="/dsfe/chapters/02/Expressions" class="level_1">2.3 Expressions</a></li>
-          
-            
-            
+You will see that we have one value per column, where each value is the count of True values in that column.
 
-            
-            
 
-            
+Why `axis=0`?
 
-            <li><a href="/dsfe/chapters/02/variables" class="level_1">2.4 Variables</a></li>
-          
-            
-            
+The array has two dimensions, and therefore, two *axes*.  The first axis
+is the rows, the second axis is the columns.
 
-            
-            
+Why `0`?  Python thinks of sequences as starting at position 0.  The
+element at position 0 is the first element in the sequence.  Thus,
+`axis=0` means the first axis.
 
-            
+Now imagine looking down the first axis in our array.  The first axis is
+the rows, so we are looking down the rows.  First you see the first
+element in the first row, then you see the first element in the second
+row, and so on.  So, if we are doing a count of not-0 elements over the
+first axis (rows), we do this:
 
-            <li><a href="/dsfe/chapters/02/Names" class="level_1">2.5 Names</a></li>
-          
-            
-            
+* count the number of not-0 element going down the first element in the
+  row, then
+* count the number of not-0 element going down the second element in the
+  row, then
+* count the number of not-0 element going down the third element in the
+  row.
 
-            
-            
+The result is three values, one for each element in the row.
 
-            
+```{python}
+np.count_nonzero(bigger_compared, axis=0)
+```
 
-            <li><a href="/dsfe/chapters/02/Calls" class="level_1">2.6 Call expressions</a></li>
-          
-        </ul>
-        
-      </li>
-    
-      <li>
-        
-          
-          
+Because of the reasoning above, these the counts for each column (there are 3 columns).
 
-          <a href="/dsfe/chapters/03/data_types"><span class="nav__sub-title">3. Data types</span></a>
-        
+
+What if we want the counts for each row?
+
+```{python}
+np.count_nonzero(bigger_compared, axis=1)
+```
+
+`axis=1` asks for the count over the second axis.  If we look over the
+second axis, we look over the first element in the first row, then the
+second element in the first row, then the third element in the first
+row.  So, counting over `axis=1`, gives the counts for each row.   We
+get one count for each row, so 10 counts.
 
         
-        <ul>
-          
-            
-            
+      </section>
 
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Numbers" class="level_1">3.1 Numbers</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Strings" class="level_1">3.2 Strings</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Comparison" class="level_1">3.3 Comparison</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Arrays" class="level_1">3.4 Arrays</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/Ranges" class="level_1">3.5 Ranges</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/More_on_Arrays" class="level_1">3.6 More on arrays</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/arrays_and_axes" class="level_1">3.7 Arrays and axes</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/dsfe/chapters/03/reply_supreme" class="level_1">3.8 Reply to the Supreme Court</a></li>
-          
-        </ul>
+      <footer class="page__meta">
         
-      </li>
-    
-  </ul>
-</nav>
-
-    
-
-  
-  </div>
+        
 
 
-    <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="  Data types">
-      <meta itemprop="description" content="Types of things">
-      <meta itemprop="datePublished" content="November 03, 2018">
+        
+      </footer>
+
       
 
-      <div class="page__inner-wrap">
-        
-          <header>
-            <h1 id="page-title" class="page__title" itemprop="headline"><ol>
-  <li>Data types</li>
-</ol>
-</h1>
-          </header>
-        
-
-        <section class="page__content" itemprop="text">
-          
-            
-
-<!-- TOC will only show up if it has at least one item -->
-
-
-
-          
-          <!-- INTERACT LINKS -->
-
-    
-    
-    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/03/data_types.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F03%2Fdata_types.ipynb">Interact</a>
-
-
-          <h1 id="types-of-things">Types of things</h1>
-
-<p>Every object in Python, has a type.</p>
-
-<p>We can show what type of thing something is, by calling <code class="highlighter-rouge">type</code>, like this:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int
-</code></pre></div></div>
-
-<p>If you get stuck in some code, it is often useful to check what types the objects are.</p>
-
-<p>We will use multiple types when analyzing data.  We cover some of the common ones, in this chapter.</p>
-
-          
-        </section>
-
-        <footer class="page__meta">
-          
-          
-
-
-        </footer>
-
-        
-
-        
-  <nav class="pagination">
-    
-      <a href="/dsfe/chapters/02/Calls" class="pagination--pager" title="2.6 Call expressions
-">Previous</a>
-    
-    
-      <a href="/dsfe/chapters/03/Numbers" class="pagination--pager" title="3.1 Numbers
-">Next</a>
-    
-  </nav>
-
-
-      </div>
-
       
-    </article>
-  </div>
+
+    </div>
+
+    
+  </article>
+
+  
+  
 </div>
 
     </div>

@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>1.1.2 Statistical Techniques - Data Science for Everyone</title>
-<meta name="description" content="Statistical Techniques">
+<!-- begin _includes/seo.html --><title>3.8 Reply to the Supreme Court - Data Science for Everyone</title>
+<meta name="description" content="Our task from has been to reply to the Supreme Court on their judgmentin the appeal of Robert Swain.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="1.1.2 Statistical Techniques">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/01/statistical-techniques">
+<meta property="og:title" content="3.8 Reply to the Supreme Court">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/03/reply_supreme">
 
 
-  <meta property="og:description" content="Statistical Techniques">
+  <meta property="og:description" content="Our task from has been to reply to the Supreme Court on their judgmentin the appeal of Robert Swain.">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/01/statistical-techniques">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/03/reply_supreme">
 
 
 
@@ -410,15 +410,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="1.1.2 Statistical Techniques">
-      <meta itemprop="description" content="Statistical Techniques">
+      <meta itemprop="headline" content="3.8 Reply to the Supreme Court">
+      <meta itemprop="description" content="Our task from has been to reply to the Supreme Court on their judgmentin the appeal of Robert Swain.">
       <meta itemprop="datePublished" content="November 03, 2018">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">1.1.2 Statistical Techniques
+            <h1 id="page-title" class="page__title" itemprop="headline">3.8 Reply to the Supreme Court
 </h1>
           </header>
         
@@ -430,56 +430,182 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
-  <aside class="sidebar__right">
-    <nav class="toc">
-      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
-      <ul class="toc__menu">
-  <li><a href="#statistical-techniques">Statistical Techniques</a></li>
-</ul>
-    </nav>
-  </aside>
-
 
           
           <!-- INTERACT LINKS -->
 
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/03/reply_supreme.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F03%2Freply_supreme.ipynb">Interact</a>
 
-          <h2 id="statistical-techniques">Statistical Techniques</h2>
 
-<p>Modern data analysis involves techniques from several fields, including
-statistics and machine learning.</p>
+          <p>Our task from has been to reply to the Supreme Court on their judgment
+in the appeal of Robert Swain.</p>
 
-<p>Statistics is the body of knowledge about drawing conclusions from incomplete
-information.  Put another way, statistics allows us to reason about data in
-the presence of uncertainty.</p>
+<p>Remember, Robert Swain appealed his death sentence, for rape, on the
+basis that the jury selection was biased against black people.</p>
 
-<p>Among the statistical tools that we will use are: hypothesis testing,
-confidence intervals, and tools for prediction of new data.</p>
+<p>His trial had a jury pool, of 100, from which the jury had to be
+selected.  That jury pool should be representative of the local
+population.</p>
 
-<p>Because we are doing data science, we will take a rather different approach
-from standard statistical teaching.  Data science puts coding at the heart of
-data analysis. Coding gives us a much more powerful set of tools than have
-been available in the past.  This has great benefits for analysis, but also
-for teaching.</p>
+<p>The jury pool had 8 black people, but the local population was 26%
+black.</p>
 
-<p>The benefits for analysis are that we can get, clean, and analyze a much wider
-range of data.  It becomes natural to extend our methods of analysis to
-techniques based in computation, like machine learning.</p>
+<p>If the jury pool was representative, we would expect about 26 of 100
+people to be back.  Our question is what we mean by <em>about</em> 26 of 100.</p>
 
-<p>The benefits for teaching are two-fold.  The first benefit is our ability to
-analyze real data.  The greater power and range of our tools allow us to
-analyze real-world, messy data instead of cleaned-up toy datasets, so you are
-better prepared to analyze the real data you will soon have to deal with in
-your education and work.  The second benefit is that an emphasis on
-computation allows us to use richer, simpler and more powerful techniques,
-based in resampling, that are easier to explain, and have a deeper
-relationship to the models that we are using.  We will rely much less on
-mathematics, and that gives us time to explain the ideas in another way, and
-in more depth.</p>
+<p>The Supreme Court thought that the difference between expected (26) and
+actual (8) was small. But was it?  Does 8 of 100 fit somewhere in our
+description of <em>about</em> 26 of 100?</p>
 
-<p>See the <a href="https://www.inferentialthinking.com/chapters/01/1/2/statistical-techniques">Statistical
-techniques</a>
-page from the UC Berkeley course, for more discussion.</p>
+<p>To answer this, we are going to <em>simulate</em> making a jury pool.</p>
+
+<p>Our <em>model</em> is that the jurors have been randomly selected from the
+population.  That is, for any one juror, there is a 0.26 probability
+that they are black.</p>
+
+<p>First we make one jury pool, of 100, to remind ourselves of the task.</p>
+
+<p>Then we make 10 jury pools of 100, to get warmed up.</p>
+
+<p>Finally we make 10000 jury pools, each of 100 members, and see what we
+get.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Import the array library
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="c1"># Make the floating point numbers print nicely.
+# This does not affect the calculations, only the display.
+</span><span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Here is one jury pool, and the number of black people we get in our simulation.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make 100 random numbers between 0 and 1
+</span><span class="n">randoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># Say values &lt; 0.26 correspond to black jurors.
+</span><span class="n">black_yn</span> <span class="o">=</span> <span class="n">randoms</span> <span class="o">&lt;</span> <span class="mf">0.26</span>
+<span class="c1"># We now have True for black jurors and False otherwise.
+# Count the number of Trues
+</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">black_yn</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>25
+</code></pre></div></div>
+
+<p>That is one estimate, for the number of black people we can expect, if
+our model is correct.  We can run that a few times to get a range of
+values.   If we run it only a few times, we might be unlucky, and get
+some results that are not representative.  It is safer to run it a huge
+number of times, to make sure we’ve got an idea of the variation.</p>
+
+<p>We do that, by using a two-dimensional array.</p>
+
+<p>We will start by making 10 jury pools, to get warmed up.  Later we will
+use a much higher number.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make an array with 10 rows, and 100 columns.
+# Each row corresponds to one jury pool
+</span><span class="n">randoms_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Next we label each element in the array as True (black juror) or False
+(white juror).</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Set True for black jurors
+</span><span class="n">black_yn_2d</span> <span class="o">=</span> <span class="n">randoms_2d</span> <span class="o">&lt;</span> <span class="mf">0.26</span>
+</code></pre></div></div>
+
+<p>We count how many True value we have in each <em>row</em>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">black_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">black_yn_2d</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">black_counts</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([25, 26, 36, 25, 24, 23, 26, 27, 20, 20])
+</code></pre></div></div>
+
+<p>Each of these values is one estimate for how many black jurors we should expect, if our model is right.  Already we get the feeling that 8 is rather unlikely, if our model is correct.  But - how unlikely?</p>
+
+<p>To get a better estimate, let us do the same thing, but with 10000 jury
+pools, and therefore, 10000 estimates.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">randoms_2d_big</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">black_yn_big</span> <span class="o">=</span> <span class="n">randoms_2d_big</span> <span class="o">&lt;</span> <span class="mf">0.26</span>
+<span class="n">black_counts_big</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">black_yn_big</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>If you ran this cell yourself, you will notice that it runs very fast,
+in much less than a second, on a reasonable laptop.</p>
+
+<p>We now have 10000 estimates, one for each row in the original array, and therefore, one for each simulated jury pool.</p>
+
+<p>Remember, the function <code class="highlighter-rouge">len</code> shows us the length of the value.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">black_counts_big</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10000
+</code></pre></div></div>
+
+<p>Next we want to have a look at the spread of these values.  To do this, we plot a histogram.  Here is how to do that, in Python:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the plotting library
+</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># A special command to tell the Notebook to show us
+# the plots inside the Notebook
+</span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Do the histogram of our 10000 estimates.
+</span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">black_counts_big</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([    9.,    61.,   564.,  1519.,  2432.,  3289.,  1407.,   613.,
+           88.,    18.]),
+ array([  9. ,  12.4,  15.8,  19.2,  22.6,  26. ,  29.4,  32.8,  36.2,
+         39.6,  43. ]),
+ &lt;a list of 10 Patch objects&gt;)
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/03/reply_supreme_23_1.png" alt="png" /></p>
+
+<p>It looks as if 8 is nowhere on the spread of our estimates.  How many
+times did we get a value less than or equal to 8, in all our 10000
+estimates?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">counts_are_low</span> <span class="o">=</span> <span class="n">black_counts_big</span> <span class="o">&lt;</span> <span class="mi">9</span>
+<span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts_are_low</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+</code></pre></div></div>
+
+<p>In 10000 random jury pools, we never see a value as low as 8.  We can
+ask Numpy to show us the minimum value that we do see, by using the
+<code class="highlighter-rouge">np.min</code> function:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="nb">min</span><span class="p">(</span><span class="n">black_counts_big</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9
+</code></pre></div></div>
+
+<p>We have run an analysis assuming that the jurors were selected at
+random.  On that assumption, a count of 8 jurors in 1000 is incredibly
+unlikely.  It is so unlikely, that we never get a number as low as 8, in
+10000 repeats.   That makes us think that the probability of getting
+8 black people in a jury pool of 100, is less than 1 in 10000 or:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">/</span> <span class="mi">10000</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0001
+</code></pre></div></div>
+
 
           
         </section>
@@ -496,11 +622,11 @@ page from the UC Berkeley course, for more discussion.</p>
         
   <nav class="pagination">
     
-      <a href="/dsfe/chapters/01/computational-tools" class="pagination--pager" title="1.1.1 Computational Tools
+      <a href="/dsfe/chapters/03/arrays_and_axes" class="pagination--pager" title="3.7 Arrays and axes
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/01/why-data-science" class="pagination--pager" title="1.2 Why Data Science?
+      <a href="" class="pagination--pager" title="
 ">Next</a>
     
   </nav>

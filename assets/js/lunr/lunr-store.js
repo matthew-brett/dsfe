@@ -104,10 +104,20 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/03/Strings",
         "teaser":null},{
+        "title": "3.7 Arrays and axes",
+        "excerpt":"We return to Numpy arrays. Arrays can be two-dimensional. An array with two dimensions has rows and columns. The rows andcolumns are the two axes of the array. We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.Starting with one dimension # We need Numpyimport...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/03/arrays_and_axes",
+        "teaser":null},{
         "title": "3. Data types",
         "excerpt":"Types of things Every object in Python, has a type. We can show what type of thing something is, by calling type, like this: type(1)inttype(1.0)floata = 1type(a)intIf you get stuck in some code, it is often useful to check what types the objects are. We will use multiple types when...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/03/data_types",
+        "teaser":null},{
+        "title": "3.8 Reply to the Supreme Court",
+        "excerpt":"Our task from has been to reply to the Supreme Court on their judgmentin the appeal of Robert Swain. Remember, Robert Swain appealed his death sentence, for rape, on thebasis that the jury selection was biased against black people. His trial had a jury pool, of 100, from which the...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/03/reply_supreme",
         "teaser":null},{
         "title": "First announcement!",
         "excerpt":"      HW 11 is due Thursday, 4/19 at 11:59pm. You will receive an early submission bonus point if you turn in your final submission by Wednesday, 4/18 at 11:59pm.         The Project 3 checkpoint is due on Friday, 4/20. The project is due on Friday 4/27.   ","categories": [],

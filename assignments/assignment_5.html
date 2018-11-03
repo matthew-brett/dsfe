@@ -182,19 +182,59 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="assignment-4">Assignment 4</h1>
+        <h1 id="assignment-5">Assignment 5</h1>
 
-<p>Data science is about drawing valid conclusions from data.</p>
+<p>For this assignment, you will need the background from these pages:</p>
 
-<p>One important aspect of that problem, is finding the data you need, in order to be able to draw a valid conclusion.</p>
+<ul>
+  <li><a href="../chapters/03/arrays_and_axes">3.7 Arrays and axes</a></li>
+  <li><a href="../chapters/03/reply_supreme">3.8 Reply to the Supreme Court</a></li>
+</ul>
 
-<p>Read the chapter on <a href="https://www.inferentialthinking.com/chapters/02/causality-and-experiments">causality and
-experiments</a>
-in the Berkeley data science textbook.  It includes a fascinating story about
-one of the great medical breakthroughs, that came about through careful and
-intelligent data analysis. The scene is darkest eighteenth century London.</p>
+<p>At the time I wrote this, you can find the following on the <a href="https://en.wikipedia.org/wiki/Burkitt%27s_lymphoma#Prognosis">Wikipedia
+page for Burkitt’s
+Lymphoma</a>.</p>
 
-<p>When you’ve done, head over to Canvas for some questions.</p>
+<blockquote>
+  <p>The overall cure rate for Burkitt’s lymphoma in developed countries is
+about 90%, but worse in low-income countries. Burkitt’s lymphoma is
+uncommon in adults, where it has a worse prognosis (missing reference)</p>
+
+  <p>In 2006, treatment with dose-adjusted EPOCH with Rituximab showed
+promising initial results in a small series of patients (n=17), with
+a 100% response rate, and 100% overall survival and progression-free
+survival at 28 months (median follow-up) <a href="#dunleavy2006novel">(Dunleavy et al., 2006)</a></p>
+</blockquote>
+
+<p>How likely is it that these study results, or better, could have come
+about by chance?</p>
+
+<p>Use the tools that you see in <a href="../chapters/03/reply_supreme">Reply to the Supreme
+Court</a>.  You might consider copying that
+notebook to start.</p>
+
+<p>You can use the tools like this:</p>
+
+<ul>
+  <li>Your model is that the EPOCH study was, in fact, no more effective
+than any other standard therapy, and that they were just lucky, in finding that 100% of their patients were cured.</li>
+  <li>You are going to do a simulation, using this model.  In this
+simulation, you will make 17 simulated patients, each with a 90%
+chance of being cured.  Then count how many of the 17 patients were
+cured.</li>
+  <li>Do this many times, to see how likely you are to get the value 17 / 17
+(100%).</li>
+</ul>
+
+<p>For extra points - imagine that there were 10 labs doing this exact same
+study, but the labs that didn’t get results as good as this, did not
+publish. In that case, this publication would have been the best of 10
+tries to get good results.  If that was so, what are the chances of
+seeing results as good as these, or better?</p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="dunleavy2006novel">Dunleavy, K., Pittaluga, S., Janik, J., Grant, N., Shovlin, M., Little, R., … Wilson, W. H. (2006). Novel Treatment of Burkitt Lymphoma with Dose-Adjusted EPOCH-Rituximab: Preliminary Results Showing Excellent Outcome. <i>Blood</i>, <i>108</i>(11), 2736–2736.</span></li></ol>
 
         
       </section>
