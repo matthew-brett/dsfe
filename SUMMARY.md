@@ -22,3 +22,4 @@
   * [3.4 Arrays](notebooks/03/Arrays.ipynb)
   * [3.5 Ranges](notebooks/03/Ranges.ipynb)
   * [3.6 More on arrays](notebooks/03/More_on_Arrays.ipynb)
+  * [3.7 Arrays and axes](notebooks/03/arrays_and_axes.ipynb)
