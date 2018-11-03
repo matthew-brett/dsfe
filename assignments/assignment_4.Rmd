@@ -5,7 +5,7 @@ jupyter:
       extension: .Rmd
       format_name: rmarkdown
       format_version: '1.0'
-      jupytext_version: 0.8.1
+      jupytext_version: 0.8.3
   kernelspec:
     display_name: Python 3
     language: python
@@ -19,7 +19,7 @@ jupyter:
     name: python
     nbconvert_exporter: python
     pygments_lexer: ipython3
-    version: 3.6.5
+    version: 3.7.0
 ---
 
 # Assignment 4
@@ -40,7 +40,7 @@ You can take any Python expression that has a value and combine it with other
 expressions. For example, you can combine two number-valued expressions by
 putting a + between them to add their values together. This forms a new, larger
 expression called a compound expression. The expressions that were combined
-together are called sub-expressions.
+together are called sub-expressions. Any smaller part of an expression, that is in itself an expression, is a subexpression.
 
 You can tell if something is a sub-expression by checking whether it would make
 sense to write it in a line by itself. For example, in the expression 2 * 3, 2
