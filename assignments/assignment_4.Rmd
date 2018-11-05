@@ -199,7 +199,7 @@ You can take any Python expression that has a value and combine it with other
 expressions. For example, you can combine two number-valued expressions by
 putting a + between them to add their values together. This forms a new, larger
 expression called a compound expression. The expressions that were combined
-together are called sub-expressions.
+together are called sub-expressions. Any smaller part of an expression, that is in itself an expression, is a subexpression.
 
 You can tell if something is a sub-expression by checking whether it would make
 sense to write it in a line by itself. For example, in the expression 2 * 3, 2
