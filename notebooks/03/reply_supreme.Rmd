@@ -31,12 +31,12 @@ basis that the jury selection was biased against black people.
 
 
 His trial had a jury pool, of 100, from which the jury had to be selected.
-That jury pool should be representative of the local population.
+That jury pool should have been representative of the local population.
 
 The jury pool had 8 black people, but the local population was 26% black.
 
-If the jury pool was representative, we would expect about 26 of 100 people to
-be back.  Our question is what we mean by *about* 26 of 100.
+If the jury pool had been representative, we would expect about 26 of 100
+people to be black.  Our question is what we mean by *about* 26 of 100.
 
 The Supreme Court thought that the difference between expected (26) and actual
 (8) was small. But was it?  Does 8 of 100 fit somewhere in our description of
