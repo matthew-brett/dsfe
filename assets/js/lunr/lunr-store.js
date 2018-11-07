@@ -115,7 +115,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/dsfe/chapters/03/data_types",
         "teaser":null},{
         "title": "3.8 Reply to the Supreme Court",
-        "excerpt":"Our task from has been to reply to the Supreme Court on their judgmentin the appeal of Robert Swain. Remember, Robert Swain appealed his death sentence, for rape, on thebasis that the jury selection was biased against black people. His trial had a jury pool, of 100, from which the...","categories": [],
+        "excerpt":"Our task has been to reply to the Supreme Court ontheir judgment in the appeal of Robert Swain. Remember, Robert Swain appealed his death sentence, for rape, on thebasis that the jury selection was biased against black people. His trial had a jury pool, of 100, from which the jury...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/03/reply_supreme",
         "teaser":null},{
