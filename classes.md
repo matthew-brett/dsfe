@@ -27,4 +27,5 @@ permalink: /classes
 
 # Assessment
 
-I will publish the assessment by 2nd November.
+I will publish the assessment on 12th November.  It is due on the 10th
+December.
