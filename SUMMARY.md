@@ -24,3 +24,5 @@
   * [3.6 More on arrays](notebooks/03/More_on_Arrays.ipynb)
   * [3.7 Arrays and axes](notebooks/03/arrays_and_axes.ipynb)
   * [3.8 Reply to the Supreme Court](notebooks/03/reply_supreme.ipynb)
+* [Exercises](notebooks/exercises/exercises.md)
+  * [Simulation](notebooks/exercises/simulation.ipynb)

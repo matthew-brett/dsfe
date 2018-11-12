@@ -119,6 +119,16 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/03/reply_supreme",
         "teaser":null},{
+        "title": "Exercises",
+        "excerpt":"Some exercises for various points in the course. ","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/exercises",
+        "teaser":null},{
+        "title": "Simulation",
+        "excerpt":"Simulation exercises import numpy as npThree girls Of all families with exactly four children, what proportion have exactly threegirls? Solve by simulation. Penalty shootout technique Jen is the penalty taker for her football team. She’s been doing this for a long time. She thinks she normally has a 80%chance of...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/simulation",
+        "teaser":null},{
         "title": "First announcement!",
         "excerpt":"      HW 11 is due Thursday, 4/19 at 11:59pm. You will receive an early submission bonus point if you turn in your final submission by Wednesday, 4/18 at 11:59pm.         The Project 3 checkpoint is due on Friday, 4/20. The project is due on Friday 4/27.   ","categories": [],
         "tags": [],

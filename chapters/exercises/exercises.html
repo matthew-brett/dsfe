@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2.2 A simpler problem - Data Science for Everyone</title>
-<meta name="description" content="A simpler problem">
+<!-- begin _includes/seo.html --><title>Exercises - Data Science for Everyone</title>
+<meta name="description" content="Some exercises for various points in the course.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="2.2 A simpler problem">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/02/three_girls">
+<meta property="og:title" content="Exercises">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/exercises/exercises">
 
 
-  <meta property="og:description" content="A simpler problem">
+  <meta property="og:description" content="Some exercises for various points in the course.">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/02/three_girls">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/exercises/exercises">
 
 
 
@@ -435,15 +435,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="2.2 A simpler problem">
-      <meta itemprop="description" content="A simpler problem">
+      <meta itemprop="headline" content="Exercises">
+      <meta itemprop="description" content="Some exercises for various points in the course.">
       <meta itemprop="datePublished" content="November 12, 2018">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">2.2 A simpler problem
+            <h1 id="page-title" class="page__title" itemprop="headline">Exercises
 </h1>
           </header>
         
@@ -459,48 +459,8 @@
           
           <!-- INTERACT LINKS -->
 
-    
-    
-    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/02/three_girls.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F02%2Fthree_girls.ipynb">Interact</a>
 
-
-          <h1 id="a-simpler-problem">A simpler problem</h1>
-
-<p>Imagine a family with four children.</p>
-
-<p>What is the probability that the family will have exactly three girls?</p>
-
-<p>There are various ways to answer this question.  One way, is to use
-<em>simulation</em>.</p>
-
-<p>Simulation makes a <em>model</em> of the problem.  We use the model to generate
-<em>simulated</em> data.  If the model is a good one, the simulated data should look
-like the real data.</p>
-
-<p>First we need to simulate a family of four children.</p>
-
-<p>Then we need to count the number of girls.</p>
-
-<p>We do this many many times, and see how often we get a count of 3.</p>
-
-<p>For example, we can run the following cell 4 times, to get 4 random numbers.
-We can chose to consider any random number less than or equal to 0.5 to be a
-girl.  If we count how many random numbers (of 4) are less then or equal to
-0.5, we</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5289147394557308
-</code></pre></div></div>
-
-<p>As we will soon see, we are using a <em>call expression</em> here.  <code class="highlighter-rouge">np.random.uniform()</code> <em>calls</em> the function, and returns a random number, between 0 and 1.</p>
-
-<p>It’s inconvenient to have to run this cell many times.   We really need some
-machinery to make the computer do that for us.  We need <em>expressions</em>,
-<em>names</em>, <em>call expressions</em>, <em>comparisons</em> and <em>arrays</em>.  We will deal with
-those next.</p>
+          <p>Some exercises for various points in the course.</p>
 
           
         </section>
@@ -517,11 +477,11 @@ those next.</p>
         
   <nav class="pagination">
     
-      <a href="/dsfe/chapters/02/sampling_problem" class="pagination--pager" title="2.1 A sampling problem
+      <a href="/dsfe/chapters/03/reply_supreme" class="pagination--pager" title="3.8 Reply to the Supreme Court
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/02/Expressions" class="pagination--pager" title="2.3 Expressions
+      <a href="/dsfe/chapters/exercises/simulation" class="pagination--pager" title="Simulation
 ">Next</a>
     
   </nav>

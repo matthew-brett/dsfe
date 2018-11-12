@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
 <meta property="og:title" content="Data Science for Everyone">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/simulation.Rmd">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/exercises/simulation.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/simulation.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/exercises/simulation.Rmd">
 
 
 
