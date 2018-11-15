@@ -1,0 +1,172 @@
+---
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.0'
+      jupytext_version: 0.8.5
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+  language_info:
+    codemirror_mode:
+      name: ipython
+      version: 3
+    file_extension: .py
+    mimetype: text/x-python
+    name: python
+    nbconvert_exporter: python
+    pygments_lexer: ipython3
+    version: 3.7.1
+---
+
+# Selecting values from an array
+
+```{python}
+import numpy as np
+np.set_printoptions(precision=2, suppress=True)
+```
+
+We use arrays all the time, in data science.
+
+One of the most common tasks we have to do on arrays, is to select values.
+
+We do this with *array slicing*.
+
+We do array slicing when we follow the array variable name with
+`[` (open square brackets), followed by something to specify
+which elements we want, followed by `]` (close square brackets.
+
+The simplest case is when we want a single element from a one-dimensional array.  In that case the thing between the `[` and the `]` is the *index* of the value that we want.
+
+The *index* of the first value is 0, the index of the second value is 2, and so on.
+
+Here's an example:
+
+```{python}
+# Make a 1-dimensional array with three values
+my_array = np.array([10, 20, 30])
+my_array
+```
+
+Here we get the first value.  This value is at index 0.
+
+```{python}
+# Get the first value (at index position 0)
+my_array[0]
+```
+
+```{python}
+# Get the second value (at index position 1)
+my_array[1]
+```
+
+```{python}
+# Get the third value (at index position 2)
+my_array[2]
+```
+
+At first this will take some time to get used to, that the first
+value is at index position 0.  There are good reasons for this,
+and many programming languages have this convention, but it does a while to get this habit of mind.
+
+We will see more of this kind of array slicing soon.
+
+## Indexing with Boolean arrays
+
+We often want to select several elements from an array according to some criterion.
+
+The most common way to do this, is to do array slicing, using
+a Boolean array between the square brackets.
+
+It may be easier to understand this by example.
+
+You have already come across Boolean arrays.
+
+These are arrays of `True` and `False` values.
+
+```{python}
+randoms = np.random.uniform(size=4)
+randoms
+```
+
+Here is a Boolean array, created from applying a comparison to an array:
+
+```{python}
+less_than_0p5 = randoms < 0.5
+less_than_0p5
+```
+
+As you have already seen, we can do things like count the number
+of `True` values in the Boolean array:
+
+```{python}
+np.count_nonzero(less_than_0p5)
+```
+
+Now let us say that we wanted to get the elements from `randoms`
+that are less than 0.5.   That is, we want to get the elements
+in `randoms` for which the corresponding element in
+`less_than_0p5` is `True`.
+
+We can do this with *Boolean array indexing*.  The Boolean array goes between the square brackets, like this:
+
+```{python}
+randoms[less_than_0p5]
+```
+
+We have selected the numbers in `random` that are less than 0.5.
+
+## Exercises
+
+So far we have seen arrays that contain numbers. Here is an
+array that contains strings:
+
+```{python}
+some_words = np.array(['to', 'be', 'or', 'not', 'to', 'be'])
+some_words
+```
+
+### Indexing with integers
+
+Use indexing with integers to display the first word in
+`some_words`.
+
+```{python}
+# Your code here
+```
+
+Use indexing with integers to display the word "not".
+
+```{python}
+# Your code here
+```
+
+Here is a Boolean array that has `True` where the word in the matching position of `some_words` is "be":
+
+```{python}
+bees = some_words == 'be'
+bees
+```
+
+Use Boolean indexing to show an array with the two instances of "be" from `some_words`.
+
+
+```{python}
+# Your code here
+```
+
+Use Boolean indexing to show an array with the two instances of "to" from `some_words`.
+
+```{python}
+# Your code here
+```
+
+Use Boolean indexing to show an array with the single instance
+of "not" from `some_words`.
+
+```{python}
+# Your code here
+```
