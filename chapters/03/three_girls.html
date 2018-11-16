@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>3.9 Revision - three girls - Data Science for Everyone</title>
+<meta name="description" content="Three girls">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="3.9 Revision - three girls">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/03/three_girls">
+
+
+  <meta property="og:description" content="Three girls">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2018-11-16T01:20:21+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/03/three_girls">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--textbook">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" class="textbook" role="main">
+  <div id="textbook_wrapper">
+    
+  <div class="sidebar sticky textbook">
+  
+  
+    <img src="/dsfe/images/dsfe_logo.png" class="textbook_logo" />
+    
+
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/"><span class="nav__sub-title">Home</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/01/what-is-data-science"><span class="nav__sub-title">1. Data Science</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/intro" class="level_1">1.1 Introduction</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/computational-tools" class="level_2">1.1.1 Computational Tools</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/statistical-techniques" class="level_2">1.1.2 Statistical Techniques</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/why-data-science" class="level_1">1.2 Why Data Science?</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Plotting_the_Classics" class="level_1">1.3 Plotting the Classics</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Literary_Characters" class="level_2">1.3.1 Literary Characters</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Another_Kind_Of_Character" class="level_2">1.3.2 Another Kind of Character</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/02/to_code"><span class="nav__sub-title">2. Programming</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/sampling_problem" class="level_1">2.1 A sampling problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/three_girls" class="level_1">2.2 A simpler problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Expressions" class="level_1">2.3 Expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/variables" class="level_1">2.4 Variables</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Names" class="level_1">2.5 Names</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Calls" class="level_1">2.6 Call expressions</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/03/data_types"><span class="nav__sub-title">3. Data types</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Numbers" class="level_1">3.1 Numbers</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Strings" class="level_1">3.2 Strings</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Comparison" class="level_1">3.3 Comparison</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Arrays" class="level_1">3.4 Arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Ranges" class="level_1">3.5 Ranges</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/More_on_Arrays" class="level_1">3.6 More on arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/arrays_and_axes" class="level_1">3.7 Arrays and axes</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/reply_supreme" class="level_1">3.8 Reply to the Supreme Court</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/three_girls" class="level_1">3.9 Revision - three girls</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/array_indexing" class="level_1">3.10 Selecting with arrays</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/04/data_frames"><span class="nav__sub-title">4. Data frames</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/04/data_frame_intro" class="level_1">4.1 Introduction to data frames</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/exercises/exercises"><span class="nav__sub-title">Exercises</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/simulation" class="level_1">Simulation</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+
+  
+  </div>
+
+
+    <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="headline" content="3.9 Revision - three girls">
+      <meta itemprop="description" content="Three girls">
+      <meta itemprop="datePublished" content="November 16, 2018">
+      
+
+      <div class="page__inner-wrap">
+        
+          <header>
+            <h1 id="page-title" class="page__title" itemprop="headline">3.9 Revision - three girls
+</h1>
+          </header>
+        
+
+        <section class="page__content" itemprop="text">
+          
+            
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#the-problem">The problem</a></li>
+  <li><a href="#a-simulation">A simulation</a></li>
+  <li><a href="#exercises">Exercises</a>
+    <ul>
+      <li><a href="#10000-families">10000 families</a></li>
+      <li><a href="#no-girls-in-a-family-of-4">No girls in a family of 4.</a></li>
+      <li><a href="#3-girls-in-a-family-of-5">3 girls in a family of 5.</a></li>
+      <li><a href="#3-or-fewer-girls-in-a-family-of-5">3 or fewer girls in a family of 5.</a></li>
+      <li><a href="#more-realistic-simulation">More realistic simulation</a></li>
+    </ul>
+  </li>
+</ul>
+    </nav>
+  </aside>
+
+
+          
+          <!-- INTERACT LINKS -->
+
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/03/three_girls.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F03%2Fthree_girls.ipynb">Interact</a>
+
+
+          <h1 id="three-girls">Three girls</h1>
+
+<p>In which we solve the three-girls-in-family problem.</p>
+
+<h2 id="the-problem">The problem</h2>
+
+<p>If there is a family of four children, what is the chance that
+family will consist of exactly three girls and one boy?</p>
+
+<p>We decided we could simulate this situation, by taking four
+random numbers, between 0 and 1.  For each number, if it is less
+than 0.5, we label this as a girl, otherwise we label it as
+a boy.  Then we could count how many girls we got.  That is one
+family.  We repeat the procedure many times, and count how many
+families have three girls (three of four random numbers less
+than 0.5).</p>
+
+<h2 id="a-simulation">A simulation</h2>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>First we do a simulation of a single family.</p>
+
+<p>Start with 4 random numbers, between 0 and 1.</p>
+
+<p>We could do these one at a time:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
+<span class="n">first_child</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.68279361477124
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">second_child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
+<span class="n">second_child</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.6704032787479017
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">third_child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
+<span class="n">third_child</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.06246353476764044
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fourth_child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
+<span class="n">fourth_child</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.7964984858114862
+</code></pre></div></div>
+
+<p>That gets boring.  It is neater to make an array of 4 numbers in one shot, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">one_family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">one_family</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.95, 0.5 , 0.97, 0.94])
+</code></pre></div></div>
+
+<p>Arrays allow us to do the same operation on all the elements.</p>
+
+<p>For example, we can ask whether each random number is less than
+0.5.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">girls</span> <span class="o">=</span> <span class="n">one_family</span> <span class="o">&lt;</span> <span class="mf">0.5</span>
+<span class="n">girls</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False, False, False, False])
+</code></pre></div></div>
+
+<p>Notice that the new array, <code class="highlighter-rouge">girls</code>, has four elements, like the
+original array <code class="highlighter-rouge">one_family</code>.  At each position in the <code class="highlighter-rouge">girls</code>
+array, there is a <code class="highlighter-rouge">True</code> if the corresponding element in
+<code class="highlighter-rouge">one_family</code> was less than 0.5, and <code class="highlighter-rouge">False</code> otherwise.</p>
+
+<p>We consider <code class="highlighter-rouge">True</code> to mean “girl” and <code class="highlighter-rouge">False</code> to mean “boy”.  To count the number of girls in this family, we need to count the number of <code class="highlighter-rouge">True</code> values in the array.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_girls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">girls</span><span class="p">)</span>
+<span class="n">n_girls</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+</code></pre></div></div>
+
+<p>That is the result of our simulation, for one family.</p>
+
+<p>We want to do this many times.  How would we do that?</p>
+
+<p>One way is to make a two-dimensional array of random numbers.</p>
+
+<p>A two-dimensional array has rows and columns.</p>
+
+<p>In our case, the row will be a single family.  There are four columns, so each row has four elements, corresponding to the four children in the family.</p>
+
+<p>Here we get ready to simulate 10 families, with one 2D array.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ten_families</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ten_families</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.2 , 0.06, 0.89, 0.43],
+       [0.23, 0.47, 0.57, 0.59],
+       [0.66, 0.85, 0.09, 0.56],
+       [0.56, 0.29, 0.51, 0.98],
+       [0.17, 0.78, 0.82, 0.72],
+       [0.8 , 0.71, 0.43, 0.68],
+       [0.07, 0.21, 0.4 , 0.64],
+       [0.07, 0.32, 0.75, 0.86],
+       [0.87, 0.82, 0.49, 0.8 ],
+       [0.08, 0.59, 0.34, 0.79]])
+</code></pre></div></div>
+
+<p>Notice the <code class="highlighter-rouge">size=</code> argument to <code class="highlighter-rouge">np.random.uniform</code>.  When we
+wanted an array of 4 values the size was <code class="highlighter-rouge">4</code>.  Now we want a 2D
+array, the size is two values, between parentheses, the first
+value is the number of rows, and the second is the number of
+columns.</p>
+
+<p>We can apply our test <code class="highlighter-rouge">&lt; 0.5</code> to all the 10 * 4 elements at the
+same time.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">are_girls</span> <span class="o">=</span> <span class="n">ten_families</span> <span class="o">&lt;</span> <span class="mf">0.5</span>
+<span class="n">are_girls</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ True,  True, False,  True],
+       [ True,  True, False, False],
+       [False, False,  True, False],
+       [False,  True, False, False],
+       [ True, False, False, False],
+       [False, False,  True, False],
+       [ True,  True,  True, False],
+       [ True,  True, False, False],
+       [False, False,  True, False],
+       [ True, False,  True, False]])
+</code></pre></div></div>
+
+<p>Remember, each row represents a family, and each <code class="highlighter-rouge">True</code> value
+represents a girl.  We want to count how many <code class="highlighter-rouge">True</code> values
+there are in each row.  We can try <code class="highlighter-rouge">np.count_nonzero</code> on this
+array, but:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">are_girls</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>17
+</code></pre></div></div>
+
+<p>By default, <code class="highlighter-rouge">np.count_nonzero</code> counts the number of True values in the entire 2D array.</p>
+
+<p>We want it to count the number of <code class="highlighter-rouge">True</code> value in each <em>row</em>.</p>
+
+<p>We can do that, by using the <code class="highlighter-rouge">axis</code> argument to
+<code class="highlighter-rouge">np.count_nonzero</code>.  See <a href="arrays_and_axes">Arrays and axes</a> for
+a more detailed explanation.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_girls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">are_girls</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">n_girls</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 2, 1, 1, 1, 1, 3, 2, 1, 2])
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">n_girls</code> has one element per <em>row</em> in the <code class="highlighter-rouge">are_girls</code> array.  The element corresponding to the first row, has the count of <code class="highlighter-rouge">True</code> values in the first row, and so on.</p>
+
+<p>Now we need to ask the question, how many of the counts in <code class="highlighter-rouge">n_girls</code> are equal to 3?</p>
+
+<p>To do this, we can use another comparison operator, like <code class="highlighter-rouge">&lt;</code> in
+as in <code class="highlighter-rouge">&lt; 0.5</code>.  The operator is <code class="highlighter-rouge">==</code>.   Notice the double <code class="highlighter-rouge">=</code>
+sign, together.   It is a test, that returns <code class="highlighter-rouge">True</code> or <code class="highlighter-rouge">False</code>.
+For example:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">4</span> <span class="o">==</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">4</span> <span class="o">==</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<p>These are expressions, because they return values.</p>
+
+<p>Compare to the single equals, which is the assignment operator, in an assignment expression.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<p>Notice this does not return anything, because it is not an expression, it is an assignment statement.  <code class="highlighter-rouge">a</code> now has the value 4.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<p>We can test whether the value of <code class="highlighter-rouge">a</code> is 4 like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">==</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<p>This is an equality test expression, so it does return a value.</p>
+
+<p>How does this operate on arrays?   It operates the same way as the other comparison operators - element by element:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">my_array</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2, 3, 4, 2])
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">==</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True, False, False,  True])
+</code></pre></div></div>
+
+<p>We can use this trick on the <code class="highlighter-rouge">n_girl</code> array, to find counts that are equal to 3.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_girls</span> <span class="o">==</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True, False, False, False, False, False,  True, False, False,
+       False])
+</code></pre></div></div>
+
+<p>To find the number of 3s in <code class="highlighter-rouge">n_girls</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">n_girls</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<p>Now the proportion of the counts, that are equal to 3:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">prop_3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">n_girls</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span>
+<span class="n">prop_3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2
+</code></pre></div></div>
+
+<h2 id="exercises">Exercises</h2>
+
+<h3 id="10000-families">10000 families</h3>
+
+<p>Now you have seen how to simulate 10 families, with a 2D array.
+Copy and paste from the code above, into the cell below, and
+change what you need to change, to simulate 10000 families of
+4 children.  It will have these steps:</p>
+
+<ul>
+  <li>make a 2D array of random numbers between 0 and 1, with 10000
+rows and 4 columns.</li>
+  <li>make a new array of the same shape, with <code class="highlighter-rouge">True</code> where the random
+number corresponds to “girl” and <code class="highlighter-rouge">False</code> when the number corresponds to “boy”</li>
+  <li>count the number of girls (<code class="highlighter-rouge">True</code> values) in each row.</li>
+  <li>count the number of times there were exactly 3 girls.</li>
+  <li>divide by the number of rows to give an estimate for the
+proportion of 4-child families with exactly 3 girls.</li>
+</ul>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simulate 10000 families of 4 children.
+# Show proportion with 3 girls.
+# Your code below
+</span></code></pre></div></div>
+
+<h3 id="no-girls-in-a-family-of-4">No girls in a family of 4.</h3>
+
+<p>Estimate the chances that a 4-child family will have no girls.  You can copy the code from the cell above, and modify it, or you may be able to use variables from the code above, to get the answer, without repeating the simulation.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show proportion with 0 girls.
+# Your code below
+</span></code></pre></div></div>
+
+<p>For extra points - the answer above is easier to work out with
+probability than the chance of three girls.  What’s the exact answer, from probability?</p>
+
+<h3 id="3-girls-in-a-family-of-5">3 girls in a family of 5.</h3>
+
+<p>Simulate the chances that a family with 5 children will have
+exactly 3 girls.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simulate 10000 families of 5 children.
+# Show proportion with 3 girls.
+# Your code below
+</span></code></pre></div></div>
+
+<h3 id="3-or-fewer-girls-in-a-family-of-5">3 or fewer girls in a family of 5.</h3>
+
+<p>Simulate the chances that a family with 5 children will have 3 or
+fewer girls.</p>
+
+<p>Hint: <code class="highlighter-rouge">&lt;=</code> tests whether the thing on the left is <em>less than or equal to</em> the thing on the right.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">my_array</span> <span class="o">&lt;=</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True,  True, False, False])
+</code></pre></div></div>
+
+<p>Hints done, now:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proportion of families of 5 children with 3 or fewer girls.
+# Your code below
+</span></code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simulate 10000 families of 5 children.
+# Show proportion with 3 girls.
+# Your code below
+</span></code></pre></div></div>
+
+<h3 id="more-realistic-simulation">More realistic simulation</h3>
+
+<p>Now we are back to the situation of exactly 3 girls in a family of 4.</p>
+
+<p>In fact, when you have a child, the probability of having a girl
+is slightly less than 0.5.</p>
+
+<p>In fact, the <a href="https://www.gov.uk/government/statistics/gender-ratios-at-birth-in-great-britain-2010-to-2014">proportion of boys born in the
+UK</a>
+is 0.513.  Hence the proportion of girls is 1-0.513 = 0.487.</p>
+
+<p>With that probability of having a girl, what are the chances of having exactly three girls in a family of four?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simulate 10000 familes of 4 children.
+</span><span class="n">chance_of_girl</span> <span class="o">=</span> <span class="mf">0.487</span>
+<span class="c1"># Estimate chance of having exactly 3 girls.
+# Your code here
+</span></code></pre></div></div>
+
+
+          
+        </section>
+
+        <footer class="page__meta">
+          
+          
+
+
+        </footer>
+
+        
+
+        
+  <nav class="pagination">
+    
+      <a href="/dsfe/chapters/03/reply_supreme" class="pagination--pager" title="3.8 Reply to the Supreme Court
+">Previous</a>
+    
+    
+      <a href="/dsfe/chapters/03/array_indexing" class="pagination--pager" title="3.10 Selecting with arrays
+">Next</a>
+    
+  </nav>
+
+
+      </div>
+
+      
+    </article>
+  </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

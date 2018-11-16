@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
+<meta name="description" content="">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/03/three_girls.Rmd">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/03/three_girls.Rmd">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/dsfe/">
+          <img src="/dsfe/images/dsfe_logo.png" class="masthead_logo" />
+          Data Science for Everyone
+        </a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+            </li>
+          
+          
+            <li class="masthead__menu-item">
+              <a href="/dsfe/chapters/01/what-is-data-science">Textbook</a>
+            </li>
+          
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <!--  -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        # Three girls
+
+In which we solve the three-girls-in-family problem.
+
+
+## The problem
+
+If there is a family of four children, what is the chance that
+family will consist of exactly three girls and one boy?
+
+We decided we could simulate this situation, by taking four
+random numbers, between 0 and 1.  For each number, if it is less
+than 0.5, we label this as a girl, otherwise we label it as
+a boy.  Then we could count how many girls we got.  That is one
+family.  We repeat the procedure many times, and count how many
+families have three girls (three of four random numbers less
+than 0.5).
+
+
+## A simulation
+
+```{python}
+import numpy as np
+np.set_printoptions(precision=2)
+```
+
+First we do a simulation of a single family.
+
+Start with 4 random numbers, between 0 and 1.
+
+We could do these one at a time:
+
+```{python}
+first_child = np.random.uniform()
+first_child
+```
+
+```{python}
+second_child = np.random.uniform()
+second_child
+```
+
+```{python}
+third_child = np.random.uniform()
+third_child
+```
+
+```{python}
+fourth_child = np.random.uniform()
+fourth_child
+```
+
+That gets boring.  It is neater to make an array of 4 numbers in one shot, like this:
+
+```{python}
+one_family = np.random.uniform(size=4)
+one_family
+```
+
+Arrays allow us to do the same operation on all the elements.
+
+For example, we can ask whether each random number is less than
+0\.5.
+
+```{python}
+girls = one_family < 0.5
+girls
+```
+
+Notice that the new array, `girls`, has four elements, like the
+original array `one_family`.  At each position in the `girls`
+array, there is a `True` if the corresponding element in
+`one_family` was less than 0.5, and `False` otherwise.
+
+We consider `True` to mean "girl" and `False` to mean "boy".  To count the number of girls in this family, we need to count the number of `True` values in the array.
+
+```{python}
+n_girls = np.count_nonzero(girls)
+n_girls
+```
+
+That is the result of our simulation, for one family.
+
+We want to do this many times.  How would we do that?
+
+One way is to make a two-dimensional array of random numbers.
+
+A two-dimensional array has rows and columns.
+
+In our case, the row will be a single family.  There are four columns, so each row has four elements, corresponding to the four children in the family.
+
+Here we get ready to simulate 10 families, with one 2D array.
+
+```{python}
+ten_families = np.random.uniform(size=(10, 4))
+ten_families
+```
+
+Notice the `size=` argument to `np.random.uniform`.  When we
+wanted an array of 4 values the size was `4`.  Now we want a 2D
+array, the size is two values, between parentheses, the first
+value is the number of rows, and the second is the number of
+columns.
+
+We can apply our test `< 0.5` to all the 10 * 4 elements at the
+same time.
+
+```{python}
+are_girls = ten_families < 0.5
+are_girls
+```
+
+Remember, each row represents a family, and each `True` value
+represents a girl.  We want to count how many `True` values
+there are in each row.  We can try `np.count_nonzero` on this
+array, but:
+
+```{python}
+np.count_nonzero(are_girls)
+```
+
+By default, `np.count_nonzero` counts the number of True values in the entire 2D array.
+
+We want it to count the number of `True` value in each *row*.
+
+We can do that, by using the `axis` argument to
+`np.count_nonzero`.  See [Arrays and axes](arrays_and_axes) for
+a more detailed explanation.
+
+```{python}
+n_girls = np.count_nonzero(are_girls, axis=1)
+n_girls
+```
+
+`n_girls` has one element per *row* in the `are_girls` array.  The element corresponding to the first row, has the count of `True` values in the first row, and so on.
+
+Now we need to ask the question, how many of the counts in `n_girls` are equal to 3?
+
+To do this, we can use another comparison operator, like `<` in
+as in `< 0.5`.  The operator is `==`.   Notice the double `=`
+sign, together.   It is a test, that returns `True` or `False`.
+For example:
+
+```{python}
+4 == 3
+```
+
+```{python}
+4 == 4
+```
+
+These are expressions, because they return values.
+
+Compare to the single equals, which is the assignment operator, in an assignment expression.
+
+```{python}
+a = 4
+```
+
+Notice this does not return anything, because it is not an expression, it is an assignment statement.  `a` now has the value 4.
+
+```{python}
+a
+```
+
+We can test whether the value of `a` is 4 like this:
+
+```{python}
+a == 4
+```
+
+This is an equality test expression, so it does return a value.
+
+How does this operate on arrays?   It operates the same way as the other comparison operators - element by element:
+
+```{python}
+my_array = np.array([2, 3, 4, 2])
+my_array
+```
+
+```{python}
+my_array == 2
+```
+
+We can use this trick on the `n_girl` array, to find counts that are equal to 3.
+
+```{python}
+n_girls == 3
+```
+
+To find the number of 3s in `n_girls`:
+
+```{python}
+np.count_nonzero(n_girls == 3)
+```
+
+Now the proportion of the counts, that are equal to 3:
+
+```{python}
+prop_3 = np.count_nonzero(n_girls == 3) / 10
+prop_3
+```
+
+
+## Exercises
+
+
+### 10000 families
+
+Now you have seen how to simulate 10 families, with a 2D array.
+Copy and paste from the code above, into the cell below, and
+change what you need to change, to simulate 10000 families of
+4 children.  It will have these steps:
+
+* make a 2D array of random numbers between 0 and 1, with 10000
+  rows and 4 columns.
+* make a new array of the same shape, with `True` where the random
+  number corresponds to "girl" and `False` when the number corresponds to "boy"
+* count the number of girls (`True` values) in each row.
+* count the number of times there were exactly 3 girls.
+* divide by the number of rows to give an estimate for the
+  proportion of 4-child families with exactly 3 girls.
+
+```{python}
+# Simulate 10000 families of 4 children.
+# Show proportion with 3 girls.
+# Your code below
+```
+
+
+### No girls in a family of 4.
+
+Estimate the chances that a 4-child family will have no girls.  You can copy the code from the cell above, and modify it, or you may be able to use variables from the code above, to get the answer, without repeating the simulation.
+
+```{python}
+# Show proportion with 0 girls.
+# Your code below
+```
+
+For extra points - the answer above is easier to work out with
+probability than the chance of three girls.  What's the exact answer, from probability?
+
+
+### 3 girls in a family of 5.
+
+Simulate the chances that a family with 5 children will have
+exactly 3 girls.
+
+```{python}
+# Simulate 10000 families of 5 children.
+# Show proportion with 3 girls.
+# Your code below
+```
+
+
+### 3 or fewer girls in a family of 5.
+
+Simulate the chances that a family with 5 children will have 3 or
+fewer girls.
+
+Hint: `<=` tests whether the thing on the left is *less than or equal to* the thing on the right.
+
+```{python}
+3 <= 4
+```
+
+```{python}
+3 <= 3
+```
+
+```{python}
+3 <= 2
+```
+
+```{python}
+my_array = np.array([1, 2, 3, 4])
+my_array <= 2
+```
+
+Hints done, now:
+
+```{python}
+# Proportion of families of 5 children with 3 or fewer girls.
+# Your code below
+```
+
+```{python}
+# Simulate 10000 families of 5 children.
+# Show proportion with 3 girls.
+# Your code below
+```
+
+
+### More realistic simulation
+
+Now we are back to the situation of exactly 3 girls in a family of 4.
+
+In fact, when you have a child, the probability of having a girl
+is slightly less than 0.5.
+
+In fact, the [proportion of boys born in the
+UK](https://www.gov.uk/government/statistics/gender-ratios-at-birth-in-great-britain-2010-to-2014)
+is 0.513.  Hence the proportion of girls is 1-0.513 = 0.487.
+
+With that probability of having a girl, what are the chances of having exactly three girls in a family of four?
+
+```{python}
+# Simulate 10000 familes of 4 children.
+chance_of_girl = 0.487
+# Estimate chance of having exactly 3 girls.
+# Your code here
+```
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

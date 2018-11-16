@@ -104,6 +104,11 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/03/Strings",
         "teaser":null},{
+        "title": "3.10 Selecting with arrays",
+        "excerpt":"Selecting values from an array import numpy as npnp.set_printoptions(precision=2, suppress=True)We use arrays all the time, in data science. One of the most common tasks we have to do on arrays, is to select values. We do this with array slicing. We do array slicing when we follow the array variable...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/03/array_indexing",
+        "teaser":null},{
         "title": "3.7 Arrays and axes",
         "excerpt":"We return to Numpy arrays. Arrays can be two-dimensional. An array with two dimensions has rows and columns. The rows andcolumns are the two axes of the array. We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.Starting with one dimension # We need Numpyimport...","categories": [],
         "tags": [],
@@ -118,6 +123,21 @@ var store = [{
         "excerpt":"Our task has been to reply to the Supreme Court ontheir judgment in the appeal of Robert Swain. Remember, Robert Swain appealed his death sentence, for rape, on thebasis that the jury selection was biased against black people. His trial had a jury pool, of 100, from which the jury...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/03/reply_supreme",
+        "teaser":null},{
+        "title": "3.9 Revision - three girls",
+        "excerpt":"Three girls In which we solve the three-girls-in-family problem. The problem If there is a family of four children, what is the chance thatfamily will consist of exactly three girls and one boy? We decided we could simulate this situation, by taking fourrandom numbers, between 0 and 1. For each...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/03/three_girls",
+        "teaser":null},{
+        "title": "4.1 Introduction to data frames",
+        "excerpt":"Introduction to data frames Start by loading the usual plotting libraries. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Make plots look a little bit more fancyplt.style.use('fivethirtyeight')Pandas is a Python package thatimplements data frames, and functions that operate on dataframes. import pandas as pdData frames and series We start by...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/04/data_frame_intro",
+        "teaser":null},{
+        "title": "4. Data frames",
+        "excerpt":"Many forms of data can be organized into data tables. Data tables are often called data frames. A data table or data frame has rows and columns. The rows may represent observations, such as people ina clinical trial, or sports teams. The columns representvariables - each variable is some type...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/04/data_frames",
         "teaser":null},{
         "title": "Exercises",
         "excerpt":"Some exercises for various points in the course. ","categories": [],
