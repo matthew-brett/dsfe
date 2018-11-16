@@ -26,5 +26,7 @@
   * [3.8 Reply to the Supreme Court](notebooks/03/reply_supreme.ipynb)
   * [3.9 Revision - three girls](notebooks/03/three_girls.ipynb)
   * [3.10 Selecting with arrays](notebooks/03/array_indexing.ipynb)
+* [4. Data frames](notebooks/04/data_frames.md)
+  * [4.1 Introduction to data frames](notebooks/04/data_frame_intro.ipynb)
 * [Exercises](notebooks/exercises/exercises.md)
   * [Simulation](notebooks/exercises/simulation.ipynb)
