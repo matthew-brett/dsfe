@@ -99,19 +99,30 @@ What are these practices, that make data scientists in so effective in industry 
 
 The foundation is code.  At heart, the novelty in the work of data scientists is not novelty at all - it is just the discovery that being able to use code makes a huge difference to the analyses that you can do, and the conclusions that you can draw. Analysis based on code is:
 
-*   Versatile.  Code allows us to analyze big, messy, mixed, and complex data
-    \- put more simply, it allows us to analyze real data.
-*   Realistic.  When you have the flexibility of code, you can be realistic
-    about the real work of analysis, because you can do that work.  The real work of analysis is cleaning, reorganizing, collating and exploring.
-*   Collaborative.  Programmers have been working for many years on methods for
-    effective collaboration.  Data scientists learn these methods, and apply them, so they become more transparent, more efficient, and better at working together in teams.
-*   Reproducible.  Much analysis that does not use code, uses graphical
-    interfaces.  These are famous for making it difficult to record your analysis, or describe it to someone else.  Analyses based on code are naturally reproducible, because you can run the code again, to produce the same result, and you can give someone your code, so they can do the same thing.
-*   Easier to understand.  Coding allows us to shift our emphasis from the
-    relatively difficult mathematics behind the old-school statistical tests,
-    such as t-test and ANOVA, to more direct methods such as resampling,
-    including permutation tests and bootstrap estimation.  Code gives us
-    a language to describe these methods in a simple and direct way, and this
+*   Versatile.  Code allows us to analyze big, messy, mixed, and
+    complex data \- put more simply, it allows us to analyze real
+    data.
+*   Realistic.  The real work of analysis is working with real data.
+    Much of this work is cleaning, reorganizing, collating and
+    exploring.  It is both complex and repetitive; it can only be done
+    effectively with code.  If you can code, then you can do this
+    work, describe it, and teach it.
+*   Collaborative.  Programmers have been working for many years on
+    methods for effective collaboration.  Data scientists learn these
+    methods, and apply them, so they become more transparent, more
+    efficient, and better at working together in teams.
+*   Reproducible.  Much analysis that does not use code, uses
+    graphical interfaces.  These are famous for making it difficult to
+    record your analysis, or describe it to someone else.  Analyses
+    based on code are naturally reproducible, because you can run the
+    code again, to produce the same result, and you can give someone
+    your code, so they can do the same thing.
+*   Easier to understand.  Coding allows us to shift our emphasis from
+    the relatively difficult mathematics behind the old-school
+    statistical tests, such as t-test and ANOVA, to more direct
+    methods such as resampling, including permutation tests and
+    bootstrap estimation.  Code gives us a language to describe these
+    methods in a simple and direct way, and this
     makes the ideas clearer and easier to generalize.
 
 ## Why now?
@@ -143,27 +154,30 @@ could be.  These were the data scientists described by Patil and Hammerbacher.
 
 ## Elements of data science
 
-If we are right, then data science is defined by what data scientists do.  What
-do do they do?
+If we are right, then data science is defined by what data scientists
+do.  What do do they do?
 
 * They collate data from many sources;
 * They clean up messy data, and use it to try to recover meaningful
-  information.  But they are sceptical, and know when the data cannot be
-  trusted for strong conclusions.
-* They explore data, to find errors, and unexpected patterns.  They will likely
-  use different ways to make graphs and graphics from the data, to diagnose and
-  summarize.
-* They work hard to understand the process that generated the data, to make
-  their conclusions meaningful.
-* They understand variation, and the problems and limitations for drawing
-  conclusions from noisy and incomplete data.
-* They often try and predict what new data will look like, from old data.  They
-  will use old and new methods to do this, including methods from machine
-  learning and statistics.
+  information.  But they are sceptical, and know when the data cannot
+  be trusted for strong conclusions.
+* They explore data, to find errors, and unexpected patterns.  They
+  will likely use different ways to make graphs and graphics from the
+  data, to diagnose and summarize.
+* They work hard to understand the process that generated the data, to
+  make their conclusions meaningful.
+* They understand variation, and the problems and limitations for
+  drawing conclusions from noisy and incomplete data.
+* They often try and predict what new data will look like, from old
+  data.  They will use old and new methods to do this, including
+  methods from machine learning and statistics.
 
 ## Conclusion
 
-Data science is new, and we are still working what it is.  At the moment, it is best defined by what a data scientist does.  A data scientist uses programming as the basis for a deeper, more flexible approach to data analysis.  That is what we will try to teach you on this course.
+Data science is new, and we are still working out what it is. At the
+moment, it is best defined by what a data scientist does. A data
+scientist uses programming as the basis for a deeper, more flexible
+approach to data analysis.
 
 ## References
 
