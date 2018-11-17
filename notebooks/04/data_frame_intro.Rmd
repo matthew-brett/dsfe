@@ -129,7 +129,7 @@ notation](https://en.wikipedia.org/wiki/Scientific_notation).
 Scientific notation is a compact way of writing very large or
 very small numbers.  The value after `e` above is the
 *exponent*, in this case `08`.  The number above means $6.405
-* 10^8$. For example, here is $2 * 10^7$:
+* $10^8$. For example, here is $2 * 10^7$:
 
 ```{python}
 2e7
