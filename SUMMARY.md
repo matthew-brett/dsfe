@@ -30,3 +30,4 @@
   * [4.1 Introduction to data frames](notebooks/04/data_frame_intro.ipynb)
 * [Exercises](notebooks/exercises/exercises.md)
   * [Simulation](notebooks/exercises/simulation.ipynb)
+  * [Data frames](notebooks/exercises/df_exercises.ipynb)
