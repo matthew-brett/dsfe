@@ -139,6 +139,11 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/04/data_frames",
         "teaser":null},{
+        "title": "Data frames",
+        "excerpt":"Data Frames We will start, as usual, by importing all the libraries we need. import pandas as pdimport numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')Now we are going to need some data. Go ahead and downloadiris.csv and import it asa dataframe (save the file to the same directory...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/df_exercises",
+        "teaser":null},{
         "title": "Exercises",
         "excerpt":"Some exercises for various points in the course. ","categories": [],
         "tags": [],
