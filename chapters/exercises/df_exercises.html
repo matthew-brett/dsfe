@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-11-24T19:32:30+00:00">
+  <meta property="article:published_time" content="2018-11-24T19:52:38+00:00">
 
 
 
@@ -1521,7 +1521,7 @@ selecting the column you want, and press Enter.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setosa</span><span class="p">[</span><span class="s">"PetalWidth"</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11838dc88&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1184baf98&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/exercises/df_exercises_26_1.png" alt="png" /></p>
@@ -1568,7 +1568,7 @@ find out!</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setosa</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'SepalLength'</span><span class="p">,</span> <span class="s">'PetalLength'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1183d96d8&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1184992e8&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/exercises/df_exercises_35_1.png" alt="png" /></p>
@@ -1586,7 +1586,7 @@ species?)</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setosa</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'SepalLength'</span><span class="p">,</span> <span class="s">'SepalWidth'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a5499e8&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a607c50&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/exercises/df_exercises_39_1.png" alt="png" /></p>
@@ -1611,7 +1611,7 @@ take a look at the whole dataset again.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'SepalLength'</span><span class="p">,</span> <span class="s">'PetalLength'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a5150b8&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a6b9550&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/exercises/df_exercises_45_1.png" alt="png" /></p>
@@ -1625,7 +1625,7 @@ points are in that bottom-left island of the graph.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'SepalLength'</span><span class="p">,</span> <span class="s">'PetalLength'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'PetalWidth'</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s">'hsv'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a7b5e10&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a7feeb8&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/exercises/df_exercises_47_1.png" alt="png" /></p>
@@ -1638,7 +1638,7 @@ species name)</em> - if you want to try, add that cell below.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'SepalLength'</span><span class="p">,</span> <span class="s">'PetalLength'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">iris</span><span class="p">[</span><span class="s">"SepalWidth"</span><span class="p">]</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'PetalWidth'</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s">'hsv'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a9f4be0&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11ab370f0&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/exercises/df_exercises_50_1.png" alt="png" /></p>
