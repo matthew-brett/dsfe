@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-11-22T21:41:04+00:00">
+  <meta property="article:published_time" content="2018-11-24T19:32:30+00:00">
 
 
 
@@ -492,7 +492,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="Data frames">
       <meta itemprop="description" content="Data Frames">
-      <meta itemprop="datePublished" content="November 22, 2018">
+      <meta itemprop="datePublished" content="November 24, 2018">
       
 
       <div class="page__inner-wrap">
@@ -522,6 +522,8 @@
 
           <h1 id="data-frames">Data Frames</h1>
 
+<p>By Alex Jermakov</p>
+
 <p>We will start, as usual, by importing all the libraries we need.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
@@ -541,7 +543,9 @@ are running this notebook to make your life easier).</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'iris.csv'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>At this moment we have no clue about what data are contained inside this dataframe. First thing we can do is simply print out the whole dataframe.</p>
+<p>At this moment we have no clue about what data are contained
+inside this dataframe. First thing we can do is simply print
+out the whole dataframe.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span>
 </code></pre></div></div>
@@ -1067,7 +1071,11 @@ are running this notebook to make your life easier).</p>
 </div>
 </div>
 
-<p>But more often than not we don’t need to see ~60 entires to get the idea of what we are looking at. All we want is the column names and some examples to understand the format the data are in. For these purposes we can use <code class="highlighter-rouge">head</code> method of the data frame.</p>
+<p>But more often than not we don’t need to see ~60 entires to get
+the idea of what we are looking at. All we want is the column
+names and some examples to understand the format the data are
+in. For these purposes we can use <code class="highlighter-rouge">head</code> method of the data
+frame.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
@@ -1144,7 +1152,8 @@ are running this notebook to make your life easier).</p>
 </div>
 </div>
 
-<p>By default, <code class="highlighter-rouge">head()</code> displays first five entries, but we have the option to passs it a specific number of rows we want to see.</p>
+<p>By default, <code class="highlighter-rouge">head()</code> displays the first five rows, but we have the
+option to pass it a specific number of rows we want to see.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1261,8 +1270,14 @@ are running this notebook to make your life easier).</p>
 </div>
 </div>
 
-<p>Okay, now we know that our dataframe has five columns, that describe the properties of different species of irises.
-<em>But wait!</em>, you may ask, <em>there are <a href="https://www.pacificbulbsociety.org/pbswiki/index.php/Iris">260–300 species of iris genus</a> and there is no way they can all be represented in our 150 row dataframe!</em>. Well, my educated friend, you are absolutely right. It might be a good idea to take a look at all the <em>unique</em> values we have in our <strong>Name</strong> column. To do that we extract our <strong>Name</strong> column as a Series.</p>
+<p>Okay, now we know that our dataframe has five columns, that describe
+the properties of different species of irises. <em>But wait!</em>, you may
+ask, <em>there are <a href="https://www.pacificbulbsociety.org/pbswiki/index.php/Iris">260–300 species of iris
+genus</a> and
+there is no way they can all be represented in our 150 row dataframe!</em>.
+Well, my educated friend, you are absolutely right. It might be a good
+idea to take a look at all the <em>unique</em> values we have in our <code class="highlighter-rouge">Name</code>
+column. To do that we extract our <code class="highlighter-rouge">Name</code> column as a Series.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris_names</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s">"Name"</span><span class="p">]</span>
 <span class="n">iris_names</span>
@@ -1338,29 +1353,55 @@ Name: Name, Length: 150, dtype: object
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
 </code></pre></div></div>
 
+<p>Now we can use the <code class="highlighter-rouge">unique</code> method of the <code class="highlighter-rouge">Series</code>:</p>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris_names</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'], dtype=object)
 </code></pre></div></div>
 
-<p>Now we know that our dataset deals with only three species of iris: <a href="https://apps.rhs.org.uk/plantselectorimages/detail/RHS_PUB0001482_1050.JPG">Iris Setosa</a>, <a href="https://gardengoodsdirect.com/wp-content/uploads/2017/03/Iris_versicolor_3.jpg">Iris Versicolor</a> and <a href="https://plants.ces.ncsu.edu/media/images/Iris-virginica--Justin-Meissen--CC-BY-SA.jpg">Iris Virginica</a></p>
+<p>We see above that our dataset deals with only three species of iris:
+<a href="https://apps.rhs.org.uk/plantselectorimages/detail/RHS_PUB0001482_1050.JPG">Iris
+Setosa</a>,
+<a href="https://gardengoodsdirect.com/wp-content/uploads/2017/03/Iris_versicolor_3.jpg">Iris
+Versicolor</a>
+and <a href="https://plants.ces.ncsu.edu/media/images/Iris-virginica--Justin-Meissen--CC-BY-SA.jpg">Iris
+Virginica</a></p>
 
-<p>We are going to look at the similarities and differences between the species later, but first, let’s get familiar with each of them separately. For that, we can create a separate dataframe for each of the species.</p>
+<p>We are going to look at the similarities and differences between the
+species later, but first, let’s get familiar with each of them
+separately. For that, we can create a separate dataframe for each of
+the species.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setosa</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="n">iris</span><span class="p">[</span><span class="s">"Name"</span><span class="p">]</span><span class="o">==</span><span class="s">'Iris-setosa'</span><span class="p">]</span>
+<p>We need to select the rows that correspond to each species.  Let’s start by selecting the rows that correspond to <code class="highlighter-rouge">'Iris-setosa'</code>.</p>
+
+<p>To select rows, we generally use the <code class="highlighter-rouge">loc</code> attribute of the data frame.</p>
+
+<p>Read <code class="highlighter-rouge">loc</code> as “locate”.  The attribute allows us to locate rows of interest.  Here we use <code class="highlighter-rouge">loc</code> to select the <code class="highlighter-rouge">'Iris-setosa'</code> rows.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setosa</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">iris</span><span class="p">[</span><span class="s">"Name"</span><span class="p">]</span><span class="o">==</span><span class="s">'Iris-setosa'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<p>Make sure you understand the line above. In order to do that, disect it bit by bit.</p>
+<p>Make sure you understand the line above. In order to do that, dissect
+it bit by bit.</p>
+
 <ul>
   <li>What does <code class="highlighter-rouge">iris["Name"]</code> return?</li>
-  <li>What does <code class="highlighter-rouge">iris["Name"]=='Iris-setosa'</code> return? Why? Is this a familiar behaviour?</li>
+  <li>What does <code class="highlighter-rouge">iris["Name"]=='Iris-setosa'</code> return? Why? Is this familiar
+behaviour?</li>
   <li>What is going to happen when you type <code class="highlighter-rouge">setosa</code>?</li>
 </ul>
 
 <p>Now you can go ahead and create dataframes for the other two species.</p>
 
-<p>If we want to take a closer look at any one of the species-specific dataframes that we now have, a good starting point is the <code class="highlighter-rouge">describe</code> method of Data Frames (or Series)</p>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Put code here to create dataframes for other two species
+</span>
+</code></pre></div></div>
+
+<p>If we want to take a closer look at any one of the species-specific
+dataframes that we now have, a good starting point is the <code class="highlighter-rouge">describe</code>
+method of Data Frames (or Series)</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setosa</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </code></pre></div></div>
@@ -1452,114 +1493,168 @@ Name: Name, Length: 150, dtype: object
 </div>
 </div>
 
-<p>First thing to note is that <code class="highlighter-rouge">describe()</code> does not include the <code class="highlighter-rouge">Name</code> column. It shows only the <em>numerical</em> data. From this we can see that Iris Setosa is not a very versatile flower: deviations from the mean are quite small and the vast majority of flowers are quite similar in every way with the exception of <em>Petal Width</em>, which has outliers about six times the mean width.</p>
+<p>The first thing to note is that <code class="highlighter-rouge">describe()</code> does not include the
+<code class="highlighter-rouge">Name</code> column. It shows only the <em>numerical</em> data. From this we can see
+that Iris Setosa is not a very versatile flower: deviations from the
+mean are quite small and the vast majority of flowers are quite similar
+in every way with the exception of <em>Petal Width</em>, which has outliers
+about six times the mean width.</p>
 
-<p>Take a look at the other two species. Can you spot anything interesting?</p>
+<p>Use <code class="highlighter-rouge">describe</code> on the dataframes for the other two species. Can you
+spot anything interesting?</p>
 
-<p>Okay, numbers are cool and all, but let’s create some <em>graphs</em>. Since we mentioned that the <em>Petal Width</em> of Iris Setosa might be interesting to look at, let’s look at the histogram.</p>
-
-<p><em>(In order to save yourself <strong>A LOT</strong> of time, please start using TAB autocompletion if you haven’t already:
-Instead of typing <code class="highlighter-rouge">setosa.PetalWidth</code>, then correcting typos, then realising it’s case-sensitive and redoing everything, just do <code class="highlighter-rouge">seto&lt;TAB&gt;</code>, <code class="highlighter-rouge">.P&lt;TAB&gt;</code>, <code class="highlighter-rouge">▼ ENTER</code>)</em></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setosa</span><span class="o">.</span><span class="n">PetalWidth</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Use describe on the other two species.
+# See if you can spot any patterns in the differences.
+</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1184d6da0&gt;
+<p>Okay, numbers are cool and all, but let’s create some <em>graphs</em>. Since
+we mentioned that the <em>Petal Width</em> of Iris Setosa might be interesting
+to look at, let’s look at the histogram.</p>
+
+<p><strong>Hint</strong>: In order to save yourself <strong>A LOT</strong> of time, please start
+using TAB autocompletion if you haven’t already: Instead of typing
+<code class="highlighter-rouge">setosa["PetalWidth"]</code>, then correcting typos, then realising it’s
+case-sensitive and redoing everything, just do <code class="highlighter-rouge">seto&lt;TAB&gt;</code>, <code class="highlighter-rouge">["P&lt;TAB&gt;</code>,
+selecting the column you want, and press Enter.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setosa</span><span class="p">[</span><span class="s">"PetalWidth"</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/exercises/df_exercises_21_1.png" alt="png" /></p>
-
-<p>Something is clearly wrong with our histogram. It shows the information, sure. But what are those gaps? If you press <code class="highlighter-rouge">SHIFT+TAB</code> while being inside the parentheses of <code class="highlighter-rouge">hist()</code>, you can see all the arguments you can provide to it. Not that <code class="highlighter-rouge">bins</code> has a default value of <code class="highlighter-rouge">10</code>. Our histogram tries to split the data into ten bins, but our values are between <code class="highlighter-rouge">0.1</code> and <code class="highlighter-rouge">0.6</code> and simply do not support that level of granularity.</p>
-
-<p>Try adjusting the number of bins to make the histogram more readable. What number makes more sense than <code class="highlighter-rouge">10</code> in our case? Why?</p>
-
-<p>If there are any other histograms you think are worth looking at, feel free to plot them, too.</p>
-
-<p>But histograms describe the properties of one particular column of a dataframe. And the real power of data science is in seeing relationships between different properties.
-Is there a relationship between Sepal Length and Petal Length? Let’s find out!</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setosa</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'SepalLength'</span><span class="p">,</span> <span class="s">'PetalLength'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a60e940&gt;
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/exercises/df_exercises_24_1.png" alt="png" /></p>
-
-<p>Hmm, doesn’t look that related. (Is that the case for all three species?)
-What about Sepal Length and Sepal Width?</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setosa</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'SepalLength'</span><span class="p">,</span> <span class="s">'SepalWidth'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a586390&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11838dc88&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/exercises/df_exercises_26_1.png" alt="png" /></p>
 
-<p>Now we are starting to see some relationship! What other variable pairs do you think might be related? Test out your hypotheses.</p>
+<p>Something is clearly wrong with our histogram. It shows the
+information, sure. But what are those gaps? If you press <code class="highlighter-rouge">SHIFT+TAB</code>
+while being inside the parentheses of <code class="highlighter-rouge">hist()</code>, you can see all the
+arguments you can provide to it. Note that one of the arguments is
+called <code class="highlighter-rouge">bins</code>.  It has a default value of <code class="highlighter-rouge">10</code>, so our default
+histogram above tries to split the data into ten bins.</p>
 
-<p>Now that we have played around with three species separately, let’s take a look at the whole dataset again.</p>
+<p>Have a look at the unique values in <code class="highlighter-rouge">setosa["PetalWidth"]</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setosa</span><span class="p">[</span><span class="s">"PetalWidth"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.2, 0.4, 0.3, 0.1, 0.5, 0.6])
+</code></pre></div></div>
+
+<p>As you see, all the values are one of <code class="highlighter-rouge">0.1, 0.2, 0.3, 0.4, 0.5, 0.6</code>, so splitting the values into ten bins is going to leave some empty bins, which is what you see above.</p>
+
+<p>Try using the <code class="highlighter-rouge">bin</code> argument to <code class="highlighter-rouge">hist</code>, to adjust the number of bins.
+You want a number of bins that makes the histogram more readable. What
+number makes more sense than <code class="highlighter-rouge">10</code> in our case? Why?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a histogram of the setosa PetalWidth with a suitable number of
+# bins.
+</span>
+</code></pre></div></div>
+
+<p><strong>Replace this text to say why your chosen bin number above is the
+right one in this case.</strong></p>
+
+<p>If there are any other histograms you think are worth looking at, feel
+free to plot them, too.</p>
+
+<p>But histograms describe the properties of one particular column of a
+dataframe. And the real power of data science is in seeing
+relationships between different properties.</p>
+
+<p>Is there a relationship between Sepal Length and Petal Length? Let’s
+find out!</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setosa</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'SepalLength'</span><span class="p">,</span> <span class="s">'PetalLength'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1183d96d8&gt;
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/exercises/df_exercises_35_1.png" alt="png" /></p>
+
+<p>Hmm, doesn’t look that related.  Is that the case for all three
+species?)</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Code here to do SepalLength vs PetalLength plots for the other two
+# species.
+</span>
+</code></pre></div></div>
+
+<p>What about Sepal Length and Sepal Width?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setosa</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'SepalLength'</span><span class="p">,</span> <span class="s">'SepalWidth'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a5499e8&gt;
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/exercises/df_exercises_39_1.png" alt="png" /></p>
+
+<p>Now we are starting to see some relationship! What other variable pairs
+do you think might be related? Test out your hypotheses.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Use scatter plots to look for relationships between other columns in
+# the "setosa" dataframe.
+</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># See if the same relationships hold for the other species.
+</span>
+</code></pre></div></div>
+
+<p><strong>Replace this text to describe the relationships you see</strong></p>
+
+<p>Now that we have played around with three species separately, let’s
+take a look at the whole dataset again.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'SepalLength'</span><span class="p">,</span> <span class="s">'PetalLength'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a6d6978&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a5150b8&gt;
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/exercises/df_exercises_29_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/exercises/df_exercises_45_1.png" alt="png" /></p>
 
-<p>We can see a linear relationship between Sepal Length and Petal Length that we couldn’t see on Setosa graph. All of the setosa data points are in that bottom-left island of the graph.</p>
+<p>We can see a linear relationship between Sepal Length and Petal Length
+that we couldn’t see on the <code class="highlighter-rouge">setosa</code> graph. All of the <code class="highlighter-rouge">setosa</code> data
+points are in that bottom-left island of the graph.</p>
 
-<p>We can also squeeze in more information into this graph by utilising colour:</p>
+<p>We can also squeeze more information into this graph by using colour:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'SepalLength'</span><span class="p">,</span> <span class="s">'PetalLength'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'PetalWidth'</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s">'hsv'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a7d9fd0&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a7b5e10&gt;
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/exercises/df_exercises_31_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/exercises/df_exercises_47_1.png" alt="png" /></p>
 
-<p><em>(super-extra-cool points if you figure out how to colorise points by species name)</em></p>
+<p><em>(super-extra-cool points if you figure out how to colorise points by
+species name)</em> - if you want to try, add that cell below.</p>
 
 <p>But wait! There’s more!</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'SepalLength'</span><span class="p">,</span> <span class="s">'PetalLength'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">iris</span><span class="p">[</span><span class="s">"SepalWidth"</span><span class="p">]</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'PetalWidth'</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s">'hsv'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11aa18048&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a9f4be0&gt;
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/exercises/df_exercises_34_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/exercises/df_exercises_50_1.png" alt="png" /></p>
 
-<p>What is happening in the above cell? Make sure to utilize <code class="highlighter-rouge">SHIFT+TAB</code> in order to examine what arguments <code class="highlighter-rouge">plot.scatter()</code> can take. Why is there <code class="highlighter-rouge">**4</code> all of a sudden? What is going to happen if you change that value?</p>
+<p>What is happening in the above cell? Make sure to utilize <code class="highlighter-rouge">SHIFT+TAB</code>
+in order to examine what arguments <code class="highlighter-rouge">plot.scatter()</code> can take. Why is
+there <code class="highlighter-rouge">**4</code> all of a sudden? What is going to happen if you change that
+value?</p>
 
 <p>But what if we want to take a look at <em>every possible variable pair</em>? Surely that can’t be done in one line, right?</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># But it can!
+</span><span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">]);</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x11aa06748&gt;,
-        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x11ac80400&gt;,
-        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x11aca6d68&gt;,
-        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x11abbb710&gt;],
-       [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x11acc20b8&gt;,
-        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x11ace7a20&gt;,
-        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x11ad143c8&gt;,
-        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x11ad3bd68&gt;],
-       [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x11ad3bda0&gt;,
-        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x11ad98080&gt;,
-        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x11adbe9e8&gt;,
-        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x11aded390&gt;],
-       [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x11ae10cf8&gt;,
-        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x11ae426a0&gt;,
-        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x11ae72048&gt;,
-        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x11ae949b0&gt;]],
-      dtype=object)
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/exercises/df_exercises_37_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/exercises/df_exercises_53_0.png" alt="png" /></p>
 
 
           
