@@ -518,10 +518,10 @@ The null hypothesis offered by the survey company is that the proportion we saw
 above is a plausible value if we took a random sample of `n_total` voters.
 
 We can simulate a new survey, with `n_total` voters, by taking `n_total` random
-numbers between 0 and 1.  We consider the values less than 0.52 as
+numbers between 0 and 1.  We consider the values less than 0.519 as
 corresponding to a Leave vote, and the rest are Remain votes.  We then
-calculate the proportion of Leave votes (proportion of values where value <
-0\.519 == True).
+calculate the proportion of Leave votes (proportion of values where value
+< 0\.519 == True).
 
 We do this 10000 times, to get 10000 simulated surveys.  We calculate the
 proportions for each simulated survey, and do a histogram of the proportions.
