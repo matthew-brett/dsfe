@@ -1,0 +1,3036 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Brexit analysis - Data Science for Everyone</title>
+<meta name="description" content="Brexit - the data analysis">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="Brexit analysis">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/exercises/brexit_analysis">
+
+
+  <meta property="og:description" content="Brexit - the data analysis">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2018-11-30T02:51:36+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/exercises/brexit_analysis">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--textbook">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" class="textbook" role="main">
+  <div id="textbook_wrapper">
+    
+  <div class="sidebar sticky textbook">
+  
+  
+    <img src="/dsfe/images/dsfe_logo.png" class="textbook_logo" />
+    
+
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/"><span class="nav__sub-title">Home</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/01/what-is-data-science"><span class="nav__sub-title">1. Data Science</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/intro" class="level_1">1.1 Introduction</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/computational-tools" class="level_2">1.1.1 Computational Tools</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/statistical-techniques" class="level_2">1.1.2 Statistical Techniques</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/why-data-science" class="level_1">1.2 Why Data Science?</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Plotting_the_Classics" class="level_1">1.3 Plotting the Classics</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Literary_Characters" class="level_2">1.3.1 Literary Characters</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Another_Kind_Of_Character" class="level_2">1.3.2 Another Kind of Character</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/02/to_code"><span class="nav__sub-title">2. Programming</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/sampling_problem" class="level_1">2.1 A sampling problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/three_girls" class="level_1">2.2 A simpler problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Expressions" class="level_1">2.3 Expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/variables" class="level_1">2.4 Variables</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Names" class="level_1">2.5 Names</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Calls" class="level_1">2.6 Call expressions</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/03/data_types"><span class="nav__sub-title">3. Data types</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Numbers" class="level_1">3.1 Numbers</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Strings" class="level_1">3.2 Strings</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Comparison" class="level_1">3.3 Comparison</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Arrays" class="level_1">3.4 Arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Ranges" class="level_1">3.5 Ranges</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/More_on_Arrays" class="level_1">3.6 More on arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/arrays_and_axes" class="level_1">3.7 Arrays and axes</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/reply_supreme" class="level_1">3.8 Reply to the Supreme Court</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/three_girls" class="level_1">3.9 Revision - three girls</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/array_indexing" class="level_1">3.10 Selecting with arrays</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/04/data_frames"><span class="nav__sub-title">4. Data frames</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/04/data_frame_intro" class="level_1">4.1 Introduction to data frames</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/05/permutation"><span class="nav__sub-title">5. Permutations</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/population_permutation" class="level_1">5.1 Population and permutation</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/iteration" class="level_1">5.2 Iteration with For loops</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/exercises/exercises"><span class="nav__sub-title">Exercises</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/simulation" class="level_1">Simulation</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/df_exercises" class="level_1">Data frames</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/brexit_analysis" class="level_1">Brexit analysis</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/for_loops" class="level_1">For loops</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+
+  
+  </div>
+
+
+    <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="headline" content="Brexit analysis">
+      <meta itemprop="description" content="Brexit - the data analysis">
+      <meta itemprop="datePublished" content="November 30, 2018">
+      
+
+      <div class="page__inner-wrap">
+        
+          <header>
+            <h1 id="page-title" class="page__title" itemprop="headline">Brexit analysis
+</h1>
+          </header>
+        
+
+        <section class="page__content" itemprop="text">
+          
+            
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#all-about-the-brexiteers">All about the Brexiteers</a></li>
+</ul>
+    </nav>
+  </aside>
+
+
+          
+          <!-- INTERACT LINKS -->
+
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/exercises/brexit_analysis.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2Fexercises%2Fbrexit_analysis.ipynb">Interact</a>
+
+
+          <h1 id="brexit---the-data-analysis">Brexit - the data analysis</h1>
+
+<p>We start, as usual, by importing all the libraries we need.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="c1"># Fancy plots
+</span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+
+<span class="c1"># Data frame library
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+</code></pre></div></div>
+
+<h2 id="all-about-the-brexiteers">All about the Brexiteers</h2>
+
+<p>Every year, the <a href="https://www.hansardsociety.org.uk/research/audit-of-political-engagement">Hansard
+Society</a>
+sponsors a survey on political engagement in the UK.</p>
+
+<p>They put topical questions in each survey.  For the 2016 / 7 survey, they asked
+about how people voted in the Brexit referendum.</p>
+
+<p>Luckily, they make the data freely available online for us to analyze.</p>
+
+<p>You can get the data for yourself from the UK Data Service:
+<a href="https://discover.ukdataservice.ac.uk/catalogue/?sn=8183">https://discover.ukdataservice.ac.uk/catalogue/?sn=8183</a>.
+There are data files in various formats, including:</p>
+
+<ul>
+  <li>SPSS format (for the SPSS statistical package);</li>
+  <li>Stata format (for the Stata statistical package);</li>
+  <li>tab-delimited (a general data format, that can be used with Pandas, Excel,
+and other packages).</li>
+</ul>
+
+<p>The data is in a standard form, with one row per respondent, and one column
+per question.</p>
+
+<p>To save you a tiny bit of work, I have made an unchanged copy of the
+tab-delimited version of the data file for you to download directly. I have
+also made a copy of the document describing the questions they ask and the way
+that they have recorded the answers in the data file.  This is often called the
+“data dictionary”.  It was originally in Rich Text Format, but I have converted
+to PDF for convenience.  It is otherwise identical to the file you will find at
+the UK Data Service.</p>
+
+<p>You can download these copies from the following links:</p>
+
+<ul>
+  <li><a href="/dsfe/data/audit_of_political_engagement_14_2017.tab">tab-delimited data file</a>;</li>
+  <li><a href="/dsfe/data/audit_of_political_engagement_14_2017_ukda_data_dictionary.pdf">data dictionary PDF file</a>.</li>
+</ul>
+
+<p>If you are running this notebook on your laptop, download the tab-delimited
+data file to the same directory as the notebook.</p>
+
+<p>In the moment, we are going to try and analyze these data.  We will focus on
+two questions labeled <code class="highlighter-rouge">cut15</code> and <code class="highlighter-rouge">numage</code>.  <code class="highlighter-rouge">cut15</code> is the question
+about Brexit. The data dictionary has the <em>variable label</em> “CUT15 - How did you
+vote on the question ‘Should the United Kingdom remain a member of the European
+Union or leave the European Union’?”.  The recorded values run from 1 through
+6 and have the following labels:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Value label information for cut15
+Value = 1.0    Label = Remain a member of the European Union
+Value = 2.0    Label = Leave the European Union
+Value = 3.0    Label = Did not vote
+Value = 4.0    Label = Too young
+Value = 5.0    Label = Can't remember
+Value = 6.0    Label = Refused
+</code></pre></div></div>
+
+<p>We also want the variable <code class="highlighter-rouge">numage</code>; this is the age of the respondent in years.</p>
+
+<p>The data file that you just downloaded should be called
+<code class="highlighter-rouge">audit_of_political_engagement_14_2017.tab</code>.  The cell below loads the data
+file into memory with Pandas:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data frame, and put it in the variable "audit_data"
+</span><span class="n">audit_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s">'audit_of_political_engagement_14_2017.tab'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>As you know, we now have a <em>data frame</em>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">audit_data</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
+</code></pre></div></div>
+
+<p>The data frame has one row per person surveyed, and one column for each
+question in the survey.  The columns have kind-of helpful names that you can
+read about in the data dictionary:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">audit_data</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cu041</th>
+      <th>cu042</th>
+      <th>cu043</th>
+      <th>cu044</th>
+      <th>cu045</th>
+      <th>cu046</th>
+      <th>cu047</th>
+      <th>cu048</th>
+      <th>cu049</th>
+      <th>cu0410</th>
+      <th>...</th>
+      <th>intten</th>
+      <th>cx_971_980</th>
+      <th>serial</th>
+      <th>week</th>
+      <th>wts</th>
+      <th>numage</th>
+      <th>weight0</th>
+      <th>sgrade_grp</th>
+      <th>age_grp</th>
+      <th>region2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>3.41659</td>
+      <td>1399</td>
+      <td>648</td>
+      <td>3.41659</td>
+      <td>37</td>
+      <td>3.41659</td>
+      <td>1</td>
+      <td>4</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>2.68198</td>
+      <td>1733</td>
+      <td>648</td>
+      <td>2.68198</td>
+      <td>55</td>
+      <td>2.68198</td>
+      <td>2</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>0.79379</td>
+      <td>1736</td>
+      <td>648</td>
+      <td>0.79379</td>
+      <td>71</td>
+      <td>0.79379</td>
+      <td>2</td>
+      <td>7</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>1.40580</td>
+      <td>1737</td>
+      <td>648</td>
+      <td>1.40580</td>
+      <td>37</td>
+      <td>1.40580</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>0.89475</td>
+      <td>1738</td>
+      <td>648</td>
+      <td>0.89475</td>
+      <td>42</td>
+      <td>0.89475</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>3.22535</td>
+      <td>1801</td>
+      <td>648</td>
+      <td>3.22535</td>
+      <td>0</td>
+      <td>3.22535</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>1.52922</td>
+      <td>1802</td>
+      <td>648</td>
+      <td>1.52922</td>
+      <td>69</td>
+      <td>1.52922</td>
+      <td>1</td>
+      <td>7</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>2.89655</td>
+      <td>1803</td>
+      <td>648</td>
+      <td>2.89655</td>
+      <td>20</td>
+      <td>2.89655</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>4.66393</td>
+      <td>1804</td>
+      <td>648</td>
+      <td>4.66393</td>
+      <td>38</td>
+      <td>4.66393</td>
+      <td>1</td>
+      <td>4</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>1.43732</td>
+      <td>1806</td>
+      <td>648</td>
+      <td>1.43732</td>
+      <td>60</td>
+      <td>1.43732</td>
+      <td>4</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>1.81109</td>
+      <td>1807</td>
+      <td>648</td>
+      <td>1.81109</td>
+      <td>0</td>
+      <td>1.81109</td>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>4.18632</td>
+      <td>1808</td>
+      <td>648</td>
+      <td>4.18632</td>
+      <td>32</td>
+      <td>4.18632</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>1.81382</td>
+      <td>1809</td>
+      <td>648</td>
+      <td>1.81382</td>
+      <td>79</td>
+      <td>1.81382</td>
+      <td>2</td>
+      <td>8</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>1.73488</td>
+      <td>1811</td>
+      <td>648</td>
+      <td>1.73488</td>
+      <td>0</td>
+      <td>1.73488</td>
+      <td>4</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>1.22631</td>
+      <td>1812</td>
+      <td>648</td>
+      <td>1.22631</td>
+      <td>58</td>
+      <td>1.22631</td>
+      <td>1</td>
+      <td>6</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>1.73024</td>
+      <td>1813</td>
+      <td>648</td>
+      <td>1.73024</td>
+      <td>46</td>
+      <td>1.73024</td>
+      <td>1</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>1.83130</td>
+      <td>1814</td>
+      <td>648</td>
+      <td>1.83130</td>
+      <td>51</td>
+      <td>1.83130</td>
+      <td>1</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>0.50172</td>
+      <td>1815</td>
+      <td>648</td>
+      <td>0.50172</td>
+      <td>74</td>
+      <td>0.50172</td>
+      <td>3</td>
+      <td>7</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>3.33900</td>
+      <td>1816</td>
+      <td>648</td>
+      <td>3.33900</td>
+      <td>57</td>
+      <td>3.33900</td>
+      <td>1</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>1.89094</td>
+      <td>1817</td>
+      <td>648</td>
+      <td>1.89094</td>
+      <td>61</td>
+      <td>1.89094</td>
+      <td>3</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>3.80239</td>
+      <td>1818</td>
+      <td>648</td>
+      <td>3.80239</td>
+      <td>47</td>
+      <td>3.80239</td>
+      <td>2</td>
+      <td>5</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>1.55589</td>
+      <td>1819</td>
+      <td>648</td>
+      <td>1.55589</td>
+      <td>56</td>
+      <td>1.55589</td>
+      <td>4</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>2.73494</td>
+      <td>1820</td>
+      <td>648</td>
+      <td>2.73494</td>
+      <td>87</td>
+      <td>2.73494</td>
+      <td>2</td>
+      <td>8</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>3.18552</td>
+      <td>1821</td>
+      <td>648</td>
+      <td>3.18552</td>
+      <td>76</td>
+      <td>3.18552</td>
+      <td>1</td>
+      <td>8</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>4.38354</td>
+      <td>1822</td>
+      <td>648</td>
+      <td>4.38354</td>
+      <td>20</td>
+      <td>4.38354</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>0.63495</td>
+      <td>1823</td>
+      <td>648</td>
+      <td>0.63495</td>
+      <td>35</td>
+      <td>0.63495</td>
+      <td>3</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>0.48390</td>
+      <td>1824</td>
+      <td>648</td>
+      <td>0.48390</td>
+      <td>28</td>
+      <td>0.48390</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>0.85149</td>
+      <td>1825</td>
+      <td>648</td>
+      <td>0.85149</td>
+      <td>38</td>
+      <td>0.85149</td>
+      <td>2</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>1.12183</td>
+      <td>1828</td>
+      <td>648</td>
+      <td>1.12183</td>
+      <td>44</td>
+      <td>1.12183</td>
+      <td>3</td>
+      <td>4</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>-1</td>
+      <td>2.38711</td>
+      <td>1829</td>
+      <td>648</td>
+      <td>2.38711</td>
+      <td>38</td>
+      <td>2.38711</td>
+      <td>2</td>
+      <td>4</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1741</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.45925</td>
+      <td>3262</td>
+      <td>649</td>
+      <td>0.45925</td>
+      <td>35</td>
+      <td>0.45925</td>
+      <td>3</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1742</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.97481</td>
+      <td>3284</td>
+      <td>649</td>
+      <td>0.97481</td>
+      <td>39</td>
+      <td>0.97481</td>
+      <td>3</td>
+      <td>4</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1743</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.97507</td>
+      <td>3291</td>
+      <td>649</td>
+      <td>0.97507</td>
+      <td>39</td>
+      <td>0.97507</td>
+      <td>1</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1744</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>1.81637</td>
+      <td>3295</td>
+      <td>649</td>
+      <td>1.81637</td>
+      <td>44</td>
+      <td>1.81637</td>
+      <td>2</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1745</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.13786</td>
+      <td>3329</td>
+      <td>649</td>
+      <td>0.13786</td>
+      <td>18</td>
+      <td>0.13786</td>
+      <td>2</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1746</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.34092</td>
+      <td>3344</td>
+      <td>649</td>
+      <td>0.34092</td>
+      <td>40</td>
+      <td>0.34092</td>
+      <td>1</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1747</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>1.09296</td>
+      <td>3364</td>
+      <td>649</td>
+      <td>1.09296</td>
+      <td>60</td>
+      <td>1.09296</td>
+      <td>3</td>
+      <td>6</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1748</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>4</td>
+      <td>1.16371</td>
+      <td>3367</td>
+      <td>649</td>
+      <td>1.16371</td>
+      <td>36</td>
+      <td>1.16371</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1749</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.98811</td>
+      <td>3368</td>
+      <td>649</td>
+      <td>0.98811</td>
+      <td>72</td>
+      <td>0.98811</td>
+      <td>4</td>
+      <td>7</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1750</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.36535</td>
+      <td>3370</td>
+      <td>649</td>
+      <td>0.36535</td>
+      <td>70</td>
+      <td>0.36535</td>
+      <td>4</td>
+      <td>7</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1751</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.76167</td>
+      <td>3372</td>
+      <td>649</td>
+      <td>0.76167</td>
+      <td>31</td>
+      <td>0.76167</td>
+      <td>1</td>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1752</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>4</td>
+      <td>0.24729</td>
+      <td>3377</td>
+      <td>649</td>
+      <td>0.24729</td>
+      <td>20</td>
+      <td>0.24729</td>
+      <td>4</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1753</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>6</td>
+      <td>0.17248</td>
+      <td>3378</td>
+      <td>649</td>
+      <td>0.17248</td>
+      <td>67</td>
+      <td>0.17248</td>
+      <td>4</td>
+      <td>7</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1754</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>5</td>
+      <td>0.22854</td>
+      <td>3380</td>
+      <td>649</td>
+      <td>0.22854</td>
+      <td>54</td>
+      <td>0.22854</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1755</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.39888</td>
+      <td>3382</td>
+      <td>649</td>
+      <td>0.39888</td>
+      <td>18</td>
+      <td>0.39888</td>
+      <td>4</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1756</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.17631</td>
+      <td>3384</td>
+      <td>649</td>
+      <td>0.17631</td>
+      <td>18</td>
+      <td>0.17631</td>
+      <td>2</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1757</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.32814</td>
+      <td>3386</td>
+      <td>649</td>
+      <td>0.32814</td>
+      <td>24</td>
+      <td>0.32814</td>
+      <td>4</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1758</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.21588</td>
+      <td>3388</td>
+      <td>649</td>
+      <td>0.21588</td>
+      <td>20</td>
+      <td>0.21588</td>
+      <td>2</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1759</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.61616</td>
+      <td>3389</td>
+      <td>649</td>
+      <td>0.61616</td>
+      <td>36</td>
+      <td>0.61616</td>
+      <td>3</td>
+      <td>4</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1760</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.21250</td>
+      <td>3390</td>
+      <td>649</td>
+      <td>0.21250</td>
+      <td>42</td>
+      <td>0.21250</td>
+      <td>4</td>
+      <td>4</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1761</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.32776</td>
+      <td>3392</td>
+      <td>649</td>
+      <td>0.32776</td>
+      <td>37</td>
+      <td>0.32776</td>
+      <td>1</td>
+      <td>4</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1762</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7</td>
+      <td>0.27406</td>
+      <td>3394</td>
+      <td>649</td>
+      <td>0.27406</td>
+      <td>19</td>
+      <td>0.27406</td>
+      <td>4</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1763</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.63120</td>
+      <td>3399</td>
+      <td>649</td>
+      <td>0.63120</td>
+      <td>36</td>
+      <td>0.63120</td>
+      <td>1</td>
+      <td>4</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1764</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.65792</td>
+      <td>3407</td>
+      <td>649</td>
+      <td>0.65792</td>
+      <td>67</td>
+      <td>0.65792</td>
+      <td>4</td>
+      <td>7</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1765</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.54415</td>
+      <td>3422</td>
+      <td>649</td>
+      <td>0.54415</td>
+      <td>40</td>
+      <td>0.54415</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1766</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.44339</td>
+      <td>3423</td>
+      <td>649</td>
+      <td>0.44339</td>
+      <td>39</td>
+      <td>0.44339</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1767</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.44086</td>
+      <td>3425</td>
+      <td>649</td>
+      <td>0.44086</td>
+      <td>20</td>
+      <td>0.44086</td>
+      <td>3</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1768</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.32590</td>
+      <td>3426</td>
+      <td>649</td>
+      <td>0.32590</td>
+      <td>31</td>
+      <td>0.32590</td>
+      <td>3</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1769</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.66970</td>
+      <td>3427</td>
+      <td>649</td>
+      <td>0.66970</td>
+      <td>47</td>
+      <td>0.66970</td>
+      <td>4</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1770</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>0.39478</td>
+      <td>3434</td>
+      <td>649</td>
+      <td>0.39478</td>
+      <td>25</td>
+      <td>0.39478</td>
+      <td>4</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+<p>1771 rows × 370 columns</p>
+</div>
+</div>
+
+<p>The data frame has columns for all the questions listed in the data
+dictionary:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">audit_data</span><span class="o">.</span><span class="n">columns</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['cu041', 'cu042', 'cu043', 'cu044', 'cu045', 'cu046', 'cu047', 'cu048',
+       'cu049', 'cu0410',
+       ...
+       'intten', 'cx_971_980', 'serial', 'week', 'wts', 'numage', 'weight0',
+       'sgrade_grp', 'age_grp', 'region2'],
+      dtype='object', length=370)
+</code></pre></div></div>
+
+<p>To reduce clutter, we first make a new data frame that just has the two
+questions we are interested in.   To do this we first make a list with the names of the columns we want:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">desired_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">"numage"</span><span class="p">,</span> <span class="s">"cut15"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Then we use this list, to make a new data frame, that only has the named columns, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select the age and Brexit vote questions only
+</span><span class="n">mini_brexit</span> <span class="o">=</span> <span class="n">audit_data</span><span class="p">[[</span><span class="s">'numage'</span><span class="p">,</span> <span class="s">'cut15'</span><span class="p">]]</span>
+<span class="n">mini_brexit</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>numage</th>
+      <th>cut15</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>37</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>55</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>71</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>37</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>42</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>69</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>20</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>38</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>60</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>32</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>79</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>58</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>46</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>51</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>74</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>57</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>61</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>47</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>56</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>87</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>76</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>20</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>35</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>28</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>38</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>44</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>38</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1741</th>
+      <td>35</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1742</th>
+      <td>39</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1743</th>
+      <td>39</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1744</th>
+      <td>44</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1745</th>
+      <td>18</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1746</th>
+      <td>40</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1747</th>
+      <td>60</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1748</th>
+      <td>36</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1749</th>
+      <td>72</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1750</th>
+      <td>70</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1751</th>
+      <td>31</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1752</th>
+      <td>20</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1753</th>
+      <td>67</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1754</th>
+      <td>54</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1755</th>
+      <td>18</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1756</th>
+      <td>18</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1757</th>
+      <td>24</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1758</th>
+      <td>20</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1759</th>
+      <td>36</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1760</th>
+      <td>42</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1761</th>
+      <td>37</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1762</th>
+      <td>19</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1763</th>
+      <td>36</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1764</th>
+      <td>67</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1765</th>
+      <td>40</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1766</th>
+      <td>39</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1767</th>
+      <td>20</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1768</th>
+      <td>31</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1769</th>
+      <td>47</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1770</th>
+      <td>25</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+<p>1771 rows × 2 columns</p>
+</div>
+</div>
+
+<p>To get started on exploring, we make a new variable <code class="highlighter-rouge">ages</code> that refers to the
+<code class="highlighter-rouge">numage</code> column in the <code class="highlighter-rouge">mini_brexit</code> data frame.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a new variable "ages" that refers to the "numage" column in "mini_brexit"
+</span><span class="n">ages</span> <span class="o">=</span> <span class="n">mini_brexit</span><span class="p">[</span><span class="s">"numage"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Confirm that <code class="highlighter-rouge">ages</code> has a value of type <code class="highlighter-rouge">Series</code>, the Pandas type for a column of a data frame:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">ages</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+</code></pre></div></div>
+
+<p>Here are the numbers of rows, columns in the original data frame:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">audit_data</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1771, 370)
+</code></pre></div></div>
+
+<p>Run the cell below to confirm that <code class="highlighter-rouge">ages</code> has the same number of values, as
+<code class="highlighter-rouge">audit_data</code> has rows.  To do this, we can use the <code class="highlighter-rouge">len</code> function, as applied
+to the <code class="highlighter-rouge">ages</code> Series.  It returns the number of values.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">ages</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1771
+</code></pre></div></div>
+
+<p>In fact, <code class="highlighter-rouge">len</code>, as applied to the <em>data frame</em>, returns the number of rows:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">audit_data</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1771
+</code></pre></div></div>
+
+<p>Start by doing a histogram of the values in <code class="highlighter-rouge">ages</code> (which are also the values
+in the <code class="highlighter-rouge">numage</code> column of <code class="highlighter-rouge">mini_brexit</code>).  If you can’t remember how to do
+histograms, have a look at the <a href="../04/data_frame_intro">introduction to data
+frames</a> notebook.   Hint: consider using the <code class="highlighter-rouge">hist</code>
+method of the <code class="highlighter-rouge">ages</code> variable.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Do a histogram of the values in the "numage" column.
+# Your code here.
+</span></code></pre></div></div>
+
+<p>You will see that a few subjects have an age of 0.</p>
+
+<p>It looks as if the survey coders are using the value 0 to mean that the person
+did not state their age.  We will have to clean that up.  We do that by
+selecting the cases that have ages not equal to 0.</p>
+
+<p>Hint:  You have seen the operator to say whether two values are equal or no:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span> <span class="o">==</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<p>The operator for <em>not equal</em> is <code class="highlighter-rouge">!=</code>, as in:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">!=</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<p>Prepare for brain-bending double negative…</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span> <span class="o">!=</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<p>To identify the values in <code class="highlighter-rouge">ages</code> that are <em>not equal</em> to 0, use the comparison
+I’ve hinted at above, to make a new variable, <code class="highlighter-rouge">age_not_0</code>, that has the same
+number of values as <code class="highlighter-rouge">ages</code>, and has <code class="highlighter-rouge">True</code> at positions where <code class="highlighter-rouge">ages</code> is <em>not
+equal</em> to 0, and <code class="highlighter-rouge">False</code> otherwise.   We will refer to these sequences of True
+and False values, as <em>Boolean vectors</em>.</p>
+
+<p>Check back to the <a href="../04/data_frame_intro">introduction to data frames</a>
+notebook for a reminder of making and using Boolean vectors to select rows from
+data frames.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create new variable "age_not_0", with True at positions where "ages" is not
+# equal to 0, and False otherwise.
+# age_not_0 = ?
+</span></code></pre></div></div>
+
+<p>Use <code class="highlighter-rouge">age_not_0</code> to select rows in the <code class="highlighter-rouge">mini_brexit</code> data frame where the value
+is <code class="highlighter-rouge">True</code>, and throw away the rows where the value is <code class="highlighter-rouge">False</code>.  To do this, use
+the <code class="highlighter-rouge">loc</code> function attached to the data frame.  It <em>locates</em> values:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select rows in the data frame where the age is not equal to 0 Make a new data
+# frame called "good_brexit" that only contains these rows.  Your code will start
+# good_brexit = mini_brexit.loc?
+</span>
+</code></pre></div></div>
+
+<p>Now we want to ask what proportion of the respondents said that they voted
+Remain or Leave.</p>
+
+<p>First we make a new data frame that contains only the rows for people who said
+they voted No in the referendum (remain).  Remember, from the data dictionary,
+that 1 is the code for a No vote.</p>
+
+<p>First, make a new variable <code class="highlighter-rouge">votes</code> that has the values of <code class="highlighter-rouge">cut15</code> column of the
+<code class="highlighter-rouge">good_brexit</code> data frame.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a new variable "votes" that refers to the "cut15" column in "good_brexit".
+# Your code will start with
+# votes = ?
+</span>
+</code></pre></div></div>
+
+<p>Now make a new Boolean vector, that has True at the positions where <code class="highlighter-rouge">votes</code> is
+equal to 1, and False otherwise.  Call this variable <code class="highlighter-rouge">is_remain</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a Boolean vector, called "is_remain", that True for Remain row, False
+# otherwise.
+# is_remain = ?
+</span>
+</code></pre></div></div>
+
+<p>Next, use <code class="highlighter-rouge">is_remain</code> to select the rows in <code class="highlighter-rouge">good_brexit</code> that correspond to
+confessed “Remain” voters.  Call the new data frame <code class="highlighter-rouge">remainers</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select the rows from "good_brexit" that correspond to Remain voters
+# remainers = good_brexit?
+</span>
+</code></pre></div></div>
+
+<p>Do a histogram of the values in the <code class="highlighter-rouge">numage</code> column of <code class="highlighter-rouge">remainers</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show a histogram of the `numage` column from `remainers`
+</span></code></pre></div></div>
+
+<p>Next, go through the same steps, to make a new data frame for those who claimed
+to vote Yes (leave) (code 2):</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a Boolean vector, called "is_leave", that True for Leave row, False
+# otherwise.
+# is_leave = ?
+</span>
+</code></pre></div></div>
+
+<p>Next, use <code class="highlighter-rouge">is_leave</code> to select the rows in <code class="highlighter-rouge">good_brexit</code> that correspond to confessed “Leave” voters.  Call the new data frame <code class="highlighter-rouge">leavers</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select the rows from "good_brexit" that correspond to Leave voters
+# leavers = good_brexit?
+</span>
+</code></pre></div></div>
+
+<p>Do a histogram of the values in the <code class="highlighter-rouge">numage</code> column of <code class="highlighter-rouge">leavers</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show a histgram of the `numage` column from `remainers`
+</span>
+</code></pre></div></div>
+
+<p>Uncomment the lines in the cell below to get the total number of Remain voters:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># n_remain = len(remainers)
+# n_remain
+</span></code></pre></div></div>
+
+<p>Here is the total number of Leave voters:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># n_leave = len(leavers)
+# n_leave
+</span></code></pre></div></div>
+
+<p>Here is the total number of voters who confessed to a specific Leave or Remain vote:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># n_total = n_leave + n_remain
+# n_total
+</span></code></pre></div></div>
+
+<p>Here is the proportion of Leave voters:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># leave_proportion = n_leave / n_total
+# leave_proportion
+</span></code></pre></div></div>
+
+<p>As you remember, the proportion of Leave voters in the referendum was 51.9%.
+<code class="highlighter-rouge">leave_proportion</code> from the survey seems a way off.  Is it too far off?</p>
+
+<p>You go back to the survey company and tell them that the proportion of Leave voters seems too low.</p>
+
+<p>They say the following:</p>
+
+<blockquote>
+  <p>We took a random sample of the population.  You are a data scientist, you
+know well that the proportion from this random sample is very unlikely to be
+exactly the same as the proportion in the whole population.  The proportion
+we get is compatible with the variation we expect from taking a random sample.</p>
+
+  <p>In other words - the difference in the proportions, between the referendum
+and the survey, is due to sampling error.</p>
+</blockquote>
+
+<p>Time for a simulation.</p>
+
+<p>The null hypothesis offered by the survey company is that the proportion we saw
+above is a plausible value if we took a random sample of <code class="highlighter-rouge">n_total</code> voters.</p>
+
+<p>We can simulate a new survey, with <code class="highlighter-rouge">n_total</code> voters, by taking <code class="highlighter-rouge">n_total</code> random
+numbers between 0 and 1.  We consider the values less than 0.52 as
+corresponding to a Leave vote, and the rest are Remain votes.  We then
+calculate the proportion of Leave votes (proportion of values where value &lt;
+0.519 == True).</p>
+
+<p>We do this 10000 times, to get 10000 simulated surveys.  We calculate the
+proportions for each simulated survey, and do a histogram of the proportions.
+Is <code class="highlighter-rouge">leave_proportion</code> a plausible value on this histogram?</p>
+
+<p>See:</p>
+
+<ul>
+  <li><a href="../03/reply_supreme">3.8 Reply to the Supreme Court</a></li>
+  <li><a href="../03/three_girls">3.9 Revision - three girls</a></li>
+</ul>
+
+<p>to remind yourself about simulations.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Your simulation here
+</span></code></pre></div></div>
+
+
+          
+        </section>
+
+        <footer class="page__meta">
+          
+          
+
+
+        </footer>
+
+        
+
+        
+  <nav class="pagination">
+    
+      <a href="/dsfe/chapters/exercises/df_exercises" class="pagination--pager" title="Data frames
+">Previous</a>
+    
+    
+      <a href="/dsfe/chapters/exercises/for_loops" class="pagination--pager" title="For loops
+">Next</a>
+    
+  </nav>
+
+
+      </div>
+
+      
+    </article>
+  </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

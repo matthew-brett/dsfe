@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
+<meta name="description" content="">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/exercises/brexit_analysis.Rmd">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/exercises/brexit_analysis.Rmd">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/dsfe/">
+          <img src="/dsfe/images/dsfe_logo.png" class="masthead_logo" />
+          Data Science for Everyone
+        </a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+            </li>
+          
+          
+            <li class="masthead__menu-item">
+              <a href="/dsfe/chapters/01/what-is-data-science">Textbook</a>
+            </li>
+          
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <!--  -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        # Brexit - the data analysis
+
+We start, as usual, by importing all the libraries we need.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+# %matplotlib inline
+
+# Fancy plots
+plt.style.use('fivethirtyeight')
+
+# Data frame library
+import pandas as pd
+```
+
+## All about the Brexiteers
+
+Every year, the [Hansard
+Society](https://www.hansardsociety.org.uk/research/audit-of-political-engagement)
+sponsors a survey on political engagement in the UK.
+
+They put topical questions in each survey.  For the 2016 / 7 survey, they asked
+about how people voted in the Brexit referendum.
+
+Luckily, they make the data freely available online for us to analyze.
+
+You can get the data for yourself from the UK Data Service:
+[https://discover.ukdataservice.ac.uk/catalogue/?sn=8183](https://discover.ukdataservice.ac.uk/catalogue/?sn=8183).
+There are data files in various formats, including:
+
+* SPSS format (for the SPSS statistical package);
+* Stata format (for the Stata statistical package);
+* tab-delimited (a general data format, that can be used with Pandas, Excel,
+  and other packages).
+
+The data is in a standard form, with one row per respondent, and one column
+per question.
+
+To save you a tiny bit of work, I have made an unchanged copy of the
+tab-delimited version of the data file for you to download directly. I have
+also made a copy of the document describing the questions they ask and the way
+that they have recorded the answers in the data file.  This is often called the
+“data dictionary”.  It was originally in Rich Text Format, but I have converted
+to PDF for convenience.  It is otherwise identical to the file you will find at
+the UK Data Service.
+
+You can download these copies from the following links:
+
+* [tab-delimited data file](/dsfe/data/audit_of_political_engagement_14_2017.tab);
+* [data dictionary PDF file](/dsfe/data/audit_of_political_engagement_14_2017_ukda_data_dictionary.pdf).
+
+If you are running this notebook on your laptop, download the tab-delimited
+data file to the same directory as the notebook.
+
+In the moment, we are going to try and analyze these data.  We will focus on
+two questions labeled `cut15` and `numage`.  `cut15` is the question
+about Brexit. The data dictionary has the *variable label* “CUT15 - How did you
+vote on the question ‘Should the United Kingdom remain a member of the European
+Union or leave the European Union’?”.  The recorded values run from 1 through
+6 and have the following labels:
+
+```
+Value label information for cut15
+Value = 1.0    Label = Remain a member of the European Union
+Value = 2.0    Label = Leave the European Union
+Value = 3.0    Label = Did not vote
+Value = 4.0    Label = Too young
+Value = 5.0    Label = Can't remember
+Value = 6.0    Label = Refused
+```
+
+We also want the variable `numage`; this is the age of the respondent in years.
+
+
+The data file that you just downloaded should be called
+`audit_of_political_engagement_14_2017.tab`.  The cell below loads the data
+file into memory with Pandas:
+
+```{python}
+# Load the data frame, and put it in the variable "audit_data"
+audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')
+```
+
+As you know, we now have a *data frame*:
+
+```{python}
+type(audit_data)
+```
+
+The data frame has one row per person surveyed, and one column for each
+question in the survey.  The columns have kind-of helpful names that you can
+read about in the data dictionary:
+
+```{python}
+audit_data
+```
+
+The data frame has columns for all the questions listed in the data
+dictionary:
+
+```{python}
+audit_data.columns
+```
+
+To reduce clutter, we first make a new data frame that just has the two
+questions we are interested in.   To do this we first make a list with the names of the columns we want:
+
+```{python}
+desired_columns = ["numage", "cut15"]
+```
+
+Then we use this list, to make a new data frame, that only has the named columns, like this:
+
+```{python}
+# Select the age and Brexit vote questions only
+mini_brexit = audit_data[['numage', 'cut15']]
+mini_brexit
+```
+
+To get started on exploring, we make a new variable `ages` that refers to the
+`numage` column in the `mini_brexit` data frame.
+
+```{python}
+# Make a new variable "ages" that refers to the "numage" column in "mini_brexit"
+ages = mini_brexit["numage"]
+```
+
+Confirm that `ages` has a value of type `Series`, the Pandas type for a column of a data frame:
+
+```{python}
+type(ages)
+```
+
+Here are the numbers of rows, columns in the original data frame:
+
+```{python}
+audit_data.shape
+```
+
+Run the cell below to confirm that `ages` has the same number of values, as
+`audit_data` has rows.  To do this, we can use the `len` function, as applied
+to the `ages` Series.  It returns the number of values.
+
+```{python}
+len(ages)
+```
+
+In fact, `len`, as applied to the *data frame*, returns the number of rows:
+
+```{python}
+len(audit_data)
+```
+
+Start by doing a histogram of the values in `ages` (which are also the values
+in the `numage` column of `mini_brexit`).  If you can't remember how to do
+histograms, have a look at the [introduction to data
+frames](../04/data_frame_intro) notebook.   Hint: consider using the `hist`
+method of the `ages` variable.
+
+```{python}
+# Do a histogram of the values in the "numage" column.
+# Your code here.
+```
+
+You will see that a few subjects have an age of 0.
+
+It looks as if the survey coders are using the value 0 to mean that the person
+did not state their age.  We will have to clean that up.  We do that by
+selecting the cases that have ages not equal to 0.
+
+
+Hint:  You have seen the operator to say whether two values are equal or no:
+
+```{python}
+1 == 2
+```
+
+```{python}
+2 == 2
+```
+
+The operator for *not equal* is `!=`, as in:
+
+```{python}
+1 != 2
+```
+
+Prepare for brain-bending double negative...
+
+```{python}
+2 != 2
+```
+
+To identify the values in `ages` that are *not equal* to 0, use the comparison
+I've hinted at above, to make a new variable, `age_not_0`, that has the same
+number of values as `ages`, and has `True` at positions where `ages` is *not
+equal* to 0, and `False` otherwise.   We will refer to these sequences of True
+and False values, as *Boolean vectors*.
+
+Check back to the [introduction to data frames](../04/data_frame_intro)
+notebook for a reminder of making and using Boolean vectors to select rows from
+data frames.
+
+```{python}
+# Create new variable "age_not_0", with True at positions where "ages" is not
+# equal to 0, and False otherwise.
+# age_not_0 = ?
+```
+
+Use `age_not_0` to select rows in the `mini_brexit` data frame where the value
+is `True`, and throw away the rows where the value is `False`.  To do this, use
+the `loc` function attached to the data frame.  It *locates* values:
+
+```{python}
+# Select rows in the data frame where the age is not equal to 0 Make a new data
+# frame called "good_brexit" that only contains these rows.  Your code will start
+# good_brexit = mini_brexit.loc?
+
+```
+
+Now we want to ask what proportion of the respondents said that they voted
+Remain or Leave.
+
+First we make a new data frame that contains only the rows for people who said
+they voted No in the referendum (remain).  Remember, from the data dictionary,
+that 1 is the code for a No vote.
+
+First, make a new variable `votes` that has the values of `cut15` column of the
+`good_brexit` data frame.
+
+```{python}
+# Make a new variable "votes" that refers to the "cut15" column in "good_brexit".
+# Your code will start with
+# votes = ?
+
+```
+
+Now make a new Boolean vector, that has True at the positions where `votes` is
+equal to 1, and False otherwise.  Call this variable `is_remain`.
+
+```{python}
+# Make a Boolean vector, called "is_remain", that True for Remain row, False
+# otherwise.
+# is_remain = ?
+
+```
+
+Next, use `is_remain` to select the rows in `good_brexit` that correspond to
+confessed "Remain" voters.  Call the new data frame `remainers`:
+
+```{python}
+# Select the rows from "good_brexit" that correspond to Remain voters
+# remainers = good_brexit?
+
+```
+
+Do a histogram of the values in the `numage` column of `remainers`:
+
+```{python}
+# Show a histogram of the `numage` column from `remainers`
+```
+
+Next, go through the same steps, to make a new data frame for those who claimed
+to vote Yes (leave) (code 2):
+
+```{python}
+# Make a Boolean vector, called "is_leave", that True for Leave row, False
+# otherwise.
+# is_leave = ?
+
+```
+
+Next, use `is_leave` to select the rows in `good_brexit` that correspond to confessed "Leave" voters.  Call the new data frame `leavers`:
+
+```{python}
+# Select the rows from "good_brexit" that correspond to Leave voters
+# leavers = good_brexit?
+
+```
+
+Do a histogram of the values in the `numage` column of `leavers`:
+
+```{python}
+# Show a histgram of the `numage` column from `remainers`
+
+```
+
+Uncomment the lines in the cell below to get the total number of Remain voters:
+
+```{python}
+# n_remain = len(remainers)
+# n_remain
+```
+
+Here is the total number of Leave voters:
+
+```{python}
+# n_leave = len(leavers)
+# n_leave
+```
+
+Here is the total number of voters who confessed to a specific Leave or Remain vote:
+
+```{python}
+# n_total = n_leave + n_remain
+# n_total
+```
+
+Here is the proportion of Leave voters:
+
+```{python}
+# leave_proportion = n_leave / n_total
+# leave_proportion
+```
+
+As you remember, the proportion of Leave voters in the referendum was 51.9%.
+`leave_proportion` from the survey seems a way off.  Is it too far off?
+
+You go back to the survey company and tell them that the proportion of Leave voters seems too low.
+
+They say the following:
+
+> We took a random sample of the population.  You are a data scientist, you
+> know well that the proportion from this random sample is very unlikely to be
+> exactly the same as the proportion in the whole population.  The proportion
+> we get is compatible with the variation we expect from taking a random sample.
+>
+> In other words - the difference in the proportions, between the referendum
+> and the survey, is due to sampling error.
+
+Time for a simulation.
+
+The null hypothesis offered by the survey company is that the proportion we saw
+above is a plausible value if we took a random sample of `n_total` voters.
+
+We can simulate a new survey, with `n_total` voters, by taking `n_total` random
+numbers between 0 and 1.  We consider the values less than 0.52 as
+corresponding to a Leave vote, and the rest are Remain votes.  We then
+calculate the proportion of Leave votes (proportion of values where value <
+0\.519 == True).
+
+We do this 10000 times, to get 10000 simulated surveys.  We calculate the
+proportions for each simulated survey, and do a histogram of the proportions.
+Is `leave_proportion` a plausible value on this histogram?
+
+See:
+
+* [3.8 Reply to the Supreme Court](../03/reply_supreme)
+* [3.9 Revision - three girls](../03/three_girls)
+
+to remind yourself about simulations.
+
+```{python}
+# Your simulation here
+```
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

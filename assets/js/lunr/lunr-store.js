@@ -139,6 +139,26 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/04/data_frames",
         "teaser":null},{
+        "title": "5.2 Iteration with For loops",
+        "excerpt":"Iteration It is often the case in programming – especially when dealing with randomness– that we want to repeat a process multiple times. Consider the numpy function random.choice. It claims to choose randomlybetween the elements on an array that we pass it. Here we make an array ofstrings containing two...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/05/iteration",
+        "teaser":null},{
+        "title": "5. Permutations",
+        "excerpt":"In this chapter, we discover that permutation allows us to simulate data inmany more situations than we have seen thus far. We build up the tools to use permutation for a test of differences between twogroups. ","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/05/permutation",
+        "teaser":null},{
+        "title": "5.1 Population and permutation",
+        "excerpt":"A problem of populations We return to the Brexit survey. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdWe load the data: # Load the data frame, and put it in the variable \"audit_data\"audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')Now get the ages for the Leavers and...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/05/population_permutation",
+        "teaser":null},{
+        "title": "Brexit analysis",
+        "excerpt":"Brexit - the data analysis We start, as usual, by importing all the libraries we need. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdAll about the Brexiteers Every year, the HansardSocietysponsors a survey on political engagement in the UK. They put topical...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/brexit_analysis",
+        "teaser":null},{
         "title": "Data frames",
         "excerpt":"Data Frames By Alex Jermakov We will start, as usual, by importing all the libraries we need. import pandas as pdimport numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')Now we are going to need some data. Go ahead and downloadiris.csv and import it asa dataframe (save the file to...","categories": [],
         "tags": [],
@@ -148,6 +168,11 @@ var store = [{
         "excerpt":"Some exercises for various points in the course. ","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/exercises",
+        "teaser":null},{
+        "title": "For loops",
+        "excerpt":"For loop exercises import numpy as npYou may remember you can print a number (or anything else) with the print function, like this: print(5)5Use a for loop to print out all the numbers from 3 through 7, one number on each line. # Your code here.Use a for loop to...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/for_loops",
         "teaser":null},{
         "title": "Simulation",
         "excerpt":"Simulation exercises import numpy as npThree girls Of all families with exactly four children, what proportion have exactly threegirls? Solve by simulation. Penalty shootout technique Jen is the penalty taker for her football team. She’s been doing this for a long time. She thinks she normally has a 80%chance of...","categories": [],
