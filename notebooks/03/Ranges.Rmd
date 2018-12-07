@@ -23,9 +23,10 @@ jupyter:
     version: 3.5.2
 ---
 
-A *range* is an array of numbers in increasing or decreasing order, each
-separated by a regular interval.  Ranges are useful in a surprisingly large
-number of situations, so it's worthwhile to learn about them.
+A *range* is an array of numbers in increasing or decreasing order,
+each separated by a regular interval.  Ranges are useful in
+a surprisingly large number of situations, so it is worthwhile to
+learn about them.
 
 We will use the Numpy module, which we always rename as `np`, like this:
 
@@ -33,12 +34,17 @@ We will use the Numpy module, which we always rename as `np`, like this:
 import numpy as np
 ```
 
-Ranges are defined  using the `np.arange` function, which takes either one,
-two, or three arguments: a start, and end, and a 'step'.
+Ranges are defined  using the `np.arange` function, which takes either
+one, two, or three arguments: a start, and end, and a 'step'.
 
-If you pass one argument to `np.arange`, this becomes the `end` value, with `start=0`, `step=1` assumed.  Two arguments give the `start` and `end` with `step=1` assumed.  Three arguments give the `start`, `end` and `step` explicitly.
+If you pass one argument to `np.arange`, this becomes the `end` value,
+with `start=0`, `step=1` assumed.  Two arguments give the `start` and
+`end` with `step=1` assumed.  Three arguments give the `start`, `end`
+and `step` explicitly.
 
-A range always includes its `start` value, but does not include its `end` value.  It counts up by `step`, and it stops before it gets to the `end`.
+A range always includes its `start` value, but does not include its
+`end` value.  It counts up by `step`, and it stops before it gets to
+the `end`.
 
     np.arange(end): An array starting with 0 of increasing consecutive integers, stopping before end.
 
@@ -73,3 +79,5 @@ or negative and may be whole numbers or fractions.
 ```{python}
 np.arange(1.5, -2, -0.5)
 ```
+
+{% data8page Ranges %}

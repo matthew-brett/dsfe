@@ -19,7 +19,7 @@ jupyter:
     name: python
     nbconvert_exporter: python
     pygments_lexer: ipython3
-    version: 3.4.5
+    version: 3.7.1
 ---
 
 ```{python}
@@ -27,7 +27,7 @@ jupyter:
 # The standard set of libraries we need
 import numpy as np
 import matplotlib.pyplot as plt
-%matplotlib inline
+# %matplotlib inline
 
 # Make plots look a little bit more fancy
 plt.style.use('fivethirtyeight')
@@ -93,9 +93,15 @@ i = np.arange(3)[2]
 print(i)
 ```
 
-Notice that the name `i` is arbitrary, just like any name we assign with `=`.
+Notice that the name `i` is arbitrary, just like any name we assign with `=`.  For example, the following `for` loop works in just the same way as the `for` loop above:
 
-Here we use a `for` statement in a more realistic way: we print the results of five random choices:
+```{python}
+for my_variable in np.arange(3):
+    print(my_variable)
+```
+
+In the next example, we use a `for` statement in a more realistic way:
+we print the results of five random choices:
 
 ```{python}
 for i in np.arange(5):
@@ -107,54 +113,38 @@ so the code inside our `for` statement does not actually refer to the variable
 `i`.
 
 
-### Augmenting Arrays ###
+### Collecting results with lists
 
-While the `for` statement above does simulate the results of five tosses of
-a coin, the results are simply printed and aren't in a form that we can use for
-computation. Thus a typical use of a `for` statement is to create an array of
-results, by augmenting it each time.
+While the `for` statement above does simulate the results of five
+tosses of a coin, the results are simply printed and aren't in a form
+that we can use for computation. Thus a typical use of a `for`
+statement is to create an array of results, by augmenting it each time.
 
-The `append` method in `numpy` helps us do this. The call
-`np.append(array_name, value)` evaluates to a new array that is `array_name`
-augmented by `value`. When you use `append`, keep in mind that all the entries
-of an array must have the same type.
+We can use the `append` method of a list do do this.  As you saw in the page on [lists](lists), we can use the `append` method of a list to append a value to the list.
+
 
 ```{python}
-# A string array with two values
-pets = np.array(['Cat', 'Dog'])
+# A list with two strings
+pets = ['Cat', 'Dog']
 ```
 
 ```{python}
-np.append(pets, 'Another Pet')
-```
-
-This keeps the array `pets` unchanged:
-
-```{python}
-pets
-```
-
-But often while using `for` loops it will be convenient to mutate an array
-– that is, change it – when augmenting it. This is done by assigning the
-augmented array to the same name as the original.
-
-```{python}
-pets = np.append(pets, 'Another Pet')
+pets.append('Rabbit')
 pets
 ```
 
 ### Example: Counting the Number of Heads ###
 
-We can now simulate five tosses of a coin and place the results into an array.
-We will start by creating an empty array and then appending the result of each
-toss.
+We can now simulate five tosses of a coin and place the results into
+an array. We will start by creating an empty array and then appending
+the result of each toss.
 
 ```{python}
-# An empty array
-tosses = np.array([])
+# An empty list
+tosses = []
 
 for i in np.arange(5):
-    tosses = np.append(tosses, np.random.choice(coin))
+    tosses.append(np.random.choice(coin))
 
 tosses
 ```
@@ -162,113 +152,123 @@ tosses
 Let us rewrite the cell with the `for` statement unrolled:
 
 ```{python}
-# An empty array
-tosses = np.array([])
+# An empty list
+tosses = []
 
 i = np.arange(5)[0]
-tosses = np.append(tosses, np.random.choice(coin))
+tosses.append(np.random.choice(coin))
 i = np.arange(5)[1]
-tosses = np.append(tosses, np.random.choice(coin))
+tosses.append(np.random.choice(coin))
 i = np.arange(5)[2]
-tosses = np.append(tosses, np.random.choice(coin))
+tosses.append(np.random.choice(coin))
 i = np.arange(5)[3]
-tosses = np.append(tosses, np.random.choice(coin))
+tosses.append(np.random.choice(coin))
 i = np.arange(5)[4]
-tosses = np.append(tosses, np.random.choice(coin))
+tosses.append(np.random.choice(coin))
 
 tosses
 ```
 
-By capturing the results in an array we have given ourselves the ability to use
-array methods to do computations. For example, we can use `np.count_nonzero` to
-count the number of heads in the five tosses.
+We have captured the results in an list, but we want to give ourselves
+the ability to use array methods to do computations.  To do this, we convert the list into an array:
 
 ```{python}
-np.count_nonzero(tosses == 'Heads')
+toss_arr = np.array(tosses)
 ```
 
-Iteration is a powerful technique. For example, by running exactly the same
-code for 1000 tosses instead of 5, we can count the number of heads in 1000
-tosses.
+Now we have an array, we can use `np.count_nonzero` to count the
+number of heads in the five tosses.
 
 ```{python}
-tosses = np.array([])
+np.count_nonzero(toss_arr == 'Heads')
+```
+
+Iteration is a powerful technique. For example, by running exactly the
+same code for 1000 tosses instead of 5, we can count the number of
+heads in 1000 tosses.
+
+```{python}
+tosses = []
 
 for i in np.arange(1000):
-    tosses = np.append(tosses, np.random.choice(coin))
+    tosses.append(np.random.choice(coin))
 
-np.count_nonzero(tosses == 'Heads')
+toss_arr = np.array(tosses)
+np.count_nonzero(toss_arr == 'Heads')
 ```
 
 ### Example: Number of Heads in 100 Tosses ###
 
-It is natural to expect that in 100 tosses of a coin, there will be 50 heads,
-give or take a few.
+It is natural to expect that in 100 tosses of a coin, there will be 50
+heads, give or take a few.
 
-But how many is "a few"? What's the chance of getting exactly 50 heads?
-Questions like these matter in data science not only because they are about
-interesting aspects of randomness, but also because they can be used in
-analyzing experiments where assignments to treatment and control groups are
-decided by the toss of a coin.
+But how many is "a few"? What's the chance of getting exactly 50
+heads? Questions like these matter in data science not only because
+they are about interesting aspects of randomness, but also because
+they can be used in analyzing experiments where assignments to
+treatment and control groups are decided by the toss of a coin.
 
 In this example we will simulate 10,000 repetitions of the following
 experiment:
 
 - Toss a coin 100 times and record the number of heads.
 
-The histogram of our results will give us some insight into how many heads are
-likely.
+The histogram of our results will give us some insight into how many
+heads are likely.
 
 
-As a preliminary, note that `np.random.choice` takes an optional second
-argument that specifies the number of choices to make. By default, the choices
-are made with replacement, meaning that there is the same chance of getting
-a `Head` for all the choices returned. Here is a simulation of 10 tosses of
-a coin:
+As a preliminary, note that `np.random.choice` takes an optional
+second argument that specifies the number of choices to make. By
+default, the choices are made with replacement, meaning that there is
+the same chance of getting a `Head` for all the choices returned. Here
+is a simulation of 10 tosses of a coin:
 
 ```{python}
 np.random.choice(coin, 10)
 ```
 
-Now let's study 100 tosses. We will start by creating an empty array called
-`heads`. Then, in each of the 10,000 repetitions, we will toss a coin 100
-times, count the number of heads, and append it to `heads`.
+Now let's study 100 tosses. We will start by creating an empty array
+called `heads`. Then, in each of the 10,000 repetitions, we will toss
+a coin 100 times, count the number of heads, and append it to `heads`.
 
 ```{python}
 N = 10000
 
-heads = np.array([])
+head_counts = []
 
 for i in np.arange(N):
     tosses = np.random.choice(coin, 100)
-    heads = np.append(heads, np.count_nonzero(tosses == 'Heads'))
+    n_heads = np.count_nonzero(tosses == 'Heads')
+    head_counts.append(n_heads)
 
-heads
+head_counts
 ```
 
-Here is a histogram of the data, with bins of width 1 centered at each value of
-the number of heads.
+Here is a histogram of the data, with bins of width 1 centered at each
+value of the number of heads.
 
 ```{python}
-plt.hist(heads, bins=np.arange(30.5, 69.6, 1))
+plt.hist(head_counts, bins=np.arange(30.5, 69.6, 1));
 ```
 
-Not surprisingly, the histogram looks roughly symmetric around 50 heads. The
-height of the bar at 50 is about 8% per unit. Since each bin is 1 unit wide,
-this is the same as saying that about 8% of the repetitions produced exactly 50
-heads. That's not a huge percent, but it's the largest compared to the percent
-at every other number of heads.
+Not surprisingly, the histogram looks roughly symmetric around 50
+heads. The height of the bar at 50 is about 8% per unit. Since each
+bin is 1 unit wide, this is the same as saying that about 8% of the
+repetitions produced exactly 50 heads. That's not a huge percent, but
+it's the largest compared to the percent at every other number of
+heads.
 
-The histogram also shows that in almost all of the repetitions, the number of
-heads in 100 tosses was somewhere between 35 and 65. Indeed, the bulk of the
-repetitions produced numbers of heads in the range 45 to 55.
+The histogram also shows that in almost all of the repetitions, the
+number of heads in 100 tosses was somewhere between 35 and 65. Indeed,
+the bulk of the repetitions produced numbers of heads in the range 45
+to 55.
 
-While in theory it is *possible* that the number of heads can be anywhere
-between 0 and 100, the simulation shows that the range of *probable* values is
-much smaller.
+While in theory it is *possible* that the number of heads can be
+anywhere between 0 and 100, the simulation shows that the range of
+*probable* values is much smaller.
 
-This is an instance of a more general phenomenon about the variability in coin
-tossing, as we will see later in the course.
+This is an instance of a more general phenomenon about the variability
+in coin tossing, as we will see later in the course.
 
 Now see [the for loop exercises](../exercises/for_loops).
 

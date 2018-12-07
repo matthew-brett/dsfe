@@ -1,0 +1,161 @@
+---
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.0'
+      jupytext_version: 0.8.5
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+  language_info:
+    codemirror_mode:
+      name: ipython
+      version: 3
+    file_extension: .py
+    mimetype: text/x-python
+    name: python
+    nbconvert_exporter: python
+    pygments_lexer: ipython3
+    version: 3.4.5
+---
+
+# Brexit ages
+
+Now we have [for loops](iteration) and [ranges](../03/Ranges), we can
+solve the problem in [population, permutation](population_permutation])
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+# %matplotlib inline
+
+# Fancy plots
+plt.style.use('fivethirtyeight')
+
+# Data frame library
+import pandas as pd
+```
+
+We load the data again:
+
+```{python}
+# Load the data frame, and put it in the variable "audit_data"
+audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')
+```
+
+Again, we get the ages for the Leavers and the Remainers:
+
+```{python}
+# Drop rows where age is 0
+good_data = audit_data.loc[audit_data['numage'] != 0]
+# Get data frames for leavers and remainers
+remain_ages = good_data[good_data['cut15'] == 1]['numage']
+leave_ages = good_data[good_data['cut15'] == 2]['numage']
+```
+
+```{python}
+remain_ages.hist();
+```
+
+```{python}
+leave_ages.hist();
+```
+
+Here is the number of Remain voters:
+
+```{python}
+n_remain = len(remain_ages)
+n_remain
+```
+
+Here was the actual difference between the means of the two groups:
+
+```{python}
+actual_diff = np.mean(leave_ages) - np.mean(remain_ages)
+actual_diff
+```
+
+We want to know if we have a reasonable chance of seeing a difference of this magnitude, if the two groups are samples from the same underlying population.  We don't have the actual population to take samples from, so we need to wing it, by using the data we have.
+
+We asserted we could use permutation to take random samples from the data that we already have:
+
+```{python}
+pooled = np.append(remain_ages, leave_ages)
+np.random.shuffle(pooled)
+fake_remainers = pooled[:n_remain]
+fake_leavers = pooled[n_remain:]
+```
+
+Those are our samples.  Now we get the difference in mean ages, as one example of a difference we might see, if the samples are from the same population:
+
+```{python}
+example_diff = np.mean(fake_leavers) - np.mean(fake_remainers)
+example_diff
+```
+
+Now we know how do to this once, we can use the `for` loop to do the
+shuffle operation many times.  We collect the results in a list.  You will recognize the code in the `for` loop from the code in the cells above.
+
+```{python}
+# An empty list to store the results
+example_diffs = []
+# Do the shuffle / difference steps 10000 times
+for i in np.arange(10000):
+    np.random.shuffle(pooled)
+    fake_remainers = pooled[:n_remain]
+    fake_leavers = pooled[n_remain:]
+    eg_diff = np.mean(fake_leavers) - np.mean(fake_remainers)
+    # Collect the results in a list
+    example_diffs.append(eg_diff)
+```
+
+Our list now has 10000 fake mean differences:
+
+```{python}
+len(example_diffs)
+```
+
+What distribution do these differences have?
+
+```{python}
+plt.hist(example_diffs);
+```
+
+This is called the *sampling distribution*.  In our case, this is the
+sampling distribution of the difference in means.  It is the *sampling*
+distribution, because it is the distribution we expect to see, when
+taking random *samples* from the same underlying population.
+
+Our question now is, is the difference we actually saw, a likely value, given the sampling distribution.
+
+Looking at the distribution above - what do you think?
+
+As a first pass, let us check how many of the values from the sampling
+distribution are as large, or larger than the value we actually saw.
+
+First we turn our list into an array, so we can do our `count_nonzero`
+trick.
+
+```{python}
+sampling_dist_array = np.array(example_diffs)
+are_as_high = sampling_dist_array >= actual_diff
+n_as_high = np.count_nonzero(are_as_high)
+n_as_high
+```
+
+The number above is the number of values in the sampling distribution
+that are as high as, or higher than, the value we actually saw.  If we
+divide by 10000, we get the proportion of the sampling distribution
+that is as high, or higher.
+
+```{python}
+proportion = n_as_high / 10000
+proportion
+```
+
+We think of this proportion as an estimate of the *probability* that we
+would see a value this high, or higher, *if these were random samples
+from the same underlying population*.  We call this a *p value*.
