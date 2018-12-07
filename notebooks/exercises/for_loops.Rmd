@@ -232,9 +232,14 @@ For example, the factorial of 5, written $5!$ is `1 * 2 * 3 * 4 * 5`.
 
 Use a `for` loop to calculate $15!$.  Print out the result.
 
+Note: those of you on Windows will have to start with a floating point
+value \- as in `factorial = 1.0` \- in order to avoid a nasty
+interaction between Numpy, Windows, and integers.
+
 ```{python}
 # Calculate 15!
-factorial = 1
+# Note the floating point number to start.
+factorial = 1.0
 ```
 
 These are getting a bit harder.
