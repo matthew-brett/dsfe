@@ -1,0 +1,1176 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>5.2 lists - Data Science for Everyone</title>
+<meta name="description" content="Lists">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="5.2 lists">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/05/lists">
+
+
+  <meta property="og:description" content="Lists">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2018-12-07T00:33:05+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/05/lists">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--textbook">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" class="textbook" role="main">
+  <div id="textbook_wrapper">
+    
+  <div class="sidebar sticky textbook">
+  
+  
+    <img src="/dsfe/images/dsfe_logo.png" class="textbook_logo" />
+    
+
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/"><span class="nav__sub-title">Home</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/01/what-is-data-science"><span class="nav__sub-title">1. Data Science</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/intro" class="level_1">1.1 Introduction</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/computational-tools" class="level_2">1.1.1 Computational Tools</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/statistical-techniques" class="level_2">1.1.2 Statistical Techniques</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/why-data-science" class="level_1">1.2 Why Data Science?</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Plotting_the_Classics" class="level_1">1.3 Plotting the Classics</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Literary_Characters" class="level_2">1.3.1 Literary Characters</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Another_Kind_Of_Character" class="level_2">1.3.2 Another Kind of Character</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/02/to_code"><span class="nav__sub-title">2. Programming</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/sampling_problem" class="level_1">2.1 A sampling problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/three_girls" class="level_1">2.2 A simpler problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Expressions" class="level_1">2.3 Expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/variables" class="level_1">2.4 Variables</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Names" class="level_1">2.5 Names</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Calls" class="level_1">2.6 Call expressions</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/03/data_types"><span class="nav__sub-title">3. Data types</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Numbers" class="level_1">3.1 Numbers</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Strings" class="level_1">3.2 Strings</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Comparison" class="level_1">3.3 Comparison</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Arrays" class="level_1">3.4 Arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Ranges" class="level_1">3.5 Ranges</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/More_on_Arrays" class="level_1">3.6 More on arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/arrays_and_axes" class="level_1">3.7 Arrays and axes</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/reply_supreme" class="level_1">3.8 Reply to the Supreme Court</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/three_girls" class="level_1">3.9 Revision - three girls</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/array_indexing" class="level_1">3.10 Selecting with arrays</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/04/data_frames"><span class="nav__sub-title">4. Data frames</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/04/data_frame_intro" class="level_1">4.1 Introduction to data frames</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/05/permutation"><span class="nav__sub-title">5. Permutations</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/population_permutation" class="level_1">5.1 Population and permutation</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/lists" class="level_1">5.2 lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/iteration" class="level_1">5.3 Iteration with For loops</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/brexit_ages" class="level_1">5.4 Brexit ages</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/exercises/exercises"><span class="nav__sub-title">Exercises</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/simulation" class="level_1">Simulation</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/df_exercises" class="level_1">Data frames</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/brexit_analysis" class="level_1">Brexit analysis</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/for_loops" class="level_1">For loops</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+
+  
+  </div>
+
+
+    <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="headline" content="5.2 lists">
+      <meta itemprop="description" content="Lists">
+      <meta itemprop="datePublished" content="December 07, 2018">
+      
+
+      <div class="page__inner-wrap">
+        
+          <header>
+            <h1 id="page-title" class="page__title" itemprop="headline">5.2 lists
+</h1>
+          </header>
+        
+
+        <section class="page__content" itemprop="text">
+          
+            
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#creating-a-list">Creating a list</a></li>
+  <li><a href="#lists-and-arrays">Lists and arrays</a></li>
+  <li><a href="#differences-between-lists-and-arrays">Differences between lists and arrays</a>
+    <ul>
+      <li><a href="#a-list-can-contain-a-mix-of-types">A list can contain a mix of types</a></li>
+    </ul>
+  </li>
+  <li><a href="#a-list-is-always-one-dimensional">A list is always one-dimensional</a>
+    <ul>
+      <li><a href="#lists-can-contain-lists">Lists can contain lists</a></li>
+    </ul>
+  </li>
+  <li><a href="#appending-to-a-list">Appending to a list</a></li>
+  <li><a href="#what-do-these-square-brackets-mean">What do these square brackets mean?</a></li>
+</ul>
+    </nav>
+  </aside>
+
+
+          
+          <!-- INTERACT LINKS -->
+
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/05/lists.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F05%2Flists.ipynb">Interact</a>
+
+
+          <h1 id="lists">Lists</h1>
+
+<p>The data structures that we use most often in data science are:</p>
+
+<ul>
+  <li>arrays, from <code class="highlighter-rouge">numpy</code>;</li>
+  <li>data frames, from <code class="highlighter-rouge">pandas</code>.</li>
+</ul>
+
+<p>There is another data structure for containing sequences of values</p>
+<ul>
+  <li>the <code class="highlighter-rouge">list</code>.</li>
+</ul>
+
+<p>You have already seen these in passing, when we created arrays.  Now we cover them in more detail.</p>
+
+<h2 id="creating-a-list">Creating a list</h2>
+
+<p>You make a list like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3]
+</code></pre></div></div>
+
+<p>More formally, you define a list like this:</p>
+
+<ol>
+  <li>the open square bracket character <code class="highlighter-rouge">[</code>, followed by</li>
+  <li>a sequence of zero of more values, separated by commas, followed by</li>
+  <li>the close square bracket character <code class="highlighter-rouge">]</code>.</li>
+</ol>
+
+<p>We defined the list above with <code class="highlighter-rouge">[1, 2, 3]</code>.</p>
+
+<p>Here is a list with one value:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">another_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">99</span><span class="p">]</span>
+<span class="n">another_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[99]
+</code></pre></div></div>
+
+<p>As implied above, the list can be empty, in which case there is nothing between the <code class="highlighter-rouge">[</code> and the <code class="highlighter-rouge">]</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">empty_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">empty_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[]
+</code></pre></div></div>
+
+<p>A list is of type <code class="highlighter-rouge">list</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list
+</code></pre></div></div>
+
+<h2 id="lists-and-arrays">Lists and arrays</h2>
+
+<p>We will soon need the Numpy library for the examples:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<p>A list is a container, like an array.  Like an array, it contains an
+ordered sequence of values.  Like an array, it can be empty, or it can
+contain any number of values.</p>
+
+<p>You can <em>convert a list into an array</em>, like this</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[4, 5, 6]
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="n">my_array</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([4, 5, 6])
+</code></pre></div></div>
+
+<p>In fact, you have already seen us do this, as a convenient way to
+create a new array - for example:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Define a list and immediately convert to an array
+</span><span class="n">another_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+<span class="n">another_array</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([10, 20, 30])
+</code></pre></div></div>
+
+<p>You can also <em>convert an array into a list</em>, using the <code class="highlighter-rouge">list</code> function:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">list</span><span class="p">(</span><span class="n">another_array</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[10, 20, 30]
+</code></pre></div></div>
+
+<p>Like arrays, you can <em>index</em> into a list, to get the individual values.  Consider this list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Like arrays (and every other kind of sequence in Python), the first element is at index (offset) 0:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the first value
+</span><span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<p>Accordingly, the third element is at index (offset) 2:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the third value
+</span><span class="n">my_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
+</code></pre></div></div>
+
+<h2 id="differences-between-lists-and-arrays">Differences between lists and arrays</h2>
+
+<h3 id="a-list-can-contain-a-mix-of-types">A list can contain a mix of types</h3>
+
+<p>The elements in a list can be of any type, and there can be many different types in a list.  For example, here is a list that mixes integers, floating point values, and strings.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mixed_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="s">'Ho ho ho'</span><span class="p">]</span>
+<span class="n">mixed_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 1.1, 'Ho ho ho']
+</code></pre></div></div>
+
+<p>The elements in an array must all be of the same type - say - all
+numbers, or all strings.  If we now create an array from this list, Numpy will try and find a type that works for all the elements, and will convert the elements to that type:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">unmixed_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mixed_list</span><span class="p">)</span>
+<span class="n">unmixed_array</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['1', '1.1', 'Ho ho ho'], dtype='&lt;U32')
+</code></pre></div></div>
+
+<p>Notice that Numpy has converted all the elements to strings, as you can see from the quotes around the values.</p>
+
+<h2 id="a-list-is-always-one-dimensional">A list is always one-dimensional</h2>
+
+<p>You have already seen that an array can have two (or more) dimensions.  Here is a two-dimensional array of random numbers:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">two_d_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">two_d_array</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.54810977, 0.46917492, 0.73684013],
+       [0.46459243, 0.74037271, 0.25061307],
+       [0.8787427 , 0.30325854, 0.82837022],
+       [0.7871631 , 0.87945204, 0.79717605],
+       [0.19083445, 0.08975547, 0.20050271]])
+</code></pre></div></div>
+
+<p>Lists only have one dimension.</p>
+
+<h3 id="lists-can-contain-lists">Lists can contain lists</h3>
+
+<p>You may be able to see a way of making a list that is rather like an
+array with two dimensions.  Remember that a list can contain elements
+of <em>any type</em>.  That means that a list can contain elements of type
+<code class="highlighter-rouge">list</code>. Here is a list where the first element is also a list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">small_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="n">funky_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">small_list</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">]</span>
+<span class="n">funky_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[21, 22, 23], 1, 1.1]
+</code></pre></div></div>
+
+<p>As usual, I can get the first element of <code class="highlighter-rouge">funky_list</code> by indexing:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">element_at_0</span> <span class="o">=</span> <span class="n">funky_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">element_at_0</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[21, 22, 23]
+</code></pre></div></div>
+
+<p>That first element is a list.  As usual, I can index in that first element too.  Here I ask for the second element from <code class="highlighter-rouge">element_at_0</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">element_at_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>22
+</code></pre></div></div>
+
+<p>Putting that all together in one line, I can get the second element of the first element with:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">funky_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>22
+</code></pre></div></div>
+
+<p>Read this carefully from left to right.  <code class="highlighter-rouge">funky_list</code> is the initial
+list.  The <code class="highlighter-rouge">[0]</code> after <code class="highlighter-rouge">funky_list</code> gives me the first element of that
+list. The <code class="highlighter-rouge">[1]</code> after that, gives me the second element from the result
+of the previous expressions. <code class="highlighter-rouge">funky_list[0][1]</code> puts several
+expressions together in sequence; this is a very common pattern that
+you will see often in Python programs. Learning to read them carefully
+is one of the skills you will pick up, as you learn Python, and data
+science.</p>
+
+<h2 id="appending-to-a-list">Appending to a list</h2>
+
+<p>You have already seen <em>methods</em>.  These are functions attached to
+values.  For example, you have seen that a data frame, has a <code class="highlighter-rouge">count</code>
+method, that, when called, gives the number of rows in the data frame.</p>
+
+<p>Lists have several very useful methods.  One of the most useful is <code class="highlighter-rouge">append</code>.   Use it to append values to a list.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># An empty list
+</span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[]
+</code></pre></div></div>
+
+<p>Append a value to the empty list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1]
+</code></pre></div></div>
+
+<p>Append another value:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 1.1]
+</code></pre></div></div>
+
+<p>And another:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">'Ho ho ho'</span><span class="p">)</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 1.1, 'Ho ho ho']
+</code></pre></div></div>
+
+<h2 id="what-do-these-square-brackets-mean">What do these square brackets mean?</h2>
+
+<p>You have seen two uses of square brackets on this page.</p>
+
+<p>The first use, is where the opening square bracket is the start of an expression for a new list, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_new_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">[</code> is the start of the expression, because the line above is an
+assignment statement, with a variable name, followed by <code class="highlighter-rouge">=</code> followed by an expression.  The expression is <code class="highlighter-rouge">[1, 2, 3]</code>, and the <code class="highlighter-rouge">[</code> is the first character in the expression.</p>
+
+<p>The second use, is to ask Python to get a value from another value.
+Technically, this use is called <em>indexing</em>. For example, we do this
+when we index into a list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_value</span> <span class="o">=</span> <span class="n">a_new_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Here the <code class="highlighter-rouge">[</code> refers back to <code class="highlighter-rouge">a_new_list</code>.  It tells Python “please get
+a value from <code class="highlighter-rouge">a_new_list</code>”.  Between the <code class="highlighter-rouge">[</code> and the <code class="highlighter-rouge">]</code> is the
+information that Python must use to get the value.</p>
+
+<p>Here is another example of square brackets in use:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Which use of square brackets is that?  List creation, or indexing?
+Why?</p>
+
+<p>How about:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_new_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+</code></pre></div></div>
+
+<p>? Why?  Or:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_new_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">101</span><span class="p">,</span> <span class="s">'one oh one'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>?</p>
+
+<p>Remember the <a href="../04/data_frame_intro">data frame introduction</a>?  In
+that you saw</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gdp = gender_data['gdp']
+</code></pre></div></div>
+
+<p>Which use of square brackets was that?</p>
+
+<p>Look through the <a href="../04/data_frame_intro">data frame introduction</a>
+page.  There are several other examples of the use of square brackets.  Which use are they?</p>
+
+<p>Now look at <a href="../03/More_on_Arrays">More on arrays</a>.   Which uses do you see there?</p>
+
+          
+        </section>
+
+        <footer class="page__meta">
+          
+          
+
+
+        </footer>
+
+        
+
+        
+  <nav class="pagination">
+    
+      <a href="/dsfe/chapters/05/population_permutation" class="pagination--pager" title="5.1 Population and permutation
+">Previous</a>
+    
+    
+      <a href="/dsfe/chapters/05/iteration" class="pagination--pager" title="5.3 Iteration with For loops
+">Next</a>
+    
+  </nav>
+
+
+      </div>
+
+      
+    </article>
+  </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

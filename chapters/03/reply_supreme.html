@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-12-06T20:57:42+00:00">
+  <meta property="article:published_time" content="2018-12-07T00:33:05+00:00">
 
 
 
@@ -474,7 +474,27 @@
 
             
 
-            <li><a href="/dsfe/chapters/05/iteration" class="level_1">5.2 Iteration with For loops</a></li>
+            <li><a href="/dsfe/chapters/05/lists" class="level_1">5.2 lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/iteration" class="level_1">5.3 Iteration with For loops</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/brexit_ages" class="level_1">5.4 Brexit ages</a></li>
           
         </ul>
         
@@ -547,7 +567,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="3.8 Reply to the Supreme Court">
       <meta itemprop="description" content="Our task has been to reply to the Supreme Court ontheir judgment in the appeal of Robert Swain.">
-      <meta itemprop="datePublished" content="December 06, 2018">
+      <meta itemprop="datePublished" content="December 07, 2018">
       
 
       <div class="page__inner-wrap">
@@ -622,7 +642,7 @@ That is, for any one juror, there is a 0.26 probability that they are black.</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">black_yn</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>29
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>27
 </code></pre></div></div>
 
 <p>That is one estimate, for the number of black people we can expect, if our
@@ -654,7 +674,7 @@ a much higher number.</p>
 <span class="n">black_counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([26, 25, 30, 30, 29, 26, 26, 26, 32, 26])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([28, 27, 21, 24, 24, 22, 17, 31, 33, 21])
 </code></pre></div></div>
 
 <p>Each of these values is one estimate for how many black jurors we should
@@ -700,10 +720,9 @@ a histogram.  Here is how to do that, in Python:</p>
 </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">black_counts_big</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([   35.,   182.,   816.,  1862.,  2581.,  2968.,  1065.,   376.,
-           99.,    16.]),
- array([ 11. ,  14.2,  17.4,  20.6,  23.8,  27. ,  30.2,  33.4,  36.6,
-         39.8,  43. ]),
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([  19.,  186.,  824., 2740., 2622., 2049., 1252.,  260.,   40.,
+           8.]),
+ array([11. , 14.3, 17.6, 20.9, 24.2, 27.5, 30.8, 34.1, 37.4, 40.7, 44. ]),
  &lt;a list of 10 Patch objects&gt;)
 </code></pre></div></div>
 

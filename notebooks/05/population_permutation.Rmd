@@ -288,13 +288,13 @@ from the same underlying population.
 If that is the case, we can throw the Leave and Remain voters into one big pool
 of 774 + 541 == 1315 voters.
 
-Then we can take split this new mixed sample into two groups, at random, one
-with 774 voters, and the other with 541.  The new groups have a random mix of
-the original Leave and Remain voters.  Then we calculate the difference in
-means between these two new, fake groups.
+Then we can take split this new mixed sample into two groups, at
+random, one with 774 voters, and the other with 541.  The new groups
+have a random mix of the original Leave and Remain voters.  Then we
+calculate the difference in means between these two new, fake groups.
 
 ```{python}
-pooled = np.append(leave_ages, remain_ages)
+pooled = np.append(remain_ages, leave_ages)
 pooled
 ```
 

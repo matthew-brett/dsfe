@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-12-06T20:57:42+00:00">
+  <meta property="article:published_time" content="2018-12-07T00:33:05+00:00">
 
 
 
@@ -474,7 +474,27 @@
 
             
 
-            <li><a href="/dsfe/chapters/05/iteration" class="level_1">5.2 Iteration with For loops</a></li>
+            <li><a href="/dsfe/chapters/05/lists" class="level_1">5.2 lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/iteration" class="level_1">5.3 Iteration with For loops</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/brexit_ages" class="level_1">5.4 Brexit ages</a></li>
           
         </ul>
         
@@ -547,7 +567,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="3.4 Arrays">
       <meta itemprop="description" content="Arrays">
-      <meta itemprop="datePublished" content="December 06, 2018">
+      <meta itemprop="datePublished" content="December 07, 2018">
       
 
       <div class="page__inner-wrap">
@@ -597,8 +617,7 @@ of values.  However, a single array can only contain a single kind of data.
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['noun', 'pronoun', 'verb', 'adverb', 'adjective', 'conjunction',
-       'preposition', 'interjection'], 
-      dtype='&lt;U12')
+       'preposition', 'interjection'], dtype='&lt;U12')
 </code></pre></div></div>
 
 <p>Returning to the temperature data, we create arrays of average daily <a href="http://berkeleyearth.lbl.gov/auto/Regional/TMAX/Text/global-land-TMAX-Trend.txt">high
@@ -613,7 +632,7 @@ for the decades surrounding 1850, 1900, 1950, and 2000.</p>
 <span class="n">highs</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 13.6  ,  14.387,  14.585,  15.164])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([13.6  , 14.387, 14.585, 15.164])
 </code></pre></div></div>
 
 <p>Arrays can be used in arithmetic expressions to compute over their contents.
@@ -624,7 +643,7 @@ to Fahrenheit by writing the familiar conversion formula.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">highs</span> <span class="o">+</span> <span class="mi">32</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 56.48  ,  57.8966,  58.253 ,  59.2952])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([56.48  , 57.8966, 58.253 , 59.2952])
 </code></pre></div></div>
 
 <p><img src="/dsfe/images/array_arithmetic.png" /></p>
@@ -664,7 +683,7 @@ element minus the first.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">highs</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 0.787,  0.198,  0.579])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.787, 0.198, 0.579])
 </code></pre></div></div>
 
 <p>The <a href="http://docs.scipy.org/doc/numpy/reference/">full Numpy reference</a> lists

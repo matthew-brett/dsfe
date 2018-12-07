@@ -95,7 +95,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/dsfe/chapters/03/Numbers",
         "teaser":null},{
         "title": "3.5 Ranges",
-        "excerpt":"A range is an array of numbers in increasing or decreasing order, eachseparated by a regular interval. Ranges are useful in a surprisingly largenumber of situations, so it’s worthwhile to learn about them. We will use the Numpy module, which we always rename as np, like this: import numpy as...","categories": [],
+        "excerpt":"A range is an array of numbers in increasing or decreasing order,each separated by a regular interval. Ranges are useful ina surprisingly large number of situations, so it is worthwhile tolearn about them. We will use the Numpy module, which we always rename as np, like this: import numpy as...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/03/Ranges",
         "teaser":null},{
@@ -139,10 +139,20 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/04/data_frames",
         "teaser":null},{
-        "title": "5.2 Iteration with For loops",
+        "title": "5.4 Brexit ages",
+        "excerpt":"Brexit ages Now we have for loops and ranges, we cansolve the problem in population, permutation import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdWe load the data again: # Load the data frame, and put it in the variable \"audit_data\"audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')Again,...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/05/brexit_ages",
+        "teaser":null},{
+        "title": "5.3 Iteration with For loops",
         "excerpt":"Iteration It is often the case in programming – especially when dealing with randomness– that we want to repeat a process multiple times. Consider the numpy function random.choice. It claims to choose randomlybetween the elements on an array that we pass it. Here we make an array ofstrings containing two...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/iteration",
+        "teaser":null},{
+        "title": "5.2 lists",
+        "excerpt":"Lists The data structures that we use most often in data science are: arrays, from numpy; data frames, from pandas.There is another data structure for containing sequences of values the list.You have already seen these in passing, when we created arrays. Now we cover them in more detail. Creating a...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/05/lists",
         "teaser":null},{
         "title": "5. Permutations",
         "excerpt":"In this chapter, we discover that permutation allows us to simulate data inmany more situations than we have seen thus far. We build up the tools to use permutation for a test of differences between twogroups. ","categories": [],
@@ -170,7 +180,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/exercises",
         "teaser":null},{
         "title": "For loops",
-        "excerpt":"For loop exercises import numpy as npYou may remember you can print a number (or anything else) with the print function, like this: print(5)5Use a for loop to print out all the numbers from 3 through 7, one number on each line. # Your code here.Use a for loop to...","categories": [],
+        "excerpt":"For loop exercises import numpy as npYou may remember you can print a number (or anything else) with the print function, like this: print(5)5Use a for loop to print out all the numbers from 3 through 7, one number on each line. # Your code here.Make an empty list called...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/for_loops",
         "teaser":null},{

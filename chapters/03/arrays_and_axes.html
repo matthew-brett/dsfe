@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-12-06T20:57:42+00:00">
+  <meta property="article:published_time" content="2018-12-07T00:33:05+00:00">
 
 
 
@@ -474,7 +474,27 @@
 
             
 
-            <li><a href="/dsfe/chapters/05/iteration" class="level_1">5.2 Iteration with For loops</a></li>
+            <li><a href="/dsfe/chapters/05/lists" class="level_1">5.2 lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/iteration" class="level_1">5.3 Iteration with For loops</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/brexit_ages" class="level_1">5.4 Brexit ages</a></li>
           
         </ul>
         
@@ -547,7 +567,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="3.7 Arrays and axes">
       <meta itemprop="description" content="  We return to Numpy arrays.  Arrays can be two-dimensional.  An array with two dimensions has rows and columns.  The rows andcolumns are the two axes of the array.  We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.">
-      <meta itemprop="datePublished" content="December 06, 2018">
+      <meta itemprop="datePublished" content="December 07, 2018">
       
 
       <div class="page__inner-wrap">
@@ -607,7 +627,7 @@ columns are the two <em>axes</em> of the array.</li>
 <span class="n">three_randoms</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 0.63262018,  0.68145099,  0.44234445])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.90388631, 0.82412237, 0.53515193])
 </code></pre></div></div>
 
 <p>Remember, this is a value of type <code class="highlighter-rouge">array</code>:</p>
@@ -624,7 +644,7 @@ columns are the two <em>axes</em> of the array.</li>
 <span class="n">randoms_compared</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False, False,  True], dtype=bool)
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False, False, False])
 </code></pre></div></div>
 
 <p>We also found that we can apply functions to these arrays.  For example, we found that <code class="highlighter-rouge">np.count_nonzero</code> returns the number of elements that are not 0.</p>
@@ -632,7 +652,7 @@ columns are the two <em>axes</em> of the array.</li>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">randoms_compared</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 </code></pre></div></div>
 
 <p>This works because the function considers <code class="highlighter-rouge">False</code> to be equal to 0 and <code class="highlighter-rouge">True</code> to be equal to 1:</p>
@@ -659,16 +679,16 @@ columns are the two <em>axes</em> of the array.</li>
 <span class="n">bigger_array</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ 0.05585871,  0.05413727,  0.32041905],
-       [ 0.63915922,  0.51826351,  0.30616903],
-       [ 0.83548946,  0.28252578,  0.08659505],
-       [ 0.13685017,  0.39565442,  0.56529214],
-       [ 0.83557117,  0.61090886,  0.30468829],
-       [ 0.89748368,  0.36905224,  0.94437477],
-       [ 0.22942176,  0.82711608,  0.87900059],
-       [ 0.04418512,  0.54216864,  0.08840114],
-       [ 0.34922277,  0.48093163,  0.41591925],
-       [ 0.38223329,  0.30090181,  0.60076348]])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.02596777, 0.9470903 , 0.87231221],
+       [0.86801308, 0.19408375, 0.49500772],
+       [0.40497925, 0.70997381, 0.30334715],
+       [0.04544569, 0.68891276, 0.45360271],
+       [0.73894637, 0.37386174, 0.56527314],
+       [0.95163925, 0.80949387, 0.47239711],
+       [0.11811301, 0.90871291, 0.74968087],
+       [0.28542697, 0.34889547, 0.92713794],
+       [0.60657067, 0.93029806, 0.25293416],
+       [0.15248105, 0.63277876, 0.96330331]])
 </code></pre></div></div>
 
 <p>Notice that we made the one-dimensional array with <code class="highlighter-rouge">size=3</code>.  We make the two-dimensional array by passing two numbers to <code class="highlighter-rouge">size</code>.  We pass two numbers with something like <code class="highlighter-rouge">size=(10, 3)</code>, as we did above.  We haven’t covered this way of specifying a pair of numbers yet.  For the moment, we hope you will take our word for it.</p>
@@ -679,16 +699,16 @@ columns are the two <em>axes</em> of the array.</li>
 <span class="n">bigger_compared</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ True,  True,  True],
-       [False, False,  True],
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ True, False, False],
        [False,  True,  True],
+       [ True, False,  True],
+       [ True, False,  True],
+       [False,  True, False],
+       [False, False,  True],
+       [ True, False, False],
        [ True,  True, False],
        [False, False,  True],
-       [False,  True, False],
-       [ True, False, False],
-       [ True, False,  True],
-       [ True,  True,  True],
-       [ True,  True, False]], dtype=bool)
+       [ True, False, False]])
 </code></pre></div></div>
 
 <p>As before, there is now a True at each position where there number was less than 0.5, with False everywhere else.</p>
@@ -698,7 +718,7 @@ columns are the two <em>axes</em> of the array.</li>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>18
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14
 </code></pre></div></div>
 
 <p>You can probably see that <code class="highlighter-rouge">np.count_nonzero</code> is counting the number of True values in any position in the array.</p>
@@ -712,7 +732,7 @@ columns are the two <em>axes</em> of the array.</li>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([6, 6, 6])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([6, 3, 5])
 </code></pre></div></div>
 
 <p>You will see that we have one value per column, where each value is the count of True values in that column.</p>
@@ -746,7 +766,7 @@ row.</li>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([6, 6, 6])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([6, 3, 5])
 </code></pre></div></div>
 
 <p>Because of the reasoning above, these the counts for each column (there are 3 columns).</p>
@@ -756,7 +776,7 @@ row.</li>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 1, 2, 2, 1, 1, 1, 2, 3, 2])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 2, 2, 1, 1, 1, 2, 1, 1])
 </code></pre></div></div>
 
 <p><code class="highlighter-rouge">axis=1</code> asks for the count over the second axis.  If we look over the

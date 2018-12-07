@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
 <meta property="og:title" content="Data Science for Everyone">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/exercises/for_loops.Rmd">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/05/brexit_ages.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/exercises/for_loops.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/05/brexit_ages.Rmd">
 
 
 
@@ -181,123 +181,143 @@
 
       <section class="page__content" itemprop="text">
         
-        # For loop exercises
+        # Brexit ages
+
+Now we have [for loops](iteration) and [ranges](../03/Ranges), we can
+solve the problem in [population, permutation](population_permutation])
 
 ```{python}
 import numpy as np
+import matplotlib.pyplot as plt
+# %matplotlib inline
+
+# Fancy plots
+plt.style.use('fivethirtyeight')
+
+# Data frame library
+import pandas as pd
 ```
 
-You may remember you can print a number (or anything else) with the `print` function, like this:
+We load the data again:
 
 ```{python}
-print(5)
+# Load the data frame, and put it in the variable "audit_data"
+audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')
 ```
 
-Use a `for` loop to print out all the numbers from 3 through 7, one number on each line.
+Again, we get the ages for the Leavers and the Remainers:
 
 ```{python}
-# Your code here.
+# Drop rows where age is 0
+good_data = audit_data.loc[audit_data['numage'] != 0]
+# Get data frames for leavers and remainers
+remain_ages = good_data[good_data['cut15'] == 1]['numage']
+leave_ages = good_data[good_data['cut15'] == 2]['numage']
 ```
-
-Make an empty list called `my_list`.  Use a `for` loop to append all the numbers between 0 and 10 (inclusive) to `my_list`.  Show the list at the end of the loop.
 
 ```{python}
-# Your code here.
-my_list = []
+remain_ages.hist();
 ```
-
-Make a new variable `total` equal to 0. Use a `for` loop to add all the
-numbers from 15 through 32 to `total`.  Print the value at the end of the loop.
-
-Hint - here is a statement where I add 10 to the variable
-`my_variable`: `my_variable = my_variable + 10`.
 
 ```{python}
-# Your code here.
-total = 0
+leave_ages.hist();
 ```
 
-Use a `for` loop to add up all the even numbers from -102 through 98.
-Hint: you may like to use the `step` argument.
+Here is the number of Remain voters:
 
 ```{python}
-# Sum of all even numbers from -102 through 98.
-total = 0
+n_remain = len(remain_ages)
+n_remain
 ```
 
-Have a look at the definition of the
-[factorial](https://en.wikipedia.org/wiki/Factorial).
-
-For example, the factorial of 5, written $5!$ is `1 * 2 * 3 * 4 * 5`.
-
-Use a `for` loop to calculate $15!$.  Print out the result.
+Here was the actual difference between the means of the two groups:
 
 ```{python}
-# Calculate 15!
-factorial = 1
+actual_diff = np.mean(leave_ages) - np.mean(remain_ages)
+actual_diff
 ```
 
-These are getting a bit harder.
+We want to know if we have a reasonable chance of seeing a difference of this magnitude, if the two groups are samples from the same underlying population.  We don't have the actual population to take samples from, so we need to wing it, by using the data we have.
 
-
-You can break out of a `for` loop using the `break` statement.  Here
-I break out of the `for` loop, when I get to 6.  Notice I never get to
-7 or any number higher than 6.  The `break` statement says, "stop the
-`for` loop now, and go directly to the first statement after the `for`
-loop".
+We asserted we could use permutation to take random samples from the data that we already have:
 
 ```{python}
-for i in np.arange(1000):
-    print(i)
-    if i == 6:
-        print("Stopping here, where i == 6")
-        break
-print("I have finished the for loop now.")
+pooled = np.append(remain_ages, leave_ages)
+np.random.shuffle(pooled)
+fake_remainers = pooled[:n_remain]
+fake_leavers = pooled[n_remain:]
 ```
 
-Make sure you understand what is going on in the cell above.  When you
-do, try using this technique to find the largest integer $n$ where $n!
-< 10^6$.  Print out $n$ and $n!$.  Hint for your `for` loop: $n$ is
-less than 100.
+Those are our samples.  Now we get the difference in mean ages, as one example of a difference we might see, if the samples are from the same population:
 
 ```{python}
-factorial = 1
-last_factorial = 1
-threshold = 1000000
-# Your code here
+example_diff = np.mean(fake_leavers) - np.mean(fake_remainers)
+example_diff
 ```
 
-Here is an array of 50 numbers:
+Now we know how do to this once, we can use the `for` loop to do the
+shuffle operation many times.  We collect the results in a list.  You will recognize the code in the `for` loop from the code in the cells above.
 
 ```{python}
-# Run this cell to define the "values" array
-values = np.array([ 3,  32,  39, -3,  34,  28,   9,  36,
-         -4,  20,  -4,  13,  32,  9,  14, 999,   2,  20,  18,
-         12,  13,  25,  25,   2,  17,  39, 39,   4,  26,   7,
-          1,  36,  31,  15,  25,  19, 999, -4,  -3,  24,   7,
-         14,  -2,  35,  18,  23,  34,  14, 11,  25])
+# An empty list to store the results
+example_diffs = []
+# Do the shuffle / difference steps 10000 times
+for i in np.arange(10000):
+    np.random.shuffle(pooled)
+    fake_remainers = pooled[:n_remain]
+    fake_leavers = pooled[n_remain:]
+    eg_diff = np.mean(fake_leavers) - np.mean(fake_remainers)
+    # Collect the results in a list
+    example_diffs.append(eg_diff)
 ```
 
-Add up all the numbers in this array, until you get to the first value
-of 999.  Print the sum of all the values up to, but not including, the
-first 999. For example, if the array was `np.array([2, 6, 4, 999,
-11])`, then the result would be: `2 + 6 + 4 == 12`.
-What is the equivalent result for the `values` array above?
+Our list now has 10000 fake mean differences:
 
 ```{python}
-# Your code here.
+len(example_diffs)
 ```
 
-The next cell is a slight variation.  Add all the numbers in this
-array, up to, but not including, the first value of 999.  This time,
-discard any negative values you find.  For example, if the array was
-`np.array([1, 7, -3, 4, 999, 13])`, then the result would be:
-`1 + 7 + 4 == 12`.
-What is the equivalent result for the `values` array above?
+What distribution do these differences have?
 
 ```{python}
-# Your code here.
+plt.hist(example_diffs);
 ```
+
+This is called the *sampling distribution*.  In our case, this is the
+sampling distribution of the difference in means.  It is the *sampling*
+distribution, because it is the distribution we expect to see, when
+taking random *samples* from the same underlying population.
+
+Our question now is, is the difference we actually saw, a likely value, given the sampling distribution.
+
+Looking at the distribution above - what do you think?
+
+As a first pass, let us check how many of the values from the sampling
+distribution are as large, or larger than the value we actually saw.
+
+First we turn our list into an array, so we can do our `count_nonzero`
+trick.
+
+```{python}
+sampling_dist_array = np.array(example_diffs)
+are_as_high = sampling_dist_array >= actual_diff
+n_as_high = np.count_nonzero(are_as_high)
+n_as_high
+```
+
+The number above is the number of values in the sampling distribution
+that are as high as, or higher than, the value we actually saw.  If we
+divide by 10000, we get the proportion of the sampling distribution
+that is as high, or higher.
+
+```{python}
+proportion = n_as_high / 10000
+proportion
+```
+
+We think of this proportion as an estimate of the *probability* that we
+would see a value this high, or higher, *if these were random samples
+from the same underlying population*.  We call this a *p value*.
 
         
       </section>

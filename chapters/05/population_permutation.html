@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-12-06T20:57:42+00:00">
+  <meta property="article:published_time" content="2018-12-07T00:33:05+00:00">
 
 
 
@@ -474,7 +474,27 @@
 
             
 
-            <li><a href="/dsfe/chapters/05/iteration" class="level_1">5.2 Iteration with For loops</a></li>
+            <li><a href="/dsfe/chapters/05/lists" class="level_1">5.2 lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/iteration" class="level_1">5.3 Iteration with For loops</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/brexit_ages" class="level_1">5.4 Brexit ages</a></li>
           
         </ul>
         
@@ -547,7 +567,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="5.1 Population and permutation">
       <meta itemprop="description" content="A problem of populations">
-      <meta itemprop="datePublished" content="December 06, 2018">
+      <meta itemprop="datePublished" content="December 07, 2018">
       
 
       <div class="page__inner-wrap">
@@ -696,16 +716,16 @@ from the same underlying population.</p>
 <p>If that is the case, we can throw the Leave and Remain voters into one big pool
 of 774 + 541 == 1315 voters.</p>
 
-<p>Then we can take split this new mixed sample into two groups, at random, one
-with 774 voters, and the other with 541.  The new groups have a random mix of
-the original Leave and Remain voters.  Then we calculate the difference in
-means between these two new, fake groups.</p>
+<p>Then we can take split this new mixed sample into two groups, at
+random, one with 774 voters, and the other with 541.  The new groups
+have a random mix of the original Leave and Remain voters.  Then we
+calculate the difference in means between these two new, fake groups.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pooled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">leave_ages</span><span class="p">,</span> <span class="n">remain_ages</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pooled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">remain_ages</span><span class="p">,</span> <span class="n">leave_ages</span><span class="p">)</span>
 <span class="n">pooled</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([71, 60, 74, ..., 37, 67, 39])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([37, 55, 37, ..., 20, 40, 31])
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
@@ -728,7 +748,7 @@ this:</p>
 <span class="n">pets</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['rabbit', 'dog', 'cat'], dtype='&lt;U6')
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['dog', 'rabbit', 'cat'], dtype='&lt;U6')
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pets</span><span class="p">)</span>
@@ -744,7 +764,7 @@ this:</p>
 <span class="n">pooled</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([43, 39, 27, ..., 41, 67, 69])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([38, 64, 22, ..., 39, 65, 19])
 </code></pre></div></div>
 
 <p>We split the newly mixed group into 774 simulated Remain voters and 541
@@ -767,7 +787,7 @@ and Remain ages.</p>
 <span class="n">fake_difference</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-0.20998294860221733
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1.3059890049530196
 </code></pre></div></div>
 
 <p>That looks a lot smaller than the difference we saw.   We want to keep doing
@@ -779,7 +799,7 @@ us new random samples of fake Remainers and fake Leavers.</p>
 <span class="n">fake_difference_2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-3.034069361456204
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-0.7007384162738148
 </code></pre></div></div>
 
 <p>We want to keep doing this, but copy / pasting seems like far too much work.
@@ -806,7 +826,7 @@ We need - <a href="iteration">iteration</a>.</p>
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/05/iteration" class="pagination--pager" title="5.2 Iteration with For loops
+      <a href="/dsfe/chapters/05/lists" class="pagination--pager" title="5.2 lists
 ">Next</a>
     
   </nav>
