@@ -12,8 +12,14 @@ jupyter:
     name: python3
 ---
 
-All the cells below have errors in syntax or in logic. A logic error is
-where the code does run, but does not do what it was intended to do.
+```{python}
+import numpy as np
+```
+
+All the cells below have errors in syntax or in logic. A syntax error happens
+when the code does not correspond to Python's rules; Python generates an error
+with some information about which bit of the code caused the problem.  A logic
+error is where the code does run, but does not do what it was intended to do.
 Run the cells to see the error, and then fix them to work correctly.
 
 ```{python}
@@ -59,7 +65,7 @@ print(total)
 # Print all the numbers starting rom 100, and subtracting 7
 # up to the last positive number.  The first three
 # numbers you will print will be 100, 93, 86
-for i in np.range(100, 7, 7):
+for i in np.arange(100, 7, 7):
     print(i)
 ```
 
