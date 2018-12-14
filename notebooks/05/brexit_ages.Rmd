@@ -256,26 +256,24 @@ example_diff
 ```
 
 Now we know how do to this once, we can use the `for` loop to do the
-shuffle operation many times.  We collect the results in a list.  You will recognize the code in the `for` loop from the code in the cells above.
+shuffle operation many times.  We collect the results in an array.
+You will recognize the code in the `for` loop from the code in the
+cells above.
 
 ```{python}
-# An empty list to store the results
-example_diffs = []
+# An array of zeros to store the fake differences
+example_diffs = np.zeros(10000)
 # Do the shuffle / difference steps 10000 times
 for i in np.arange(10000):
     np.random.shuffle(pooled)
     fake_remainers = pooled[:n_remain]
     fake_leavers = pooled[n_remain:]
     eg_diff = np.mean(fake_leavers) - np.mean(fake_remainers)
-    # Collect the results in a list
-    example_diffs.append(eg_diff)
+    # Collect the results in the results array
+    example_diffs[i] = eg_diff
 ```
 
-Our list now has 10000 fake mean differences:
-
-```{python}
-len(example_diffs)
-```
+Our results array now has 10000 fake mean differences:
 
 What distribution do these differences have?
 
@@ -284,9 +282,9 @@ plt.hist(example_diffs);
 ```
 
 This is called the *sampling distribution*.  In our case, this is the
-sampling distribution of the difference in means.  It is the *sampling*
-distribution, because it is the distribution we expect to see, when
-taking random *samples* from the same underlying population.
+sampling distribution of the difference in means.  It is the
+*sampling* distribution, because it is the distribution we expect to
+see, when taking random *samples* from the same underlying population.
 
 Our question now is, is the difference we actually saw, a likely value, given the sampling distribution.
 
@@ -295,12 +293,8 @@ Looking at the distribution above - what do you think?
 As a first pass, let us check how many of the values from the sampling
 distribution are as large, or larger than the value we actually saw.
 
-First we turn our list into an array, so we can do our `count_nonzero`
-trick.
-
 ```{python}
-sampling_dist_array = np.array(example_diffs)
-are_as_high = sampling_dist_array >= actual_diff
+are_as_high = example_diffs  >= actual_diff
 n_as_high = np.count_nonzero(are_as_high)
 n_as_high
 ```
@@ -315,9 +309,10 @@ proportion = n_as_high / 10000
 proportion
 ```
 
-We think of this proportion as an estimate of the *probability* that we
-would see a value this high, or higher, *if these were random samples
-from the same underlying population*.  We call this a *p value*.
+We think of this proportion as an estimate of the *probability* that
+we would see a value this high, or higher, *if these were random
+samples from the same underlying population*.  We call this a *p
+value*.
 
         
       </section>

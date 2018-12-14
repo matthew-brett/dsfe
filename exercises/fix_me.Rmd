@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
 <meta property="og:title" content="Data Science for Everyone">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/exercises/money_and_death.Rmd">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/exercises/fix_me.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/exercises/money_and_death.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/exercises/fix_me.Rmd">
 
 
 
@@ -181,223 +181,63 @@
 
       <section class="page__content" itemprop="text">
         
-        We return to the death penalty.
+        All the cells below have errors in syntax or in logic. A logic error is
+where the code does run, but does not do what it was intended to do.
+Run the cells to see the error, and then fix them to work correctly.
 
 ```{python}
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-# %matplotlib inline
-# Make plots look a little bit more fancy
-plt.style.use('fivethirtyeight')
+# Print the numbers 0 through 2
+for my_var in np.arange(3)
+    print(my_var)
 ```
 
-In this case, we are going to analyze whether people with higher incomes are more likely to favor the death penalty.
-
-To do this, we are going to analyze the results from a sample of the
-US [General Social Survey](http://www.gss.norc.org) from 2002.
-
-If you are running on your laptop, download the data file [GSS2002.csv](/dsfe/data/GSS2002.csv).
-
 ```{python}
-# Read the data into a data frame
-gss = pd.read_csv('GSS2002.csv')
-gss
+# Add up all the numbers from 3 through 10
+total = 0
+for i in np.arange(3, 11):
+total = total + i
+print(total)
 ```
 
-Each row corresponds to a single respondent.
-
-Show the column names:
-
 ```{python}
-gss.columns
+# Add all numbers from 3 down to -2, inclusive
+total = 0
+for i = np.arange(3, -4, -1):
+    total = total + i
+print(total)
 ```
 
-We want to work with only two columns from this data frame.  These are "Income", and "DeathPenalty".
-
-"Income" gives the income bracket of the respondent.  "DeathPenalty" is the answer to a question about whether they "Favor" or "Oppose" the death penalty.
-
-First make a list with the names of the columns that we want.
-
 ```{python}
-cols = ['Income', 'DeathPenalty']
-cols
+# Add up the squares of all the even numbers from -2 to 20
+total = 0
+for v in np.arange(-2, 21):
+    squared = v ** 2
+     total = total + squared
+print(total)
 ```
 
-Next make a new data frame by indexing the data frame with this list.
-
-The new data frame has only the columns we selected.
-
 ```{python}
-money_death = gss[cols]
-money_death
+# Add all the odd numbers from 11 through 21
+total = 0
+for value in np.arange(11, 21):
+    total = total + value
+print(total)
 ```
 
-There are many missing question responses, indicated by `NaN`.  To
-make our life easier, we drop the respondents who didn't specify an
-income bracket, and those two did give an answer to the death penalty
-question.  Do do this, we use Pandas `dropna` method of the data
-frame, to drop all rows that have missing values.
-
 ```{python}
-money_death = money_death.dropna()
-money_death
+# Print all the numbers starting rom 100, and subtracting 7
+# up to the last positive number.  The first three
+# numbers you will print will be 100, 93, 86
+for i in np.range(100, 7, 7):
+    print(i)
 ```
 
-Get the income column.
-
 ```{python}
-income = money_death['Income']
-```
-
-Show the unique values:
-
-```{python}
-income.value_counts()
-```
-
-These are strings.  We want to get income as a number.  We estimate this by recoding the "Income" column.  We replace the string, giving the income bracket, with the average of the minimum and maximum in the range.
-
-We can do this with a *recoder function*.  We have not covered functions yet, so do not worry about the details of this function.
-
-```{python}
-def recode_income(value):
-    if value == 'under 1000':
-        return 500
-    low_str, high_str = value.split('-')
-    low, high = int(low_str), int(high_str)
-    return np.mean([low, high])
-```
-
-Here is what the recoder function gives with the lowest income bracket.
-
-```{python}
-recode_income('under 1000')
-```
-
-Here is the return from a higher bracket:
-
-```{python}
-recode_income('90000-109999')
-```
-
-Use this function to recode the "Income" strings into numbers. Again, we have not covered the `apply` method yet, so don't worry about the details.
-
-```{python}
-income_ish = income.apply(recode_income)
-income_ish
-```
-
-Now get the results of the answer to the death penalty question.
-
-```{python}
-death = money_death['DeathPenalty']
-death.value_counts()
-```
-
-We will identify the rows for respondents who are in favor of the death penalty.  To do this, we make a Boolean vector:
-
-```{python}
-death == 'Favor'
-```
-
-Use this vector to select the income values for the respondents in favor of the death penalty.  Show the distribution of values.
-
-```{python}
-favor_income = income_ish[death == 'Favor']
-favor_income.hist();
-```
-
-Likewise select incomes for those opposed.   Show the distribution.
-
-```{python}
-oppose_income = income_ish[death == 'Oppose']
-oppose_income.hist();
-```
-
-Calculate the difference in mean income between the groups.  This is the difference we observe.
-
-```{python}
-actual_diff = np.mean(favor_income) - np.mean(oppose_income)
-actual_diff
-```
-
-We want to know whether this difference in income is compatible with random sampling. That is, we want to know whether a difference this large is plausible, if the incomes are in fact random samples from the same population.
-
-Do estimate how variable the mean differences can be, for such random sampling, we simulate this sampling by pooling, then permuting, the income values that we have, from the two groups.
-
-First, we get the number of respondents in favor of the death penalty.
-
-```{python}
-n_favor = len(favor_income)
-n_favor
-```
-
-Then we pool the in-favor and oppose groups.
-
-```{python}
-pooled = np.append(favor_income, oppose_income)
-```
-
-To do the random sampling we permute the values, so the `pooled` vector is now a random mixture of the two groups.
-
-```{python}
-np.random.shuffle(pooled)
-```
-
-Treat the first `n_favor` observations from this shuffled vector as
-our simulated in-favor group.  The rest are our simulated oppose
-group.
-
-```{python}
-fake_favor = pooled[:n_favor]
-fake_oppose = pooled[n_favor:]
-```
-
-Calculate the difference in means for this simulation.
-
-```{python}
-fake_diff = np.mean(fake_favor) - np.mean(fake_oppose)
-fake_diff
-```
-
-Now it is your turn.   Do this simulation 10000 times, to build up the distribution of differences compatible with random sampling.
-
-Use the [Brexit ages](../05/brexit_ages) notebook for inspiration.
-
-```{python}
-differences = np.zeros(10000)
-for i in np.arange(10000):
-    # Permute the pooled incomes
-    np.random.shuffle(pooled)
-    # Make a fake favor sample
-
-    # Make a fake opposed sample
-
-    # Calculate the mean difference for the fake samples
-
-    # Put the mean difference into the differences array.
-
-```
-
-When you have that working, do a histogram of the differences.
-
-```{python}
-# Your code here
-```
-
-You can get an idea of where the actual difference we saw sits on this histogram, and therefore how likely that difference is, assuming the incomes come from the same underlying population of incomes.
-
-To be more specific, count how many of the differences you calculated were greater than or equal to the actual difference.
-
-```{python}
-# Your code here
-```
-
-Now calculate the proportion of these differences, to give an estimate of the probability of seeing a difference this large, if the incomes all come from the same underlying population:
-
-```{python}
-# Your code here
+# Add every third number in the inclusive range 1 through 21
+total = 0
+for i in np.arange(1, 21):
+    total = total + 1
+print(total)
 ```
 
         

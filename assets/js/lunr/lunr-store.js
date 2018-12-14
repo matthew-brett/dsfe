@@ -139,7 +139,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/04/data_frames",
         "teaser":null},{
-        "title": "5.5 Brexit ages",
+        "title": "5.6 Brexit ages",
         "excerpt":"Brexit ages Now we have for loops and ranges, we cansolve the problem in population, permutation import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdWe load the data again: # Load the data frame, and put it in the variable \"audit_data\"audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')Again,...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/brexit_ages",
@@ -148,6 +148,11 @@ var store = [{
         "excerpt":"Conditional Statements In many situations, actions and results depends on a specific set ofconditions being satisfied. For example, individuals in randomizedcontrolled trials receive the treatment if they have been assigned tothe treatment group. A gambler makes money if she wins her bet. In this section we will learn how to...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/conditional_statements",
+        "teaser":null},{
+        "title": "5.4 Indentation, indentation",
+        "excerpt":"Indentation, indentation, indentation import numpy as npPython cares a lot about indentation. You are going see this often in Python code. for loops are one of many places that Python depends on indentation. The indentation tells Python which statements are in the loop, and which are outside the loop. Remember...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/05/indentation",
         "teaser":null},{
         "title": "5.3 Iteration with For loops",
         "excerpt":"Iteration It is often the case in programming – especially when dealing with randomness– that we want to repeat a process multiple times. Consider the numpy function random.choice. It claims to choose randomlybetween the elements on an array that we pass it. Here we make an array ofstrings containing two...","categories": [],
@@ -195,7 +200,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/for_loops",
         "teaser":null},{
         "title": "Money and death",
-        "excerpt":"The death penalty, again. import numpy as npimport pandas as pdimport matplotlib.pyplot as plt%matplotlib inline# Make plots look a little bit more fancyplt.style.use('fivethirtyeight')Here we load the results from a sample of the US General SocialSurvey from 2002. gss = pd.read_csv('GSS2002.csv')gss ID Region Gender Race Education Marital Religion Happy Income PolParty...","categories": [],
+        "excerpt":"We return to the death penalty. import numpy as npimport pandas as pdimport matplotlib.pyplot as plt%matplotlib inline# Make plots look a little bit more fancyplt.style.use('fivethirtyeight')In this case, we are going to analyze whether people with higher incomes are more likely to favor the death penalty. To do this, we are...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/money_and_death",
         "teaser":null},{

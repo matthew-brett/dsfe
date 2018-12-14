@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>1.1.1 Computational Tools - Data Science for Everyone</title>
-<meta name="description" content="Computational Tools">
+<!-- begin _includes/seo.html --><title>5.4 Indentation, indentation - Data Science for Everyone</title>
+<meta name="description" content="Indentation, indentation, indentation">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="1.1.1 Computational Tools">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/01/computational-tools">
+<meta property="og:title" content="5.4 Indentation, indentation">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/05/indentation">
 
 
-  <meta property="og:description" content="Computational Tools">
+  <meta property="og:description" content="Indentation, indentation, indentation">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/01/computational-tools">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/05/indentation">
 
 
 
@@ -605,15 +605,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="1.1.1 Computational Tools">
-      <meta itemprop="description" content="Computational Tools">
+      <meta itemprop="headline" content="5.4 Indentation, indentation">
+      <meta itemprop="description" content="Indentation, indentation, indentation">
       <meta itemprop="datePublished" content="December 14, 2018">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">1.1.1 Computational Tools
+            <h1 id="page-title" class="page__title" itemprop="headline">5.4 Indentation, indentation
 </h1>
           </header>
         
@@ -625,53 +625,114 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#indentation-indentation-indentation">Indentation, indentation, indentation</a></li>
+</ul>
+    </nav>
+  </aside>
+
 
           
           <!-- INTERACT LINKS -->
 
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/05/indentation.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F05%2Findentation.ipynb">Interact</a>
 
-          <h1 id="computational-tools">Computational Tools</h1>
 
-<p>This text uses the Python 3 programming language, along with a standard set of
-numerical and data visualization tools that are used widely in commercial
-applications, scientific experiments, and open-source projects.  Python has
-recruited enthusiasts from many professions that use data to draw conclusions.
-By learning the Python language, you will join a million-person-strong
-community of software developers and data scientists.</p>
+          <h2 id="indentation-indentation-indentation">Indentation, indentation, indentation</h2>
 
-<p>A Python program can be executed by any computer, regardless of its
-manufacturer or operating system, provided that support for the language is
-installed.</p>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
 
-<p>You will see many pages in this site with Python code that can be run.  We
-encourage you to run this code, and experiment with it, to make sure you
-understand what the code is doing.</p>
+<p>Python cares a lot about indentation.</p>
 
-<p>One way of doing this, is to click on the “Interact” links at the top of these
-pages.  This will start up a computer in the cloud that can run the code.
-Your web-browser acts as an interface to that machine, and you do not need to
-install anything on your computer.</p>
+<p>You are going see this often in Python code.</p>
 
-<p>You will also see a “Download notebook” link at the top of these pages.  This
-prompts you to download the notebook, so you can run it on your own computer.
-To do this, you should install the version of Python and its accompanying
-libraries that will match this text.  One way of doing that is the
-<a href="https://www.anaconda.com/download">Anaconda</a> distribution that packages together the Python 3 language
-interpreter, IPython libraries, and the Jupyter notebook environment.</p>
+<p><code class="highlighter-rouge">for</code> loops are one of many places that Python depends on indentation.  The indentation tells Python which statements are in the loop, and which are outside the loop.</p>
 
-<p>This text includes a complete introduction to all of these computational
-tools.  You will learn to write programs, generate images from data, and work
-with real-world data sets that are published online.</p>
+<p>Remember that the <code class="highlighter-rouge">for</code> statement:</p>
 
-<div class="isa_info">
-<i class="fa fa-info-circle"></i>
-This page has content from the
-<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Computational_Tools.ipynb">
-Computational_Tools</a>
-notebook from the UC Berkeley course.  See the Berkeley course section of the
-<a href="{{ site.baseurl }}/license">license</a>
-</div>
+<ul>
+  <li>starts with the word <code class="highlighter-rouge">for</code>, followed by</li>
+  <li>a variable name (the <em>loop variable</em>) followed by</li>
+  <li>the word <code class="highlighter-rouge">in</code> followed by</li>
+  <li>an expression that gives sequence of values followed by</li>
+  <li>the character <code class="highlighter-rouge">:</code> followed by</li>
+  <li>an indented block of one or more statements.  This is the <em>body</em> of
+the <code class="highlighter-rouge">for</code> loop.</li>
+</ul>
 
+<p>Here was our first <code class="highlighter-rouge">for</code> loop:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+1
+2
+
+</code></pre></div></div>
+
+<p>Following the sequence above, we have:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">for</code></li>
+  <li><code class="highlighter-rouge">i</code> (the loop variable name)</li>
+  <li><code class="highlighter-rouge">in</code></li>
+  <li><code class="highlighter-rouge">np.arange(3)</code> (a sequence with three values - 0, 1, 2)</li>
+  <li><code class="highlighter-rouge">:</code></li>
+  <li><code class="highlighter-rouge">    print(i)</code> (the indented block, consisting of one statement.</li>
+</ul>
+
+<p>If we want to execute more than one statement in the loop, we need to indent each statement:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Finished this iteration of the loop'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+Finished this iteration of the loop
+1
+Finished this iteration of the loop
+2
+Finished this iteration of the loop
+
+</code></pre></div></div>
+
+<p>In the above, both statements are indented, so Python runs both statements for each run through the loop.</p>
+
+<p>The first not-indented statement signals that the <code class="highlighter-rouge">for</code> loop body is over:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Finished this iteration of the loop'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Now the loop has finished'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+Finished this iteration of the loop
+1
+Finished this iteration of the loop
+2
+Finished this iteration of the loop
+Now the loop has finished
+
+</code></pre></div></div>
+
+<p>The lines in the <code class="highlighter-rouge">for</code> block must have the same indentation.  Try
+knocking one space off the indentation in one of the lines in the loop above, and see what happens.</p>
+
+<p>The first line must end with a colon character.  Try knocking the
+colon off the line beginning <code class="highlighter-rouge">for</code> above, and see what happens.</p>
+
+<p>There must be a <code class="highlighter-rouge">for</code> block.  Try removing all the indentation from the line <code class="highlighter-rouge">print(i)</code> above, and see what happens.</p>
 
           
         </section>
@@ -688,11 +749,11 @@ notebook from the UC Berkeley course.  See the Berkeley course section of the
         
   <nav class="pagination">
     
-      <a href="/dsfe/chapters/01/intro" class="pagination--pager" title="1.1 Introduction
+      <a href="/dsfe/chapters/05/iteration" class="pagination--pager" title="5.3 Iteration with For loops
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/01/statistical-techniques" class="pagination--pager" title="1.1.2 Statistical Techniques
+      <a href="/dsfe/chapters/05/ones_zeros" class="pagination--pager" title="5.5 Ones and zeros
 ">Next</a>
     
   </nav>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Money and death - Data Science for Everyone</title>
-<meta name="description" content="The death penalty, again.">
+<meta name="description" content="We return to the death penalty.">
 
 
 
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/exercises/money_and_death">
 
 
-  <meta property="og:description" content="The death penalty, again.">
+  <meta property="og:description" content="We return to the death penalty.">
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-12-14T01:59:02+00:00">
+  <meta property="article:published_time" content="2018-12-14T03:14:29+00:00">
 
 
 
@@ -494,7 +494,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/05/ones_zeros" class="level_1">5.4 Ones and zeros</a></li>
+            <li><a href="/dsfe/chapters/05/indentation" class="level_1">5.4 Indentation, indentation</a></li>
           
             
             
@@ -504,7 +504,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/05/brexit_ages" class="level_1">5.5 Brexit ages</a></li>
+            <li><a href="/dsfe/chapters/05/ones_zeros" class="level_1">5.5 Ones and zeros</a></li>
           
             
             
@@ -514,7 +514,17 @@
 
             
 
-            <li><a href="/dsfe/chapters/05/conditional_statements" class="level_1">5.6 Conditional statements</a></li>
+            <li><a href="/dsfe/chapters/05/brexit_ages" class="level_1">5.6 Brexit ages</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/conditional_statements" class="level_1">5.7 Conditional statements</a></li>
           
         </ul>
         
@@ -596,7 +606,7 @@
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="Money and death">
-      <meta itemprop="description" content="The death penalty, again.">
+      <meta itemprop="description" content="We return to the death penalty.">
       <meta itemprop="datePublished" content="December 14, 2018">
       
 
@@ -625,7 +635,7 @@
     <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2Fexercises%2Fmoney_and_death.ipynb">Interact</a>
 
 
-          <p>The death penalty, again.</p>
+          <p>We return to the death penalty.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
@@ -635,10 +645,15 @@
 </span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Here we load the results from a sample of the US <a href="http://www.gss.norc.org">General Social
-Survey</a> from 2002.</p>
+<p>In this case, we are going to analyze whether people with higher incomes are more likely to favor the death penalty.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'GSS2002.csv'</span><span class="p">)</span>
+<p>To do this, we are going to analyze the results from a sample of the
+US <a href="http://www.gss.norc.org">General Social Survey</a> from 2002.</p>
+
+<p>If you are running on your laptop, download the data file <a href="/dsfe/data/GSS2002.csv">GSS2002.csv</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Read the data into a data frame
+</span><span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'GSS2002.csv'</span><span class="p">)</span>
 <span class="n">gss</span>
 </code></pre></div></div>
 
@@ -2155,6 +2170,10 @@ Survey</a> from 2002.</p>
 </div>
 </div>
 
+<p>Each row corresponds to a single respondent.</p>
+
+<p>Show the column names:</p>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gss</span><span class="o">.</span><span class="n">columns</span>
 </code></pre></div></div>
 
@@ -2165,12 +2184,22 @@ Survey</a> from 2002.</p>
       dtype='object')
 </code></pre></div></div>
 
+<p>We want to work with only two columns from this data frame.  These are “Income”, and “DeathPenalty”.</p>
+
+<p>“Income” gives the income bracket of the respondent.  “DeathPenalty” is the answer to a question about whether they “Favor” or “Oppose” the death penalty.</p>
+
+<p>First make a list with the names of the columns that we want.</p>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Income'</span><span class="p">,</span> <span class="s">'DeathPenalty'</span><span class="p">]</span>
 <span class="n">cols</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Income', 'DeathPenalty']
 </code></pre></div></div>
+
+<p>Next make a new data frame by indexing the data frame with this list.</p>
+
+<p>The new data frame has only the columns we selected.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">money_death</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span>
 <span class="n">money_death</span>
@@ -2511,6 +2540,12 @@ Survey</a> from 2002.</p>
 </div>
 </div>
 
+<p>There are many missing question responses, indicated by <code class="highlighter-rouge">NaN</code>.  To
+make our life easier, we drop the respondents who didn’t specify an
+income bracket, and those two did give an answer to the death penalty
+question.  Do do this, we use Pandas <code class="highlighter-rouge">dropna</code> method of the data
+frame, to drop all rows that have missing values.</p>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">money_death</span> <span class="o">=</span> <span class="n">money_death</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">money_death</span>
 </code></pre></div></div>
@@ -2850,8 +2885,12 @@ Survey</a> from 2002.</p>
 </div>
 </div>
 
+<p>Get the income column.</p>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">income</span> <span class="o">=</span> <span class="n">money_death</span><span class="p">[</span><span class="s">'Income'</span><span class="p">]</span>
 </code></pre></div></div>
+
+<p>Show the unique values:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">income</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </code></pre></div></div>
@@ -2862,16 +2901,16 @@ Survey</a> from 2002.</p>
 25000-29999      60
 35000-39999      54
 60000-74999      51
-12500-14999      44
 20000-22499      44
+12500-14999      44
 130000-149999    43
 22500-24999      40
 110000-129999    38
 17500-19999      37
-15000-17499      36
 10000-124999     36
-1000-2999        32
+15000-17499      36
 8000-9999        32
+1000-2999        32
 75000-89999      26
 3000-3999        19
 under 1000       17
@@ -2883,7 +2922,11 @@ under 1000       17
 Name: Income, dtype: int64
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">recoder</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<p>These are strings.  We want to get income as a number.  We estimate this by recoding the “Income” column.  We replace the string, giving the income bracket, with the average of the minimum and maximum in the range.</p>
+
+<p>We can do this with a <em>recoder function</em>.  We have not covered functions yet, so do not worry about the details of this function.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">recode_income</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s">'under 1000'</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">500</span>
     <span class="n">low_str</span><span class="p">,</span> <span class="n">high_str</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'-'</span><span class="p">)</span>
@@ -2891,19 +2934,25 @@ Name: Income, dtype: int64
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">recoder</span><span class="p">(</span><span class="s">'under 1000'</span><span class="p">)</span>
+<p>Here is what the recoder function gives with the lowest income bracket.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">recode_income</span><span class="p">(</span><span class="s">'under 1000'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>500
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">recoder</span><span class="p">(</span><span class="s">'90000-109999'</span><span class="p">)</span>
+<p>Here is the return from a higher bracket:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">recode_income</span><span class="p">(</span><span class="s">'90000-109999'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>99999.5
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">income_ish</span> <span class="o">=</span> <span class="n">income</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">recoder</span><span class="p">)</span>
+<p>Use this function to recode the “Income” strings into numbers. Again, we have not covered the <code class="highlighter-rouge">apply</code> method yet, so don’t worry about the details.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">income_ish</span> <span class="o">=</span> <span class="n">income</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">recode_income</span><span class="p">)</span>
 <span class="n">income_ish</span>
 </code></pre></div></div>
 
@@ -2971,12 +3020,18 @@ Name: Income, dtype: int64
 Name: Income, Length: 904, dtype: float64
 </code></pre></div></div>
 
+<p>Now get the results of the answer to the death penalty question.</p>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">death</span> <span class="o">=</span> <span class="n">money_death</span><span class="p">[</span><span class="s">'DeathPenalty'</span><span class="p">]</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">death</span><span class="p">)</span>
+<span class="n">death</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Favor     622
+Oppose    282
+Name: DeathPenalty, dtype: int64
 </code></pre></div></div>
+
+<p>We will identify the rows for respondents who are in favor of the death penalty.  To do this, we make a Boolean vector:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">death</span> <span class="o">==</span> <span class="s">'Favor'</span>
 </code></pre></div></div>
@@ -3045,17 +3100,23 @@ Name: Income, Length: 904, dtype: float64
 Name: DeathPenalty, Length: 904, dtype: bool
 </code></pre></div></div>
 
+<p>Use this vector to select the income values for the respondents in favor of the death penalty.  Show the distribution of values.</p>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">favor_income</span> <span class="o">=</span> <span class="n">income_ish</span><span class="p">[</span><span class="n">death</span> <span class="o">==</span> <span class="s">'Favor'</span><span class="p">]</span>
 <span class="n">favor_income</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/exercises/money_and_death_16_0.png" alt="png" /></p>
+<p><img src="../../images/chapters/exercises/money_and_death_29_0.png" alt="png" /></p>
+
+<p>Likewise select incomes for those opposed.   Show the distribution.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">oppose_income</span> <span class="o">=</span> <span class="n">income_ish</span><span class="p">[</span><span class="n">death</span> <span class="o">==</span> <span class="s">'Oppose'</span><span class="p">]</span>
 <span class="n">oppose_income</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/exercises/money_and_death_17_0.png" alt="png" /></p>
+<p><img src="../../images/chapters/exercises/money_and_death_31_0.png" alt="png" /></p>
+
+<p>Calculate the difference in mean income between the groups.  This is the difference we observe.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">actual_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">favor_income</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">oppose_income</span><span class="p">)</span>
 <span class="n">actual_diff</span>
@@ -3064,6 +3125,12 @@ Name: DeathPenalty, Length: 904, dtype: bool
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4535.163012246019
 </code></pre></div></div>
 
+<p>We want to know whether this difference in income is compatible with random sampling. That is, we want to know whether a difference this large is plausible, if the incomes are in fact random samples from the same population.</p>
+
+<p>Do estimate how variable the mean differences can be, for such random sampling, we simulate this sampling by pooling, then permuting, the income values that we have, from the two groups.</p>
+
+<p>First, we get the number of respondents in favor of the death penalty.</p>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_favor</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">favor_income</span><span class="p">)</span>
 <span class="n">n_favor</span>
 </code></pre></div></div>
@@ -3071,22 +3138,36 @@ Name: DeathPenalty, Length: 904, dtype: bool
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>622
 </code></pre></div></div>
 
+<p>Then we pool the in-favor and oppose groups.</p>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pooled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">favor_income</span><span class="p">,</span> <span class="n">oppose_income</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p>To do the random sampling we permute the values, so the <code class="highlighter-rouge">pooled</code> vector is now a random mixture of the two groups.</p>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
 </code></pre></div></div>
+
+<p>Treat the first <code class="highlighter-rouge">n_favor</code> observations from this shuffled vector as
+our simulated in-favor group.  The rest are our simulated oppose
+group.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_favor</span> <span class="o">=</span> <span class="n">pooled</span><span class="p">[:</span><span class="n">n_favor</span><span class="p">]</span>
 <span class="n">fake_oppose</span> <span class="o">=</span> <span class="n">pooled</span><span class="p">[</span><span class="n">n_favor</span><span class="p">:]</span>
 </code></pre></div></div>
 
+<p>Calculate the difference in means for this simulation.</p>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_favor</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_oppose</span><span class="p">)</span>
 <span class="n">fake_diff</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-489.802758203914
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5792.69162048756
 </code></pre></div></div>
+
+<p>Now it is your turn.   Do this simulation 10000 times, to build up the distribution of differences compatible with random sampling.</p>
+
+<p>Use the <a href="../05/brexit_ages">Brexit ages</a> notebook for inspiration.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">differences</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
@@ -3104,10 +3185,8 @@ Name: DeathPenalty, Length: 904, dtype: bool
 
 <p>When you have that working, do a histogram of the differences.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">differences</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/exercises/money_and_death_26_0.png" alt="png" /></p>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Your code here
+</span></code></pre></div></div>
 
 <p>You can get an idea of where the actual difference we saw sits on this histogram, and therefore how likely that difference is, assuming the incomes come from the same underlying population of incomes.</p>
 
