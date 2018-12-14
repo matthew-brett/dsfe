@@ -1,0 +1,163 @@
+---
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.1'
+      jupytext_version: 0.8.7
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+The death penalty, again.
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+# %matplotlib inline
+# Make plots look a little bit more fancy
+plt.style.use('fivethirtyeight')
+```
+
+Here we load the results from a sample of the US [General Social
+Survey](http://www.gss.norc.org) from 2002.
+
+```{python}
+gss = pd.read_csv('GSS2002.csv')
+gss
+```
+
+```{python}
+gss.columns
+```
+
+```{python}
+cols = ['Income', 'DeathPenalty']
+cols
+```
+
+```{python}
+money_death = gss[cols]
+money_death
+```
+
+```{python}
+money_death = money_death.dropna()
+money_death
+```
+
+```{python}
+income = money_death['Income']
+```
+
+```{python}
+income.value_counts()
+```
+
+```{python}
+def recoder(value):
+    if value == 'under 1000':
+        return 500
+    low_str, high_str = value.split('-')
+    low, high = int(low_str), int(high_str)
+    return np.mean([low, high])
+```
+
+```{python}
+recoder('under 1000')
+```
+
+```{python}
+recoder('90000-109999')
+```
+
+```{python}
+income_ish = income.apply(recoder)
+income_ish
+```
+
+```{python}
+death = money_death['DeathPenalty']
+type(death)
+```
+
+```{python}
+death == 'Favor'
+```
+
+```{python}
+favor_income = income_ish[death == 'Favor']
+favor_income.hist();
+```
+
+```{python}
+oppose_income = income_ish[death == 'Oppose']
+oppose_income.hist();
+```
+
+```{python}
+actual_diff = np.mean(favor_income) - np.mean(oppose_income)
+actual_diff
+```
+
+```{python}
+n_favor = len(favor_income)
+n_favor
+```
+
+```{python}
+pooled = np.append(favor_income, oppose_income)
+```
+
+```{python}
+np.random.shuffle(pooled)
+```
+
+```{python}
+fake_favor = pooled[:n_favor]
+fake_oppose = pooled[n_favor:]
+```
+
+```{python}
+fake_diff = np.mean(fake_favor) - np.mean(fake_oppose)
+fake_diff
+```
+
+```{python}
+differences = np.zeros(10000)
+for i in np.arange(10000):
+    # Permute the pooled incomes
+    np.random.shuffle(pooled)
+    # Make a fake favor sample
+
+    # Make a fake opposed sample
+
+    # Calculate the mean difference for the fake samples
+
+    # Put the mean difference into the differences array.
+
+```
+
+When you have that working, do a histogram of the differences.
+
+```{python}
+plt.hist(differences);
+```
+
+You can get an idea of where the actual difference we saw sits on this histogram, and therefore how likely that difference is, assuming the incomes come from the same underlying population of incomes.
+
+To be more specific, count how many of the differences you calculated were greater than or equal to the actual difference.
+
+```{python}
+# Your code here
+```
+
+Now calculate the proportion of these differences, to give an estimate of the probability of seeing a difference this large, if the incomes all come from the same underlying population:
+
+```{python}
+# Your code here
+```

@@ -97,7 +97,7 @@ if x > 0:
 
 Now when `x` is positive.
 
-```{python]
+```{python}
 x = 1
 ```
 
@@ -108,9 +108,9 @@ if x > 0:
     print('Positively spiffing')
 ```
 
-Let us refine our cell to print `Negative` if `x` is a negative number.
-We can do this by adding an `elif` clause, where `elif` if Python's
-shorthand for the phrase "else if".
+Let us refine our cell to print `Negative` if `x` is a negative
+number. We can do this by adding an `elif` clause, where `elif` if
+Python's shorthand for the phrase "else if".
 
 ```{python}
 if x > 0:
@@ -132,8 +132,14 @@ elif x < 0:
     print('Negative')
 ```
 
-What if `x` is 0? To deal with this case, we can add another `elif`
-clause:
+What if `x` is 0?
+
+
+```{python}
+x = 0
+```
+
+To deal with this case, we can add another `elif` clause:
 
 ```{python}
 if x > 0:
