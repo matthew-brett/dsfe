@@ -10,5 +10,6 @@ permalink: /days/class_9
 * [Fix me exercise](../exercises/fix_me.ipynb)
 * [Ones zeros](../chapters/05/ones_zeros)
 * [Brexit ages](../chapters/05/brexit_ages)
-* [Money and death exercise](../chapters/exercises/money_and_death)
-* [Conditional statements](../chapters/05/conditional_statements)
+
+Your optional assignment is the [Money and death
+exercise](../chapters/exercises/money_and_death).
