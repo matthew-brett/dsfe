@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-12-14T11:36:00+00:00">
+  <meta property="article:published_time" content="2018-12-14T16:02:50+00:00">
 
 
 
@@ -2542,9 +2542,9 @@ US <a href="http://www.gss.norc.org">General Social Survey</a> from 2002.</p>
 
 <p>There are many missing question responses, indicated by <code class="highlighter-rouge">NaN</code>.  To
 make our life easier, we drop the respondents who didn’t specify an
-income bracket, and those two did give an answer to the death penalty
-question.  Do do this, we use Pandas <code class="highlighter-rouge">dropna</code> method of the data
-frame, to drop all rows that have missing values.</p>
+income bracket, and those who did not give an answer to the death penalty
+question.  We use Pandas <code class="highlighter-rouge">dropna</code> method of the data frame, to drop all rows
+that have any missing values in the row.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">money_death</span> <span class="o">=</span> <span class="n">money_death</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">money_death</span>
@@ -2907,10 +2907,10 @@ frame, to drop all rows that have missing values.</p>
 22500-24999      40
 110000-129999    38
 17500-19999      37
-10000-124999     36
 15000-17499      36
-8000-9999        32
+10000-124999     36
 1000-2999        32
+8000-9999        32
 75000-89999      26
 3000-3999        19
 under 1000       17
@@ -2922,7 +2922,9 @@ under 1000       17
 Name: Income, dtype: int64
 </code></pre></div></div>
 
-<p>These are strings.  We want to get income as a number.  We estimate this by recoding the “Income” column.  We replace the string, giving the income bracket, with the average of the minimum and maximum in the range.</p>
+<p>These are strings.  We want to get income as a number.  We estimate this by
+<em>recoding</em> the “Income” column.  We replace the string, giving the income
+bracket, with the average of the minimum and maximum in the range.</p>
 
 <p>We can do this with a <em>recoder function</em>.  We have not covered functions yet, so do not worry about the details of this function.</p>
 
@@ -3127,7 +3129,9 @@ Name: DeathPenalty, Length: 904, dtype: bool
 
 <p>We want to know whether this difference in income is compatible with random sampling. That is, we want to know whether a difference this large is plausible, if the incomes are in fact random samples from the same population.</p>
 
-<p>Do estimate how variable the mean differences can be, for such random sampling, we simulate this sampling by pooling, then permuting, the income values that we have, from the two groups.</p>
+<p>To estimate how variable the mean differences can be, for such random sampling,
+we simulate this sampling by pooling the income values that we have, from the
+two groups, and the permuting them.</p>
 
 <p>First, we get the number of respondents in favor of the death penalty.</p>
 
@@ -3143,7 +3147,8 @@ Name: DeathPenalty, Length: 904, dtype: bool
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pooled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">favor_income</span><span class="p">,</span> <span class="n">oppose_income</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>To do the random sampling we permute the values, so the <code class="highlighter-rouge">pooled</code> vector is now a random mixture of the two groups.</p>
+<p>To do the random sampling we permute the values, so the <code class="highlighter-rouge">pooled</code> vector is
+a random mixture of the two groups.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
 </code></pre></div></div>
@@ -3162,7 +3167,7 @@ group.</p>
 <span class="n">fake_diff</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5792.69162048756
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3143.6351793573704
 </code></pre></div></div>
 
 <p>Now it is your turn.   Do this simulation 10000 times, to build up the distribution of differences compatible with random sampling.</p>

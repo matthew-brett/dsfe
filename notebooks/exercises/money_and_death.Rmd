@@ -235,9 +235,9 @@ money_death
 
 There are many missing question responses, indicated by `NaN`.  To
 make our life easier, we drop the respondents who didn't specify an
-income bracket, and those two did give an answer to the death penalty
-question.  Do do this, we use Pandas `dropna` method of the data
-frame, to drop all rows that have missing values.
+income bracket, and those who did not give an answer to the death penalty
+question.  We use Pandas `dropna` method of the data frame, to drop all rows
+that have any missing values in the row.
 
 ```{python}
 money_death = money_death.dropna()
@@ -256,7 +256,9 @@ Show the unique values:
 income.value_counts()
 ```
 
-These are strings.  We want to get income as a number.  We estimate this by recoding the "Income" column.  We replace the string, giving the income bracket, with the average of the minimum and maximum in the range.
+These are strings.  We want to get income as a number.  We estimate this by
+*recoding* the "Income" column.  We replace the string, giving the income
+bracket, with the average of the minimum and maximum in the range.
 
 We can do this with a *recoder function*.  We have not covered functions yet, so do not worry about the details of this function.
 
@@ -324,7 +326,9 @@ actual_diff
 
 We want to know whether this difference in income is compatible with random sampling. That is, we want to know whether a difference this large is plausible, if the incomes are in fact random samples from the same population.
 
-Do estimate how variable the mean differences can be, for such random sampling, we simulate this sampling by pooling, then permuting, the income values that we have, from the two groups.
+To estimate how variable the mean differences can be, for such random sampling,
+we simulate this sampling by pooling the income values that we have, from the
+two groups, and the permuting them.
 
 First, we get the number of respondents in favor of the death penalty.
 
@@ -339,7 +343,8 @@ Then we pool the in-favor and oppose groups.
 pooled = np.append(favor_income, oppose_income)
 ```
 
-To do the random sampling we permute the values, so the `pooled` vector is now a random mixture of the two groups.
+To do the random sampling we permute the values, so the `pooled` vector is
+a random mixture of the two groups.
 
 ```{python}
 np.random.shuffle(pooled)
