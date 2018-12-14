@@ -10,4 +10,6 @@ permalink: /days/class_8
 * [5.2 Lists](../chapters/05/lists)
 * [5.3 Iteration with For loops](../chapters/05/iteration)
 * [For loop exercises](../chapters/exercises/for_loops)
-* [5.4 Brexit ages](../chapters/05/brexit_ages)
+
+Assignment - finish up the [For loop
+exercises](../chapters/exercises/for_loops).
