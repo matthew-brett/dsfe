@@ -139,10 +139,15 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/04/data_frames",
         "teaser":null},{
-        "title": "5.4 Brexit ages",
+        "title": "5.5 Brexit ages",
         "excerpt":"Brexit ages Now we have for loops and ranges, we cansolve the problem in population, permutation import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdWe load the data again: # Load the data frame, and put it in the variable \"audit_data\"audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')Again,...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/brexit_ages",
+        "teaser":null},{
+        "title": "5.6 Conditional statements",
+        "excerpt":"Conditional Statements In many situations, actions and results depends on a specific set ofconditions being satisfied. For example, individuals in randomizedcontrolled trials receive the treatment if they have been assigned tothe treatment group. A gambler makes money if she wins her bet. In this section we will learn how to...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/05/conditional_statements",
         "teaser":null},{
         "title": "5.3 Iteration with For loops",
         "excerpt":"Iteration It is often the case in programming – especially when dealing with randomness– that we want to repeat a process multiple times. Consider the numpy function random.choice. It claims to choose randomlybetween the elements on an array that we pass it. Here we make an array ofstrings containing two...","categories": [],
@@ -153,6 +158,11 @@ var store = [{
         "excerpt":"Lists The data structures that we use most often in data science are: arrays, from numpy; data frames, from pandas.There is another data structure for containing sequences of values the list.You have already seen these in passing, when we created arrays. Now we cover them in more detail. Creating a...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/lists",
+        "teaser":null},{
+        "title": "5.4 Ones and zeros",
+        "excerpt":"import numpy as npWe often want to create arrays with all zeros, or all ones. We do this with: np.zeros(5)array([0., 0., 0., 0., 0.])np.ones(3)array([1., 1., 1.])As ever, review the help with (for example): np.ones?In a new cell. You can ask for a 2D array by passing a list with the...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/05/ones_zeros",
         "teaser":null},{
         "title": "5. Permutations",
         "excerpt":"In this chapter, we discover that permutation allows us to simulate data inmany more situations than we have seen thus far. We build up the tools to use permutation for a test of differences between twogroups. ","categories": [],
@@ -183,6 +193,11 @@ var store = [{
         "excerpt":"For loop exercises import numpy as npYou may remember you can print a number (or anything else) with the print function, like this: print(5)5Use a for loop to print out all the numbers from 3 through 7, one number on each line. # Your code here.Make an empty list called...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/for_loops",
+        "teaser":null},{
+        "title": "Money and death",
+        "excerpt":"The death penalty, again. import numpy as npimport pandas as pdimport matplotlib.pyplot as plt%matplotlib inline# Make plots look a little bit more fancyplt.style.use('fivethirtyeight')Here we load the results from a sample of the US General SocialSurvey from 2002. gss = pd.read_csv('GSS2002.csv')gss ID Region Gender Race Education Marital Religion Happy Income PolParty...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/money_and_death",
         "teaser":null},{
         "title": "Simulation",
         "excerpt":"Simulation exercises import numpy as npThree girls Of all families with exactly four children, what proportion have exactly threegirls? Solve by simulation. Penalty shootout technique Jen is the penalty taker for her football team. She’s been doing this for a long time. She thinks she normally has a 80%chance of...","categories": [],
