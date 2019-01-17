@@ -8,8 +8,11 @@ permalink: /classes
 
 * Notes from lectures will generally go here, on the course website.  You will
   see me filling in this website as the course develops.
-* See the [Canvas course page](https://canvas.bham.ac.uk/courses/35188) for
-  announcements, discussions and grades.
+* See the [Canvas course
+  page](https://canvas.bham.ac.uk/courses/35188) for announcements,
+  discussions and grades.
+
+## Autumn term
 
 | Week | Date       | Class                     |
 | ---- | ---------- | ------------------------- |
@@ -25,7 +28,23 @@ permalink: /classes
 | 10   |  7 Dec     | [class 8](days/class_8)   |
 | 11   | 14 Dec     | [class 9](days/class_9)   |
 
-# Assessment
+## Spring term
 
-I will publish the assessment on 12th November.  It is due on the 10th
-December.
+| Week | Date       | Class                     |
+| ---- | ---------- | ------------------------- |
+| 1    | 18 Jan     | [class 10](days/class_10)   |
+| 2    | 25 Jan     | [class 11](days/class_11)   |
+| 3    |  1 Feb     | [class 12](days/class_12)   |
+| 4    |  8 Feb     | [class 13](days/class_13)   |
+| 5    | 15 Feb     | [class 14](days/class_14)   |
+| 6    | 22 Feb     | No class (reading week)   |
+| 7    |  1 Mar     | [class 15](days/class_15)   |
+| 8    |  8 Mar     | [class 16](days/class_16)   |
+| 9    | 15 Mar     | [class 17](days/class_17)   |
+| 10   | 22 Mar     | [class 18](days/class_18)   |
+| 11   | 29 Mar     | [class 19](days/class_19)   |
+
+## Assessments
+
+* The structured data analysis was due by 20 January.
+* Your data analysis project is due by midnight 30 March.
