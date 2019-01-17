@@ -34,7 +34,7 @@ This page has content from the
 <a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/#{parameters}.ipynb">
 #{parameters}</a>
 notebook from the UC Berkeley course.  See the Berkeley course section of the
-<a href="{{ site.baseurl }}/license">license</a>
+<a href="#{context.registers[:site].config['baseurl']}/license">license</a>
 </div>
 EOT
     end
