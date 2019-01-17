@@ -311,6 +311,16 @@ Each of these functions takes both an array of strings and a *search string*; ea
 | `np.char.rfind`      | The position within each element that a search string is found last              |
 | `np.char.startswith` | Whether each element starts with the search string  
 
+<div class="isa_info">
+<i class="fa fa-info-circle"></i>
+This page has content from the
+<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Arrays.ipynb">
+Arrays</a>
+notebook from the UC Berkeley course.  See the Berkeley course section of the
+<a href="/dsfe/license">license</a>
+</div>
+
+
         
       </section>
 
