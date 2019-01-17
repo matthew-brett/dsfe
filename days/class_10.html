@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
+<!-- begin _includes/seo.html --><title>Class 10 - Data Science for Everyone</title>
 <meta name="description" content="">
 
 
@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="Data Science for Everyone">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/02/Expressions.Rmd">
+<meta property="og:title" content="Class 10">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/days/class_10">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/02/Expressions.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/days/class_10">
 
 
 
@@ -166,7 +166,7 @@
   
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    
+    <meta itemprop="headline" content="Class 10">
     
     
     
@@ -174,166 +174,35 @@
     <div class="page__inner-wrap">
       
         <header>
-          <!--  -->
+          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Class 10
+</h1> -->
           
         </header>
       
 
       <section class="page__content" itemprop="text">
         
-        Programming languages are much simpler than human languages. Nonetheless,
-there are some rules of grammar to learn in any language, and that is where we
-will begin. In this text, we will use the [Python](https://www.python.org/)
-programming language. Learning the grammar rules is essential, and the same
-rules used in the most basic programs are also central to more sophisticated
-programs.
+        <h1 id="day-10-the-eleventh-day">Day 10 (the eleventh day)</h1>
 
+<h2 id="announcements">Announcements</h2>
 
-Programs contain *expressions*.
+<ul>
+  <li>Reading week check</li>
+  <li>Project deadlines</li>
+</ul>
 
-You can think of an expression as a recipe that returns a value.  For example,
-this is an expression:
+<h2 id="schedule">Schedule</h2>
 
-```{python}
-3 * 4
-```
+<ul>
+  <li>What we will cover in the next few weeks.</li>
+  <li>Project group rules</li>
+  <li>Forming your group</li>
+  <li>Designing your pitch</li>
+</ul>
 
-Notice that the Notebook displays the value.  This the *value* that the
-expression returns.
+<h2 id="assignment">Assignment</h2>
 
-An expression can describe to the computer how to combine pieces of data. In
-our example, we have a multiplication expression that consists of a `*` symbol
-between two numerical expressions. Expressions, such as `3 * 4`, are
-*evaluated* by the computer. The value (the result of *evaluation*) of the
-last expression in each cell, `12` in this case, is displayed below the cell.
-
-
-The grammar rules of a programming language are rigid. In Python, the `*`
-symbol cannot appear twice in a row. The computer will not try to interpret an
-expression that differs from its prescribed expression structures. Instead, it
-will show a `SyntaxError` error. The *Syntax* of a language is its set of
-grammar rules, and a `SyntaxError` indicates that an expression structure
-doesn't match any of the rules of the language.
-
-Try executing the next line after removing the `#` character at the beginning
-of the line
-
-```{python}
-# 3 * * 4
-```
-
-Small changes to an expression can change its meaning entirely. Below, the
-space between the `*`'s has been removed. Because `**` appears between two
-numerical expressions, the expression is a well-formed *exponentiation*
-expression (the first number raised to the power of the second: 3 times 3
-times 3 times 3). The symbols `*` and `**` are called *operators*, and the
-values they combine are called *operands*.
-
-```{python}
-3 ** 4
-```
-
-**Common Operators.** Data science often involves combining numerical values,
-and the set of operators in a programming language are designed to so that
-expressions can be used to express any sort of arithmetic. In Python, the
-following operators are essential.
-
-| Expression Type | Operator | Example    | Value     |
-|-----------------|----------|------------|-----------|
-| Addition        | `+`      | `2 + 3`    | `5`       |
-| Subtraction     | `-`      | `2 - 3`    | `-1`      |
-| Multiplication  | `*`      | `2 * 3`    | `6`       |
-| Division        | `/`      | `7 / 3`    | `2.66667` |
-| Remainder       | `%`      | `7 % 3`    | `1`       |
-| Exponentiation  | `**`     | `2 ** 0.5` | `1.41421` |
-
-
-Python expressions obey the same familiar rules of *precedence* as in algebra:
-multiplication and division occur before addition and subtraction. Parentheses
-can be used to group together smaller expressions within a larger expression.
-
-Multiplication has precedence (we do `2 * 3` before adding to 1).
-
-```{python}
-1 + 2 * 3
-```
-
-We can use parentheses to group expressions that should be evaluated first.
-Here we force `1 + 2` *before* the multiplication by 3.
-
-```{python}
-(1 + 2) * 3
-```
-
-In the expression above, the `1 + 2` is a sub-expression within the whole
-expression `(1 + 2) * 3`.  When Python sees this line, it finds the expression
-`(1 + 2)` and evaluates that to get `3`.  Then it evaluates `3 * 3` to get
-`9`.
-
-As you learn to program, you will learn to think about what Python is doing,
-and the logical steps it follows.  Over time, you will find it easier to
-predict what it will do, and understand why.
-
-### Example ###
-
-Here, from the Washington Post in the early 1980s, is a graph that attempts to
-compare the earnings of doctors with the earnings of other professionals over
-a few decades. Do we really need to see two heads (one with a stethoscope) on
-each bar? [Edward Tufte](https://en.wikipedia.org/wiki/Edward_Tufte),
-Professor at Yale and one of the world's experts on visualizing quantitative
-information, coined the term "chartjunk" for such unnecessary embellishments.
-This graph is also an example of the "low data-to-ink ratio" that Tufte
-deplores.
-
-![Washington Post graph](/dsfe/images/bad_post_graph.png)
-
-
-Most importantly, the horizontal axis of the graph is is not drawn to scale.
-This has a significant effect on the shape of the bar graphs. When drawn to
-scale and shorn of decoration, the graphs reveal trends that are quite
-different from the apparently linear growth in the original. The elegant graph
-below is due to Ross Ihaka, one of the originators of the statistical system
-R.
-
-![Ross Ihaka's version of Post graph](/dsfe/images/ihaka_fixed_post_graph.png)
-
-In the period 1939 to 1963, the doctors' incomes went up from \$3,262 to
-\$25,050. So during that period the average increase in income per year was
-about \$900.
-
-```{python}
-(25050 - 3262)/(1963 - 1939)
-```
-
-In Ross Ihaka's graph you can see that in this period, the doctors' incomes
-rise roughly linearly at a fairly steady rate. That rate is about \$900, as we
-have just calculated.
-
-But in the period 1963 to 1976, the rate is more than three times as high:
-
-```{python}
-(62799 - 25050)/(1976 - 1963)
-```
-
-That is why the graph rises much more steeply after 1963.
-
-
-This chapter introduces many types of expressions. Learning to program
-involves trying out everything you learn in combination, investigating the
-behavior of the computer. What happens if you divide by zero? What happens if
-you divide twice in a row? You don't always need to ask an expert (or the
-Internet); many of these details can be discovered by trying them out
-yourself.
-
-<div class="isa_info">
-<i class="fa fa-info-circle"></i>
-This page has content from the
-<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Expressions.ipynb">
-Expressions</a>
-notebook from the UC Berkeley course.  See the Berkeley course section of the
-<a href="/dsfe/license">license</a>
-</div>
-
+<p>Preparing your project data pitch.</p>
 
         
       </section>

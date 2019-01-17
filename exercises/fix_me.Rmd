@@ -206,6 +206,12 @@ print(total)
 ```
 
 ```{python}
+# Print all the numbers between 5 and 9
+for p in 56789:
+    print(p)
+```
+
+```{python}
 # Add all numbers from 3 down to -2, inclusive
 total = 0
 for i = np.arange(3, -4, -1):

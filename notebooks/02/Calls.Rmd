@@ -378,7 +378,7 @@ This page has content from the
 <a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Calls.ipynb">
 Calls</a>
 notebook from the UC Berkeley course.  See the Berkeley course section of the
-<a href="{{ site.baseurl }}/license">license</a>
+<a href="/dsfe/license">license</a>
 </div>
 
 
