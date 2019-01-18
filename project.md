@@ -17,9 +17,10 @@ permalink: /project
 *   If you're in neither group, ask me (Matthew).
 *   Each team must have at least one Theory person and one Data
     person.
+*   See below for data rules.
 *   When you have a team you're happy with, choose one member to
     email me (Matthew) with the team members, a justification for the
-    fit with the rule above, and your provisional proposal for a data
+    fit with the rules above, and your provisional proposal for a data
     set.
 
 ## Data
@@ -33,18 +34,20 @@ permalink: /project
 
 ## Process
 
-* Analysis and collaboration will be public (using Github service).
-* Analysis should be reproducible.
-* Final report should be in the form of a Notebook, or similar
-  executable document.
+*   Analysis and collaboration will be public (using
+    [Github](https://github.com) service).
+*   Analysis should be reproducible.
+*   Final report should be in the form of a Notebook, or similar
+    executable document.
 
 ## Marking
 
 Full rubric will follow soon.  In summary:
 
-* project marked for clarity, depth, validity and reproducibility.
-* each member of the project submits a summary of their own
-  contribution, with evidence from the public record of collaboration.
+*   project marked for clarity, depth, validity and reproducibility.
+*   each member of the project submits a summary of their own
+    contribution, with evidence from the public record of
+    collaboration.
 
 ## Dates
 
