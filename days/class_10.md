@@ -8,16 +8,18 @@ permalink: /days/class_10
 
 ## Announcements
 
-* Reading week check
-* Project deadlines
+* Reading week?
+* Who's doing what?
+* Project deadlines - see [project page](../project).
 
 ## Schedule
 
-* What we will cover in the next few weeks.
 * Project group rules
 * Forming your group
 * Designing your pitch
+* Brave pitchers
 
 ## Assignment
 
-Preparing your project data pitch.
+* Forming teams
+* Preparing your project data pitch.

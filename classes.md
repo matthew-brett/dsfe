@@ -6,8 +6,8 @@ permalink: /classes
 
 # Classes
 
-* Notes from lectures will generally go here, on the course website.  You will
-  see me filling in this website as the course develops.
+* Notes from lectures will generally go here, on the course website.
+  You will see me filling in this website as the course develops.
 * See the [Canvas course
   page](https://canvas.bham.ac.uk/courses/35188) for announcements,
   discussions and grades.
@@ -47,4 +47,4 @@ permalink: /classes
 ## Assessments
 
 * The structured data analysis was due by 20 January.
-* Your data analysis project is due by midnight 30 March.
+* Your data analysis [project](projects) is due by midnight 30 March.
