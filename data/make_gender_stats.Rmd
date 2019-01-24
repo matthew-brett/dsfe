@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Project - Data Science for Everyone</title>
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
 <meta name="description" content="">
 
 
@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="Project">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/project">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/data/make_gender_stats.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/project">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/data/make_gender_stats.Rmd">
 
 
 
@@ -166,7 +166,7 @@
   
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Project">
+    
     
     
     
@@ -174,133 +174,200 @@
     <div class="page__inner-wrap">
       
         <header>
-          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Project
-</h1> -->
+          <!--  -->
           
         </header>
       
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="project">Project</h1>
+        # Schooling and fertility
 
-<h2 id="teams">Teams</h2>
+Here we are analyzing this dataset from the World Bank on gender and
+inequality:
 
-<ul>
-  <li>Teams of size 3 or 4.</li>
-  <li>If you are from Maths, Physics, Computer Science or Engineering,
-you are a Theory Person.</li>
-  <li>If you are from Geography, Biosciences, Sports / Exercise,
-Psychology, History, English, Music or Business, you are a Data
-Person.</li>
-  <li>If you’re in neither group, ask me (Matthew).</li>
-  <li>Each team must have at least one Theory person and one Data
-person.</li>
-  <li>See below for data rules.</li>
-  <li>When you have a team you’re happy with, choose one member to
-email me (Matthew) with the team members, a justification for the
-fit with the rules above, and your provisional proposal for a data
-set.</li>
-</ul>
+* [https://data.worldbank.org/data-catalog/gender-statistics](https://data.worldbank.org/data-catalog/gender-statistics)
 
-<h2 id="data">Data</h2>
+You can download the data yourself as a zip file [from that site](http://databank.worldbank.org/data/download/Gender_Stats_csv.zip), but to
+make your life a little easier, I’ve make a copy of the extracted data file, available via this link.
 
-<p>See <a href="projects/data">data for projects</a></p>
+* [Gender_StatsData.csv](https://matthew-brett.github.io/les-pilot/_downloads/Gender_StatsData.csv)
 
-<h2 id="process">Process</h2>
+That's the link I'm using below.
 
-<ul>
-  <li>Analysis and collaboration will be public (using
-<a href="https://github.com">Github</a> service).</li>
-  <li>Analysis should be reproducible.</li>
-  <li>Final report should be in the form of a Notebook, or similar
-executable document.</li>
-</ul>
+```{python}
+# Import Pandas with its usual short name
+import pandas as pd
+```
 
-<h2 id="marking">Marking</h2>
+Load the Comma Separated Value text file into Pandas as a data frame:
 
-<p>Full rubric will follow soon.  In summary:</p>
+```{python}
+df = pd.read_csv('https://matthew-brett.github.io/les-pilot/_downloads/Gender_StatsData.csv')
+```
 
-<ul>
-  <li>project marked for clarity, depth, validity and reproducibility.</li>
-  <li>each member of the project submits a summary of their own
-contribution, with evidence from the public record of
-collaboration.</li>
-</ul>
+This is a slightly clumsy-looking data frame, because it has years for
+columns, and variables for rows, where there are 630 variables for each
+country.  So there are 630 rows \* the number of countries.  To investigate,
+we first look at the column names:
 
-<h2 id="dates">Dates</h2>
+```{python}
+df.columns
+```
 
-<table>
-  <thead>
-    <tr>
-      <th>Week</th>
-      <th>Date</th>
-      <th>Class</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>18 Jan</td>
-      <td>Start to form teams</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>25 Jan</td>
-      <td>Data pitches</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>1 Feb</td>
-      <td>Teams finalized</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>8 Feb</td>
-      <td>Proposals</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>15 Feb</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>22 Feb</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>1 Mar</td>
-      <td>Progress reports</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>8 Mar</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>15 Mar</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>22 Mar</td>
-      <td>Presentations</td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>29 Mar</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>30 Mar</td>
-      <td>Projects due</td>
-    </tr>
-  </tbody>
-</table>
+Next we look at the data frame itself:
+
+```{python}
+df
+```
+
+There are lots of countries here, so to start, let’s look at the variables for
+the UK.
+
+We get the UK country code from [http://www.worldatlas.com/aatlas/ctycodes.htm](http://www.worldatlas.com/aatlas/ctycodes.htm).
+The code is `GBR`.
+
+```{python}
+# We select only the UK rows
+gb = df[df['Country Code'] == 'GBR']
+gb
+```
+
+Pandas truncates the output to only show a certain number of rows, and only a
+certain length for the text fields.  To investigate further, you can increase
+these limits to see all 630 rows for the UK, and more of the text for the text
+fields:
+
+```{python}
+# See more of the text, more rows in the displayed output
+pd.options.display.max_colwidth = 80
+pd.options.display.max_rows = 700
+```
+
+If you are working in the Notebook, you will now see all of the rows and the
+whole text field with the variable description.
+
+```{python}
+# This will be different from above when working in the Notebook
+gb
+```
+
+We need to reduce the data.  Let us start by trying to reduce the number of missing values.  Here are the number of valid observations for some recent years:
+
+```{python}
+for year in range(2008, 2018):
+    print(year, df[str(year)].count())
+```
+
+```{python}
+recent = df[[str(year) for year in range(2012, 2017)]]
+recent.columns
+```
+
+Let's try taking the average of 2012 through 2016. This automatically discards missing (NA) values.
+
+```{python}
+recent_mean = recent.mean(axis=1)
+recent_mean.count()
+```
+
+We only want the first four columns of the data frame - the rest are year
+values, many of which are missing.  Drop the columns after the fourth, and
+then add back the 2012 through 2016 data.
+
+```{python}
+thin_df = df[['Country Name', 'Indicator Name']].copy()
+thin_df['recent_mean'] = recent_mean.copy()
+thin_df
+```
+
+This data frame is still a mess, with a new row for each variable.  We can
+solve this using the Pandas
+[pivot](http://pandas.pydata.org/pandas-docs/stable/reshaping.html) function
+to push the rows up into columns, thus:
+
+```{python}
+pivoted = thin_df.pivot(index='Country Name',
+                   columns='Indicator Name',
+                   values='recent_mean')
+pivoted
+```
+
+Now we have 630 columns, one per variable, and 263 rows, one per country.
+
+```{python}
+pivoted.shape
+```
+
+Many of these columns have a lot of missing values.  Which columns have at least 220 non-missing values?
+
+```{python}
+cols_ok = [name for name in pivoted.columns if pivoted[name].count() > 220]
+[(name, pivoted[name].count()) for name in cols_ok]
+```
+
+We will use some of these columns.  The current column names are the whole description.  These are hard to use.  Here's a function to do a first pass in stripping the description down into something more like a variable name.
+
+```{python}
+def col_proc(cname):
+    if '(' in cname:  # Drop phrase in parentheses
+        cname = cname[:cname.index('(')]
+    return '_'.join(word.lower()[:3] for word in cname.split())
+```
+
+Print out the long description and the first-pass variable name the function returns:
+
+```{python}
+[(name, col_proc(name)) for name in cols_ok]
+```
+
+After copy-pasting this output into a text editor, and reflecting for a bit, these variables seem useful.  I've hand-edited the variable names to make them a bit clearer:
+
+
+```{python}
+# (Description, Variable name) pairs.
+# I've edited the Variable name by hand in a text editor.
+renamers = [   
+    ('Fertility rate, total (births per woman)', 'fert_rate'),
+    ('GDP (current US$)', 'gdp'),
+    ('Health expenditure per capita, PPP (constant 2011 international $)', 
+     'health_exp_per_cap'),
+    ('Health expenditure, public (% of GDP)', 'health_exp_pub'),
+    ('Primary education, pupils (% female)', 'prim_ed_girls'),
+    ('Maternal mortality ratio (modeled estimate, per 100,000 live births)',
+     'mat_mort_ratio'),
+    ('Population, total', 'population')
+]
+```
+
+Create a new, much smaller data frame, using these columns.  Rename the columns with the new names.
+
+```{python}
+gender_stats = pivoted[[name for (name, rename) in renamers]]
+gender_stats.columns = [rename for (name, rename) in renamers]
+gender_stats
+```
+
+Write the resulting data frame out to CSV.
+
+```{python}
+gender_stats.index.names = ['country']
+gender_stats.to_csv('gender_stats.csv')
+```
+
+```{python}
+gender_stats
+```
+
+We should write a data dictionary too.  We will have to backslash escape dollars for the Markdown output.
+
+```{python}
+with open('gender_stats_data_dict.md', 'wt') as fobj:
+    fobj.write('# Gender statistics data dictionary\n\n')
+    for name, rename in renamers:
+        name = name.replace('$', '\$')  # For Markdown
+        fobj.write(f'* `{rename}`: {name}.\n')
+```
 
         
       </section>

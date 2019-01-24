@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Project - Data Science for Everyone</title>
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
 <meta name="description" content="">
 
 
@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="Project">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/project">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/drafts/monty_hall.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/project">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/drafts/monty_hall.Rmd">
 
 
 
@@ -166,7 +166,7 @@
   
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Project">
+    
     
     
     
@@ -174,133 +174,84 @@
     <div class="page__inner-wrap">
       
         <header>
-          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Project
-</h1> -->
+          <!--  -->
           
         </header>
       
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="project">Project</h1>
+        # The Monty Hall problem
 
-<h2 id="teams">Teams</h2>
 
-<ul>
-  <li>Teams of size 3 or 4.</li>
-  <li>If you are from Maths, Physics, Computer Science or Engineering,
-you are a Theory Person.</li>
-  <li>If you are from Geography, Biosciences, Sports / Exercise,
-Psychology, History, English, Music or Business, you are a Data
-Person.</li>
-  <li>If you’re in neither group, ask me (Matthew).</li>
-  <li>Each team must have at least one Theory person and one Data
-person.</li>
-  <li>See below for data rules.</li>
-  <li>When you have a team you’re happy with, choose one member to
-email me (Matthew) with the team members, a justification for the
-fit with the rules above, and your provisional proposal for a data
-set.</li>
-</ul>
+See [The Berkeley version](https://www.inferentialthinking.com/chapters/09/4/Monty_Hall_Problem)
 
-<h2 id="data">Data</h2>
 
-<p>See <a href="projects/data">data for projects</a></p>
+But we can use lists!
 
-<h2 id="process">Process</h2>
 
-<ul>
-  <li>Analysis and collaboration will be public (using
-<a href="https://github.com">Github</a> service).</li>
-  <li>Analysis should be reproducible.</li>
-  <li>Final report should be in the form of a Notebook, or similar
-executable document.</li>
-</ul>
+One trial:
 
-<h2 id="marking">Marking</h2>
+```{python}
+import random
+```
 
-<p>Full rubric will follow soon.  In summary:</p>
+```{python}
+doors = ['car', 'goat', 'goat']
+random.shuffle(doors)
+doors
+```
 
-<ul>
-  <li>project marked for clarity, depth, validity and reproducibility.</li>
-  <li>each member of the project submits a summary of their own
-contribution, with evidence from the public record of
-collaboration.</li>
-</ul>
+```{python}
+i_choose_door = random.choice([0, 1, 2])
+i_choose_door
+```
 
-<h2 id="dates">Dates</h2>
+```{python}
+stay = doors.pop(i_choose_door)
+stay
+```
 
-<table>
-  <thead>
-    <tr>
-      <th>Week</th>
-      <th>Date</th>
-      <th>Class</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>18 Jan</td>
-      <td>Start to form teams</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>25 Jan</td>
-      <td>Data pitches</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>1 Feb</td>
-      <td>Teams finalized</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>8 Feb</td>
-      <td>Proposals</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>15 Feb</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>22 Feb</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>1 Mar</td>
-      <td>Progress reports</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>8 Mar</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>15 Mar</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>22 Mar</td>
-      <td>Presentations</td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>29 Mar</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>30 Mar</td>
-      <td>Projects due</td>
-    </tr>
-  </tbody>
-</table>
+```{python}
+doors
+```
+
+```{python}
+doors.remove('goat')
+doors
+```
+
+```{python}
+shift = doors[0]
+shift
+```
+
+That's one trial.   Now let's do that 100000 times.
+
+```{python}
+stays = []
+shifts = []
+tries = 100000
+for i in range(tries):
+    # Same code as above, for one trial
+    doors = ['car', 'goat', 'goat']
+    random.shuffle(doors)
+    i_choose_door = random.choice([0, 1, 2])
+    stay = doors.pop(i_choose_door)
+    doors.remove('goat')
+    shift = doors[0]
+    # Put results into result lists
+    stays.append(stay)
+    shifts.append(shift)
+```
+
+```{python}
+stays.count('car') / tries
+```
+
+```{python}
+shifts.count('car') / tries
+```
 
         
       </section>
