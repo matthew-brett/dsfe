@@ -25,12 +25,7 @@ permalink: /project
 
 ## Data
 
-*   Prefer open data - data that can be freely downloaded, preferably
-    with an open license, allowing you to share the data freely.
-*   Prefer data for which your Data person has some background.
-*   Prefer open-ended questions.
-*   Fresh data and / or analysis.
-*   We will make allowance for your ambition in marking.
+See [data for projects](projects/data)
 
 ## Process
 
