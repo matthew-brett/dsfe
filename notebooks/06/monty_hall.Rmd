@@ -162,7 +162,7 @@ np.count_nonzero(stay_results == 'car') / n_tries
 Check the proportion of the Switch choices that resulted in a "car".
 
 ```{python}
-np.count_nonzero(stay_results == 'goat') / n_tries
+np.count_nonzero(switch_results == 'goat') / n_tries
 ```
 
 Would you chose Stay or Switch?
