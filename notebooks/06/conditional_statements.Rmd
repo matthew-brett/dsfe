@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Class 11 - Data Science for Everyone</title>
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
 <meta name="description" content="">
 
 
@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="Class 11">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/days/class_11">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/06/conditional_statements.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/days/class_11">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/06/conditional_statements.Rmd">
 
 
 
@@ -166,7 +166,7 @@
   
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Class 11">
+    
     
     
     
@@ -174,39 +174,189 @@
     <div class="page__inner-wrap">
       
         <header>
-          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Class 11
-</h1> -->
+          <!--  -->
           
         </header>
       
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="day-11-the-twelfth-day">Day 11 (the twelfth day)</h1>
+        ```{python}
+# HIDDEN
 
-<h2 id="announcements">Announcements</h2>
+# The standard set of libraries we need
+import numpy as np
+```
 
-<ul>
-  <li>Please review the <a href="../projects/data">data page</a></li>
-  <li>A reminder about the <a href="../project">project schedule</a></li>
-  <li>Groups again</li>
-</ul>
+### Conditional Statements ###
 
-<h2 id="schedule">Schedule</h2>
+In many situations, actions and results depends on a specific set of conditions
+being satisfied. For example, individuals in randomized controlled trials
+receive the treatment if they have been assigned to the treatment group.
+A gambler makes money if she wins her bet.
 
-<ul>
-  <li>Data pitches</li>
-  <li>About Python, Jupyter, and Kernels.</li>
-  <li><a href="../chapters/06/sorting_arrays">Sorting arrays</a></li>
-  <li><a href="../chapters/06/monty_hall">The Monty Hall problem</a></li>
-  <li><a href="../chapters/06/conditional_statements">Conditionals</a></li>
-</ul>
+In this section we will learn how to describe such situations using code.
+A *conditional statement* is a multi-line statement that allows Python to
+choose among different alternatives based on the truth value of an expression.
 
-<h2 id="assignment">Assignment</h2>
+A conditional statement always begins with an `if` header, which is a single
+line followed by an indented body. The body is only executed if the expression
+directly following `if` (called the *if expression*) evaluates to a true value.
+If the *if expression* evaluates to a false value, then the body of the `if` is
+skipped.
 
-<p>Form groups.</p>
+Soon we will make a cell that prints "Positive" if the variable `x` refers to
+a positive number.
 
-<p>Email me with your group and data description.</p>
+First we set `x` to something.
+
+```{python}
+# Set x to have the value 1
+x = 1
+```
+
+Here's a comparison *expression*:
+
+```{python}
+# True if x is positive
+x > 0
+```
+
+We use the expression as an *if expression*:
+
+```{python}
+# Our first conditional statement
+if x > 0:
+    print('Positive')
+```
+
+This cell prints "Positive" if `x` is a positive number. But if `x` is not
+a positive number, then the *if expression* evaluates to a false value, and so
+Python skips the `print` statement.
+
+```{python}
+x = 0
+```
+
+```{python}
+# Nothing printed this time
+if x > 0:
+    print('Positive')
+```
+
+Notice the indentation of the `print` line.  The indentation tells Python which
+lines are in the *body* of the *if statement*.  Python only runs the indented
+lines if the *if expression* is a true value.
+
+To show that, let's print two things, when the number is positive.
+
+```{python}
+# Still nothing printed
+if x > 0:
+    print('Positive')
+    print('Positively spiffing')
+```
+
+Now when `x` is positive.
+
+```{python}
+x = 1
+```
+
+```{python}
+# Both lines printed this time.
+if x > 0:
+    print('Positive')
+    print('Positively spiffing')
+```
+
+Let us refine our cell to print `Negative` if `x` is a negative number. We can
+do this by adding an `elif` clause, where `elif` if Python's shorthand for the
+phrase "else if".
+
+```{python}
+if x > 0:
+    print('Positive')
+elif x < 0:
+    print('Negative')
+```
+
+Now the cell gives the correct answer when the input is -3:
+
+```{python}
+x = -3
+```
+
+```{python}
+if x > 0:
+    print('Positive')
+elif x < 0:
+    print('Negative')
+```
+
+What if `x` is 0?
+
+```{python}
+x = 0
+```
+
+To deal with this case, we can add another `elif` clause:
+
+```{python}
+if x > 0:
+    print('Positive')
+elif x < 0:
+    print('Negative')
+elif x == 0:
+    print('Neither positive nor negative')
+```
+
+Equivalently, we can replaced the final `elif` clause by an `else` clause,
+whose body will be executed only if all the previous comparisons are false;
+that is, if the input value is equal to 0.
+
+```{python}
+if x > 0:
+    print('Positive')
+elif x < 0:
+    print('Negative')
+else:
+    print('Neither positive nor negative')
+```
+
+### The General Form ###
+
+A conditional statement can also have multiple clauses with multiple bodies,
+and only one of those bodies can ever be executed. The general format of
+a multi-clause conditional statement appears below.
+
+    if <if expression>:
+        <if body>
+    elif <elif expression 0>:
+        <elif body 0>
+    elif <elif expression 1>:
+        <elif body 1>
+    ...
+    else:
+        <else body>
+
+There is always exactly one `if` clause, but there can be any number of `elif`
+clauses. Python will evaluate the `if` and `elif` expressions in the headers in
+order until one is found that is a true value, then execute the corresponding
+body. The `else` clause is optional. When an `else` header is provided, its
+*else body* is executed only if none of the header expressions of the previous
+clauses are true. The `else` clause must always come at the end (or not at
+all).
+
+<div class="isa_info">
+<i class="fa fa-info-circle"></i>
+This page has content from the
+<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Conditional_Statements.ipynb">
+Conditional_Statements</a>
+notebook from the UC Berkeley course.  See the Berkeley course section of the
+<a href="/dsfe/license">license</a>
+</div>
+
 
         
       </section>

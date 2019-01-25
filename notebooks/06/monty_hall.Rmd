@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
 <meta property="og:title" content="Data Science for Everyone">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/05/conditional_statements.Rmd">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/06/monty_hall.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/05/conditional_statements.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/06/monty_hall.Rmd">
 
 
 
@@ -181,188 +181,162 @@
 
       <section class="page__content" itemprop="text">
         
-        ```{python}
-# HIDDEN
+        # The Monty Hall problem
 
-# The standard set of libraries we need
+The [Monty Hall problem](https://en.wikipedia.org/wiki/Monty_Hall_problem) is
+a problem in probability, originally posed by [Steve
+Slavin](https://en.wikipedia.org/wiki/Steve_Selvin), a professor of
+Biostatistics at Berkeley.
+
+The setup is the following:
+
+* You are a contestant on a game show.
+* The host, [Monty Hall](https://en.wikipedia.org/wiki/Monty_Hall), shows you
+  three closed and identical doors.
+* Behind one of the doors, is a car.  Behind the other two doors, there is
+  a goat.
+
+![Monty Hall illustration](/dsfe/images/monty_hall_goat.png)
+
+* Assume for a moment you'd rather have a car than a goat.
+* Monty offers you the choice of any of the three doors.  You chose a door, but
+  Monty leaves the door closed for now.
+* Monty tells you he is going to open one of the other doors that has a goat
+  behind it.  He does, there is a goat behind it.  Call this "the goat reveal".
+* Now he asks you the following question:  Do you want to stick with your
+  original choice of door, do you want to change your choice to the remaining
+  door, or does it make no difference which you chose?
+
+It turns out this is a trickier problem than it might first appear.  Among many
+others, a very famous mathematician [Paul
+Erdős](https://en.wikipedia.org/wiki/Paul_Erd%C5%91s), got the answer wrong. He
+had to be convinced with a computer simulation.  That's what we will do now.
+
+For the simulation, we will need:
+
+* `np.random.choice` \- see [the iteration page](../05/iteration) for an
+  introduction.
+* `np.sort` \- see [sorting arrays](sorting_arrays).
+
+
+## The simulation
+
+As ever, we start with the simplest thing we can think of, which is to simulate
+one trial.
+
+```{python}
 import numpy as np
-import matplotlib.pyplot as plt
-# %matplotlib inline
-
-# Make plots look a little bit more fancy
-plt.style.use('fivethirtyeight')
 ```
 
-### Conditional Statements ###
-
-In many situations, actions and results depends on a specific set of
-conditions being satisfied. For example, individuals in randomized
-controlled trials receive the treatment if they have been assigned to
-the treatment group. A gambler makes money if she wins her bet.
-
-In this section we will learn how to describe such situations using
-code. A *conditional statement* is a multi-line statement that allows
-Python to choose among different alternatives based on the truth value
-of an expression.
-
-A conditional statement always begins with an `if` header, which is
-a single line followed by an indented body. The body is only executed
-if the expression directly following `if` (called the *if expression*)
-evaluates to a true value. If the *if expression* evaluates to a false
-value, then the body of the `if` is skipped.
-
-Soon we will make a cell that prints "Positive" if the variable `x`
-refers to a positive number.
-
-First we set `x` to something.
+First we make an array of the things that can be behind the doors.  There are two goats and one car.
 
 ```{python}
-# Set x
-x = 1
+doors = np.array(['car', 'goat', 'goat'])
+doors
 ```
 
-Here's a comparison *expression*:
+Next we shuffle, to simulate the fact that the object behind each door is random, on each trial.
 
 ```{python}
-# True if x is positive
-x > 0
+np.random.shuffle(doors)
+doors
 ```
 
-We use the expression as an *if expression*:
-
+Next we use `np.random.choice` to choose randomly between the three doors.  We
+choose one of 0, 1, or 2 for the first, second and third door, respectively.
 
 ```{python}
-# Our first conditional statement
-if x > 0:
-    print('Positive')
+my_door_index = np.random.choice([0, 1, 2])
+my_door_index
 ```
 
-This cell prints "Positive" if `x` is a positive number. But if `x` is
-not a positive number, then the *if expression* evaluates to a false
-value, and so Python skips the `print` statement.
+We peek behind our selected door to see what we would have got, if we stayed with our selected door.
 
 ```{python}
-x = 0
+stay_result = doors[my_door_index]
+stay_result
 ```
+
+Next we replace whatever was behind our chosen door, with the string "mine", to indicate this was the one we chose.
 
 ```{python}
-# Nothing printed this time
-if x > 0:
-    print('Positive')
+doors[my_door_index] = 'mine'
+doors
 ```
 
-Notice the indentation of the `print` line.  The indentation tells
-Python which lines are in the *body* of the *if statement*.  Python
-only runs the indented lines if the *if expression* is a true value.
+We now have two possibilities.  The two remaining doors could have:
 
-To show that, let's print two things, when the number is positive.
+1. "car" and "goat" (in either order) or
+1. "goat" and "goat".
+
+We can use `np.sort` to make it more obvious which situation we are in.  It
+will put "car" in the first position, if it's present, then "goat". Last will
+be the string "mine" that we put in when we chose our door.
 
 ```{python}
-# Still nothing printed
-if x > 0:
-    print('Positive')
-    print('Positively spiffing')
+doors = np.sort(doors)
+doors
 ```
 
-Now when `x` is positive.
+When Monty does his goat reveal, our two options above drop to one.
+
+* "car" and "goat" become "car"
+* "goat" and "goat" become "goat"
+
+All we need to do then, is to take the first element in the sorted array.  It
+will be "car" if the car was present, otherwise it will be "goat".
 
 ```{python}
-x = 1
+switch_result = doors[0]
+switch_result
 ```
+
+## Your turn - try many trials
+
+That's one trial.   Now let's do that 10000 times.  Fill in the code you need from the statements above.
 
 ```{python}
-# Both lines printed this time.
-if x > 0:
-    print('Positive')
-    print('Positively spiffing')
+# Make 10000 trials.
+n_tries = 10000
+# Array of 10000 length 4 (or less) strings, to store results of stay strategy
+stay_results = np.zeros(n_tries, dtype='U4')
+# 10000 length 4 (or less) strings, to store results of switch strategy
+switch_results = np.zeros(n_tries, dtype='U4')
+# Use a "for" loop to repeat the indented block 10000 times.
+for i in range(n_tries):
+    # Same code as above, for one trial
+    # Make the doors array
+    doors = np.array(['car', 'goat', 'goat'])
+    # Shuffle
+
+    # Choose your door at random
+
+    # Get the result from your chosen door
+
+    # Fill your chosen door with 'mine'
+
+    # Sort the doors.  The car will be first if present.
+
+    # Get the result for switch
+
+    # Store the results for stay and switch in their arrays
 ```
 
-Let us refine our cell to print `Negative` if `x` is a negative
-number. We can do this by adding an `elif` clause, where `elif` if
-Python's shorthand for the phrase "else if".
+Check the proportion of the Stay choices that resulted in a "car".
 
 ```{python}
-if x > 0:
-    print('Positive')
-elif x < 0:
-    print('Negative')
+np.count_nonzero(stay_results == 'car') / n_tries
 ```
 
-Now the cell gives the correct answer when the input is -3:
+Check the proportion of the Switch choices that resulted in a "car".
 
 ```{python}
-x = -3
+np.count_nonzero(stay_results == 'goat') / n_tries
 ```
 
-```{python}
-if x > 0:
-    print('Positive')
-elif x < 0:
-    print('Negative')
-```
+Would you chose Stay or Switch?
 
-What if `x` is 0?
-
-
-```{python}
-x = 0
-```
-
-To deal with this case, we can add another `elif` clause:
-
-```{python}
-if x > 0:
-    print('Positive')
-elif x < 0:
-    print('Negative')
-elif x == 0:
-    print('Neither positive nor negative')
-```
-
-Equivalently, we can replaced the final `elif` clause by an `else` clause, whose body will be executed only if all the previous comparisons are false; that is, if the input value is equal to 0.
-
-```{python}
-if x > 0:
-    print('Positive')
-elif x < 0:
-    print('Negative')
-else:
-    print('Neither positive nor negative')
-```
-
-### The General Form ###
-
-A conditional statement can also have multiple clauses with multiple
-bodies, and only one of those bodies can ever be executed. The general
-format of a multi-clause conditional statement appears below.
-
-    if <if expression>:
-        <if body>
-    elif <elif expression 0>:
-        <elif body 0>
-    elif <elif expression 1>:
-        <elif body 1>
-    ...
-    else:
-        <else body>
-
-There is always exactly one `if` clause, but there can be any number of
-`elif` clauses. Python will evaluate the `if` and `elif` expressions in
-the headers in order until one is found that is a true value, then
-execute the corresponding body. The `else` clause is optional. When an
-`else` header is provided, its *else body* is executed only if none of
-the header expressions of the previous clauses are true. The `else`
-clause must always come at the end (or not at all).
-
-<div class="isa_info">
-<i class="fa fa-info-circle"></i>
-This page has content from the
-<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Conditional_Statements.ipynb">
-Conditional_Statements</a>
-notebook from the UC Berkeley course.  See the Berkeley course section of the
-<a href="/dsfe/license">license</a>
-</div>
-
+Can you explain why your choice worked better, now you've done the simulation?
 
         
       </section>

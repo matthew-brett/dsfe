@@ -144,11 +144,6 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/brexit_ages",
         "teaser":null},{
-        "title": "5.6 Conditional statements",
-        "excerpt":"Conditional Statements In many situations, actions and results depends on a specific set ofconditions being satisfied. For example, individuals in randomizedcontrolled trials receive the treatment if they have been assigned tothe treatment group. A gambler makes money if she wins her bet. In this section we will learn how to...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/dsfe/chapters/05/conditional_statements",
-        "teaser":null},{
         "title": "5.4 Indentation, indentation",
         "excerpt":"Indentation, indentation, indentation import numpy as npPython cares a lot about indentation. You are going see this often in Python code. for loops are one of many places that Python depends on indentation. The indentation tells Python which statements are in the loop, and which are outside the loop. Remember...","categories": [],
         "tags": [],
@@ -178,6 +173,26 @@ var store = [{
         "excerpt":"A problem of populations We return to the Brexit survey. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdWe load the data: # Load the data frame, and put it in the variable \"audit_data\"audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')Now get the ages for the Leavers and...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/population_permutation",
+        "teaser":null},{
+        "title": "6.3 Conditional statements",
+        "excerpt":"Conditional Statements In many situations, actions and results depends on a specific set of conditionsbeing satisfied. For example, individuals in randomized controlled trialsreceive the treatment if they have been assigned to the treatment group.A gambler makes money if she wins her bet. In this section we will learn how to...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/06/conditional_statements",
+        "teaser":null},{
+        "title": "6.2 Monty hall problem",
+        "excerpt":"The Monty Hall problem The Monty Hall problem isa problem in probability, originally posed by SteveSlavin, a professor ofBiostatistics at Berkeley. The setup is the following: You are a contestant on a game show. The host, Monty Hall, shows youthree closed and identical doors. Behind one of the doors, is...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/06/monty_hall",
+        "teaser":null},{
+        "title": "6. More on simulation",
+        "excerpt":"More on simulation Probability can be confusing, even for experienced mathematicians. In this section, we use more simulation to solve probability problems.  In theprocess, we learn more about arrays. ","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/06/more_simulation",
+        "teaser":null},{
+        "title": "6.1 Sorting arrays",
+        "excerpt":"We often need to sort arrays. # Import the numpy packageimport numpy as npHere is an array of numbers: my_array = np.array([9, 1, 3, 0])my_arrayarray([9, 1, 3, 0])Say we wanted to sort this array, from smallest to largest. To do this, we use np.sort: sorted_array = np.sort(my_array)sorted_arrayarray([0, 1, 3, 9])That’s...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/06/sorting_arrays",
         "teaser":null},{
         "title": "Brexit analysis",
         "excerpt":"Brexit - the data analysis We start, as usual, by importing all the libraries we need. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdAll about the Brexiteers Every year, the HansardSocietysponsors a survey on political engagement in the UK. They put topical...","categories": [],

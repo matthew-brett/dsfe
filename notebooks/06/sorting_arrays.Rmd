@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
 <meta property="og:title" content="Data Science for Everyone">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/drafts/monty_hall.Rmd">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/06/sorting_arrays.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/drafts/monty_hall.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/06/sorting_arrays.Rmd">
 
 
 
@@ -181,77 +181,64 @@
 
       <section class="page__content" itemprop="text">
         
-        # The Monty Hall problem
-
-
-See [The Berkeley version](https://www.inferentialthinking.com/chapters/09/4/Monty_Hall_Problem)
-
-
-But we can use lists!
-
-
-One trial:
+        We often need to sort arrays.
 
 ```{python}
-import random
+# Import the numpy package
+import numpy as np
 ```
+
+Here is an array of numbers:
 
 ```{python}
-doors = ['car', 'goat', 'goat']
-random.shuffle(doors)
-doors
+my_array = np.array([9, 1, 3, 0])
+my_array
 ```
+
+Say we wanted to sort this array, from smallest to largest.  To do this, we use `np.sort`:
 
 ```{python}
-i_choose_door = random.choice([0, 1, 2])
-i_choose_door
+sorted_array = np.sort(my_array)
+sorted_array
 ```
+
+That's simple enough for numbers, but what happens if we have strings?
+
+Here is an array of strings:
 
 ```{python}
-stay = doors.pop(i_choose_door)
-stay
+another_array = np.array(['Matthew', 'John', 'Peter'])
+another_array
 ```
+
+Notice the `dtype` \- or data type.  It is `<U7`. This means that the array
+contains strings of 7 characters or less.  It's not important for our purposes,
+but the "U" stands for [Unicode](https://en.wikipedia.org/wiki/Unicode) \-
+a way that the computer can store characters in strings.
+
+What do you think would happen if we sorted `another_array`?
+
+If you guessed that the strings get sorted [alphabetically](https://en.wikipedia.org/wiki/Alphabetical_order), you have a virtual gold star.
 
 ```{python}
-doors
+np.sort(another_array)
 ```
+
+Remember how an alphabetical sort works.  The string "a" comes before the
+string "aa".  "aa" comes before "ab".
 
 ```{python}
-doors.remove('goat')
-doors
+short_strings = np.array(['ab', 'aa', 'a'])
+np.sort(short_strings)
 ```
+
+Here's another array of strings:
 
 ```{python}
-shift = doors[0]
-shift
+further_array = np.array(['Matthew', 'Matt', 'Matty'])
 ```
 
-That's one trial.   Now let's do that 100000 times.
-
-```{python}
-stays = []
-shifts = []
-tries = 100000
-for i in range(tries):
-    # Same code as above, for one trial
-    doors = ['car', 'goat', 'goat']
-    random.shuffle(doors)
-    i_choose_door = random.choice([0, 1, 2])
-    stay = doors.pop(i_choose_door)
-    doors.remove('goat')
-    shift = doors[0]
-    # Put results into result lists
-    stays.append(stay)
-    shifts.append(shift)
-```
-
-```{python}
-stays.count('car') / tries
-```
-
-```{python}
-shifts.count('car') / tries
-```
+Predict what order you will get from an alphabetical sort.  Try it.
 
         
       </section>
