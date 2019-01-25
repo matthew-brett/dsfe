@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-01-25T01:04:45+00:00">
+  <meta property="article:published_time" content="2019-01-25T11:15:51+00:00">
 
 
 
@@ -746,7 +746,7 @@ one trial.</p>
 <span class="n">doors</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['car', 'goat', 'goat'], dtype='&lt;U4')
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['goat', 'goat', 'car'], dtype='&lt;U4')
 </code></pre></div></div>
 
 <p>Next we use <code class="highlighter-rouge">np.random.choice</code> to choose randomly between the three doors.  We
@@ -756,7 +756,7 @@ choose one of 0, 1, or 2 for the first, second and third door, respectively.</p>
 <span class="n">my_door_index</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 </code></pre></div></div>
 
 <p>We peek behind our selected door to see what we would have got, if we stayed with our selected door.</p>
@@ -774,7 +774,7 @@ choose one of 0, 1, or 2 for the first, second and third door, respectively.</p>
 <span class="n">doors</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['car', 'goat', 'mine'], dtype='&lt;U4')
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['mine', 'goat', 'car'], dtype='&lt;U4')
 </code></pre></div></div>
 
 <p>We now have two possibilities.  The two remaining doors could have:</p>
@@ -852,7 +852,7 @@ will be “car” if the car was present, otherwise it will be “goat”.</p>
 
 <p>Check the proportion of the Switch choices that resulted in a “car”.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">stay_results</span> <span class="o">==</span> <span class="s">'goat'</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_tries</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">switch_results</span> <span class="o">==</span> <span class="s">'goat'</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_tries</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
