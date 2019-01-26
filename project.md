@@ -19,9 +19,30 @@ permalink: /project
     person.
 *   See below for data rules.
 *   When you have a team you're happy with, choose one member to
-    email me (Matthew) with the team members, a justification for the
-    fit with the rules above, and your provisional proposal for a data
-    set.
+    email me (Matthew), with the information below.
+
+I will consider smaller team sizes, and even team sizes of 1, but your email
+should give convincing justification (see below).  In particular, you need to
+convince me you have done the best you can to form a larger team.
+
+## Team request
+
+Email me (Matthew) with your request to form a team.
+
+One team member should email, with a Cc to the other members.
+
+Your email should have:
+
+* a list of the team members;
+* note the "data" team member(s) and their subject(s).  If you don't have
+  a "data" team member, give good grounds for not having one;
+* note the "theory" team member(s) and their subject(s).  If you don't have one,
+  give good grounds for not having one;
+* point to the data you are going to use.  You must point to some initial data.
+  If the data is not public, give me some way to verify that it exists, and is
+  suitable;
+* sketch your plan for the initial analysis, and the final results that you
+  hope for.
 
 ## Data
 
@@ -49,8 +70,9 @@ Full rubric will follow soon.  In summary:
 | Week | Date       | Class                     |
 | ---- | ---------- | ------------------------- |
 | 1    | 18 Jan     | Start to form teams       |
-| 2    | 25 Jan     | Data pitches              |
-| 3    |  1 Feb     | Teams finalized           |
+| 2    | 25 Jan     | Data pitches 1            |
+| 3    |  1 Feb     | Data pitches 2            |
+| 4    |  4 Feb     | Teams finalized           |
 | 4    |  8 Feb     | Proposals                 |
 | 5    | 15 Feb     |                           |
 | 6    | 22 Feb     |                           |
