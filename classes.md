@@ -47,4 +47,4 @@ permalink: /classes
 ## Assessments
 
 * The structured data analysis was due by 20 January.
-* Your data analysis [project](projects) is due by midnight 30 March.
+* Your data analysis [project](project) is due by midnight 30 March.
