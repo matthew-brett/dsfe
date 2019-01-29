@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>  Data frames - Data Science for Everyone</title>
-<meta name="description" content="Many forms of data can be organized into data tables.  Data tables are often called data frames.">
+<!-- begin _includes/seo.html --><title>More on lists - Data Science for Everyone</title>
+<meta name="description" content="More on lists">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="  Data frames">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/04/data_frames">
+<meta property="og:title" content="More on lists">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/extra/more_on_lists">
 
 
-  <meta property="og:description" content="Many forms of data can be organized into data tables.  Data tables are often called data frames.">
+  <meta property="og:description" content="More on lists">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/04/data_frames">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/extra/more_on_lists">
 
 
 
@@ -675,17 +675,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="  Data frames">
-      <meta itemprop="description" content="Many forms of data can be organized into data tables.  Data tables are often called data frames.">
+      <meta itemprop="headline" content="More on lists">
+      <meta itemprop="description" content="More on lists">
       <meta itemprop="datePublished" content="January 29, 2019">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline"><ol>
-  <li>Data frames</li>
-</ol>
+            <h1 id="page-title" class="page__title" itemprop="headline">More on lists
 </h1>
           </header>
         
@@ -697,25 +695,150 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#removing-values-from-a-list">Removing values from a list</a>
+    <ul>
+      <li><a href="#removing-values-by-index">Removing values by index</a></li>
+      <li><a href="#removing-values-by-finding">Removing values by finding</a></li>
+    </ul>
+  </li>
+  <li><a href="#counting-number-of-occurrences-in-a-list">Counting number of occurrences in a list</a></li>
+</ul>
+    </nav>
+  </aside>
+
 
           
           <!-- INTERACT LINKS -->
 
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/extra/more_on_lists.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2Fextra%2Fmore_on_lists.ipynb">Interact</a>
 
-          <p>Many forms of data can be organized into <em>data tables</em>.  Data tables are often called <em>data frames</em>.</p>
 
-<p>A <em>data table</em> or <em>data frame</em> has rows and columns.</p>
+          <h1 id="more-on-lists">More on lists</h1>
 
-<p>The rows may represent <em>observations</em>, such as people in
-a clinical trial, or sports teams.  The columns represent
-<em>variables</em> - each variable is some type of information about
-the <em>observations</em>.  For example, if the observations are people
-in a clinical trial, the variables might be age, height, weight
-and severity of disease. For a sports teams, they might be name,
-home city, number of games played, number games lost, won and
-drawn.</p>
+<p>This section covers some more operations on lists.   See <a href="../05/lists">lists</a>
+for an introduction to lists.</p>
 
-<p>You can think of data frames as a sequence of columns of data, where each column has the values for one variable.</p>
+<h2 id="removing-values-from-a-list">Removing values from a list</h2>
+
+<p>Another common operation on lists, is finding and removing values.</p>
+
+<h3 id="removing-values-by-index">Removing values by index</h3>
+
+<p>The <code class="highlighter-rouge">pop</code> method of a list, removes a value at a given position in the list, and returns that value.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[9, 10, 3, 0]
+</code></pre></div></div>
+
+<p>By default, with no arguments, it removes and returns the last value in the
+list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">last_value</span> <span class="o">=</span> <span class="n">my_list</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="n">last_value</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+</code></pre></div></div>
+
+<p>The list has lost the last value.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[9, 10, 3]
+</code></pre></div></div>
+
+<p>You can give <code class="highlighter-rouge">pop</code> an argument, which is the position from which you want to
+get the value.   <code class="highlighter-rouge">pop</code> removes the element at that position, shortening the
+list by one element.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mid_value</span> <span class="o">=</span> <span class="n">my_list</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mid_value</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[9, 3]
+</code></pre></div></div>
+
+<h3 id="removing-values-by-finding">Removing values by finding</h3>
+
+<p>Sometimes we want to remove a certain specific value from the list.</p>
+
+<p>For example, let’s say I have this list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>I realize that I don’t want the 999 value.  I can <code class="highlighter-rouge">remove</code> it, using the <code class="highlighter-rouge">remove</code> method of the list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">999</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This modifies my list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[9, 10, 0]
+</code></pre></div></div>
+
+<p>What happens if I have more than one value that matches my argument to <code class="highlighter-rouge">remove</code>?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">999</span><span class="p">]</span>
+<span class="n">my_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">999</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We lost the <em>first</em> value that matches:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[9, 10, 0, 999]
+</code></pre></div></div>
+
+<h2 id="counting-number-of-occurrences-in-a-list">Counting number of occurrences in a list</h2>
+
+<p>The <code class="highlighter-rouge">count</code> method of the list <em>counts</em> the number of occurrences of
+a particular value.  The argument to the <code class="highlighter-rouge">count</code> method is the value you want
+to check for.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">999</span><span class="p">]</span>
+<span class="n">my_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">999</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<p>Now we remove one of the 999 values, and count again:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">999</span><span class="p">)</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[9, 10, 0, 999]
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">999</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
 
           
         </section>
@@ -732,11 +855,11 @@ drawn.</p>
         
   <nav class="pagination">
     
-      <a href="/dsfe/chapters/03/array_indexing" class="pagination--pager" title="3.10 Selecting with arrays
+      <a href="/dsfe/chapters/extra/extra" class="pagination--pager" title="Extra pages
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/04/data_frame_intro" class="pagination--pager" title="4.1 Introduction to data frames
+      <a href="/dsfe/chapters/extra/monty_hall_lists" class="pagination--pager" title="Monty Hall with lists
 ">Next</a>
     
   </nav>

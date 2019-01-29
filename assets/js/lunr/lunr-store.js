@@ -224,6 +224,21 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/simulation",
         "teaser":null},{
+        "title": "Extra pages",
+        "excerpt":"This section has some extra notes that are not part of the main course.  You donot need to know the material in this section, but you might find itinteresting, or useful for your reference. ","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/extra/extra",
+        "teaser":null},{
+        "title": "Monty Hall with lists",
+        "excerpt":"The Monty Hall problem, with lists You have already seen a simulation of the Monty HallProblem using arrays. We use arrays often in data science, but sometimes, it is more efficient to usePython lists. To follow along in this section, you will also need more onlists. Simulating one trial To...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/extra/monty_hall_lists",
+        "teaser":null},{
+        "title": "More on lists",
+        "excerpt":"More on lists This section covers some more operations on lists. See listsfor an introduction to lists. Removing values from a list Another common operation on lists, is finding and removing values. Removing values by index The pop method of a list, removes a value at a given position in...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/extra/more_on_lists",
+        "teaser":null},{
         "title": "First announcement!",
         "excerpt":"      HW 11 is due Thursday, 4/19 at 11:59pm. You will receive an early submission bonus point if you turn in your final submission by Wednesday, 4/18 at 11:59pm.         The Project 3 checkpoint is due on Friday, 4/20. The project is due on Friday 4/27.   ","categories": [],
         "tags": [],

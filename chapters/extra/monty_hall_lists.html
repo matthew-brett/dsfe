@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>  Data frames - Data Science for Everyone</title>
-<meta name="description" content="Many forms of data can be organized into data tables.  Data tables are often called data frames.">
+<!-- begin _includes/seo.html --><title>Monty Hall with lists - Data Science for Everyone</title>
+<meta name="description" content="The Monty Hall problem, with lists">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="  Data frames">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/04/data_frames">
+<meta property="og:title" content="Monty Hall with lists">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/extra/monty_hall_lists">
 
 
-  <meta property="og:description" content="Many forms of data can be organized into data tables.  Data tables are often called data frames.">
+  <meta property="og:description" content="The Monty Hall problem, with lists">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/04/data_frames">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/extra/monty_hall_lists">
 
 
 
@@ -675,17 +675,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="  Data frames">
-      <meta itemprop="description" content="Many forms of data can be organized into data tables.  Data tables are often called data frames.">
+      <meta itemprop="headline" content="Monty Hall with lists">
+      <meta itemprop="description" content="The Monty Hall problem, with lists">
       <meta itemprop="datePublished" content="January 29, 2019">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline"><ol>
-  <li>Data frames</li>
-</ol>
+            <h1 id="page-title" class="page__title" itemprop="headline">Monty Hall with lists
 </h1>
           </header>
         
@@ -697,25 +695,145 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#simulating-one-trial">Simulating one trial</a></li>
+  <li><a href="#many-trials">Many trials.</a></li>
+</ul>
+    </nav>
+  </aside>
+
 
           
           <!-- INTERACT LINKS -->
 
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/extra/monty_hall_lists.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2Fextra%2Fmonty_hall_lists.ipynb">Interact</a>
 
-          <p>Many forms of data can be organized into <em>data tables</em>.  Data tables are often called <em>data frames</em>.</p>
 
-<p>A <em>data table</em> or <em>data frame</em> has rows and columns.</p>
+          <h1 id="the-monty-hall-problem-with-lists">The Monty Hall problem, with lists</h1>
 
-<p>The rows may represent <em>observations</em>, such as people in
-a clinical trial, or sports teams.  The columns represent
-<em>variables</em> - each variable is some type of information about
-the <em>observations</em>.  For example, if the observations are people
-in a clinical trial, the variables might be age, height, weight
-and severity of disease. For a sports teams, they might be name,
-home city, number of games played, number games lost, won and
-drawn.</p>
+<p>You have already seen a simulation of <a href="../06/monty_hall">the Monty Hall
+Problem</a> using arrays.</p>
 
-<p>You can think of data frames as a sequence of columns of data, where each column has the values for one variable.</p>
+<p>We use arrays often in data science, but sometimes, it is more efficient to use
+Python <a href="../05/lists">lists</a>.</p>
+
+<p>To follow along in this section, you will also need <a href="more_on_lists">more on
+lists</a>.</p>
+
+<h2 id="simulating-one-trial">Simulating one trial</h2>
+
+<p>To operate on lists we use the Python standard <code class="highlighter-rouge">random</code> module, instead of the Numpy <code class="highlighter-rouge">random</code> module.  The Numpy module always returns arrays, but in our case, we want to return lists.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+</code></pre></div></div>
+
+<p>In particular, we are going to use the <code class="highlighter-rouge">shuffle</code> function in the Python
+standard <code class="highlighter-rouge">random</code> module.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">doors</span> <span class="o">=</span> <span class="p">[</span><span class="s">'car'</span><span class="p">,</span> <span class="s">'goat'</span><span class="p">,</span> <span class="s">'goat'</span><span class="p">]</span>
+<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">doors</span><span class="p">)</span>
+<span class="n">doors</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['goat', 'car', 'goat']
+</code></pre></div></div>
+
+<p>Here we chose a door at random.  We use the standard <code class="highlighter-rouge">random.choice</code> instead of
+<code class="highlighter-rouge">np.random.choice</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_door_index</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">my_door_index</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<p>We get the result of staying with our original choice, and remove that option from the list of available doors.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stay_result</span> <span class="o">=</span> <span class="n">doors</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">my_door_index</span><span class="p">)</span>
+<span class="n">stay_result</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'car'
+</code></pre></div></div>
+
+<p>We are left with the two doors that Monty has to choose from.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">doors</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['goat', 'goat']
+</code></pre></div></div>
+
+<p>Behind one of these doors, Monty knows there is a goat.  He opens the door.  We simulate that by removing the first door with a goat behind it.</p>
+
+<p><a href="more_on_lists">Remember</a>, <code class="highlighter-rouge">remove</code> removes only the first instance of “goat”, leaving the second, if there is one.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">doors</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">'goat'</span><span class="p">)</span>
+<span class="n">doors</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['goat']
+</code></pre></div></div>
+
+<p>Now we have only one remaining door.  The item behind that door is the result from switching from our original door.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">switch_result</span> <span class="o">=</span> <span class="n">doors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">switch_result</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'goat'
+</code></pre></div></div>
+
+<h2 id="many-trials">Many trials.</h2>
+
+<p>That’s one trial.   Now let’s do that 100000 times.</p>
+
+<p>Here we are using <code class="highlighter-rouge">range</code> instead of <code class="highlighter-rouge">np.arange</code>.  <code class="highlighter-rouge">range</code> is the standard
+Python equivalent of <code class="highlighter-rouge">np.arange</code>; it has the same effect, in this case, when we
+use it in a loop.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make 10000 trials.
+</span><span class="n">n_tries</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="c1"># Lists to store results from stay and switch strategy
+</span><span class="n">stay_results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">switch_results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_tries</span><span class="p">):</span>
+    <span class="c1"># Same code as above, for one trial
+</span>    <span class="n">doors</span> <span class="o">=</span> <span class="p">[</span><span class="s">'car'</span><span class="p">,</span> <span class="s">'goat'</span><span class="p">,</span> <span class="s">'goat'</span><span class="p">]</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">doors</span><span class="p">)</span>
+    <span class="n">my_door_index</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">stay_result</span> <span class="o">=</span> <span class="n">doors</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">my_door_index</span><span class="p">)</span>
+    <span class="n">doors</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">'goat'</span><span class="p">)</span>
+    <span class="n">switch_result</span> <span class="o">=</span> <span class="n">doors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># Put results into result lists
+</span>    <span class="n">stay_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stay_result</span><span class="p">)</span>
+    <span class="n">switch_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">switch_result</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We use the <code class="highlighter-rouge">count</code> method of the list to count the number of “car” element in
+each list, and divide by the length of the list, to get the proportion of
+successes.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stay_results</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">'car'</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_tries</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.33259
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">switch_results</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">'car'</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_tries</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.66741
+</code></pre></div></div>
+
+<p>Compare this solution to the <a href="../06/monty_hall">solution using arrays</a>.  Which solution is easier to read and understand?</p>
 
           
         </section>
@@ -732,11 +850,11 @@ drawn.</p>
         
   <nav class="pagination">
     
-      <a href="/dsfe/chapters/03/array_indexing" class="pagination--pager" title="3.10 Selecting with arrays
+      <a href="/dsfe/chapters/extra/more_on_lists" class="pagination--pager" title="More on lists
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/04/data_frame_intro" class="pagination--pager" title="4.1 Introduction to data frames
+      <a href="" class="pagination--pager" title="
 ">Next</a>
     
   </nav>
