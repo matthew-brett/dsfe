@@ -185,7 +185,7 @@
 
 The [Monty Hall problem](https://en.wikipedia.org/wiki/Monty_Hall_problem) is
 a problem in probability, originally posed by [Steve
-Slavin](https://en.wikipedia.org/wiki/Steve_Selvin), a professor of
+Selvin](https://en.wikipedia.org/wiki/Steve_Selvin), a professor of
 Biostatistics at Berkeley.
 
 The setup is the following:

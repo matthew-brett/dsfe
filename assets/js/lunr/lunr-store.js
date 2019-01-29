@@ -159,7 +159,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/lists",
         "teaser":null},{
-        "title": "5.4 Ones and zeros",
+        "title": "5.5 Ones and zeros",
         "excerpt":"import numpy as npWe often want to create arrays with all zeros, or all ones. We do this with: np.zeros(5)array([0., 0., 0., 0., 0.])np.ones(3)array([1., 1., 1.])As ever, review the help with (for example): np.ones?In a new cell. You can ask for a 2D array by passing a list with the...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/ones_zeros",
@@ -180,7 +180,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/dsfe/chapters/06/conditional_statements",
         "teaser":null},{
         "title": "6.2 Monty hall problem",
-        "excerpt":"The Monty Hall problem The Monty Hall problem isa problem in probability, originally posed by SteveSlavin, a professor ofBiostatistics at Berkeley. The setup is the following: You are a contestant on a game show. The host, Monty Hall, shows youthree closed and identical doors. Behind one of the doors, is...","categories": [],
+        "excerpt":"The Monty Hall problem The Monty Hall problem isa problem in probability, originally posed by SteveSelvin, a professor ofBiostatistics at Berkeley. The setup is the following: You are a contestant on a game show. The host, Monty Hall, shows youthree closed and identical doors. Behind one of the doors, is...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/06/monty_hall",
         "teaser":null},{
