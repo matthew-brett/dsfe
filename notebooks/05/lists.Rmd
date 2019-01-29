@@ -238,6 +238,9 @@ my_list.append('Ho ho ho')
 my_list
 ```
 
+For some more operations with lists, see [More on
+lists](../extra/more_on_lists).
+
 ## What do these square brackets mean?
 
 You have seen two uses of square brackets on this page.
