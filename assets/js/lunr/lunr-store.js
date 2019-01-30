@@ -174,11 +174,6 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/population_permutation",
         "teaser":null},{
-        "title": "6.3 Conditional statements",
-        "excerpt":"Conditional Statements In many situations, actions and results depends on a specific set of conditionsbeing satisfied. For example, individuals in randomized controlled trialsreceive the treatment if they have been assigned to the treatment group.A gambler makes money if she wins her bet. In this section we will learn how to...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/dsfe/chapters/06/conditional_statements",
-        "teaser":null},{
         "title": "6.2 Monty hall problem",
         "excerpt":"The Monty Hall problem The Monty Hall problem isa problem in probability, originally posed by SteveSelvin, a professor ofBiostatistics at Berkeley. The setup is the following: You are a contestant on a game show. The host, Monty Hall, shows youthree closed and identical doors. Behind one of the doors, is...","categories": [],
         "tags": [],
@@ -193,6 +188,21 @@ var store = [{
         "excerpt":"We often need to sort arrays. # Import the numpy packageimport numpy as npHere is an array of numbers: my_array = np.array([9, 1, 3, 0])my_arrayarray([9, 1, 3, 0])Say we wanted to sort this array, from smallest to largest. To do this, we use np.sort: sorted_array = np.sort(my_array)sorted_arrayarray([0, 1, 3, 9])That’s...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/06/sorting_arrays",
+        "teaser":null},{
+        "title": "7.2 Conditional statements",
+        "excerpt":"Conditional Statements In many situations, actions and results depends on a specific set of conditionsbeing satisfied. For example, individuals in randomized controlled trialsreceive the treatment if they have been assigned to the treatment group.A gambler makes money if she wins her bet. In this section we will learn how to...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/07/conditional_statements",
+        "teaser":null},{
+        "title": "7.1 Functions",
+        "excerpt":"import numpy as npWriting functions We are building up a useful inventory of techniques for identifying patternsand themes in a data set by using functions already available in Python. Wewill now explore a core feature of the Python programming language: functiondefinition. We have used functions extensively already in this text,...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/07/functions",
+        "teaser":null},{
+        "title": "7. More building blocks",
+        "excerpt":"We have already covered some important parts of programming for data science,such as expressions, variables, datatypes, arrays and dataframes. In this section, you cover the last two building blocks you will need asa foundation for your future analyses. These are:   Writing functions  Conditional statements","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/07/more_building_blocks",
         "teaser":null},{
         "title": "Brexit analysis",
         "excerpt":"Brexit - the data analysis We start, as usual, by importing all the libraries we need. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdAll about the Brexiteers Every year, the HansardSocietysponsors a survey on political engagement in the UK. They put topical...","categories": [],
