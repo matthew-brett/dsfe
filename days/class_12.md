@@ -16,7 +16,7 @@ permalink: /days/class_12
 * Data pitches
 * A brief introduction to [Github](https://github.com)
 * [Functions](../chapters/07/functions)
-* [Function exercises](../exercises/function_exercises)
+* [Function exercises](../chapters/exercises/function_exercises)
 * [Conditionals](../chapters/07/conditional_statements)
 
 ## Assignment
