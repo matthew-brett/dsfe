@@ -106,6 +106,8 @@ venv.bak/
 # Jekyll
 _site/
 .sass-cache/
+.bundle
+vendor/
 
 # Build stuff
 _chapters/
