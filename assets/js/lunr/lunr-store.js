@@ -224,6 +224,11 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/for_loops",
         "teaser":null},{
+        "title": "Function exercises",
+        "excerpt":"Exercises on functions For background, please read the functions introduction. # To warm upimport numpy as np","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/function_exercises",
+        "teaser":null},{
         "title": "Money and death",
         "excerpt":"We return to the death penalty. import numpy as npimport pandas as pdimport matplotlib.pyplot as plt%matplotlib inline# Make plots look a little bit more fancyplt.style.use('fivethirtyeight')In this case, we are going to analyze whether people with higher incomes are more likely to favor the death penalty. To do this, we are...","categories": [],
         "tags": [],

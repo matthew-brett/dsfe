@@ -47,6 +47,7 @@
   * [Brexit analysis](notebooks/exercises/brexit_analysis.ipynb)
   * [For loops](notebooks/exercises/for_loops.ipynb)
   * [Money and death](notebooks/exercises/money_and_death.ipynb)
+  * [Function exercises](notebooks/exercises/function_exercises.ipynb)
 * [Extra pages](notebooks/extra/extra.md)
   * [More on lists](notebooks/extra/more_on_lists.ipynb)
   * [Monty Hall with lists](notebooks/extra/monty_hall_lists.ipynb)

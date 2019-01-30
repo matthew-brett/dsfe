@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>3.6 More on arrays - Data Science for Everyone</title>
-<meta name="description" content="More on Arrays">
+<!-- begin _includes/seo.html --><title>Function exercises - Data Science for Everyone</title>
+<meta name="description" content="Exercises on functions">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="3.6 More on arrays">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/03/More_on_Arrays">
+<meta property="og:title" content="Function exercises">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/exercises/function_exercises">
 
 
-  <meta property="og:description" content="More on Arrays">
+  <meta property="og:description" content="Exercises on functions">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/03/More_on_Arrays">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/exercises/function_exercises">
 
 
 
@@ -710,15 +710,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="3.6 More on arrays">
-      <meta itemprop="description" content="More on Arrays">
+      <meta itemprop="headline" content="Function exercises">
+      <meta itemprop="description" content="Exercises on functions">
       <meta itemprop="datePublished" content="January 30, 2019">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">3.6 More on arrays
+            <h1 id="page-title" class="page__title" itemprop="headline">Function exercises
 </h1>
           </header>
         
@@ -730,106 +730,24 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
-  <aside class="sidebar__right">
-    <nav class="toc">
-      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
-      <ul class="toc__menu">
-  <li><a href="#elementwise-arithmetic-on-pairs-of-numerical-arrays">Elementwise arithmetic on pairs of numerical arrays</a></li>
-</ul>
-    </nav>
-  </aside>
-
 
           
           <!-- INTERACT LINKS -->
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/03/More_on_Arrays.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F03%2FMore_on_Arrays.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/exercises/function_exercises.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2Fexercises%2Ffunction_exercises.ipynb">Interact</a>
 
 
-          <h1 id="more-on-arrays">More on Arrays</h1>
+          <h1 id="exercises-on-functions">Exercises on functions</h1>
 
-<p>It’s often necessary to compute something that involves data from more than
-one array. If two arrays are of the same size, Python makes it easy to do
-calculations involving both arrays.</p>
+<p>For background, please read the <a href="../07/functions">functions</a> introduction.</p>
 
-<p>For our first example, we return once more to the temperature data.  This
-time, we create arrays of average daily
-<a href="http://berkeleyearth.lbl.gov/auto/Regional/TMAX/Text/global-land-TMAX-Trend.txt">high</a>
-and
-<a href="http://berkeleyearth.lbl.gov/auto/Regional/TMIN/Text/global-land-TMIN-Trend.txt">low</a>
-temperatures for the decades surrounding 1850, 1900, 1950, and 2000.</p>
-
-<p>First we get Numpy, renamed as <code class="highlighter-rouge">np</code>:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># To warm up
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 </code></pre></div></div>
 
-<p>Next we create the array:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">baseline_high</span> <span class="o">=</span> <span class="mf">14.48</span>
-<span class="n">highs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">baseline_high</span> <span class="o">-</span> <span class="mf">0.880</span><span class="p">,</span>
-                  <span class="n">baseline_high</span> <span class="o">-</span> <span class="mf">0.093</span><span class="p">,</span>
-                  <span class="n">baseline_high</span> <span class="o">+</span> <span class="mf">0.105</span><span class="p">,</span>
-                  <span class="n">baseline_high</span> <span class="o">+</span> <span class="mf">0.684</span><span class="p">])</span>
-<span class="n">highs</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([13.6  , 14.387, 14.585, 15.164])
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">baseline_low</span> <span class="o">=</span> <span class="mf">3.00</span>
-<span class="n">lows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">baseline_low</span> <span class="o">-</span> <span class="mf">0.872</span><span class="p">,</span> <span class="n">baseline_low</span> <span class="o">-</span> <span class="mf">0.629</span><span class="p">,</span>
-                 <span class="n">baseline_low</span> <span class="o">-</span> <span class="mf">0.126</span><span class="p">,</span> <span class="n">baseline_low</span> <span class="o">+</span> <span class="mf">0.728</span><span class="p">])</span>
-<span class="n">lows</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2.128, 2.371, 2.874, 3.728])
-</code></pre></div></div>
-
-<p>Suppose we’d like to compute the average daily <em>range</em> of temperatures for
-each decade.  That is, we want to subtract the average daily high in the 1850s
-from the average daily low in the 1850s, and the same for each other decade.</p>
-
-<p>We could write this laboriously using <code class="highlighter-rouge">.item</code>:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="n">highs</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">lows</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
-    <span class="n">highs</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">lows</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-    <span class="n">highs</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">lows</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-    <span class="n">highs</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">lows</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="p">])</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([11.472, 12.016, 11.711, 11.436])
-</code></pre></div></div>
-
-<p>As when we converted an array of temperatures from Celsius to Fahrenheit,
-Python provides a much cleaner way to write this:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">highs</span> <span class="o">-</span> <span class="n">lows</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([11.472, 12.016, 11.711, 11.436])
-</code></pre></div></div>
-
-<p><img src="/dsfe/images/array_subtraction.png" /></p>
-
-<p>What we’ve seen in these examples are special cases of a general feature of arrays.</p>
-
-<h3 id="elementwise-arithmetic-on-pairs-of-numerical-arrays">Elementwise arithmetic on pairs of numerical arrays</h3>
-
-<p>If an arithmetic operator acts on two arrays of the same size, then the
-operation is performed on each corresponding pair of elements in the two
-arrays. The final result is an array.</p>
-
-<p>For example, if <code class="highlighter-rouge">array1</code> and <code class="highlighter-rouge">array2</code> have the same number of elements, then
-the value of <code class="highlighter-rouge">array1 * array2</code> is an array. Its first element is the first
-element of <code class="highlighter-rouge">array</code> times the first element of <code class="highlighter-rouge">array2</code>, its second element is
-the second element of <code class="highlighter-rouge">array1</code> times the second element of <code class="highlighter-rouge">array2</code>, and so
-on.</p>
 
           
         </section>
@@ -846,11 +764,11 @@ on.</p>
         
   <nav class="pagination">
     
-      <a href="/dsfe/chapters/03/Ranges" class="pagination--pager" title="3.5 Ranges
+      <a href="/dsfe/chapters/exercises/money_and_death" class="pagination--pager" title="Money and death
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/03/arrays_and_axes" class="pagination--pager" title="3.7 Arrays and axes
+      <a href="/dsfe/chapters/extra/extra" class="pagination--pager" title="Extra pages
 ">Next</a>
     
   </nav>
