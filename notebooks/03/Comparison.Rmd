@@ -91,3 +91,5 @@ string is less than a longer string that begins with the shorter string.
 ```{python}
 "Catastrophe" > "Cat"
 ```
+
+{% data8page Comparison %}

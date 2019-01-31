@@ -99,3 +99,5 @@ the value of `array1 * array2` is an array. Its first element is the first
 element of `array` times the first element of `array2`, its second element is
 the second element of `array1` times the second element of `array2`, and so
 on.
+
+{% data8page More_on_Arrays %}

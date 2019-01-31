@@ -65,3 +65,5 @@ function, strings can be constructed that have embedded values.
 ```{python}
 "That's " + str(1 + 1) + ' ' + str(True)
 ```
+
+{% data8page Strings %}
