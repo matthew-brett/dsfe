@@ -51,3 +51,4 @@
 * [Extra pages](notebooks/extra/extra.md)
   * [More on lists](notebooks/extra/more_on_lists.ipynb)
   * [Monty Hall with lists](notebooks/extra/monty_hall_lists.ipynb)
+  * [Berkeley page on functions](notebooks/extra/data8_functions.ipynb)
