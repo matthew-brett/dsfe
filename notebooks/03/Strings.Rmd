@@ -224,6 +224,16 @@ function, strings can be constructed that have embedded values.
 "That's " + str(1 + 1) + ' ' + str(True)
 ```
 
+<div class="isa_info">
+<i class="fa fa-info-circle"></i>
+This page has content from the
+<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Strings.ipynb">
+Strings</a>
+notebook from the UC Berkeley course.  See the Berkeley course section of the
+<a href="/dsfe/license">license</a>
+</div>
+
+
         
       </section>
 

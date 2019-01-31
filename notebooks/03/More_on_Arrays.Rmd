@@ -258,6 +258,16 @@ element of `array` times the first element of `array2`, its second element is
 the second element of `array1` times the second element of `array2`, and so
 on.
 
+<div class="isa_info">
+<i class="fa fa-info-circle"></i>
+This page has content from the
+<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/More_on_Arrays.ipynb">
+More_on_Arrays</a>
+notebook from the UC Berkeley course.  See the Berkeley course section of the
+<a href="/dsfe/license">license</a>
+</div>
+
+
         
       </section>
 
