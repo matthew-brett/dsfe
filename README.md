@@ -182,7 +182,7 @@ interactions with Github easier, from the command line.
 ## Configuring build etc
 
 You might want to check the instructions for configuring the build at
-https://github.com/choldgraf/textbooks-with-jupyter.
+<https://github.com/choldgraf/textbooks-with-jupyter>.
 
 ## Workflow
 
