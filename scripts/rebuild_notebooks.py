@@ -151,6 +151,8 @@ class Build:
         return self._process_in_ext(base, '.ipynb', ('.md',))
 
     def should_run(self, nb_fname):
+        """ Return False if notebook tells us we should not run it
+        """
         with open(nb_fname, 'rt') as fobj:
             nb = nbformat.read(fobj, as_version=4)
         meta = nb['metadata']
