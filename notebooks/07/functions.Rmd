@@ -293,6 +293,68 @@ multiply(2)
 multiply(2, 3, 4)
 ```
 
+## Function can have no arguments
+
+Perhaps the recipe analogy breaks down here, but sometimes functions take no arguments.  For example:
+
+```{python}
+import numpy as np
+```
+
+```{python}
+# Notice - nothing between the parentheses
+
+def biased_coin():
+    # A single random number
+    r = np.random.uniform()
+    # A biased coin
+    result = r < 0.45
+    return result
+```
+
+When we call the function, we have no arguments, so no expressions between the parentheses.
+
+```{python}
+biased_coin()
+```
+
+As you would expect by now, if we try and send an argument, Python will complain:
+
+```{python tags=c("raises-exception")}
+biased_coin(0.45)
+```
+
+## The function is a value too
+
+You may have noticed the section above, where talked about functions having names.  In fact, function names are just variables.  Consider the `range` function.  Here I use `range` on its own.  In fact `range` is just a variable name, where the variable points to the internal representation of the function (procedure).   I can use `range` on its own, just as I could use any other variable name, and it is an expression, that returns the value of `range`:
+
+```{python}
+range
+```
+
+Likewise, `biased_coin` above is a variable name, where the variable points to the internal representation of the `biased_coin` procedure:
+
+```{python}
+biased_coin
+```
+
+What do you think you would get from the following?
+
+```{python tags=c("raises-exception")}
+biased_coin + 2
+```
+
+Why is this?  Python evaluates the first expression `biased_coin`; it
+is a variable pointing to a internal representation of a function, so
+the first value is a function.  The second value is IR of int 2.  It
+tries to add the IR of a function to the IR of an int, and fails.
+
+This reminds us that, in order to apply the procedure, we need to *call* the function.  We do this, as you know, by using parentheses after the function, to make a *call expression*:
+
+```{python}
+biased_coin() + 2
+```
+
 ## Without a return statement, functions return None
 
 Our functions so far all have a `return` statement.  This is not true of every function.
