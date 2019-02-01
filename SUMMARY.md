@@ -39,6 +39,7 @@
   * [6.1 Sorting arrays](notebooks/06/sorting_arrays.ipynb)
   * [6.2 Monty hall problem](notebooks/06/monty_hall.ipynb)
 * [7. More building blocks](notebooks/07/more_building_blocks.md)
+  * [7.2 None](notebooks/07/none.ipynb)
   * [7.1 Functions](notebooks/07/functions.ipynb)
   * [7.2 Conditional statements](notebooks/07/conditional_statements.ipynb)
 * [Exercises](notebooks/exercises/exercises.md)
@@ -51,4 +52,4 @@
 * [Extra pages](notebooks/extra/extra.md)
   * [More on lists](notebooks/extra/more_on_lists.ipynb)
   * [Monty Hall with lists](notebooks/extra/monty_hall_lists.ipynb)
-  * [Berkeley page on functions](notebooks/extra/data8_functions.ipynb)
+  * [Berkeley introduction to functions](notebooks/extra/data8_functions.ipynb)

@@ -158,9 +158,12 @@ class Build:
         # Rebuild .ipynb
         check_call(['jupytext', '--to', 'notebook', nb_src])
         # Run .ipynb
-        check_call(['jupyter', 'nbconvert', '--inplace',
-                    '--ExecutePreprocessor.kernel_name=python3',
-                    '--to', 'notebook', '--execute', nb_built])
+        with open(nb_built, 'rt') as fobj:
+            run_me = 'UNRUN' not in fobj.read()
+        if run_me:
+            check_call(['jupyter', 'nbconvert', '--inplace',
+                        '--ExecutePreprocessor.kernel_name=python3',
+                        '--to', 'notebook', '--execute', nb_built])
         self._delete_built(base, self.built_exts)
         return True
 
