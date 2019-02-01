@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-01-31T18:57:57+00:00">
+  <meta property="article:published_time" content="2019-02-01T00:22:07+00:00">
 
 
 
@@ -574,6 +574,16 @@
 
             
 
+            <li><a href="/dsfe/chapters/07/none" class="level_1">7.2 None</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
             <li><a href="/dsfe/chapters/07/functions" class="level_1">7.1 Functions</a></li>
           
             
@@ -696,6 +706,16 @@
 
             <li><a href="/dsfe/chapters/extra/monty_hall_lists" class="level_1">Monty Hall with lists</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/extra/data8_functions" class="level_1">Berkeley introduction to functions</a></li>
+          
         </ul>
         
       </li>
@@ -712,7 +732,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="Function exercises">
       <meta itemprop="description" content="Exercises on functions">
-      <meta itemprop="datePublished" content="January 31, 2019">
+      <meta itemprop="datePublished" content="February 01, 2019">
       
 
       <div class="page__inner-wrap">
@@ -744,10 +764,110 @@
 
 <p>For background, please read the <a href="../07/functions">functions</a> introduction.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># To warm up
-</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<p>This function is not properly defined, and will give a <code class="highlighter-rouge">SyntaxError</code>.  Fix it, then run the call below to confirm it is working.</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function subtract(p, q):
+    r = p - q
+    return r
 </code></pre></div></div>
 
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>subtract(5, 10)
+</code></pre></div></div>
+
+<p>This function also gives a <code class="highlighter-rouge">SyntaxError</code>. Fix and run.</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def add(first_value, second_value)
+    return first_value + second_value
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>add(2, 3)
+</code></pre></div></div>
+
+<p>Here is another error.  Fix and run.</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def cube(a_variable):
+return a_variable ** 2
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cube(3)
+</code></pre></div></div>
+
+<p>Why does the second cell below give you an error?</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def add_then_multiply(a, b):
+    added = a + b
+    return added * b
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result = add_then_multiply(10, 4)
+result + added
+</code></pre></div></div>
+
+<p>Write a function called “increase” that</p>
+
+<ul>
+  <li>accepts two arguments</li>
+  <li>the body multiplies the first argument by 2 and the second by 3, adds the two resulting numbers, and returns the result.</li>
+</ul>
+
+<p>If your function is right, the cell below should return 13.</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Your function here
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>increase(2, 3)
+</code></pre></div></div>
+
+<p>This function will run, but it probably doesn’t give you the result you expect.  Fix to give the result you expect and run.</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def divide(p, q):
+    # Give result of dividing p by q
+    result = p / q
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>divide(10, 2)
+</code></pre></div></div>
+
+<p>Remember that, in function world, the function can see the variables
+at the top level, but it cannot change what value the top-level
+variables point to.</p>
+
+<p>Read the code the below, but do not run it.</p>
+
+<p>Predict what you will see.  Will it be an error?  If not, what value will you see?</p>
+
+<p>Run it to see if you’re right.</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 12
+
+def my_function(b):
+    return a * b
+
+my_function(4)
+</code></pre></div></div>
+
+<p>This is now going into deeper water.</p>
+
+<p>We know that, in function world, the function can see the variables at the top level, but it cannot change what value the top-level variables point to.</p>
+
+<p>Read the code the below, but do not run it.</p>
+
+<p>Predict what you will see.  Will it be an error?  If not, what value will you see?</p>
+
+<p>Run it to see if you’re right.  See if you can explain why you are right.  Call your instructor over to check your explanation.</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 12
+
+def function_two(b):
+    a = b
+    return a * b
+
+function_two(4)
+</code></pre></div></div>
+
+<p>Please ignore the next line, it’s for building the web page:</p>
+
+<p>UNRUN</p>
 
           
         </section>

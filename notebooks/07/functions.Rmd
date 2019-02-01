@@ -182,239 +182,322 @@
       <section class="page__content" itemprop="text">
         
         ```{python}
+# HIDDEN
+
+# The standard set of libraries we need
 import numpy as np
 ```
 
-# Writing functions
+# Functions
 
-We are building up a useful inventory of techniques for identifying patterns
-and themes in a data set by using functions already available in Python. We
-will now explore a core feature of the Python programming language: function
-definition.
+We have already used functions.
 
-We have used functions extensively already in this text, but never defined
-a function of our own. The purpose of defining a function is to give a name to
-a computational process that may be applied multiple times. There are many
-situations in computing that require repeated computation. For example, it is
-often the case that we want to perform the same manipulation on every value in
-a column of a table.
-
-
-### Defining a Function ###
-
-The definition of the `double` function below simply doubles a number.
+For example, we have used the `round` function:
 
 ```{python}
-# Our first function definition
+a = 3.1415
+```
 
+```{python}
+# Call the "round" function
+b = round(a, 2)
+```
+
+```{python}
+b
+```
+
+We will soon find that we often need to define our own functions.
+Before we do, we need to go into more detail about what functions are.
+
+## Functions are like recipes
+
+Thanks to [the Berkeley
+team](https://www.inferentialthinking.com/chapters/08/Functions_and_Tables)
+for this metaphor.
+
+A recipe is the *procedure* to go from *ingredients* to a *meal*.
+
+A function is the *procedure* to go from the *arguments* to the
+*return value*.
+
+For example, I might have a recipe with the procedure to go from the
+ingredients: two eggs; butter; and cheese \- to the meal \- a cheese
+omelette.
+
+The function `range` has the procedure to go from the arguments - two
+numbers, to the return value, which is the value of the first argument
+rounded to the number of digits specified in the second.
+
+I could call my recipe "two egg cheese omelette", or "recipe number
+4".  Whatever I called it, it would be the same recipe.  I might
+prefer a name that describes what the recipe makes, to help me
+remember.
+
+Likewise, the name `range` refers to a procedure above.  I could give it another name, like `my_function`, but `range` is a good name, because it helps me remember what the procedure does.
+
+I say `range` has a procedure, but we can't see what that procedure
+is, it's buried inside the internal workings of Python.
+
+Now we are going to write our own function, where we can see the
+procedure.
+
+## Revision on variables
+
+Here is an *assignment statement*:
+
+```{python}
+a = 2
+```
+
+As we know, we can read this as "The variable 'a' gets the value 2".
+
+We also know that we have, on the left, a variable name, 'a', and on
+the right, an expression, that gives a value.
+
+In this case, the expression on the right is `2`. Python evaluates
+this expression, to make its own internal representation of the
+integer 2.  Call this: IR of int 2.
+
+After Python executes this statement, the name "a" points to the IR of int 2.
+
+To continue the revision:
+
+```{pythno}
+b = a * 4
+```
+
+The right side `a * 4` is an expression.  Python evaluates the
+expression.  First it gets the value of `a`.  This is the IR of int 2.
+Next it gets the value of `4`.  This is the IR of int 4. Then it
+multiplies these results to get an IR of int 8.
+
+"b" now points to the IR of int 8.
+
+Finally:
+
+```{pythn}
+a = 3
+```
+
+"a" no longer points the IR of int 2, it points to the IR of int 3.
+
+What value does "b" have now?
+
+The same value as it had before.  It pointed to the IR of int
+8 before.  Changing `a` has no effect on `b`.
+
+## Defining a function
+
+We define our function called `double`.  It accepts one argument
+(ingredient), call that `x`.  It's procedure is to multiply the
+argument by 2.  The return value is the argument multiplied by 2.
+
+Here it is:
+
+```{python}
 def double(x):
-    """ Double x """
-    return 2*x
+    d = x * 2
+    return d
 ```
 
-We start any function definition by writing `def`.  Here is a breakdown of the
-other parts (the *syntax*) of this small function:
+Let's look at the first line:
 
-![function definition](/dsfe/images/function_definition.jpg)
+```
+def double(x):
+```
 
-When we run the cell above, no particular number is doubled, and the code
-inside the body of `double` is not yet evaluated.  In this respect, our
-function is analogous to a *recipe*.  Each time we follow the instructions in
-a recipe, we need to start with ingredients.  Each time we want to use our
-function to double a number, we need to specify a number.
+The first word `def` tells Python we are defining a function.
 
-We can call `double` in exactly the same way we have called other functions.
-Each time we do that, the code in the body is executed, with the value of the
-argument given the name `x`.
+The next word `double` is the name we will give to our function.
+
+Between the parentheses, we have the function signature.  This specifies how many arguments the function has.  In our case, there is only one argument, named `x`.
+
+Finally there is a colon `:` signifying the end of the signature.
+
+As in [for loops](../05/iteration), the colon signifies that the next
+bit of code must be [indented](../05/indentation).
+
+Here is the indented part:
+
+```
+    d = x * 2
+    return d
+```
+
+This is the *body* of the function.   It gives the function procedure; it defines what the function will do to its arguments, and what result it should return.
+
+For example, here we *call* the function we just created:
 
 ```{python}
-double(17)
+double(4)
 ```
+
+Notice that `double(4)` is a [call expression](../02/Calls).
+
+So, what just happened?
+
+1.  Python finds what `double` points to.  It points to internal
+    representation of our function (procedure).
+1.  Next it sees the parenthesis `(` and sees that we want to *call*
+    our function.
+1.  Now Python knows we want to call the function, it knows that
+    there are one or more *expressions* inside the parentheses.  In
+    our case there is one, `4`.  As usual, it evaluates this
+    expression to the IR of int 4.
+1.  Now Python does the *call*.  To do this it:
+
+    1. Puts itself into *function world* (more on this later).
+    2. Sets the new variable `x` to have the value IR of int 4, from
+       above.
+    3. Executes the code in the function body (procedure).
+    1. The first line `d = x * 2` is an assignment statement.  `x`
+       evaluates to IR of int 4, 2 evaluates to IR of int 2, so `d`
+       has the value IR of int 8.  This is how the statement would
+       work anywhere in Python, function body or not.
+    1. The next line starts with `return`.  This is a *return
+       statement*. When Python sees a `return` statement, it evaluates
+       the expression to the right, to get the *return value*, then
+    5. Pulls itself out of *function world*.
+    6. Gives the *return value* as the final result of the call
+       expression.  This is IR of int 8.
+
+We can run the function with any values for the argument.
 
 ```{python}
-double(-0.6/4)
+double(2)
 ```
 
-The two expressions above are both *call expressions*. In the second one, the
-value of the expression `-0.6/4` is computed and then passed as the argument
-named `x` to the `double` function. Each call expression results in the body of
-`double` being executed, but with a different value of `x`.
+This time round, everything happened in the same way as before, except
+Python found the *argument* inside the parentheses evaluated to IR of
+int 2.  Thus, in *function world*, `x` gets the value IR of 2, and the *return value* becomes IR of int 4.
 
-The body of `double` has only a single line:
+## Function world
 
-`return 2*x`
+I cryptically used the term *function world* for the state that Python goes into when it calls a function.
 
-Executing this *`return` statement* completes execution of the `double`
-function's body and computes the value of the call expression.
+This state has two important features.
 
-The argument to `double` can be any expression, as long as its value is
-a number.  For example, it can be a name.  The `double` function does not know
-or care how its argument is computed or stored; its only job is to execute its
-own body using the values of the arguments passed to it.
+### Variables defined in functions have local scope
 
-```{python}
-any_name = 42
-double(any_name)
+The first feature of function world is that all variables defined
+inside function world, get thrown away when we leave function world.
+
+We can see this if we run the following code in a notebook cell.  This
+code runs in our usual top-level world, and so, not inside a function.
+
+```{python tags=c("raises-exception")}
+d
 ```
 
-The argument can also be any value that can be doubled. For example, a whole
-array of numbers can be passed as an argument to `double`, and the result will
-be another array.
+Notice that, in the function, we set `d` to point to the result of `x * 2`.  We called the function a couple of times, so we executed this statement a couple of times.  But the `d` in the function, gets thrown away, when we come back from function world.
 
-```{python}
-double(np.array([3, 4, 5]))
-```
+In technical terms, this is called *scope*.   The *scope* of
+a variable, is the pieces of code in which the variable is visible.
+`d` can only be seen inside the function.  Its scope is the function.  We can also say that its scope is piece of code where it is defined, that is, it has *local* scope.
 
-However, names that are defined inside a function, including arguments like
-`double`'s `x`, have only a fleeting existence.  They are defined only while
-the function is being called, and they are only accessible inside the body of
-the function. We can't refer to `x` outside the body of `double`. The technical
-terminology is that `x` has *local scope*.
-
-Therefore the name `x` isn't recognized outside the body of the function, even
-though we have called `double` in the cells above.
+The same is true for `x`, the argument variable:
 
 ```{python tags=c("raises-exception")}
 x
 ```
 
-**Docstrings.** Though `double` is relatively easy to understand, many
-functions perform complicated tasks and are difficult to use without
-explanation. (You may have discovered this yourself!) Therefore,
-a well-composed function has a name that evokes its behavior, as well as
-documentation.  In Python, this is called a *docstring* — a description of its
-behavior and expectations about its arguments. The docstring can also show
-example calls to the function, where the call is preceded by `>>>`.
+### The function has limited access to variables outside the function
 
-A docstring can be any string, as long as it is the first thing in a function's
-body. Docstrings are typically defined using triple quotation marks at the
-start and end, which allows a string to span multiple lines. The first line is
-conventionally a complete but short description of the function, while
-following lines provide further guidance to future users of the function.
+We have not seen this yet, but function world has limited access to variables defined at the top level.
 
-Here is a definition of a function called `percent` that takes two arguments.
-The definition includes a docstring.
+We won't go into much detail here, but the summary is that functions can see the values of variables defined at the top level, but they can't change what top level variables point to.  For example, say you have a variable `a` at the top level.  A function can see and use the value of `a`, but it cannot change top-level `a` to point to a different value.   We will come back to this later.
+
+## Python checks the function signature
+
+The signature for `double` is `(a)`.  That tells Python to expect one
+and only one argument.  If we try to call it with no arguments
+(nothing inside the parentheses), we get an error:
+
+```{python tags=c("raises-exception")}
+double()
+```
+
+If we try and call it with more than one argument, we get an error.  We separate arguments with commas.
+
+```{python tags=c("raises-exception")}
+double(2, 3)
+```
+
+```{python tags=c("raises-exception")}
+double(2, 3, 4)
+```
+
+## Function arguments are expressions
+
+Remember that Python knows that the arguments to a function are
+expressions, and evaluates them, before running the function.
+
+For example:
 
 ```{python}
-# A function with more than one argument
+double(2 + 3)
+```
 
-def percent(x, total):
-    """Convert x to a percentage of total.
-    
-    More precisely, this function divides x by total,
-    multiplies the result by 100, and rounds the result
-    to two decimal places.
-    
-    >>> percent(4, 16)
-    25.0
-    >>> percent(1, 6)
-    16.67
-    """
-    return round((x/total)*100, 2)
+All the procedure is the same as above.  Python evaluates the
+expression `2 + 3`, to get IR of int 5, then goes into function world,
+sets `x` to have the value IR of int 5, and continues from there.
+
+## Functions can have many arguments
+
+Now we define a new function:
+
+
+```{python}
+def multiply(a, b):
+    return a * b
+```
+
+The new thing here is that the function signature `(a, b)` has two arguments, separated by commas.  We need to give the function two values, when we call it:
+
+```{python}
+multiply(2, 3)
+```
+
+If we do not give it exactly two arguments, we get an error.
+
+```{python tags=c("raises-exception")}
+multiply(2)
+```
+
+```{python tags=c("raises-exception")}
+multiply(2, 3, 4)
+```
+
+## Without a return statement, functions return None
+
+Our functions so far all have a `return` statement.  This is not true of every function.
+
+If your function does not have a return statement, the function returns the value [None](none).
+
+```{python}
+def silent_addition(first, second):
+    result = first + second
+```
+
+Notice that the body of this function has no `return` statement.  When we call it, it returns `None`:
+
+```{python}
+result = silent_addition(10, 12)
+result
 ```
 
 ```{python}
-percent(33, 200)
+result is None
 ```
 
-Contrast the function `percent` defined above with the function `percents`
-defined below. The latter takes an array as its argument, and converts all the
-numbers in the array to percents out of the total of the values in the array.
-The percents are all rounded to two decimal places, this time replacing `round`
-by `np.round` because the argument is an array and not a number.
+## End of the introduction
 
-```{python}
-def percents(counts):
-    """Convert the values in array_x to percents out of the total of array_x."""
-    total = counts.sum()
-    return np.round((counts/total)*100, 2)
-```
+That's it for the introduction.  For a less basic description, have
+a look at the [Berkeley introduction to
+functions](../extra/data8_functions).
 
-The function `percents` returns an array of percents that add up to 100 apart
-from rounding.
-
-```{python}
-some_array = np.array([7, 10, 4])
-percents(some_array)
-```
-
-It is helpful to understand the steps Python takes to execute a function.  To
-facilitate this, we have put a function definition and a call to that function
-in the same cell below.
-
-```{python}
-def biggest_difference(array_x):
-    """Find the biggest difference in absolute value between two adjacent elements of array_x."""
-    diffs = np.diff(array_x)
-    absolute_diffs = abs(diffs)
-    return max(absolute_diffs)
-
-some_numbers = np.array([2, 4, 5, 6, 4, -1, 1])
-big_diff = biggest_difference(some_numbers)
-print("The biggest difference is", big_diff)
-```
-
-Here is what happens when we run that cell:
-
-![function execution](/dsfe/images/function_execution.jpg)
-
-## Multiple Arguments
-
-There can be multiple ways to generalize an expression or block of code, and so
-a function can take multiple arguments that each determine different aspects of
-the result. For example, the `percents` function we defined previously rounded
-to two decimal places every time. The following two-argument definition allows
-different calls to round to different amounts.
-
-```{python}
-def percents(counts, decimal_places):
-    """Convert the values in array_x to percents out of the total of array_x."""
-    total = counts.sum()
-    return np.round((counts/total)*100, decimal_places)
-
-parts = np.array([2, 1, 4])
-print("Rounded to 1 decimal place: ", percents(parts, 1))
-print("Rounded to 2 decimal places:", percents(parts, 2))
-print("Rounded to 3 decimal places:", percents(parts, 3))
-```
-
-The flexibility of this new definition comes at a small price: each time the
-function is called, the number of decimal places must be specified. Default
-argument values allow a function to be called with a variable number of
-arguments; any argument that isn't specified in the call expression is given
-its default value, which is stated in the first line of the `def` statement.
-For example, in this final definition of `percents`, the optional argument
-`decimal_places` is given a default value of 2.
-
-```{python}
-def percents(counts, decimal_places=2):
-    """Convert the values in array_x to percents out of the total of array_x."""
-    total = counts.sum()
-    return np.round((counts/total)*100, decimal_places)
-
-parts = np.array([2, 1, 4])
-print("Rounded to 1 decimal place:", percents(parts, 1))
-print("Rounded to the default number of decimal places:", percents(parts))
-```
-
-### Note: Methods
-
-Functions are called by placing argument expressions in parentheses after the
-function name. Any function that is defined in isolation is called in this way.
-You have also seen examples of methods, which are like functions but are called
-using dot notation, such as `some_table.sort(some_label)`. The functions that
-you define will always be called using the function name first, passing in all
-of the arguments.
-
-<div class="isa_info">
-<i class="fa fa-info-circle"></i>
-This page has content from the
-<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Functions_and_Tables.ipynb">
-Functions_and_Tables</a>
-notebook from the UC Berkeley course.  See the Berkeley course section of the
-<a href="/dsfe/license">license</a>
-</div>
-
+Now try the [exercises](../exercises/function_exercises).
 
         
       </section>

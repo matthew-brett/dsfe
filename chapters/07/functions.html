@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>7.1 Functions - Data Science for Everyone</title>
-<meta name="description" content="import numpy as np">
+<meta name="description" content="Functions">
 
 
 
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/07/functions">
 
 
-  <meta property="og:description" content="import numpy as np">
+  <meta property="og:description" content="Functions">
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-01-31T18:57:57+00:00">
+  <meta property="article:published_time" content="2019-02-01T00:22:07+00:00">
 
 
 
@@ -574,6 +574,16 @@
 
             
 
+            <li><a href="/dsfe/chapters/07/none" class="level_1">7.2 None</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
             <li><a href="/dsfe/chapters/07/functions" class="level_1">7.1 Functions</a></li>
           
             
@@ -696,6 +706,16 @@
 
             <li><a href="/dsfe/chapters/extra/monty_hall_lists" class="level_1">Monty Hall with lists</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/extra/data8_functions" class="level_1">Berkeley introduction to functions</a></li>
+          
         </ul>
         
       </li>
@@ -711,8 +731,8 @@
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="7.1 Functions">
-      <meta itemprop="description" content="import numpy as np">
-      <meta itemprop="datePublished" content="January 31, 2019">
+      <meta itemprop="description" content="Functions">
+      <meta itemprop="datePublished" content="February 01, 2019">
       
 
       <div class="page__inner-wrap">
@@ -734,8 +754,20 @@
     <nav class="toc">
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#defining-a-function">Defining a Function</a></li>
-  <li><a href="#note-methods">Note: Methods</a></li>
+  <li><a href="#functions-are-like-recipes">Functions are like recipes</a></li>
+  <li><a href="#revision-on-variables">Revision on variables</a></li>
+  <li><a href="#defining-a-function">Defining a function</a></li>
+  <li><a href="#function-world">Function world</a>
+    <ul>
+      <li><a href="#variables-defined-in-functions-have-local-scope">Variables defined in functions have local scope</a></li>
+      <li><a href="#the-function-has-limited-access-to-variables-outside-the-function">The function has limited access to variables outside the function</a></li>
+    </ul>
+  </li>
+  <li><a href="#python-checks-the-function-signature">Python checks the function signature</a></li>
+  <li><a href="#function-arguments-are-expressions">Function arguments are expressions</a></li>
+  <li><a href="#functions-can-have-many-arguments">Functions can have many arguments</a></li>
+  <li><a href="#without-a-return-statement-functions-return-none">Without a return statement, functions return None</a></li>
+  <li><a href="#end-of-the-introduction">End of the introduction</a></li>
 </ul>
     </nav>
   </aside>
@@ -750,103 +782,232 @@
     <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F07%2Ffunctions.ipynb">Interact</a>
 
 
-          <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+          <h1 id="functions">Functions</h1>
+
+<p>We have already used functions.</p>
+
+<p>For example, we have used the <code class="highlighter-rouge">round</code> function:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mf">3.1415</span>
 </code></pre></div></div>
 
-<h1 id="writing-functions">Writing functions</h1>
-
-<p>We are building up a useful inventory of techniques for identifying patterns
-and themes in a data set by using functions already available in Python. We
-will now explore a core feature of the Python programming language: function
-definition.</p>
-
-<p>We have used functions extensively already in this text, but never defined
-a function of our own. The purpose of defining a function is to give a name to
-a computational process that may be applied multiple times. There are many
-situations in computing that require repeated computation. For example, it is
-often the case that we want to perform the same manipulation on every value in
-a column of a table.</p>
-
-<h3 id="defining-a-function">Defining a Function</h3>
-
-<p>The definition of the <code class="highlighter-rouge">double</code> function below simply doubles a number.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Our first function definition
-</span>
-<span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="s">""" Double x """</span>
-    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Call the "round" function
+</span><span class="n">b</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>We start any function definition by writing <code class="highlighter-rouge">def</code>.  Here is a breakdown of the
-other parts (the <em>syntax</em>) of this small function:</p>
-
-<p><img src="/dsfe/images/function_definition.jpg" alt="function definition" /></p>
-
-<p>When we run the cell above, no particular number is doubled, and the code
-inside the body of <code class="highlighter-rouge">double</code> is not yet evaluated.  In this respect, our
-function is analogous to a <em>recipe</em>.  Each time we follow the instructions in
-a recipe, we need to start with ingredients.  Each time we want to use our
-function to double a number, we need to specify a number.</p>
-
-<p>We can call <code class="highlighter-rouge">double</code> in exactly the same way we have called other functions.
-Each time we do that, the code in the body is executed, with the value of the
-argument given the name <code class="highlighter-rouge">x</code>.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>34
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.14
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<p>We will soon find that we often need to define our own functions.
+Before we do, we need to go into more detail about what functions are.</p>
+
+<h2 id="functions-are-like-recipes">Functions are like recipes</h2>
+
+<p>Thanks to <a href="https://www.inferentialthinking.com/chapters/08/Functions_and_Tables">the Berkeley
+team</a>
+for this metaphor.</p>
+
+<p>A recipe is the <em>procedure</em> to go from <em>ingredients</em> to a <em>meal</em>.</p>
+
+<p>A function is the <em>procedure</em> to go from the <em>arguments</em> to the
+<em>return value</em>.</p>
+
+<p>For example, I might have a recipe with the procedure to go from the
+ingredients: two eggs; butter; and cheese - to the meal - a cheese
+omelette.</p>
+
+<p>The function <code class="highlighter-rouge">range</code> has the procedure to go from the arguments - two
+numbers, to the return value, which is the value of the first argument
+rounded to the number of digits specified in the second.</p>
+
+<p>I could call my recipe “two egg cheese omelette”, or “recipe number
+4”.  Whatever I called it, it would be the same recipe.  I might
+prefer a name that describes what the recipe makes, to help me
+remember.</p>
+
+<p>Likewise, the name <code class="highlighter-rouge">range</code> refers to a procedure above.  I could give it another name, like <code class="highlighter-rouge">my_function</code>, but <code class="highlighter-rouge">range</code> is a good name, because it helps me remember what the procedure does.</p>
+
+<p>I say <code class="highlighter-rouge">range</code> has a procedure, but we can’t see what that procedure
+is, it’s buried inside the internal workings of Python.</p>
+
+<p>Now we are going to write our own function, where we can see the
+procedure.</p>
+
+<h2 id="revision-on-variables">Revision on variables</h2>
+
+<p>Here is an <em>assignment statement</em>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-0.3
+<p>As we know, we can read this as “The variable ‘a’ gets the value 2”.</p>
+
+<p>We also know that we have, on the left, a variable name, ‘a’, and on
+the right, an expression, that gives a value.</p>
+
+<p>In this case, the expression on the right is <code class="highlighter-rouge">2</code>. Python evaluates
+this expression, to make its own internal representation of the
+integer 2.  Call this: IR of int 2.</p>
+
+<p>After Python executes this statement, the name “a” points to the IR of int 2.</p>
+
+<p>To continue the revision:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">4</span>
 </code></pre></div></div>
 
-<p>The two expressions above are both <em>call expressions</em>. In the second one, the
-value of the expression <code class="highlighter-rouge">-0.6/4</code> is computed and then passed as the argument
-named <code class="highlighter-rouge">x</code> to the <code class="highlighter-rouge">double</code> function. Each call expression results in the body of
-<code class="highlighter-rouge">double</code> being executed, but with a different value of <code class="highlighter-rouge">x</code>.</p>
+<p>The right side <code class="highlighter-rouge">a * 4</code> is an expression.  Python evaluates the
+expression.  First it gets the value of <code class="highlighter-rouge">a</code>.  This is the IR of int 2.
+Next it gets the value of <code class="highlighter-rouge">4</code>.  This is the IR of int 4. Then it
+multiplies these results to get an IR of int 8.</p>
 
-<p>The body of <code class="highlighter-rouge">double</code> has only a single line:</p>
+<p>“b” now points to the IR of int 8.</p>
 
-<p><code class="highlighter-rouge">return 2*x</code></p>
+<p>Finally:</p>
 
-<p>Executing this <em><code class="highlighter-rouge">return</code> statement</em> completes execution of the <code class="highlighter-rouge">double</code>
-function’s body and computes the value of the call expression.</p>
-
-<p>The argument to <code class="highlighter-rouge">double</code> can be any expression, as long as its value is
-a number.  For example, it can be a name.  The <code class="highlighter-rouge">double</code> function does not know
-or care how its argument is computed or stored; its only job is to execute its
-own body using the values of the arguments passed to it.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">any_name</span> <span class="o">=</span> <span class="mi">42</span>
-<span class="n">double</span><span class="p">(</span><span class="n">any_name</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>84
+<p>“a” no longer points the IR of int 2, it points to the IR of int 3.</p>
+
+<p>What value does “b” have now?</p>
+
+<p>The same value as it had before.  It pointed to the IR of int
+8 before.  Changing <code class="highlighter-rouge">a</code> has no effect on <code class="highlighter-rouge">b</code>.</p>
+
+<h2 id="defining-a-function">Defining a function</h2>
+
+<p>We define our function called <code class="highlighter-rouge">double</code>.  It accepts one argument
+(ingredient), call that <code class="highlighter-rouge">x</code>.  It’s procedure is to multiply the
+argument by 2.  The return value is the argument multiplied by 2.</p>
+
+<p>Here it is:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">d</span>
 </code></pre></div></div>
 
-<p>The argument can also be any value that can be doubled. For example, a whole
-array of numbers can be passed as an argument to <code class="highlighter-rouge">double</code>, and the result will
-be another array.</p>
+<p>Let’s look at the first line:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def double(x):
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 6,  8, 10])
+<p>The first word <code class="highlighter-rouge">def</code> tells Python we are defining a function.</p>
+
+<p>The next word <code class="highlighter-rouge">double</code> is the name we will give to our function.</p>
+
+<p>Between the parentheses, we have the function signature.  This specifies how many arguments the function has.  In our case, there is only one argument, named <code class="highlighter-rouge">x</code>.</p>
+
+<p>Finally there is a colon <code class="highlighter-rouge">:</code> signifying the end of the signature.</p>
+
+<p>As in <a href="../05/iteration">for loops</a>, the colon signifies that the next
+bit of code must be <a href="../05/indentation">indented</a>.</p>
+
+<p>Here is the indented part:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    d = x * 2
+    return d
 </code></pre></div></div>
 
-<p>However, names that are defined inside a function, including arguments like
-<code class="highlighter-rouge">double</code>’s <code class="highlighter-rouge">x</code>, have only a fleeting existence.  They are defined only while
-the function is being called, and they are only accessible inside the body of
-the function. We can’t refer to <code class="highlighter-rouge">x</code> outside the body of <code class="highlighter-rouge">double</code>. The technical
-terminology is that <code class="highlighter-rouge">x</code> has <em>local scope</em>.</p>
+<p>This is the <em>body</em> of the function.   It gives the function procedure; it defines what the function will do to its arguments, and what result it should return.</p>
 
-<p>Therefore the name <code class="highlighter-rouge">x</code> isn’t recognized outside the body of the function, even
-though we have called <code class="highlighter-rouge">double</code> in the cells above.</p>
+<p>For example, here we <em>call</em> the function we just created:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+</code></pre></div></div>
+
+<p>Notice that <code class="highlighter-rouge">double(4)</code> is a <a href="../02/Calls">call expression</a>.</p>
+
+<p>So, what just happened?</p>
+
+<ol>
+  <li>Python finds what <code class="highlighter-rouge">double</code> points to.  It points to internal
+representation of our function (procedure).</li>
+  <li>Next it sees the parenthesis <code class="highlighter-rouge">(</code> and sees that we want to <em>call</em>
+our function.</li>
+  <li>Now Python knows we want to call the function, it knows that
+there are one or more <em>expressions</em> inside the parentheses.  In
+our case there is one, <code class="highlighter-rouge">4</code>.  As usual, it evaluates this
+expression to the IR of int 4.</li>
+  <li>
+    <p>Now Python does the <em>call</em>.  To do this it:</p>
+
+    <ol>
+      <li>Puts itself into <em>function world</em> (more on this later).</li>
+      <li>Sets the new variable <code class="highlighter-rouge">x</code> to have the value IR of int 4, from
+above.</li>
+      <li>Executes the code in the function body (procedure).</li>
+      <li>The first line <code class="highlighter-rouge">d = x * 2</code> is an assignment statement.  <code class="highlighter-rouge">x</code>
+evaluates to IR of int 4, 2 evaluates to IR of int 2, so <code class="highlighter-rouge">d</code>
+has the value IR of int 8.  This is how the statement would
+work anywhere in Python, function body or not.</li>
+      <li>The next line starts with <code class="highlighter-rouge">return</code>.  This is a <em>return
+statement</em>. When Python sees a <code class="highlighter-rouge">return</code> statement, it evaluates
+the expression to the right, to get the <em>return value</em>, then</li>
+      <li>Pulls itself out of <em>function world</em>.</li>
+      <li>Gives the <em>return value</em> as the final result of the call
+expression.  This is IR of int 8.</li>
+    </ol>
+  </li>
+</ol>
+
+<p>We can run the function with any values for the argument.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<p>This time round, everything happened in the same way as before, except
+Python found the <em>argument</em> inside the parentheses evaluated to IR of
+int 2.  Thus, in <em>function world</em>, <code class="highlighter-rouge">x</code> gets the value IR of 2, and the <em>return value</em> becomes IR of int 4.</p>
+
+<h2 id="function-world">Function world</h2>
+
+<p>I cryptically used the term <em>function world</em> for the state that Python goes into when it calls a function.</p>
+
+<p>This state has two important features.</p>
+
+<h3 id="variables-defined-in-functions-have-local-scope">Variables defined in functions have local scope</h3>
+
+<p>The first feature of function world is that all variables defined
+inside function world, get thrown away when we leave function world.</p>
+
+<p>We can see this if we run the following code in a notebook cell.  This
+code runs in our usual top-level world, and so, not inside a function.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError                                 Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-11-e983f374794d&gt; in &lt;module&gt;
+----&gt; 1 d
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError: name 'd' is not defined
+</code></pre></div></div>
+
+<p>Notice that, in the function, we set <code class="highlighter-rouge">d</code> to point to the result of <code class="highlighter-rouge">x * 2</code>.  We called the function a couple of times, so we executed this statement a couple of times.  But the <code class="highlighter-rouge">d</code> in the function, gets thrown away, when we come back from function world.</p>
+
+<p>In technical terms, this is called <em>scope</em>.   The <em>scope</em> of
+a variable, is the pieces of code in which the variable is visible.
+<code class="highlighter-rouge">d</code> can only be seen inside the function.  Its scope is the function.  We can also say that its scope is piece of code where it is defined, that is, it has <em>local</em> scope.</p>
+
+<p>The same is true for <code class="highlighter-rouge">x</code>, the argument variable:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span>
 </code></pre></div></div>
@@ -857,7 +1018,7 @@ though we have called <code class="highlighter-rouge">double</code> in the cells
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError                                 Traceback (most recent call last)
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-7-6fcf9dfbd479&gt; in &lt;module&gt;
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-12-6fcf9dfbd479&gt; in &lt;module&gt;
 ----&gt; 1 x
 
 </code></pre></div></div>
@@ -865,157 +1026,169 @@ though we have called <code class="highlighter-rouge">double</code> in the cells
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError: name 'x' is not defined
 </code></pre></div></div>
 
-<p><strong>Docstrings.</strong> Though <code class="highlighter-rouge">double</code> is relatively easy to understand, many
-functions perform complicated tasks and are difficult to use without
-explanation. (You may have discovered this yourself!) Therefore,
-a well-composed function has a name that evokes its behavior, as well as
-documentation.  In Python, this is called a <em>docstring</em> — a description of its
-behavior and expectations about its arguments. The docstring can also show
-example calls to the function, where the call is preceded by <code class="highlighter-rouge">&gt;&gt;&gt;</code>.</p>
+<h3 id="the-function-has-limited-access-to-variables-outside-the-function">The function has limited access to variables outside the function</h3>
 
-<p>A docstring can be any string, as long as it is the first thing in a function’s
-body. Docstrings are typically defined using triple quotation marks at the
-start and end, which allows a string to span multiple lines. The first line is
-conventionally a complete but short description of the function, while
-following lines provide further guidance to future users of the function.</p>
+<p>We have not seen this yet, but function world has limited access to variables defined at the top level.</p>
 
-<p>Here is a definition of a function called <code class="highlighter-rouge">percent</code> that takes two arguments.
-The definition includes a docstring.</p>
+<p>We won’t go into much detail here, but the summary is that functions can see the values of variables defined at the top level, but they can’t change what top level variables point to.  For example, say you have a variable <code class="highlighter-rouge">a</code> at the top level.  A function can see and use the value of <code class="highlighter-rouge">a</code>, but it cannot change top-level <code class="highlighter-rouge">a</code> to point to a different value.   We will come back to this later.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># A function with more than one argument
-</span>
-<span class="k">def</span> <span class="nf">percent</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
-    <span class="s">"""Convert x to a percentage of total.
-    
-    More precisely, this function divides x by total,
-    multiplies the result by 100, and rounds the result
-    to two decimal places.
-    
-    &gt;&gt;&gt; percent(4, 16)
-    25.0
-    &gt;&gt;&gt; percent(1, 6)
-    16.67
-    """</span>
-    <span class="k">return</span> <span class="nb">round</span><span class="p">((</span><span class="n">x</span><span class="o">/</span><span class="n">total</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<h2 id="python-checks-the-function-signature">Python checks the function signature</h2>
+
+<p>The signature for <code class="highlighter-rouge">double</code> is <code class="highlighter-rouge">(a)</code>.  That tells Python to expect one
+and only one argument.  If we try to call it with no arguments
+(nothing inside the parentheses), we get an error:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">percent</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>16.5
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
 </code></pre></div></div>
 
-<p>Contrast the function <code class="highlighter-rouge">percent</code> defined above with the function <code class="highlighter-rouge">percents</code>
-defined below. The latter takes an array as its argument, and converts all the
-numbers in the array to percents out of the total of the values in the array.
-The percents are all rounded to two decimal places, this time replacing <code class="highlighter-rouge">round</code>
-by <code class="highlighter-rouge">np.round</code> because the argument is an array and not a number.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">percents</span><span class="p">(</span><span class="n">counts</span><span class="p">):</span>
-    <span class="s">"""Convert the values in array_x to percents out of the total of array_x."""</span>
-    <span class="n">total</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">round</span><span class="p">((</span><span class="n">counts</span><span class="o">/</span><span class="n">total</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>The function <code class="highlighter-rouge">percents</code> returns an array of percents that add up to 100 apart
-from rounding.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">percents</span><span class="p">(</span><span class="n">some_array</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([33.33, 47.62, 19.05])
-</code></pre></div></div>
-
-<p>It is helpful to understand the steps Python takes to execute a function.  To
-facilitate this, we have put a function definition and a call to that function
-in the same cell below.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">biggest_difference</span><span class="p">(</span><span class="n">array_x</span><span class="p">):</span>
-    <span class="s">"""Find the biggest difference in absolute value between two adjacent elements of array_x."""</span>
-    <span class="n">diffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">array_x</span><span class="p">)</span>
-    <span class="n">absolute_diffs</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">diffs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">absolute_diffs</span><span class="p">)</span>
-
-<span class="n">some_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">big_diff</span> <span class="o">=</span> <span class="n">biggest_difference</span><span class="p">(</span><span class="n">some_numbers</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"The biggest difference is"</span><span class="p">,</span> <span class="n">big_diff</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The biggest difference is 5
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-13-021efdc17f44&gt; in &lt;module&gt;
+----&gt; 1 double()
 
 </code></pre></div></div>
 
-<p>Here is what happens when we run that cell:</p>
-
-<p><img src="/dsfe/images/function_execution.jpg" alt="function execution" /></p>
-
-<h2 id="multiple-arguments">Multiple Arguments</h2>
-
-<p>There can be multiple ways to generalize an expression or block of code, and so
-a function can take multiple arguments that each determine different aspects of
-the result. For example, the <code class="highlighter-rouge">percents</code> function we defined previously rounded
-to two decimal places every time. The following two-argument definition allows
-different calls to round to different amounts.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">percents</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">decimal_places</span><span class="p">):</span>
-    <span class="s">"""Convert the values in array_x to percents out of the total of array_x."""</span>
-    <span class="n">total</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">round</span><span class="p">((</span><span class="n">counts</span><span class="o">/</span><span class="n">total</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">decimal_places</span><span class="p">)</span>
-
-<span class="n">parts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Rounded to 1 decimal place: "</span><span class="p">,</span> <span class="n">percents</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Rounded to 2 decimal places:"</span><span class="p">,</span> <span class="n">percents</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Rounded to 3 decimal places:"</span><span class="p">,</span> <span class="n">percents</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: double() missing 1 required positional argument: 'x'
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rounded to 1 decimal place:  [28.6 14.3 57.1]
-Rounded to 2 decimal places: [28.57 14.29 57.14]
-Rounded to 3 decimal places: [28.571 14.286 57.143]
+<p>If we try and call it with more than one argument, we get an error.  We separate arguments with commas.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-14-00307dcfcdd5&gt; in &lt;module&gt;
+----&gt; 1 double(2, 3)
 
 </code></pre></div></div>
 
-<p>The flexibility of this new definition comes at a small price: each time the
-function is called, the number of decimal places must be specified. Default
-argument values allow a function to be called with a variable number of
-arguments; any argument that isn’t specified in the call expression is given
-its default value, which is stated in the first line of the <code class="highlighter-rouge">def</code> statement.
-For example, in this final definition of <code class="highlighter-rouge">percents</code>, the optional argument
-<code class="highlighter-rouge">decimal_places</code> is given a default value of 2.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">percents</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-    <span class="s">"""Convert the values in array_x to percents out of the total of array_x."""</span>
-    <span class="n">total</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">round</span><span class="p">((</span><span class="n">counts</span><span class="o">/</span><span class="n">total</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">decimal_places</span><span class="p">)</span>
-
-<span class="n">parts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Rounded to 1 decimal place:"</span><span class="p">,</span> <span class="n">percents</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Rounded to the default number of decimal places:"</span><span class="p">,</span> <span class="n">percents</span><span class="p">(</span><span class="n">parts</span><span class="p">))</span>
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: double() takes 1 positional argument but 2 were given
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rounded to 1 decimal place: [28.6 14.3 57.1]
-Rounded to the default number of decimal places: [28.57 14.29 57.14]
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-15-deb0fdbc1222&gt; in &lt;module&gt;
+----&gt; 1 double(2, 3, 4)
 
 </code></pre></div></div>
 
-<h3 id="note-methods">Note: Methods</h3>
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: double() takes 1 positional argument but 3 were given
+</code></pre></div></div>
 
-<p>Functions are called by placing argument expressions in parentheses after the
-function name. Any function that is defined in isolation is called in this way.
-You have also seen examples of methods, which are like functions but are called
-using dot notation, such as <code class="highlighter-rouge">some_table.sort(some_label)</code>. The functions that
-you define will always be called using the function name first, passing in all
-of the arguments.</p>
+<h2 id="function-arguments-are-expressions">Function arguments are expressions</h2>
 
-<div class="isa_info">
-<i class="fa fa-info-circle"></i>
-This page has content from the
-<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Functions_and_Tables.ipynb">
-Functions_and_Tables</a>
-notebook from the UC Berkeley course.  See the Berkeley course section of the
-<a href="/dsfe/license">license</a>
-</div>
+<p>Remember that Python knows that the arguments to a function are
+expressions, and evaluates them, before running the function.</p>
 
+<p>For example:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
+</code></pre></div></div>
+
+<p>All the procedure is the same as above.  Python evaluates the
+expression <code class="highlighter-rouge">2 + 3</code>, to get IR of int 5, then goes into function world,
+sets <code class="highlighter-rouge">x</code> to have the value IR of int 5, and continues from there.</p>
+
+<h2 id="functions-can-have-many-arguments">Functions can have many arguments</h2>
+
+<p>Now we define a new function:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</code></pre></div></div>
+
+<p>The new thing here is that the function signature <code class="highlighter-rouge">(a, b)</code> has two arguments, separated by commas.  We need to give the function two values, when we call it:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
+</code></pre></div></div>
+
+<p>If we do not give it exactly two arguments, we get an error.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-19-64960a6c4018&gt; in &lt;module&gt;
+----&gt; 1 multiply(2)
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: multiply() missing 1 required positional argument: 'b'
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-20-9581b07c2e6f&gt; in &lt;module&gt;
+----&gt; 1 multiply(2, 3, 4)
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: multiply() takes 2 positional arguments but 3 were given
+</code></pre></div></div>
+
+<h2 id="without-a-return-statement-functions-return-none">Without a return statement, functions return None</h2>
+
+<p>Our functions so far all have a <code class="highlighter-rouge">return</code> statement.  This is not true of every function.</p>
+
+<p>If your function does not have a return statement, the function returns the value <a href="none">None</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">silent_addition</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="n">second</span>
+</code></pre></div></div>
+
+<p>Notice that the body of this function has no <code class="highlighter-rouge">return</code> statement.  When we call it, it returns <code class="highlighter-rouge">None</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">silent_addition</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">result</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="ow">is</span> <span class="bp">None</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<h2 id="end-of-the-introduction">End of the introduction</h2>
+
+<p>That’s it for the introduction.  For a less basic description, have
+a look at the <a href="../extra/data8_functions">Berkeley introduction to
+functions</a>.</p>
+
+<p>Now try the <a href="../exercises/function_exercises">exercises</a>.</p>
 
           
         </section>
@@ -1032,9 +1205,7 @@ notebook from the UC Berkeley course.  See the Berkeley course section of the
         
   <nav class="pagination">
     
-      <a href="/dsfe/chapters/07/more_building_blocks" class="pagination--pager" title="
-  More building blocks
-
+      <a href="/dsfe/chapters/07/none" class="pagination--pager" title="7.2 None
 ">Previous</a>
     
     

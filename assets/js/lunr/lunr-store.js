@@ -159,7 +159,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/lists",
         "teaser":null},{
-        "title": "5.4 Ones and zeros",
+        "title": "5.5 Ones and zeros",
         "excerpt":"import numpy as npWe often want to create arrays with all zeros, or all ones. We do this with: np.zeros(5)array([0., 0., 0., 0., 0.])np.ones(3)array([1., 1., 1.])As ever, review the help with (for example): np.ones?In a new cell. You can ask for a 2D array by passing a list with the...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/ones_zeros",
@@ -195,7 +195,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/dsfe/chapters/07/conditional_statements",
         "teaser":null},{
         "title": "7.1 Functions",
-        "excerpt":"import numpy as npWriting functions We are building up a useful inventory of techniques for identifying patternsand themes in a data set by using functions already available in Python. Wewill now explore a core feature of the Python programming language: functiondefinition. We have used functions extensively already in this text,...","categories": [],
+        "excerpt":"Functions We have already used functions. For example, we have used the round function: a = 3.1415# Call the \"round\" functionb = round(a, 2)b3.14We will soon find that we often need to define our own functions.Before we do, we need to go into more detail about what functions are. Functions...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/07/functions",
         "teaser":null},{
@@ -203,6 +203,11 @@ var store = [{
         "excerpt":"We have already covered some important parts of programming for data science,such as expressions, variables, datatypes, arrays and dataframes. In this section, you cover the last two building blocks you will need asa foundation for your future analyses. These are:   Writing functions  Conditional statements","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/07/more_building_blocks",
+        "teaser":null},{
+        "title": "7.2 None",
+        "excerpt":"Python has a special value, called None, that it often uses to tellyou that it cannot give you a valid value. Unlike any other commonvalue in Python, if an expression evaluates to None, Python showsyou nothing at all for the value, in the notebook, or in aninteractive Python console. my_value...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/07/none",
         "teaser":null},{
         "title": "Brexit analysis",
         "excerpt":"Brexit - the data analysis We start, as usual, by importing all the libraries we need. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdAll about the Brexiteers Every year, the HansardSocietysponsors a survey on political engagement in the UK. They put topical...","categories": [],
@@ -225,7 +230,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/for_loops",
         "teaser":null},{
         "title": "Function exercises",
-        "excerpt":"Exercises on functions For background, please read the functions introduction. # To warm upimport numpy as np","categories": [],
+        "excerpt":"Exercises on functions For background, please read the functions introduction. This function is not properly defined, and will give a SyntaxError. Fix it, then run the call below to confirm it is working. function subtract(p, q): r = p - q return rsubtract(5, 10)This function also gives a SyntaxError. Fix...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/function_exercises",
         "teaser":null},{
@@ -238,6 +243,11 @@ var store = [{
         "excerpt":"Simulation exercises import numpy as npThree girls Of all families with exactly four children, what proportion have exactly threegirls? Solve by simulation. Penalty shootout technique Jen is the penalty taker for her football team. She’s been doing this for a long time. She thinks she normally has a 80%chance of...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/simulation",
+        "teaser":null},{
+        "title": "Berkeley introduction to functions",
+        "excerpt":"import numpy as npWriting functions We are building up a useful inventory of techniques for identifying patternsand themes in a data set by using functions already available in Python. Wewill now explore a core feature of the Python programming language: functiondefinition. We have used functions extensively already in this text,...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/extra/data8_functions",
         "teaser":null},{
         "title": "Extra pages",
         "excerpt":"This section has some extra notes that are not part of the main course.  You donot need to know the material in this section, but you might find itinteresting, or useful for your reference. ","categories": [],
