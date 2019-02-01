@@ -1,6 +1,11 @@
 ---
 jupyter:
   jupytext:
+    metadata_filter:
+      notebook:
+        additional: all
+        excluded:
+        - language_info
     text_representation:
       extension: .Rmd
       format_name: rmarkdown
@@ -10,6 +15,8 @@ jupyter:
     display_name: Python 3
     language: python
     name: python3
+  textbook:
+    run: false
 ---
 
 # Exercises on functions
@@ -129,7 +136,3 @@ def function_two(b):
 
 function_two(4)
 ```
-
-Please ignore the next line, it's for building the web page:
-
-UNRUN

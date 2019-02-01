@@ -17,6 +17,8 @@ from os.path import (abspath, join as pjoin, splitext, sep as fsep,
                      getmtime, isfile, dirname, isdir)
 from subprocess import check_call
 
+import nbformat
+
 
 def searchfor(path, extensions):
     """ Search `path` recursively for files with given `extensions`
@@ -148,6 +150,14 @@ class Build:
     def process_ipynb(self, base):
         return self._process_in_ext(base, '.ipynb', ('.md',))
 
+    def should_run(self, nb_fname):
+        with open(nb_fname, 'rt') as fobj:
+            nb = nbformat.read(fobj, as_version=4)
+        meta = nb['metadata']
+        if 'textbook' in meta and 'run' in meta['textbook']:
+            return meta['textbook']['run']
+        return True
+
     def process_nb_txt(self, base):
         nbb = pjoin(self.notebooks_folder, base)
         nb_src = nbb + self.nb_txt_ext
@@ -157,10 +167,8 @@ class Build:
             return self.process_ipynb(base)
         # Rebuild .ipynb
         check_call(['jupytext', '--to', 'notebook', nb_src])
-        # Run .ipynb
-        with open(nb_built, 'rt') as fobj:
-            run_me = 'UNRUN' not in fobj.read()
-        if run_me:
+        # Run .ipynb, unless we've been told not to.
+        if self.should_run(nb_built):
             check_call(['jupyter', 'nbconvert', '--inplace',
                         '--ExecutePreprocessor.kernel_name=python3',
                         '--to', 'notebook', '--execute', nb_built])
