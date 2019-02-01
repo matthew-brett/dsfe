@@ -181,14 +181,7 @@
 
       <section class="page__content" itemprop="text">
         
-        ```{python}
-# HIDDEN
-
-# The standard set of libraries we need
-import numpy as np
-```
-
-# Functions
+        # Functions
 
 We have already used functions.
 

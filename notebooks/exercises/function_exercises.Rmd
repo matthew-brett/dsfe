@@ -299,10 +299,6 @@ def function_two(b):
 function_two(4)
 ```
 
-Please ignore the next line, it's for building the web page:
-
-UNRUN
-
         
       </section>
 
