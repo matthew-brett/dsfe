@@ -14,16 +14,17 @@ permalink: /days/class_12
 ## Schedule
 
 * Data pitches
+* Team mixer
 * A brief introduction to [Github](https://github.com)
+* [None](../chapters/07/none)
 * [Functions](../chapters/07/functions)
 * [Function exercises](../chapters/exercises/function_exercises)
-* [Conditionals](../chapters/07/conditional_statements)
 
 ## Assignment
 
 * Make a [Github](https://github.com) account.  I suggest you make an
-  [education](https://education.github.com/students) account; you get some free
-  swag, and some useful features.
+  [education](https://education.github.com/students) account; you get
+  some free swag, and some useful features.
 * Add your Github user name to the class spreadsheet.
 * **Form groups**.  Seriously.
 * **Email me with your group and data description**

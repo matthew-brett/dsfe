@@ -43,8 +43,8 @@ Before we do, we need to go into more detail about what functions are.
 
 ## Functions are like recipes
 
-Thanks to [John
-Dero](https://www.inferentialthinking.com/chapters/08/Functions_and_Tables)
+Thanks to [the Berkeley
+team](https://www.inferentialthinking.com/chapters/08/Functions_and_Tables)
 for this metaphor.
 
 A recipe is the *procedure* to go from *ingredients* to a *meal*.
@@ -53,8 +53,8 @@ A function is the *procedure* to go from the *arguments* to the
 *return value*.
 
 For example, I might have a recipe with the procedure to go from the
-ingredients: two eggs; butter; and cheese \- to the meal
-- a cheese omelette.
+ingredients: two eggs; butter; and cheese \- to the meal \- a cheese
+omelette.
 
 The function `range` has the procedure to go from the arguments - two
 numbers, to the return value, which is the value of the first argument
@@ -67,10 +67,11 @@ remember.
 
 Likewise, the name `range` refers to a procedure above.  I could give it another name, like `my_function`, but `range` is a good name, because it helps me remember what the procedure does.
 
-I say `range` has a procedure, but we can't see what the procedure is,
-it's buried inside internal workings.
+I say `range` has a procedure, but we can't see what that procedure
+is, it's buried inside the internal workings of Python.
 
-Now we are going to write our own functions, were we can see the procedure.
+Now we are going to write our own function, where we can see the
+procedure.
 
 ## Revision on variables
 
@@ -145,7 +146,7 @@ Between the parentheses, we have the function signature.  This specifies how man
 
 Finally there is a colon `:` signifying the end of the signature.
 
-As for [for loops](../05/iteration), the colon signifies that the next
+As in [for loops](../05/iteration), the colon signifies that the next
 bit of code must be [indented](../05/indentation).
 
 Here is the indented part:
@@ -170,7 +171,7 @@ So, what just happened?
 1.  Python finds what `double` points to.  It points to internal
     representation of our function (procedure).
 1.  Next it sees the parenthesis `(` and sees that we want to *call*
-    our function (procedure).
+    our function.
 1.  Now Python knows we want to call the function, it knows that
     there are one or more *expressions* inside the parentheses.  In
     our case there is one, `4`.  As usual, it evaluates this
@@ -213,8 +214,8 @@ This state has two important features.
 The first feature of function world is that all variables defined
 inside function world, get thrown away when we leave function world.
 
-We can see this if we run the following code, from our usual top-level
-world, outside the function:
+We can see this if we run the following code in a notebook cell.  This
+code runs in our usual top-level world, and so, not inside a function.
 
 ```{python tags=c("raises-exception")}
 d
@@ -260,7 +261,8 @@ double(2, 3, 4)
 
 ## Function arguments are expressions
 
-Remember, above that Python knows that the arguments to a function are expressions, and evaluates them, before running the function.
+Remember that Python knows that the arguments to a function are
+expressions, and evaluates them, before running the function.
 
 For example:
 
@@ -288,7 +290,7 @@ The new thing here is that the function signature `(a, b)` has two arguments, se
 multiply(2, 3)
 ```
 
-If we give do not give it exactly two arguments, we get an error.
+If we do not give it exactly two arguments, we get an error.
 
 ```{python tags=c("raises-exception")}
 multiply(2)
@@ -296,6 +298,28 @@ multiply(2)
 
 ```{python tags=c("raises-exception")}
 multiply(2, 3, 4)
+```
+
+## Without a return statement, functions return None
+
+Our functions so far all have a `return` statement.  This is not true of every function.
+
+If your function does not have a return statement, the function returns the value [None](none).
+
+```{python}
+def silent_addition(first, second):
+    result = first + second
+```
+
+Notice that the body of this function has no `return` statement.  When we call it, it returns `None`:
+
+```{python}
+result = silent_addition(10, 12)
+result
+```
+
+```{python}
+result is None
 ```
 
 ## End of the introduction
