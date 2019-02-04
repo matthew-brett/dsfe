@@ -72,12 +72,11 @@ Full rubric will follow soon.  In summary:
 | 1    | 18 Jan     | Start to form teams       |
 | 2    | 25 Jan     | Data pitches 1            |
 | 3    |  1 Feb     | Data pitches 2            |
-| 4    |  4 Feb     | Teams finalized           |
-| 4    |  8 Feb     | Proposals                 |
-| 5    | 15 Feb     |                           |
+| 4    |  8 Feb     | Teams finalized           |
+| 5    | 15 Feb     | Proposals                 |
 | 6    | 22 Feb     |                           |
-| 7    |  1 Mar     | Progress reports          |
-| 8    |  8 Mar     |                           |
+| 7    |  1 Mar     |                           |
+| 8    |  8 Mar     | Progress reports          |
 | 9    | 15 Mar     |                           |
 | 10   | 22 Mar     | Presentations             |
 | 11   | 29 Mar     |                           |
