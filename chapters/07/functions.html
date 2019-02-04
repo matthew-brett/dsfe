@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-02-01T00:42:25+00:00">
+  <meta property="article:published_time" content="2019-02-04T10:06:00+00:00">
 
 
 
@@ -732,7 +732,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="7.1 Functions">
       <meta itemprop="description" content="Functions">
-      <meta itemprop="datePublished" content="February 01, 2019">
+      <meta itemprop="datePublished" content="February 04, 2019">
       
 
       <div class="page__inner-wrap">
@@ -766,6 +766,8 @@
   <li><a href="#python-checks-the-function-signature">Python checks the function signature</a></li>
   <li><a href="#function-arguments-are-expressions">Function arguments are expressions</a></li>
   <li><a href="#functions-can-have-many-arguments">Functions can have many arguments</a></li>
+  <li><a href="#function-can-have-no-arguments">Function can have no arguments</a></li>
+  <li><a href="#the-function-is-a-value-too">The function is a value too</a></li>
   <li><a href="#without-a-return-statement-functions-return-none">Without a return statement, functions return None</a></li>
   <li><a href="#end-of-the-introduction">End of the introduction</a></li>
 </ul>
@@ -1158,6 +1160,100 @@ sets <code class="highlighter-rouge">x</code> to have the value IR of int 5, and
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: multiply() takes 2 positional arguments but 3 were given
+</code></pre></div></div>
+
+<h2 id="function-can-have-no-arguments">Function can have no arguments</h2>
+
+<p>Perhaps the recipe analogy breaks down here, but sometimes functions take no arguments.  For example:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Notice - nothing between the parentheses
+</span>
+<span class="k">def</span> <span class="nf">biased_coin</span><span class="p">():</span>
+    <span class="c1"># A single random number
+</span>    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
+    <span class="c1"># A biased coin
+</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="mf">0.45</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></div>
+
+<p>When we call the function, we have no arguments, so no expressions between the parentheses.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">biased_coin</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<p>As you would expect by now, if we try and send an argument, Python will complain:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">biased_coin</span><span class="p">(</span><span class="mf">0.45</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-23-256c7c6a08cf&gt; in &lt;module&gt;
+----&gt; 1 biased_coin(0.45)
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: biased_coin() takes 0 positional arguments but 1 was given
+</code></pre></div></div>
+
+<h2 id="the-function-is-a-value-too">The function is a value too</h2>
+
+<p>You may have noticed the section above, where talked about functions having names.  In fact, function names are just variables.  Consider the <code class="highlighter-rouge">range</code> function.  Here I use <code class="highlighter-rouge">range</code> on its own.  In fact <code class="highlighter-rouge">range</code> is just a variable name, where the variable points to the internal representation of the function (procedure).   I can use <code class="highlighter-rouge">range</code> on its own, just as I could use any other variable name, and it is an expression, that returns the value of <code class="highlighter-rouge">range</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">range</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>range
+</code></pre></div></div>
+
+<p>Likewise, <code class="highlighter-rouge">biased_coin</code> above is a variable name, where the variable points to the internal representation of the <code class="highlighter-rouge">biased_coin</code> procedure:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">biased_coin</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;function __main__.biased_coin()&gt;
+</code></pre></div></div>
+
+<p>What do you think you would get from the following?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">biased_coin</span> <span class="o">+</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-26-50cbcc25c956&gt; in &lt;module&gt;
+----&gt; 1 biased_coin + 2
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: unsupported operand type(s) for +: 'function' and 'int'
+</code></pre></div></div>
+
+<p>Why is this?  Python evaluates the first expression <code class="highlighter-rouge">biased_coin</code>; it
+is a variable pointing to a internal representation of a function, so
+the first value is a function.  The second value is IR of int 2.  It
+tries to add the IR of a function to the IR of an int, and fails.</p>
+
+<p>This reminds us that, in order to apply the procedure, we need to <em>call</em> the function.  We do this, as you know, by using parentheses after the function, to make a <em>call expression</em>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">biased_coin</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
 </code></pre></div></div>
 
 <h2 id="without-a-return-statement-functions-return-none">Without a return statement, functions return None</h2>
