@@ -18,7 +18,6 @@ permalink: /days/class_12
 * A brief introduction to [Github](https://github.com)
 * [None](../chapters/07/none)
 * [Functions](../chapters/07/functions)
-* [Function exercises](../chapters/exercises/function_exercises)
 
 ## Assignment
 

@@ -23,7 +23,7 @@ my_value = None
 my_value
 ```
 
-```
+```{python}
 # This next line is an expression, evalating to None
 None
 ```

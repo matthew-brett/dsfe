@@ -8,12 +8,30 @@ permalink: /days/class_13
 
 ## Announcements
 
-* TBA
+*   A reminder about the updated [project schedule](../project)
+*   From {% cite millman2018rcsds %}:
+
+    In answer to "What advice would you give to another student who is considering taking this course?":
+
+    > Unlike most group projects (which last for maybe a few weeks
+    > tops or could conceivably be pulled off by one very dedicated
+    > person), this one will dominate the entire semester. . . . Try
+    > to stay organized for the project and create lots of little
+    > goals and checkpoints. You should always be working on something
+    > for the project, whether that's coding, reviewing, writing, etc.
+    > Ask lots of questions and ask them early!
+
+*   Contributions
 
 ## Schedule
 
-* TBA
+*   Final team mixer
+*   [Functions](../chapters/07/functions)
+*   [Function exercises](../chapters/exercises/function_exercises)
+*   [Conditional statements](../chapters/07/conditional_statements)
+*   [Conditional statement
+    exercises](../chapters/exercises/conditional_statement_exercises)
 
 ## Assignment
 
-TBA
+* TBA
