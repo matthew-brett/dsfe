@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-02-04T10:06:00+00:00">
+  <meta property="article:published_time" content="2019-02-07T23:56:50+00:00">
 
 
 
@@ -671,6 +671,16 @@
 
             <li><a href="/dsfe/chapters/exercises/function_exercises" class="level_1">Function exercises</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/conditional_statements_exercises" class="level_1">Conditional statemet exercises</a></li>
+          
         </ul>
         
       </li>
@@ -732,7 +742,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="7.1 Functions">
       <meta itemprop="description" content="Functions">
-      <meta itemprop="datePublished" content="February 04, 2019">
+      <meta itemprop="datePublished" content="February 07, 2019">
       
 
       <div class="page__inner-wrap">
@@ -767,8 +777,9 @@
   <li><a href="#function-arguments-are-expressions">Function arguments are expressions</a></li>
   <li><a href="#functions-can-have-many-arguments">Functions can have many arguments</a></li>
   <li><a href="#function-can-have-no-arguments">Function can have no arguments</a></li>
-  <li><a href="#the-function-is-a-value-too">The function is a value too</a></li>
   <li><a href="#without-a-return-statement-functions-return-none">Without a return statement, functions return None</a></li>
+  <li><a href="#the-function-is-a-value-too">The function is a value too</a></li>
+  <li><a href="#a-variable-can-point-to-a-function">A variable can point to a function</a></li>
   <li><a href="#end-of-the-introduction">End of the introduction</a></li>
 </ul>
     </nav>
@@ -1206,6 +1217,28 @@ sets <code class="highlighter-rouge">x</code> to have the value IR of int 5, and
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: biased_coin() takes 0 positional arguments but 1 was given
 </code></pre></div></div>
 
+<h2 id="without-a-return-statement-functions-return-none">Without a return statement, functions return None</h2>
+
+<p>Our functions so far all have a <code class="highlighter-rouge">return</code> statement.  This is not true of every function.</p>
+
+<p>If your function does not have a return statement, the function returns the value <a href="none">None</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">silent_addition</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="n">second</span>
+</code></pre></div></div>
+
+<p>Notice that the body of this function has no <code class="highlighter-rouge">return</code> statement.  When we call it, it returns <code class="highlighter-rouge">None</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">silent_addition</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">result</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="ow">is</span> <span class="bp">None</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
 <h2 id="the-function-is-a-value-too">The function is a value too</h2>
 
 <p>You may have noticed the section above, where talked about functions having names.  In fact, function names are just variables.  Consider the <code class="highlighter-rouge">range</code> function.  Here I use <code class="highlighter-rouge">range</code> on its own.  In fact <code class="highlighter-rouge">range</code> is just a variable name, where the variable points to the internal representation of the function (procedure).   I can use <code class="highlighter-rouge">range</code> on its own, just as I could use any other variable name, and it is an expression, that returns the value of <code class="highlighter-rouge">range</code>:</p>
@@ -1235,7 +1268,7 @@ sets <code class="highlighter-rouge">x</code> to have the value IR of int 5, and
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-26-50cbcc25c956&gt; in &lt;module&gt;
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-29-50cbcc25c956&gt; in &lt;module&gt;
 ----&gt; 1 biased_coin + 2
 
 </code></pre></div></div>
@@ -1256,27 +1289,44 @@ tries to add the IR of a function to the IR of an int, and fails.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
 </code></pre></div></div>
 
-<h2 id="without-a-return-statement-functions-return-none">Without a return statement, functions return None</h2>
+<h2 id="a-variable-can-point-to-a-function">A variable can point to a function</h2>
 
-<p>Our functions so far all have a <code class="highlighter-rouge">return</code> statement.  This is not true of every function.</p>
+<p>This will take a little getting used to.</p>
 
-<p>If your function does not have a return statement, the function returns the value <a href="none">None</a>.</p>
+<p>Remember, an <em>assignment statement</em> gives a <em>value</em> (from the right-hand side) to the <em>variable</em> on the left-hand side.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">silent_addition</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="n">second</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
 </code></pre></div></div>
 
-<p>Notice that the body of this function has no <code class="highlighter-rouge">return</code> statement.  When we call it, it returns <code class="highlighter-rouge">None</code>:</p>
+<p>As we know, we can read this as “The variable ‘a’ gets the value IR of
+2”.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">silent_addition</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-<span class="n">result</span>
+<p>We also know from the section above, that the function is a value.</p>
+
+<p>Can we set a variable to get a function as a value?  Yes. Look at this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_function</span> <span class="o">=</span> <span class="n">biased_coin</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="ow">is</span> <span class="bp">None</span>
+<p>Read this in the normal way: “The variable ‘my_function’ gets the value
+…”.  What is the value?  The value is the result of evaluating
+<code class="highlighter-rouge">biased_coin</code>, and you know what that is, from above.  It’s the
+internal representation (IR) of the function.</p>
+
+<p>So we read the statement as “The variable ‘my_function’ gets the value IR of the function originally called ‘biased_coin’”.</p>
+
+<p>What do you think we would see if we evaluate this expression:
+<code class="highlighter-rouge">my_function()</code>?</p>
+
+<p>What will Python do?  It first evaluates <code class="highlighter-rouge">my_function</code>, and gets the value, which is the IR of the function.  Then it sees the parentheses following, so it <em>calls</em> the function.  What function?  The function originally called “biased_coin”.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_function</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
 </code></pre></div></div>
+
+<p>Remember that the expression <code class="highlighter-rouge">my_function</code> is not the same as the expression <code class="highlighter-rouge">my_function()</code>.  <code class="highlighter-rouge">my_function</code> evaluates to the IR of the function.  <code class="highlighter-rouge">my_function()</code> evaluates to result of <em>calling</em> the IR of the function.</p>
 
 <h2 id="end-of-the-introduction">End of the introduction</h2>
 

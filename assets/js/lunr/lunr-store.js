@@ -190,7 +190,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/dsfe/chapters/06/sorting_arrays",
         "teaser":null},{
         "title": "7.2 Conditional statements",
-        "excerpt":"Conditional Statements In many situations, actions and results depends on a specific set of conditionsbeing satisfied. For example, individuals in randomized controlled trialsreceive the treatment if they have been assigned to the treatment group.A gambler makes money if she wins her bet. In this section we will learn how to...","categories": [],
+        "excerpt":"Conditional Statements In many situations, actions and results depends on a specific set ofconditions being satisfied. For example, individuals in randomizedcontrolled trials receive the treatment if they have been assigned tothe treatment group. A gambler makes money if she wins her bet. In this section we will learn how to...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/07/conditional_statements",
         "teaser":null},{
@@ -213,6 +213,11 @@ var store = [{
         "excerpt":"Brexit - the data analysis We start, as usual, by importing all the libraries we need. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdAll about the Brexiteers Every year, the HansardSocietysponsors a survey on political engagement in the UK. They put topical...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/brexit_analysis",
+        "teaser":null},{
+        "title": "Conditional statemet exercises",
+        "excerpt":"Exercises on conditional statements For background, please read the conditionalstatements introduction. This if statement is not properly defined, and will give a SyntaxError. Fix it, then run to confirm it prints 'x greater than 4': x = 10x &gt; 4: print('x greater than 4')This if statement also gives a SyntaxError....","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/conditional_statements_exercises",
         "teaser":null},{
         "title": "Data frames",
         "excerpt":"Data Frames By Alex Jermakov We will start, as usual, by importing all the libraries we need. import pandas as pdimport numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')Now we are going to need some data. Go ahead and downloadiris.csv and import it asa dataframe (save the file to...","categories": [],

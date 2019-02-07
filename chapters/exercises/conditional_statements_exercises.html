@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>3.10 Selecting with arrays - Data Science for Everyone</title>
-<meta name="description" content="Selecting values from an array">
+<!-- begin _includes/seo.html --><title>Conditional statemet exercises - Data Science for Everyone</title>
+<meta name="description" content="Exercises on conditional statements">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="3.10 Selecting with arrays">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/03/array_indexing">
+<meta property="og:title" content="Conditional statemet exercises">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/exercises/conditional_statements_exercises">
 
 
-  <meta property="og:description" content="Selecting values from an array">
+  <meta property="og:description" content="Exercises on conditional statements">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/03/array_indexing">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/exercises/conditional_statements_exercises">
 
 
 
@@ -740,15 +740,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="3.10 Selecting with arrays">
-      <meta itemprop="description" content="Selecting values from an array">
+      <meta itemprop="headline" content="Conditional statemet exercises">
+      <meta itemprop="description" content="Exercises on conditional statements">
       <meta itemprop="datePublished" content="February 07, 2019">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">3.10 Selecting with arrays
+            <h1 id="page-title" class="page__title" itemprop="headline">Conditional statemet exercises
 </h1>
           </header>
         
@@ -760,191 +760,56 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
-  <aside class="sidebar__right">
-    <nav class="toc">
-      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
-      <ul class="toc__menu">
-  <li><a href="#indexing-with-boolean-arrays">Indexing with Boolean arrays</a></li>
-  <li><a href="#exercises">Exercises</a>
-    <ul>
-      <li><a href="#indexing-with-integers">Indexing with integers</a></li>
-    </ul>
-  </li>
-</ul>
-    </nav>
-  </aside>
-
 
           
           <!-- INTERACT LINKS -->
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/03/array_indexing.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F03%2Farray_indexing.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/exercises/conditional_statements_exercises.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2Fexercises%2Fconditional_statements_exercises.ipynb">Interact</a>
 
 
-          <h1 id="selecting-values-from-an-array">Selecting values from an array</h1>
+          <h1 id="exercises-on-conditional-statements">Exercises on conditional statements</h1>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<p>For background, please read the <a href="../07/conditional_statements">conditional
+statements</a> introduction.</p>
+
+<p>This <em>if statement</em> is not properly defined, and will give a <code class="highlighter-rouge">SyntaxError</code>.  Fix it, then run to confirm it prints <code class="highlighter-rouge">'x greater than 4'</code>:</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = 10
+x &gt; 4:
+    print('x greater than 4')
 </code></pre></div></div>
 
-<p>We use arrays all the time, in data science.</p>
+<p>This if statement also gives a <code class="highlighter-rouge">SyntaxError</code>. Fix and run. It should
+print <code class="highlighter-rouge">-8</code>;</p>
 
-<p>One of the most common tasks we have to do on arrays, is to select values.</p>
-
-<p>We do this with <em>array slicing</em>.</p>
-
-<p>We do array slicing when we follow the array variable name with
-<code class="highlighter-rouge">[</code> (open square brackets), followed by something to specify
-which elements we want, followed by <code class="highlighter-rouge">]</code> (close square brackets.</p>
-
-<p>The simplest case is when we want a single element from a one-dimensional array.  In that case the thing between the <code class="highlighter-rouge">[</code> and the <code class="highlighter-rouge">]</code> is the <em>index</em> of the value that we want.</p>
-
-<p>The <em>index</em> of the first value is 0, the index of the second value is 2, and so on.</p>
-
-<p>Here’s an example:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a 1-dimensional array with three values
-</span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
-<span class="n">my_array</span>
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>p = -2
+if p &lt; 0
+    p = p * 4
+print(p)
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([10, 20, 30])
+<p>Another <code class="highlighter-rouge">SyntaxError</code>; fix and run.  It should print <code class="highlighter-rouge">a divided by 6
+is 4</code></p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 24
+if a / 6 == 4:
+print('a divided by 6 is 4')
 </code></pre></div></div>
 
-<p>Here we get the first value.  This value is at index 0.</p>
+<p>We want an algorithm to choose a newspaper for someone to read in the
+dentist’s waiting room, given what we know about their views on
+Brexit.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the first value (at index position 0)
-</span><span class="n">my_array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<p>Write a cell that prints <code class="highlighter-rouge">Times</code> if <code class="highlighter-rouge">voter</code> has the value <code class="highlighter-rouge">Soft Brexit</code>, otherwise prints <code class="highlighter-rouge">Telegraph</code> if <code class="highlighter-rouge">voter</code> has the value <code class="highlighter-rouge">Hard Brexit</code> otherwise prints <code class="highlighter-rouge">Guardian</code> if <code class="highlighter-rouge">voter</code> has value <code class="highlighter-rouge">remain</code>, otherwise prints <code class="highlighter-rouge">No idea</code>.</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Try for different values of voter
+voter = 'Hard Brexit'
+# Your code here
+if voter ...
 </code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the second value (at index position 1)
-</span><span class="n">my_array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>20
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the third value (at index position 2)
-</span><span class="n">my_array</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
-</code></pre></div></div>
-
-<p>At first this will take some time to get used to, that the first
-value is at index position 0.  There are good reasons for this,
-and many programming languages have this convention, but it does a while to get this habit of mind.</p>
-
-<p>We will see more of this kind of array slicing soon.</p>
-
-<h2 id="indexing-with-boolean-arrays">Indexing with Boolean arrays</h2>
-
-<p>We often want to select several elements from an array according to some criterion.</p>
-
-<p>The most common way to do this, is to do array slicing, using
-a Boolean array between the square brackets.</p>
-
-<p>It may be easier to understand this by example.</p>
-
-<p>You have already come across Boolean arrays.</p>
-
-<p>These are arrays of <code class="highlighter-rouge">True</code> and <code class="highlighter-rouge">False</code> values.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">randoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">randoms</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.09, 0.53, 0.17, 0.03])
-</code></pre></div></div>
-
-<p>Here is a Boolean array, created from applying a comparison to an array:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">less_than_0p5</span> <span class="o">=</span> <span class="n">randoms</span> <span class="o">&lt;</span> <span class="mf">0.5</span>
-<span class="n">less_than_0p5</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True, False,  True,  True])
-</code></pre></div></div>
-
-<p>As you have already seen, we can do things like count the number
-of <code class="highlighter-rouge">True</code> values in the Boolean array:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">less_than_0p5</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
-</code></pre></div></div>
-
-<p>Now let us say that we wanted to get the elements from <code class="highlighter-rouge">randoms</code>
-that are less than 0.5.   That is, we want to get the elements
-in <code class="highlighter-rouge">randoms</code> for which the corresponding element in
-<code class="highlighter-rouge">less_than_0p5</code> is <code class="highlighter-rouge">True</code>.</p>
-
-<p>We can do this with <em>Boolean array indexing</em>.  The Boolean array goes between the square brackets, like this:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">randoms</span><span class="p">[</span><span class="n">less_than_0p5</span><span class="p">]</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.09, 0.17, 0.03])
-</code></pre></div></div>
-
-<p>We have selected the numbers in <code class="highlighter-rouge">random</code> that are less than 0.5.</p>
-
-<h2 id="exercises">Exercises</h2>
-
-<p>So far we have seen arrays that contain numbers. Here is an
-array that contains strings:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_words</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s">'to'</span><span class="p">,</span> <span class="s">'be'</span><span class="p">,</span> <span class="s">'or'</span><span class="p">,</span> <span class="s">'not'</span><span class="p">,</span> <span class="s">'to'</span><span class="p">,</span> <span class="s">'be'</span><span class="p">])</span>
-<span class="n">some_words</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['to', 'be', 'or', 'not', 'to', 'be'], dtype='&lt;U3')
-</code></pre></div></div>
-
-<h3 id="indexing-with-integers">Indexing with integers</h3>
-
-<p>Use indexing with integers to display the first word in
-<code class="highlighter-rouge">some_words</code>.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Your code here
-</span></code></pre></div></div>
-
-<p>Use indexing with integers to display the word “not”.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Your code here
-</span></code></pre></div></div>
-
-<p>Here is a Boolean array that has <code class="highlighter-rouge">True</code> where the word in the matching position of <code class="highlighter-rouge">some_words</code> is “be”:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bees</span> <span class="o">=</span> <span class="n">some_words</span> <span class="o">==</span> <span class="s">'be'</span>
-<span class="n">bees</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False,  True, False, False, False,  True])
-</code></pre></div></div>
-
-<p>Use Boolean indexing to show an array with the two instances of “be” from <code class="highlighter-rouge">some_words</code>.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Your code here
-</span></code></pre></div></div>
-
-<p>Use Boolean indexing to show an array with the two instances of “to” from <code class="highlighter-rouge">some_words</code>.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Your code here
-</span></code></pre></div></div>
-
-<p>Use Boolean indexing to show an array with the single instance
-of “not” from <code class="highlighter-rouge">some_words</code>.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Your code here
-</span></code></pre></div></div>
 
 
           
@@ -962,13 +827,11 @@ of “not” from <code class="highlighter-rouge">some_words</code>.</p>
         
   <nav class="pagination">
     
-      <a href="/dsfe/chapters/03/three_girls" class="pagination--pager" title="3.9 Revision - three girls
+      <a href="/dsfe/chapters/exercises/function_exercises" class="pagination--pager" title="Function exercises
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/04/data_frames" class="pagination--pager" title="
-  Data frames
-
+      <a href="/dsfe/chapters/extra/extra" class="pagination--pager" title="Extra pages
 ">Next</a>
     
   </nav>

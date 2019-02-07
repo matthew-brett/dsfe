@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
 <meta property="og:title" content="Data Science for Everyone">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/07/none.Rmd">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/exercises/conditional_statements_exercises.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/07/none.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/exercises/conditional_statements_exercises.Rmd">
 
 
 
@@ -181,26 +181,49 @@
 
       <section class="page__content" itemprop="text">
         
-        Python has a special value, called `None`, that it often uses to tell
-you that it cannot give you a valid value.  Unlike any other common
-value in Python, if an expression evaluates to `None`, Python shows
-you nothing at all for the value, in the notebook, or in an
-interactive Python console.
+        # Exercises on conditional statements
+
+For background, please read the [conditional
+statements](../07/conditional_statements) introduction.
+
+This *if statement* is not properly defined, and will give a `SyntaxError`.  Fix it, then run to confirm it prints `'x greater than 4'`:
 
 ```{python}
-my_value = None
-my_value
+x = 10
+x > 4:
+    print('x greater than 4')
 ```
 
+This if statement also gives a `SyntaxError`. Fix and run. It should
+print `-8`;
+
 ```{python}
-# This next line is an expression, evalating to None
-None
+p = -2
+if p < 0
+    p = p * 4
+print(p)
 ```
 
-We can see if we got the value `None` by using the `is` comparison operator.  Here is an expression, using the `is` operator, that evaluates to True.
+Another `SyntaxError`; fix and run.  It should print `a divided by 6
+is 4`
 
 ```{python}
-my_value is None
+a = 24
+if a / 6 == 4:
+print('a divided by 6 is 4')
+```
+
+We want an algorithm to choose a newspaper for someone to read in the
+dentist's waiting room, given what we know about their views on
+Brexit.
+
+Write a cell that prints `Times` if `voter` has the value `Soft Brexit`, otherwise prints `Telegraph` if `voter` has the value `Hard Brexit` otherwise prints `Guardian` if `voter` has value `remain`, otherwise prints `No idea`.
+
+```{python}
+# Try for different values of voter
+voter = 'Hard Brexit'
+# Your code here
+if voter ...
 ```
 
         
