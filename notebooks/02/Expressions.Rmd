@@ -57,11 +57,10 @@ will show a `SyntaxError` error. The *Syntax* of a language is its set of
 grammar rules, and a `SyntaxError` indicates that an expression structure
 doesn't match any of the rules of the language.
 
-Try executing the next line after removing the `#` character at the beginning
-of the line
+For example, consider this code, and the resulting error:
 
-```{python}
-# 3 * * 4
+```{python tags=c("raises-exception")}
+3 * * 4
 ```
 
 Small changes to an expression can change its meaning entirely. Below, the
