@@ -39,3 +39,9 @@ padding:12px;
     font-size:2em;
     vertical-align:middle;
 }
+
+
+/* fix invisible True and None */
+.highlight .bp {
+    color: #088A08;
+}
