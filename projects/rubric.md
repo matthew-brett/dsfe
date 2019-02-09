@@ -28,6 +28,10 @@ and 75-100% (good pass to excellent).
 Notice that your project presentation is one category; see [the project
 page](../project) for schedule.
 
+<!---
+https://divtable.com/converter/
+-->
+
 <table style="width: 1020.45px;"><colgroup> <col style="width: 12%;" /> <col style="width: 28%;" /> <col style="width: 29%;" /> <col style="width: 29%;" /> </colgroup>
 <tbody>
 <tr class="odd">
