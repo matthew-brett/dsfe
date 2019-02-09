@@ -58,12 +58,15 @@ See [data for projects](projects/data)
 
 ## Marking
 
-Full rubric will follow soon.  In summary:
+See [the tentative rubric](projects/rubric).
 
-*   project marked for clarity, depth, validity and reproducibility.
-*   each member of the project submits a summary of their own
-    contribution, with evidence from the public record of
-    collaboration.
+In summary:
+
+*   Project marked for clarity, depth, validity and reproducibility (70% of
+    project grade);
+*   Each member of the project submits a summary of their own contribution,
+    with evidence from the public record of collaboration (30% of project
+    grade).
 
 ## Dates
 
