@@ -136,7 +136,7 @@ Example instructions for a simple report might be:
 
 > The UK police publish various statistics about their work at
 > <https://data.police.uk/data>.
-
+>
 > Go to this site, select "August 2018" as the start and end of the "Date
 > range", select "West Midlands" in the "Forces" panel, unselect "include
 > crime data" and select "include stop and search data".  Download
@@ -146,7 +146,7 @@ Example instructions for a simple report might be:
 >
 > Open `clean_data.ipynb` and run all cells.  This checks and cleans the data,
 > writing out the cleaner version as `2018-08-wm-ss-cleaned.csv`.
-
+>
 > Open `analyze_data.ipynb` and run all cells.  This writes out the figures
 > `figure1.png` and `figure2.png` that you see in our report.
 >
