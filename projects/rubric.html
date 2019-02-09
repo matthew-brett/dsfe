@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Project grading rubric - Data Science for Everyone</title>
+<meta name="description" content="">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="Project grading rubric">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/projects/rubric">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/projects/rubric">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/dsfe/">
+          <img src="/dsfe/images/dsfe_logo.png" class="masthead_logo" />
+          Data Science for Everyone
+        </a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+            </li>
+          
+          
+            <li class="masthead__menu-item">
+              <a href="/dsfe/chapters/01/what-is-data-science">Textbook</a>
+            </li>
+          
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Project grading rubric">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Project grading rubric
+</h1> -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="dsfe-2018-project-grading-rubric">DSFE 2018 project grading rubric</h1>
+
+<p><strong>This rubric is tentative.  It needs to be approved by a moderator.</strong></p>
+
+<p>Your total project mark is out of 100.  This mark in turn makes up 70% of your
+course grade.</p>
+
+<p>There are two components to this assessment: the project and your contribution.
+70% of the project marks are for the project itself; see the categories below.</p>
+
+<p>30% of the marks are for your contribution; see heading below.</p>
+
+<h2 id="project-grades">Project grades</h2>
+
+<p>Each of the following sections is worth 7 marks, for a total of 70.</p>
+
+<p>For each row, the table gives a description of work that will earn: between 0
+and 50% in this category (fail to bare pass); 50-75% (bare pass to good pass);
+and 75-100% (good pass to excellent).</p>
+
+<p>Notice that your project presentation is one category; see <a href="../project">the project
+page</a> for schedule.</p>
+
+<table style="width: 1020.45px;"><colgroup> <col style="width: 12%;" /> <col style="width: 28%;" /> <col style="width: 29%;" /> <col style="width: 29%;" /> </colgroup>
+<tbody>
+<tr class="odd">
+<td style="width: 124px;"></td>
+<td style="width: 291px;">0-50%</td>
+<td style="width: 301px;">50-75%</td>
+<td style="width: 301.45px;">75-100</td>
+</tr>
+<tr class="even">
+<td style="width: 124px;">Questions</td>
+<td style="width: 291px;">Questions overly simplistic, unrelated, or unmotivated</td>
+<td style="width: 301px;">Questions appropriate, coherent, and motivated</td>
+<td style="width: 301.45px;">Questions well motivated, interesting, insightful, and novel</td>
+</tr>
+<tr class="odd">
+<td style="width: 124px;">Analysis</td>
+<td style="width: 291px;">Choice of analysis is overly simplistic or incomplete</td>
+<td style="width: 301px;">Analysis appropriate</td>
+<td style="width: 301.45px;">Analysis appropriate, complete, advanced, and informative</td>
+</tr>
+<tr class="even">
+<td style="width: 124px;">Results</td>
+<td style="width: 291px;">
+<p>Conclusions are missing, incorrect, or not based on analysis</p>
+<p>Inappropriate choice of plots; poorly labeled plots; plots missing</p>
+</td>
+<td style="width: 301px;">
+<p>Conclusions relevant, but partially correct or partially complete</p>
+<p>Plots convey information but lack context for interpretation</p>
+</td>
+<td style="width: 301.45px;">
+<p>Relevant conclusions explicitly tied to analysis and to context</p>
+<p>Plots convey information correctly with adequate and appropriate reference information</p>
+</td>
+</tr>
+<tr class="odd">
+<td style="width: 124px;">Code review</td>
+<td style="width: 291px;">Little evidence that group members are giving constructive feedback on each other's code.</td>
+<td style="width: 301px;">Some evidence that group members are giving constructive feedback on each other's code, leading to better code.</td>
+<td style="width: 301.45px;">Extensive evidence that group members are giving constructive feedback on each other's code, leading to better code.</td>
+</tr>
+<tr class="even">
+<td style="width: 124px;">Documentation</td>
+<td style="width: 291px;">Poorly documented</td>
+<td style="width: 301px;">Adequately documented</td>
+<td style="width: 301.45px;">Well documented</td>
+</tr>
+<tr class="odd">
+<td style="width: 124px;">Readability</td>
+<td style="width: 291px;">Code readability inconsistent or poor</td>
+<td style="width: 301px;">Code readability consistent and good quality</td>
+<td style="width: 301.45px;">Code readability excellent</td>
+</tr>
+<tr class="even">
+<td style="width: 124px;">Organization</td>
+<td style="width: 291px;">Poorly organized and structured project directory</td>
+<td style="width: 301px;">Reasonably organized and clear structure</td>
+<td style="width: 301.45px;">Elegant and transparent organization of code and data.</td>
+</tr>
+<tr class="odd">
+<td style="width: 124px;">Presentation</td>
+<td style="width: 291px;">
+<p>Verbal presentation is illogical, incorrect, or incoherent.</p>
+<p>Visual presentation is cluttered, disjoint, or illegible</p>
+<p>Verbal and visual presentation unrelated</p>
+</td>
+<td style="width: 301px;">
+<p>Verbal presentation partially correct but incomplete or unconvincing</p>
+<p>Visual presentation is readable and clear</p>
+<p>Verbal and visual presentation related</p>
+</td>
+<td style="width: 301.45px;">
+<p>Verbal presentation is correct, complete, and convincing</p>
+<p>Visual presentation is appealing, informative, and crisp</p>
+<p>Verbal and visual presentation clearly related</p>
+</td>
+</tr>
+<tr class="even">
+<td style="width: 124px;">Writing</td>
+<td style="width: 291px;">Explanation is illogical, incorrect, or incoherent</td>
+<td style="width: 301px;">Explanation is correct, complete, and convincing</td>
+<td style="width: 301.45px;">Explanation is correct, complete, convincing, and elegant</td>
+</tr>
+<tr class="odd">
+<td style="width: 124px;">Reproduciblity</td>
+<td style="width: 291px;">Code didn't run</td>
+<td style="width: 301px;">Recipes in project directory correctly fetch data and generate all results and figures in report</td>
+<td style="width: 301.45px;">Recipes additionally validate fetched data. They generate all exploratory work and supplementary analysis</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="project-report">Project report</h2>
+
+<p>Your project report should be around 3000 words of explanatory text and code,
+not including figures and tables.</p>
+
+<p>It can be in the form of a PDF document, or a Jupyter Notebook.</p>
+
+<p>Your project report should be <em>reproducible</em>.  There should be a file in your
+project, called <code class="highlighter-rouge">README.md</code>, in <a href="https://www.markdowntutorial.com">Markdown</a>
+format, that gives the steps which will exactly reproduce the numbers, tables
+and figures in your report, starting by fetching your data from their source.</p>
+
+<p>Example instructions for a simple report might be:</p>
+
+<blockquote>
+  <p>The UK police publish various statistics about their work at
+<a href="https://data.police.uk/data">https://data.police.uk/data</a>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Go to this site, select “August 2018” as the start and end of the “Date
+range”, select “West Midlands” in the “Forces” panel, unselect “include
+crime data” and select “include stop and search data”.  Download
+and unpack the generated zip file, to give the file
+<code class="highlighter-rouge">2018-08-west-midlands-stop-and-search.csv</code>.  This should exactly match the
+copy of the data in our project directory, with the same name.</p>
+
+  <p>Open <code class="highlighter-rouge">clean_data.ipynb</code> and run all cells.  This checks and cleans the data,
+writing out the cleaner version as <code class="highlighter-rouge">2018-08-wm-ss-cleaned.csv</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Open <code class="highlighter-rouge">analyze_data.ipynb</code> and run all cells.  This writes out the figures
+<code class="highlighter-rouge">figure1.png</code> and <code class="highlighter-rouge">figure2.png</code> that you see in our report.</p>
+
+  <p>Open <code class="highlighter-rouge">simulate_data.ipynb</code> and run all cells.  This writes out tables 1 and 2
+that you see in our report.</p>
+</blockquote>
+
+<h2 id="personal-contribution">Personal contribution</h2>
+
+<p>Each team member should submit a document of up to 1500 words describing their
+contribution to the project, under any of the following headings:</p>
+
+<ul>
+  <li>Development of question / hypothesis;</li>
+  <li>Data research: search for relevant data to contribute to question;</li>
+  <li>Literature review;</li>
+  <li>Analysis strategy;</li>
+  <li>Analysis code;</li>
+  <li>Code review;</li>
+  <li>Work planning and organization;</li>
+  <li>Improving teamwork and collaboration;</li>
+  <li>Testing code and procedures;</li>
+  <li>Writing report.</li>
+</ul>
+
+<p>You should describe your own contribution, and any work you did to help other
+people contribute to the same area.</p>
+
+<p>You can add other headings if you think we should consider them.</p>
+
+<p>For each heading, give any evidence for your contribution from project files or other data that is accessible to us, your graders.</p>
+
+<p>The mark guidelines for this part are:</p>
+
+<ul>
+  <li>0-50%: little evidence of contribution or collaboration.  Contributions under
+few headings.  Little effort to help other team members contribute.</li>
+  <li>50-75%: moderate evidence of contribution and collaboration.  Contributions
+under many headings; substantial contributions to more than one heading.  Evidence that you helped other team members contribute across some headings.</li>
+  <li>75-100%: strong evidence of contribution and collaboration.  Some
+contribution to nearly all headings; substantial contributions across the
+majority of headings.  Strong evidence that you helped other team members contribute across several headings.</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

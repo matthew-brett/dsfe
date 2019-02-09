@@ -1,0 +1,99 @@
+<h1 id="statistics-159259-final-project-grading-rubric">Statistics 159/259 final project grading rubric</h1>
+<p>To receive an &quot;A&quot; on this assignment you will need to have roughly seven check marks and two check pluses.</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 28%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>✓-</td>
+<td>✓</td>
+<td>✓+</td>
+</tr>
+<tr class="even">
+<td>Questions</td>
+<td>Questions overly simplistic, unrelated, or unmotivated</td>
+<td>Questions appropriate, coherent, and motivated</td>
+<td>Questions well motivated, interesting, insightful, and novel</td>
+</tr>
+<tr class="odd">
+<td>Analysis</td>
+<td>Choice of analysis is overly simplistic or incomplete</td>
+<td>Analysis appropriate</td>
+<td>Analysis appropriate, complete, advanced, and informative</td>
+</tr>
+<tr class="even">
+<td>Results</td>
+<td><p>Conclusions are missing, incorrect, or not based on analysis</p>
+<p>Inappropriate choice of plots; poorly labeled plots; plots missing</p></td>
+<td><p>Conclusions relevant, but partially correct or partially complete</p>
+<p>Plots convey information but lack context for interpretation</p></td>
+<td><p>Relevant conclusions explicitly tied to analysis and to context</p>
+<p>Plots convey information correctly with adequate and appropriate reference information</p></td>
+</tr>
+<tr class="odd">
+<td>Collaboration</td>
+<td>Only a few members contributed substantial effort or members each only worked on part of project</td>
+<td>All members contributed substantial effort and everyone contributed to all aspects of project</td>
+<td>All members contributed substantial effort to each project aspect</td>
+</tr>
+<tr class="even">
+<td>Tests</td>
+<td>Tests incomplete, incorrect, or missing</td>
+<td>Tests cover most of the project code</td>
+<td>Extensive and comprehensive testing</td>
+</tr>
+<tr class="odd">
+<td>Code review</td>
+<td>Pull requests not adequately used, reviewed, or improved</td>
+<td>Pull requests adequately used, reviewed, and improved</td>
+<td>Code review substantial and extensive</td>
+</tr>
+<tr class="even">
+<td>Documentation</td>
+<td>Poorly documented</td>
+<td>Adequately documented</td>
+<td>Well documented</td>
+</tr>
+<tr class="odd">
+<td>Readability</td>
+<td>Code readability inconsistent or poor</td>
+<td>Code readability consistent and good quality</td>
+<td>Code readability excellent</td>
+</tr>
+<tr class="even">
+<td>Organization</td>
+<td>Poorly organized and structured repository</td>
+<td>Reasonably organized and clear structure</td>
+<td>Elegant and transparent code organization</td>
+</tr>
+<tr class="odd">
+<td>Presentation</td>
+<td><p>Verbal presentation is illogical, incorrect, or incoherent.</p>
+<p>Visual presentation is cluttered, disjoint, or illegible</p>
+<p>Verbal and visual presentation unrelated</p></td>
+<td><p>Verbal presentation partially correct but incomplete or unconvincing</p>
+<p>Visual presentation is readable and clear</p>
+<p>Verbal and visual presentation related</p></td>
+<td><p>Verbal presentation is correct, complete, and convincing</p>
+<p>Visual presentation is appealing, informative, and crisp</p>
+<p>Verbal and visual presentation clearly related</p></td>
+</tr>
+<tr class="even">
+<td>Writing</td>
+<td>Explanation is illogical, incorrect, or incoherent</td>
+<td>Explanation is correct, complete, and convincing</td>
+<td>Explanation is correct, complete, convincing, and elegant</td>
+</tr>
+<tr class="odd">
+<td>Reproduciblity</td>
+<td>Code didn't run</td>
+<td>Makefile recipes fetch data, validates fetched data, generates all results and figures in report</td>
+<td>Makefiles additionally generate all EDA work and supplementary analysis</td>
+</tr>
+</tbody>
+</table>
