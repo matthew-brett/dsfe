@@ -159,7 +159,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/lists",
         "teaser":null},{
-        "title": "5.4 Ones and zeros",
+        "title": "5.5 Ones and zeros",
         "excerpt":"import numpy as npWe often want to create arrays with all zeros, or all ones. We do this with: np.zeros(5)array([0., 0., 0., 0., 0.])np.ones(3)array([1., 1., 1.])As ever, review the help with (for example): np.ones?In a new cell. You can ask for a 2D array by passing a list with the...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/ones_zeros",
@@ -198,6 +198,11 @@ var store = [{
         "excerpt":"Functions We have already used functions. For example, we have used the round function: a = 3.1415# Call the \"round\" functionb = round(a, 2)b3.14We will soon find that we often need to define our own functions.Before we do, we need to go into more detail about what functions are. Functions...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/07/functions",
+        "teaser":null},{
+        "title": "7.1 Functions as values",
+        "excerpt":"In the introduction to functions, we introduced themetaphor of a function being a recipe. It is a procedure, thataccepts inputs, (the ingredients of the recipe), and returns an output(the meal from the recipe). A function, like a recipe, usually hasa name. def add(a, b): return a + bAs we saw...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/07/functions_as_values",
         "teaser":null},{
         "title": "7. More building blocks",
         "excerpt":"We have already covered some important parts of programming for data science,such as expressions, variables, datatypes, arrays and dataframes. In this section, you cover the last two building blocks you will need asa foundation for your future analyses. These are:   Writing functions  Conditional statements","categories": [],
@@ -238,6 +243,11 @@ var store = [{
         "excerpt":"Exercises on functions For background, please read the functions introduction. This function is not properly defined, and will give a SyntaxError. Fix it, then run the call below to confirm it is working. function subtract(p, q): r = p - q return rsubtract(5, 10)This function also gives a SyntaxError. Fix...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/function_exercises",
+        "teaser":null},{
+        "title": "Function as values exercises",
+        "excerpt":"For background, please read the functions asvalues page. Consider these two functions: def add(a, b): return a + bdef sub(a, b): return a - bHere’s add in action: add(4, 1)Here’s sub in action: sub(4, 1)There’s some code below, that will error, because the assignmentstatement does not set func to have...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/functions_values_exercises",
         "teaser":null},{
         "title": "Money and death",
         "excerpt":"We return to the death penalty. import numpy as npimport pandas as pdimport matplotlib.pyplot as plt%matplotlib inline# Make plots look a little bit more fancyplt.style.use('fivethirtyeight')In this case, we are going to analyze whether people with higher incomes are more likely to favor the death penalty. To do this, we are...","categories": [],

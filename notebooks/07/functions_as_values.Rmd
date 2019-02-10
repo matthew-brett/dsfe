@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
+<meta name="description" content="">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/07/functions_as_values.Rmd">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/07/functions_as_values.Rmd">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/dsfe/">
+          <img src="/dsfe/images/dsfe_logo.png" class="masthead_logo" />
+          Data Science for Everyone
+        </a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+            </li>
+          
+          
+            <li class="masthead__menu-item">
+              <a href="/dsfe/chapters/01/what-is-data-science">Textbook</a>
+            </li>
+          
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <!--  -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        In the [introduction to functions](functions), we introduced the
+metaphor of a function being a *recipe*.  It is a procedure, that
+accepts inputs, (the ingredients of the recipe), and returns an output
+(the meal from the recipe).  A function, like a recipe, usually has
+a name.
+
+```{python}
+def add(a, b):
+    return a + b
+```
+
+As we saw before, this function gets its *name* from the first line.
+The name is `add`.  The name `add` refers to the internal
+representation (IR) of the procedure of adding two numbers. In the
+same way "Double egg cheese omelette recipe" refers to the procedure
+of making a double egg cheese omelette.  The recipe is a procedure
+that can be applied to two eggs and some cheese, as `add` is
+a procedure that can be applied to two numbers.
+
+You have already seen Python giving names to things.  Here is an
+assignment statement:
+
+```{python}
+x = 1
+```
+
+The statement gives the name `x` to the value 1.
+
+In fact, the function definition above is doing something similar.  It gives the name `add` to the procedure `a + b`.
+
+`x` is a variable name, and so is `add`.  Function names are
+just variables.  As `x` refers to the number 1, `add` refers to the
+procedure defined in the function body.
+
+With the variable `x`, I can display its value in the notebook like
+this:
+
+```{python}
+x
+```
+
+In the same way, I can display the value of the variable `add`
+
+```{python}
+add
+```
+
+`add` refers to the internal representation (IR) of the procedure.  In
+order to *apply* the procedure to particular arguments, I have to
+*call* it.  I do this by adding parentheses, with arguments inside:
+
+```{python}
+add(2, 3)
+```
+
+Now you know that `add` is a variable referring to a procedure, what
+do you think you would get from the following?
+
+```{python tags=c("raises-exception")}
+add * 2
+```
+
+Why is this?  Python evaluates the first expression `add`; it is
+a variable pointing to a internal representation of a function, so the
+first value is a function.  The second value is IR of int 2.  It tries
+to multiply the IR of a function by the IR of an int, and fails.
+
+We can't multiply `add` by a number, but we can multiply the result of
+*calling* `add`, because this evaluates to a number:
+
+```{python}
+add(2, 3) * 2
+```
+
+## A variable can point to a function
+
+This will take a little getting used to.
+
+Remember, an *assignment statement* gives a *value* (from the right-hand side) to the *variable* on the left-hand side.
+
+```{python}
+x = 1
+```
+
+As we know, we can read this as "The variable 'x' gets the value IR of
+1".
+
+We also know from the section above, that the function is a value.
+
+Can we set a variable to get a function as a value?  Yes. Look at this:
+
+```{python}
+my_function = add
+```
+
+Read this in the normal way: "The variable 'my_function' gets the
+value ...".  What is the value?  The value is the result of evaluating
+`add`, and you now know that this is the internal representation (IR) of the function.
+
+So we read the statement as "The variable 'my_function' gets the value IR of the function originally called 'add'".
+
+What do you think we would see if we evaluate this expression:
+`my_function(2, 3)`?
+
+What will Python do?  It first evaluates `my_function`, and gets the
+value, which is the IR of the function.  Then it sees the parentheses
+following, so it evaluates the arguments inside the brackets, and
+*calls* the function.  What function?  The function originally called
+"add".
+
+```{python}
+my_function(2, 3)
+```
+
+Remember that the expression `my_function` is not the same as the
+expression `my_function(2, 3)`.  `my_function` evaluates to the IR of
+the function.  `my_function(2, 3)` evaluates to result of *calling*
+the IR of the function, with the arguments 2 and 3.
+
+Now try the [functions as values exercises](../exercises/functions_values_exercises).
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>
