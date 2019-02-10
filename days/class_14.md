@@ -8,11 +8,13 @@ permalink: /days/class_14
 
 ## Announcements
 
-* TBA
+* The [project rubric](../projects/rubric)
 
 ## Schedule
 
-* TBA
+*   [Conditional statements](../chapters/07/conditional_statements)
+*   [Conditional statement
+    exercises](../chapters/exercises/conditional_statement_exercises)
 
 ## Assignment
 

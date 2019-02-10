@@ -28,9 +28,6 @@ permalink: /days/class_13
 *   Final team mixer
 *   [Functions](../chapters/07/functions)
 *   [Function exercises](../chapters/exercises/function_exercises)
-*   [Conditional statements](../chapters/07/conditional_statements)
-*   [Conditional statement
-    exercises](../chapters/exercises/conditional_statement_exercises)
 
 ## Assignment
 
