@@ -9,17 +9,18 @@ DSFE 2018 project grading rubric
 
 **This rubric is tentative.  It needs to be approved by a moderator.**
 
-Your total project mark is out of 100.  This mark in turn makes up 70% of your
-course grade.
+Your total project mark is out of 100.  This mark in turn makes up 70%
+of your course grade.
 
-There are two components to this assessment: the project and your contribution.
-70% of the project marks are for the project itself; see the categories below.
+There are two components to this assessment: the project and your
+contribution. 72% of the project marks are for the project itself; see
+the categories below.
 
-30% of the marks are for your contribution; see heading below.
+28% of the marks are for your contribution; see heading below.
 
 ## Project grades
 
-Each of the following sections is worth 7 marks, for a total of 70.
+Each of the following sections is worth 8 marks, for a total of 72.
 
 For each row, the table gives a description of work that will earn: between 0
 and 50% in this category (fail to bare pass); 50-75% (bare pass to good pass);
@@ -35,7 +36,7 @@ https://divtable.com/converter/
 <table style="width: 1020.45px;"><colgroup> <col style="width: 12%;" /> <col style="width: 28%;" /> <col style="width: 29%;" /> <col style="width: 29%;" /> </colgroup>
 <tbody>
 <tr class="odd">
-<td style="width: 124px;"></td>
+<td style="width: 124px;">&nbsp;</td>
 <td style="width: 291px;">0-50%</td>
 <td style="width: 301px;">50-75%</td>
 <td style="width: 301.45px;">75-100</td>
@@ -73,17 +74,11 @@ https://divtable.com/converter/
 <td style="width: 301px;">Some evidence that group members are giving constructive feedback on each other's code, leading to better code.</td>
 <td style="width: 301.45px;">Extensive evidence that group members are giving constructive feedback on each other's code, leading to better code.</td>
 </tr>
-<tr class="even">
-<td style="width: 124px;">Documentation</td>
-<td style="width: 291px;">Poorly documented</td>
-<td style="width: 301px;">Adequately documented</td>
-<td style="width: 301.45px;">Well documented</td>
-</tr>
 <tr class="odd">
 <td style="width: 124px;">Readability</td>
-<td style="width: 291px;">Code readability inconsistent or poor</td>
-<td style="width: 301px;">Code readability consistent and good quality</td>
-<td style="width: 301.45px;">Code readability excellent</td>
+<td style="width: 291px;">Code is messy and poorly organized; unused or irrelevant code distracts when reading code. Variables and functions names do not helpful to understand code.</td>
+<td style="width: 301px;">Code is reasonably well organized.&nbsp; There is little unused or irrelevant code, or this code has been moved out of the main project files.&nbsp; Variable and function names generally meaningful and helpful for understanding.</td>
+<td style="width: 301.45px;">Code very well organized.&nbsp; No irrelevant or distracting code.&nbsp;&nbsp; Variable and function names have clear relationship to their purpose in the code.&nbsp; Code is easy to read and understand.</td>
 </tr>
 <tr class="even">
 <td style="width: 124px;">Organization</td>
@@ -118,23 +113,27 @@ https://divtable.com/converter/
 <tr class="odd">
 <td style="width: 124px;">Reproduciblity</td>
 <td style="width: 291px;">Code didn't run</td>
-<td style="width: 301px;">Recipes in project directory correctly fetch data and generate all results and figures in report</td>
-<td style="width: 301.45px;">Recipes additionally validate fetched data. They generate all exploratory work and supplementary analysis</td>
+<td style="width: 301px;">Recipes in project directory correctly load data and generate all results and figures in report</td>
+<td style="width: 301.45px;">Recipes additionally validate data against its source (such as URL or other download). The recipes generate all exploratory work and supplementary analysis</td>
 </tr>
 </tbody>
 </table>
+<p>&nbsp;</p>
 
 ## Project report
 
-Your project report should be around 3000 words of explanatory text and code,
-not including figures and tables.
+Your project report should be around 3000 words of explanatory text
+and code, not including figures and tables.
 
 It can be in the form of a PDF document, or a Jupyter Notebook.
 
-Your project report should be *reproducible*.  There should be a file in your
-project, called `README.md`, in [Markdown](https://www.markdowntutorial.com)
-format, that gives the steps which will exactly reproduce the numbers, tables
-and figures in your report, starting by fetching your data from their source.
+Your project report should be *reproducible*.  There should be a file
+in your project, called `README`, in any format of your choosing. For
+example, the file can be in plain text format, a Jupyter Notebook, or
+a Word-processor document.
+
+This file should give the steps which will exactly reproduce the
+numbers, tables and figures in your report.
 
 Example instructions for a simple report might be:
 
@@ -156,6 +155,10 @@ Example instructions for a simple report might be:
 >
 > Open `simulate_data.ipynb` and run all cells.  This writes out tables 1 and 2
 > that you see in our report.
+
+The `README` file can also be your report.  In that case, your
+`README` instructions would be "Run this notebook to generate our
+report".
 
 ## Personal contribution
 
