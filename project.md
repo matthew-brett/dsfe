@@ -48,24 +48,75 @@ Your email should have:
 
 See [data for projects](projects/data)
 
+## Workload
+
+This term is a 10 credits of a 20 credit course.  Each credit corresponds to
+10 hours work, of which one hour is the lecture.  Unlike other courses, there
+is no exam to revise for, so the rest of the time is for the project. Expect
+to spend an average of 9 hours per week until the project deadline.
+
+## Getting help
+
+We (your instructors) are very happy to help with advice on your project.  We
+can't write any project code for you, but we will give you advice.  Please do
+not wait to ask us; if you are stuck, we need to know as soon as possible.
+
+## Scope
+
+We only expect you to use the techniques that we have shown you in the
+lectures.  You should not use any techniques that you do not understand.  We
+would far prefer that you do simple, clear analyses using basic techniques
+than complex analyses that you do not fully understand.  Your job as a data
+scientist is to draw clear conclusions from data.  Often this will just
+involve selecting and plotting relevant data, and making an argument from the
+results.
+
+## Suggested structure
+
+See the [rubric](projects/rubric) for the requirements of your project files.  This specifies that you must have a `README` file in some format, as the main instructions to reproduce your analysis.
+
+We also recommend that you:
+
+* Download the data you are working on, and save it with your project files.
+  Leave instructions on how we (your instructors) can get the original data
+  that you downloaded.
+* Consider using a `setup` file, such as a Notebook, that runs once, to set up
+  the project.  For example, it might install any libraries that you will use.
+  It may download the data from a URL and save it to your project directory.
+
 ## Process
 
+In summary:
+
 *   Analysis and collaboration will be public (using
-    [Github](https://github.com) service).
+    [CoCalc](https://cocalc.com/) or [Github](https://github.com) service).
 *   Analysis should be reproducible.
 *   Final report should be in the form of a Notebook, or similar
     executable document.
 
+See: [project workflow](projects/workflow)
+
+## Plagiarism
+
+See: [plagiarism rules](projects/plagiarism)
+
+## Using Python libraries
+
+You can use any part of the Numpy, Pandas, and Matlplotlib libraries with no
+further explanation.
+
+If you use other libraries, you should explain in your write-up why you are using the library, rather than building the analysis yourself.  You must persuade us, in your write-up, that you fully understand the parts of the library that you are using.  If in doubt, speak to me (Matthew), or one of the TAs.
+
 ## Marking
 
-See [the tentative rubric](projects/rubric).
+See [the full grading rubric](projects/rubric).
 
 In summary:
 
-*   Project marked for clarity, depth, validity and reproducibility (70% of
+*   Project marked for clarity, depth, validity and reproducibility (72% of
     project grade);
 *   Each member of the project submits a summary of their own contribution,
-    with evidence from the public record of collaboration (30% of project
+    with evidence from the public record of collaboration (28% of project
     grade).
 
 ## Dates

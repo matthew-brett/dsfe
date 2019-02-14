@@ -7,10 +7,8 @@ permalink: /projects/rubric
 DSFE 2018 project grading rubric
 ================================
 
-**This rubric is tentative.  It needs to be approved by a moderator.**
-
-Your total project mark is out of 100.  This mark in turn makes up 70%
-of your course grade.
+Your total project mark is out of 100.  This mark in turn makes up 70% of your
+course grade.
 
 There are two components to this assessment: the project and your
 contribution. 72% of the project marks are for the project itself; see
@@ -20,11 +18,11 @@ the categories below.
 
 ## Project grades
 
-Each of the following sections is worth 8 marks, for a total of 72.
+Each of the following 8 sections is worth 9 marks, for a total of 72.
 
-For each row, the table gives a description of work that will earn: between 0
-and 50% in this category (fail to bare pass); 50-75% (bare pass to good pass);
-and 75-100% (good pass to excellent).
+For each row, the table gives a description of work that will earn: between
+0 and 50% in this category (fail to bare pass); 50-75% (bare pass to good
+pass); and 75-100% (good pass to excellent).
 
 Notice that your project presentation is one category; see [the project
 page](../project) for schedule.
@@ -79,12 +77,6 @@ https://divtable.com/converter/
 <td style="width: 291px;">Code is messy and poorly organized; unused or irrelevant code distracts when reading code. Variables and functions names do not helpful to understand code.</td>
 <td style="width: 301px;">Code is reasonably well organized.&nbsp; There is little unused or irrelevant code, or this code has been moved out of the main project files.&nbsp; Variable and function names generally meaningful and helpful for understanding.</td>
 <td style="width: 301.45px;">Code very well organized.&nbsp; No irrelevant or distracting code.&nbsp;&nbsp; Variable and function names have clear relationship to their purpose in the code.&nbsp; Code is easy to read and understand.</td>
-</tr>
-<tr class="even">
-<td style="width: 124px;">Organization</td>
-<td style="width: 291px;">Poorly organized and structured project directory</td>
-<td style="width: 301px;">Reasonably organized and clear structure</td>
-<td style="width: 301.45px;">Elegant and transparent organization of code and data.</td>
 </tr>
 <tr class="odd">
 <td style="width: 124px;">Presentation</td>
@@ -188,7 +180,8 @@ The mark guidelines for this part are:
 * 0-50%: little evidence of contribution or collaboration.  Contributions under
   few headings.  Little effort to help other team members contribute.
 * 50-75%: moderate evidence of contribution and collaboration.  Contributions
-  under many headings; substantial contributions to more than one heading.  Evidence that you helped other team members contribute across some headings.
+  under many headings; substantial contributions to more than one heading.
+  Evidence that you helped other team members contribute across some headings.
 * 75-100%: strong evidence of contribution and collaboration.  Some
   contribution to nearly all headings; substantial contributions across the
   majority of headings.  Strong evidence that you helped other team members contribute across several headings.
