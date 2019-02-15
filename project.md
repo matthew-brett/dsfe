@@ -52,8 +52,21 @@ See [data for projects](projects/data)
 
 This term is a 10 credits of a 20 credit course.  Each credit corresponds to
 10 hours work, of which one hour is the lecture.  Unlike other courses, there
-is no exam to revise for, so the rest of the time is for the project. Expect
-to spend an average of 9 hours per week until the project deadline.
+is no exam to revise for, so the rest of the time is for the project.
+
+You will find that, at the beginning of the project, this amount of work can seem daunting.  Please don't worry; if you work steadily, you will find things fall into place.  On the other hand, you must plan to work steadily.
+
+This is a write-up of a previous data science course we ran: {% cite millman2018rcsds %}.
+
+In answer to "What advice would you give to another student who is considering taking this course?":
+
+> Unlike most group projects (which last for maybe a few weeks
+> tops or could conceivably be pulled off by one very dedicated
+> person), this one will dominate the entire semester. . . . Try
+> to stay organized for the project and create lots of little
+> goals and checkpoints. You should always be working on something
+> for the project, whether that's coding, reviewing, writing, etc.
+> Ask lots of questions and ask them early!
 
 ## Getting help
 
@@ -129,8 +142,8 @@ In summary:
 | 4    |  8 Feb     | Teams finalized           |
 | 5    | 15 Feb     | Workflow                  |
 | 6    | 22 Feb     |                           |
-| 7    |  1 Mar     | Progress reports          |
-| 8    |  8 Mar     |                           |
+| 7    |  1 Mar     |                           |
+| 8    |  8 Mar     | Progress reports          |
 | 9    | 15 Mar     |                           |
 | 10   | 22 Mar     | Presentations             |
 | 11   | 29 Mar     |                           |
