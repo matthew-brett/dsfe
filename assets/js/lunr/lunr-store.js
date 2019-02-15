@@ -214,6 +214,16 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/07/none",
         "teaser":null},{
+        "title": "8. The mean and straight line relationships",
+        "excerpt":"The mean is an important value to summarize and predict a distribution. It has two interesting properties: The sum of all deviations around the mean is zero; It is the value that gives the smallest sum of squared deviations.These properties are useful to think about when we are looking for...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/08/mean",
+        "teaser":null},{
+        "title": "8.1 The mean as a predictor",
+        "excerpt":"The mean is an interesting value. In this notebook, we fetch an example sequence of numbers, with a distribution that is far from the standard bell-curve distribution. We look at the properties of the mean as a predictor of the whole distribution. First we load our usual libraries. import numpy...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/08/mean_meaning",
+        "teaser":null},{
         "title": "Brexit analysis",
         "excerpt":"Brexit - the data analysis We start, as usual, by importing all the libraries we need. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdAll about the Brexiteers Every year, the HansardSocietysponsors a survey on political engagement in the UK. They put topical...","categories": [],
         "tags": [],
@@ -268,6 +278,11 @@ var store = [{
         "excerpt":"This section has some extra notes that are not part of the main course.  You donot need to know the material in this section, but you might find itinteresting, or useful for your reference. ","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/extra/extra",
+        "teaser":null},{
+        "title": "Deviations around the mean",
+        "excerpt":"Why the differences from the mean must add to zero. Have a look at this little bit of algebra to see why. Imagine I have four values $a, b, c, d$. Call the mean $\\mu$. As we know: Now subtract $\\mu$ from every one of $a, b, c, d$, and...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/extra/mean_deviations",
         "teaser":null},{
         "title": "Monty Hall with lists",
         "excerpt":"The Monty Hall problem, with lists You have already seen a simulation of the Monty HallProblem using arrays. We use arrays often in data science, but sometimes, it is more efficient to usePython lists. To follow along in this section, you will also need more onlists. Simulating one trial To...","categories": [],
