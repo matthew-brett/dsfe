@@ -15,7 +15,7 @@ We strongly recommend CoCalc, unless you have a good reason to use Github.
 
 [CoCalc](https://cocalc.com) is a web service for collaboration on mathematical and scientific computing.
 
-It runs on cloud servers.  Each *project* has it's own virtual computer, that runs your code and stores your files.
+It runs on cloud servers.  Each *project* has its own virtual computer, that runs your code and stores your files.
 
 Each group will get an invitation to collaborate on a CoCalc project, for their project, with us (your instructors) as collaborators.
 

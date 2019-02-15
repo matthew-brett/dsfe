@@ -8,16 +8,19 @@ permalink: /days/class_14
 
 ## Announcements
 
-* The [project rubric](../projects/rubric)
+* Reading week next week;
+* Another reminder about the [project schedule](../project);
+* More on the [project](../project);
+* The [project rubric](../projects/rubric);
+* [Workflow](../projects/workflow).
 
 ## Schedule
 
 *   [Conditional statements](../chapters/07/conditional_statements)
 *   [Conditional statement
-    exercises](../chapters/exercises/conditional_statement_exercises)
-*   [Functions as values](../chapters/07/functions_as_values)
-*   [Function as values exercises](../chapters/exercises/functions_values_exercises)
+    exercises](../chapters/exercises/conditional_statements_exercises)
+*   [The mean as a predictor](../chapters/08/mean_meaning)
 
 ## Assignment
 
-TBA
+Project work.
