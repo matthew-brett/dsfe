@@ -8,12 +8,14 @@ permalink: /days/class_15
 
 ## Announcements
 
-* TBA
+* Yet another reminder about the [project schedule](../project);
 
 ## Schedule
 
-* TBA
+*   A reminder about [The mean as
+    a predictor](../chapters/08/mean_meaning)
 
 ## Assignment
 
-TBA
+* Project work
+* Prepare progress report

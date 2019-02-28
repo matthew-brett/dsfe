@@ -22,10 +22,8 @@ jupyter:
     version: 3.4.5
 ---
 
-# Brexit ages
-
 Now we have [for loops](iteration) and [ranges](../03/Ranges), we can
-solve the problem in [population, permutation](population_permutation])
+solve the problem in [population, permutation](population_permutation).
 
 ```{python}
 import numpy as np

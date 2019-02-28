@@ -181,7 +181,7 @@ sos = np.sum(squared_pes)
 sos
 ```
 
-That is the sum of squared prediction errors that the mean gives us.  Could some other value give us a better (lower) sum of squared prediction error.
+That is the sum of squared prediction errors that the mean gives us.  Could some other value give us a better (lower) sum of squared prediction error?
 
 Let's try lots of predictors, to see which gives us the smallest squared prediction error.
 
@@ -255,7 +255,7 @@ In fact, the value for the mean is even lower:
 sum_of_squares(mm_arr, mm_mean)
 ```
 
-We would have to use some [simple
+We would have to use some [fairly simple
 calculus](https://github.com/matthew-brett/biosciences-intro/blob/master/mean_minimizes_ss_deviations.ipynb)
 to show this, but the mean has to give the lowest sum of squares error.
 
