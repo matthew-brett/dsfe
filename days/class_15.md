@@ -9,11 +9,16 @@ permalink: /days/class_15
 ## Announcements
 
 * Yet another reminder about the [project schedule](../project);
+* About progress reports.
 
 ## Schedule
 
-*   A reminder about [The mean as
-    a predictor](../chapters/08/mean_meaning)
+* A reminder about [The mean as
+  a predictor](../chapters/08/mean_meaning)
+* [Where and argmin](../chapters/08/where_and_argmin)
+* [Mean and slopes](../chapters/08/mean_and_slopes)
+* [Functions as values](../chapters/07/functions_as values)
+* [Function exercises](../chapters/exercises/functions_values_exercises)
 
 ## Assignment
 
