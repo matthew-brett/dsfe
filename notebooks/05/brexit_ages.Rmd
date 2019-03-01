@@ -181,10 +181,8 @@
 
       <section class="page__content" itemprop="text">
         
-        # Brexit ages
-
-Now we have [for loops](iteration) and [ranges](../03/Ranges), we can
-solve the problem in [population, permutation](population_permutation])
+        Now we have [for loops](iteration) and [ranges](../03/Ranges), we can
+solve the problem in [population, permutation](population_permutation).
 
 ```{python}
 import numpy as np

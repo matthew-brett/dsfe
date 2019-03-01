@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>5.6 Brexit ages - Data Science for Everyone</title>
-<meta name="description" content="Brexit ages">
+<meta name="description" content="Now we have for loops and ranges, we cansolve the problem in population, permutation.">
 
 
 
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/05/brexit_ages">
 
 
-  <meta property="og:description" content="Brexit ages">
+  <meta property="og:description" content="Now we have for loops and ranges, we cansolve the problem in population, permutation.">
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-02-15T08:53:48+00:00">
+  <meta property="article:published_time" content="2019-03-01T08:33:59+00:00">
 
 
 
@@ -631,6 +631,26 @@
 
             <li><a href="/dsfe/chapters/08/mean_meaning" class="level_1">8.1 The mean as a predictor</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/where_and_argmin" class="level_1">8.2 Where and argmin</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/mean_and_slopes" class="level_1">8.3 Mean and slopes</a></li>
+          
         </ul>
         
       </li>
@@ -796,8 +816,8 @@
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="5.6 Brexit ages">
-      <meta itemprop="description" content="Brexit ages">
-      <meta itemprop="datePublished" content="February 15, 2019">
+      <meta itemprop="description" content="Now we have for loops and ranges, we cansolve the problem in population, permutation.">
+      <meta itemprop="datePublished" content="March 01, 2019">
       
 
       <div class="page__inner-wrap">
@@ -825,10 +845,8 @@
     <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F05%2Fbrexit_ages.ipynb">Interact</a>
 
 
-          <h1 id="brexit-ages">Brexit ages</h1>
-
-<p>Now we have <a href="iteration">for loops</a> and <a href="../03/Ranges">ranges</a>, we can
-solve the problem in <a href="population_permutation]">population, permutation</a></p>
+          <p>Now we have <a href="iteration">for loops</a> and <a href="../03/Ranges">ranges</a>, we can
+solve the problem in <a href="population_permutation">population, permutation</a>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -900,7 +918,7 @@ solve the problem in <a href="population_permutation]">population, permutation</
 <span class="n">example_diff</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1.0359130139897914
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.4073325786776323
 </code></pre></div></div>
 
 <p>Now we know how do to this once, we can use the <code class="highlighter-rouge">for</code> loop to do the
@@ -946,7 +964,7 @@ distribution are as large, or larger than the value we actually saw.</p>
 <span class="n">n_as_high</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
 </code></pre></div></div>
 
 <p>The number above is the number of values in the sampling distribution
@@ -958,7 +976,7 @@ that is as high, or higher.</p>
 <span class="n">proportion</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0003
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0002
 </code></pre></div></div>
 
 <p>We think of this proportion as an estimate of the <em>probability</em> that

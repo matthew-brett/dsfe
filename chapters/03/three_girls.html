@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-02-15T08:53:48+00:00">
+  <meta property="article:published_time" content="2019-03-01T08:33:59+00:00">
 
 
 
@@ -631,6 +631,26 @@
 
             <li><a href="/dsfe/chapters/08/mean_meaning" class="level_1">8.1 The mean as a predictor</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/where_and_argmin" class="level_1">8.2 Where and argmin</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/mean_and_slopes" class="level_1">8.3 Mean and slopes</a></li>
+          
         </ul>
         
       </li>
@@ -797,7 +817,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="3.9 Revision - three girls">
       <meta itemprop="description" content="Three girls">
-      <meta itemprop="datePublished" content="February 15, 2019">
+      <meta itemprop="datePublished" content="March 01, 2019">
       
 
       <div class="page__inner-wrap">
@@ -877,28 +897,28 @@ than 0.5).</p>
 <span class="n">first_child</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.7803306820136797
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2275878331047121
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">second_child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
 <span class="n">second_child</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.8023663802753304
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.765186012224795
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">third_child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
 <span class="n">third_child</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5690482410735426
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.12518217908956397
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fourth_child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
 <span class="n">fourth_child</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.4900745332242097
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.42676148437855577
 </code></pre></div></div>
 
 <p>That gets boring.  It is neater to make an array of 4 numbers in one shot, like this:</p>
@@ -907,7 +927,7 @@ than 0.5).</p>
 <span class="n">one_family</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.58, 0.61, 0.24, 0.1 ])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.58, 0.68, 0.46, 0.2 ])
 </code></pre></div></div>
 
 <p>Arrays allow us to do the same operation on all the elements.</p>
@@ -952,16 +972,16 @@ array, there is a <code class="highlighter-rouge">True</code> if the correspondi
 <span class="n">ten_families</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.05, 0.43, 0.65, 0.05],
-       [0.23, 0.07, 0.35, 0.19],
-       [0.66, 0.2 , 0.09, 0.33],
-       [0.42, 0.01, 0.04, 0.34],
-       [0.31, 0.44, 0.61, 0.97],
-       [0.54, 0.27, 0.3 , 0.96],
-       [0.22, 0.8 , 0.07, 0.84],
-       [0.88, 0.24, 0.74, 0.08],
-       [0.27, 0.07, 0.14, 0.16],
-       [0.4 , 0.49, 0.38, 0.43]])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.96, 0.61, 0.4 , 0.35],
+       [0.97, 0.17, 0.05, 0.64],
+       [0.98, 0.79, 0.06, 0.6 ],
+       [0.34, 0.53, 0.42, 0.33],
+       [0.29, 0.82, 0.44, 0.52],
+       [0.21, 0.47, 0.79, 0.37],
+       [0.89, 0.49, 0.47, 0.59],
+       [0.47, 0.81, 0.04, 0.65],
+       [0.04, 0.58, 0.17, 0.49],
+       [0.29, 0.37, 0.06, 0.64]])
 </code></pre></div></div>
 
 <p>Notice the <code class="highlighter-rouge">size=</code> argument to <code class="highlighter-rouge">np.random.uniform</code>.  When we
@@ -977,16 +997,16 @@ same time.</p>
 <span class="n">are_girls</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ True,  True, False,  True],
-       [ True,  True,  True,  True],
-       [False,  True,  True,  True],
-       [ True,  True,  True,  True],
-       [ True,  True, False, False],
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[False, False,  True,  True],
+       [False,  True,  True, False],
+       [False, False,  True, False],
+       [ True, False,  True,  True],
+       [ True, False,  True, False],
+       [ True,  True, False,  True],
        [False,  True,  True, False],
        [ True, False,  True, False],
-       [False,  True, False,  True],
-       [ True,  True,  True,  True],
-       [ True,  True,  True,  True]])
+       [ True, False,  True,  True],
+       [ True,  True,  True, False]])
 </code></pre></div></div>
 
 <p>Remember, each row represents a family, and each <code class="highlighter-rouge">True</code> value
@@ -997,7 +1017,7 @@ array, but:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">are_girls</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>23
 </code></pre></div></div>
 
 <p>By default, <code class="highlighter-rouge">np.count_nonzero</code> counts the number of True values in the entire 2D array.</p>
@@ -1012,7 +1032,7 @@ a more detailed explanation.</p>
 <span class="n">n_girls</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 4, 3, 4, 2, 2, 2, 2, 4, 4])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2, 2, 1, 3, 2, 3, 2, 2, 3, 3])
 </code></pre></div></div>
 
 <p><code class="highlighter-rouge">n_girls</code> has one element per <em>row</em> in the <code class="highlighter-rouge">are_girls</code> array.  The element corresponding to the first row, has the count of <code class="highlighter-rouge">True</code> values in the first row, and so on.</p>
@@ -1081,8 +1101,8 @@ For example:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_girls</span> <span class="o">==</span> <span class="mi">3</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True, False,  True, False, False, False, False, False, False,
-       False])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False, False, False,  True, False,  True, False, False,  True,
+        True])
 </code></pre></div></div>
 
 <p>To find the number of 3s in <code class="highlighter-rouge">n_girls</code>:</p>
@@ -1090,7 +1110,7 @@ For example:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">n_girls</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
 </code></pre></div></div>
 
 <p>Now the proportion of the counts, that are equal to 3:</p>
@@ -1099,7 +1119,7 @@ For example:</p>
 <span class="n">prop_3</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.4
 </code></pre></div></div>
 
 <h2 id="exercises">Exercises</h2>

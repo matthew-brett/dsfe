@@ -45,6 +45,8 @@
   * [7.2 Conditional statements](notebooks/07/conditional_statements.ipynb)
 * [8. The mean and straight line relationships](notebooks/08/mean.md)
   * [8.1 The mean as a predictor](notebooks/08/mean_meaning.ipynb)
+  * [8.2 Where and argmin](notebooks/08/where_and_argmin.ipynb)
+  * [8.3 Mean and slopes](notebooks/08/mean_and_slopes.ipynb)
 * [Exercises](notebooks/exercises/exercises.md)
   * [Simulation](notebooks/exercises/simulation.ipynb)
   * [Data frames](notebooks/exercises/df_exercises.ipynb)

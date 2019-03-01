@@ -140,7 +140,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/dsfe/chapters/04/data_frames",
         "teaser":null},{
         "title": "5.6 Brexit ages",
-        "excerpt":"Brexit ages Now we have for loops and ranges, we cansolve the problem in population, permutation import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdWe load the data again: # Load the data frame, and put it in the variable \"audit_data\"audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')Again,...","categories": [],
+        "excerpt":"Now we have for loops and ranges, we cansolve the problem in population, permutation. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdWe load the data again: # Load the data frame, and put it in the variable \"audit_data\"audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')Again, we get...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/brexit_ages",
         "teaser":null},{
@@ -214,15 +214,35 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/07/none",
         "teaser":null},{
+        "title": "8.5 Finding lines",
+        "excerpt":"In The Mean as Predictor, we found that the mean had some good properties as a single best predictor for a whole distribution. The mean gives a total prediction error of zero. Put otherwise, onaverage, your prediction error is zero. The mean gives the lowest squared error. Put otherwise, the...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/08/finding_lines",
+        "teaser":null},{
         "title": "8. The mean and straight line relationships",
         "excerpt":"The mean is an important value to summarize and predict a distribution. It has two interesting properties: The sum of all deviations around the mean is zero; It is the value that gives the smallest sum of squared deviations.These properties are useful to think about when we are looking for...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/08/mean",
         "teaser":null},{
+        "title": "8.3 Mean and slopes",
+        "excerpt":"In The Mean as Predictor, we found that the mean had some good properties as a single best predictor for a whole distribution. The mean gives a total prediction error of zero. Put otherwise, onaverage, your prediction error is zero. The mean gives the lowest squared error. Put otherwise, the...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/08/mean_and_slopes",
+        "teaser":null},{
+        "title": "8.4 Mean and straight lines",
+        "excerpt":"In The Mean as Predictor, we found that the mean had some good properties as a single best predictor for a whole distribution. The mean gives a total prediction error of zero. Put otherwise, onaverage, your prediction error is zero. The mean gives the lowest squared error. Put otherwise, the...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/08/mean_and_straight_lines",
+        "teaser":null},{
         "title": "8.1 The mean as a predictor",
         "excerpt":"The mean is an interesting value. In this notebook, we fetch an example sequence of numbers, with a distribution that is far from the standard bell-curve distribution. We look at the properties of the mean as a predictor of the whole distribution. First we load our usual libraries. import numpy...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/08/mean_meaning",
+        "teaser":null},{
+        "title": "8.2 Where and argmin",
+        "excerpt":"We sometimes want to know where a value is in an array. import numpy as npBy “where” we mean, which element contains a particular value. Here is an array. arr = np.array([2, 99, -1, 4, 99])arrarray([ 2, 99, -1, 4, 99])As you know, we can get element using their index...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/08/where_and_argmin",
         "teaser":null},{
         "title": "Brexit analysis",
         "excerpt":"Brexit - the data analysis We start, as usual, by importing all the libraries we need. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdAll about the Brexiteers Every year, the HansardSocietysponsors a survey on political engagement in the UK. They put topical...","categories": [],

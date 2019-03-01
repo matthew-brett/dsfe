@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
+<meta name="description" content="">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/08/finding_lines.Rmd">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/08/finding_lines.Rmd">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/dsfe/">
+          <img src="/dsfe/images/dsfe_logo.png" class="masthead_logo" />
+          Data Science for Everyone
+        </a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+            </li>
+          
+          
+            <li class="masthead__menu-item">
+              <a href="/dsfe/chapters/01/what-is-data-science">Textbook</a>
+            </li>
+          
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <!--  -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        In [The Mean as Predictor](mean_meaning), we found that the mean had some good properties as a single best predictor for a whole distribution.
+
+* The mean gives a total prediction error of zero.  Put otherwise, on
+  average, your prediction error is zero.
+* The mean gives the lowest squared error.  Put otherwise, the mean
+  gives the lowest average squared difference from the observed value.
+
+Now we can consider what predictor we should use when predicting one set of values, from a different set of values.
+
+We load our usual libraries.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+# %matplotlib inline
+# Make plots look a little bit more fancy
+plt.style.use('fivethirtyeight')
+# Print to 2 decimal places, show tiny values as 0
+np.set_printoptions(precision=2, suppress=True)
+import pandas as pd
+```
+
+Again, we use the gender data that we first saw in the [data frame introduction](../04/data_frame_intro).
+
+```{python}
+# Load the data file
+gender_data = pd.read_csv('gender_stats.csv')
+```
+
+We have already seen the data for the Maternal Mortality Ration `mat_mort_ratio`.
+
+```{python}
+gender_data['mat_mort_ratio'].hist()
+```
+```{python}
+gender_data.columns
+```
+
+```{python}
+gender_data.plot.scatter('fert_rate', 'mat_mort_ratio')
+```
+
+```{python}
+just_fert_mmr = gender_data[['mat_mort_ratio', 'fert_rate']]
+just_fert_mmr
+```
+
+```{python}
+clean_mmr_fert = just_fert_mmr.dropna()
+clean_mmr_fert
+```
+
+```{python}
+clean_mmr_fert.describe()
+```
+
+```{python}
+mmr = np.array(clean_mmr_fert['mat_mort_ratio'])
+fert = np.array(clean_mmr_fert['fert_rate'])
+plt.plot(fert, mmr, 'o')
+plt.xlabel('Fertility rate')
+plt.ylabel('Maternal mortality ratio')
+```
+
+```{python}
+plt.plot(fert, mmr, 'o')
+plt.plot(2, 1000, 'go')
+```
+
+```{python}
+plt.plot(fert, mmr, 'o')
+plt.plot([2, 3], [1000, 1200], 'go')
+```
+
+```{python}
+fert_bin_centers = np.arange(7) + 1.5
+n_bins = len(fert_bin_centers)
+fert_bin_centers
+```
+
+```{python}
+plt.plot(fert, mmr, 'o')
+plt.plot(fert_bin_centers, np.zeros(n_bins), 'go')
+plt.xlabel('Fertility rate')
+plt.ylabel('Maternal mortality ratio')
+```
+
+```{python}
+mmr_means = np.zeros(n_bins)
+for i in np.arange(n_bins):
+    mid = fert_bin_centers[i]
+    we_want = (fert >= mid - 0.5) & (fert < mid + 0.5)
+    mmr_means[i] = np.mean(mmr[we_want])
+mmr_means
+```
+
+```{python}
+plt.plot(fert, mmr, 'o')
+plt.plot(fert_bin_centers, mmr_means, 'yo')
+```
+
+```{python}
+slope = 100
+```
+
+```{python}
+center_predicted = slope * fert_bin_centers
+```
+
+```{python}
+plt.plot(fert, mmr, 'o')
+plt.plot(fert_bin_centers, center_predicted, 'o', color='red')
+```
+
+```{python}
+predicted = fert * slope
+plt.plot(fert, mmr, 'o')
+plt.plot(fert, predicted, 'o', color='red')
+```
+
+```{python}
+error = fert - predicted
+error[:10]
+```
+
+```{python}
+plt.plot(fert, mmr, 'o')
+plt.plot(fert, predicted, 'ro')
+for i in np.arange(len(fert)):
+    x = fert[i]
+    y_0 = predicted[i]
+    y_1 = mmr[i]
+    plt.plot([x, x], [y_0, y_1], ':', color='black', linewidth=1)
+```
+
+```{python}
+def sos_error(slope, x, y):
+    fitted = x * slope
+    error = y - fitted
+    return np.sum(error ** 2)
+```
+
+```{python}
+sos_error(100, fert, mmr)
+```
+
+```{python}
+sos_error(200, fert, mmr)
+```
+
+```{python}
+some_slopes = np.arange(50, 110, 0.1)
+n_slopes = len(some_slopes)
+sos_errors = np.zeros(n_slopes)
+for i in np.arange(n_slopes):
+    slope = some_slopes[i]
+    sos_errors[i] = sos_error(slope, fert, mmr)
+sos_errors[:10]
+```
+
+```{python}
+plt.plot(some_slopes, sos_errors)
+```
+
+```{python}
+np.min(sos_errors)
+```
+
+```{python}
+i_of_min = np.argmin(sos_errors)
+i_of_min
+```
+
+```{python}
+sos_errors[i_of_min]
+```
+
+```{python}
+best_slope = some_slopes[i_of_min]
+best_slope
+```
+
+```{python}
+best_predicted = fert * best_slope
+plt.plot(fert, mmr, 'o')
+plt.plot(fert, best_predicted, 'ro')
+for i in np.arange(len(fert)):
+    x = fert[i]
+    y_0 = best_predicted[i]
+    y_1 = mmr[i]
+    plt.plot([x, x], [y_0, y_1], ':', color='black', linewidth=1)
+```
+
+```{python}
+from scipy.optimize import minimize
+```
+
+```{python}
+result = minimize(sos_error, 100, (fert, mmr))
+result.x
+```
+
+```{python}
+from scipy.optimize import fmin
+```
+
+```{python}
+result = fmin(sos_error, 100, (fert, mmr))
+result
+```
+
+```{python}
+result
+```
+
+```{python}
+final, tried = fmin(sos_error, 100, (fert, mmr), retall=True)
+final
+```
+
+```{python}
+tried
+```
+
+```{python}
+plt.plot(some_slopes, sos_errors)
+for i in np.arange(len(tried)):
+    x = tried[i]
+    y = sos_error(x, fert, mmr)
+    plt.text(x, y, str(i))
+```
+
+```{python}
+plt.plot(fert, mmr, 'o')
+plt.axis([0, 8, -200, 1500])
+```
+
+```{python}
+best_error = sos_error(best_slope, fert, mmr)
+best_error
+```
+
+```{python}
+def sos_si_error(inter_slope, x, y):
+    intercept = inter_slope[0]
+    slope = inter_slope[1]
+    fitted = intercept + x * slope
+    error = y - fitted
+    return np.sum(error ** 2)
+```
+
+```{python}
+sos_si_error([0, best_slope], fert, mmr)
+```
+
+```{python}
+sos_si_error([-100, 100], fert, mmr)
+```
+
+```{python}
+si_predicted = -100 + fert * 100
+plt.plot(fert, mmr, 'o')
+plt.plot(fert, best_predicted, 'o', color='red')
+plt.plot(fert, si_predicted, 'o', color='green')
+plt.axis([0, 8, -200, 1500])
+```
+
+```{python}
+some_intercepts = np.arange(-300, 50)
+n_intercepts = len(some_intercepts)
+some_slopes = np.arange(0, 200)
+n_slopes = len(some_slopes)
+```
+
+```{python}
+errors = np.zeros((n_intercepts, n_slopes))
+for inter_i in np.arange(n_intercepts):
+    inter = some_intercepts[inter_i]
+    for slope_i in np.arange(n_slopes):
+        s = some_slopes[slope_i]
+        errors[inter_i, slope_i] = sos_si_error([inter, s], fert, mmr)
+```
+
+```{python}
+plt.imshow(np.sqrt(errors))
+plt.colorbar()
+```
+
+```{python}
+min_error = np.min(errors)
+min_error
+```
+
+```{python}
+rows, cols = np.where(errors == min_error)
+rows, cols
+```
+
+```{python}
+best_intercept = some_intercepts[rows]
+best_intercept
+```
+
+```{python}
+best_si_slope = some_slopes[cols]
+best_si_slope
+```
+
+```{python}
+si_predicted = best_intercept + fert * best_si_slope
+plt.plot(fert, mmr, 'o')
+plt.plot(fert, best_predicted, 'o', color='red')
+plt.plot(fert, si_predicted, 'o', color='green')
+plt.axis([0, 8, -200, 1500])
+```
+
+```{python}
+minimize(sos_si_error, [0, 0], (fert, mmr))
+```
+
+```{python}
+from scipy.stats import linregress
+```
+
+```{python}
+linregress(fert, mmr)
+```
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

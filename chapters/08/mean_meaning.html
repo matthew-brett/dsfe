@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-02-15T08:53:48+00:00">
+  <meta property="article:published_time" content="2019-03-01T08:33:59+00:00">
 
 
 
@@ -631,6 +631,26 @@
 
             <li><a href="/dsfe/chapters/08/mean_meaning" class="level_1">8.1 The mean as a predictor</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/where_and_argmin" class="level_1">8.2 Where and argmin</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/mean_and_slopes" class="level_1">8.3 Mean and slopes</a></li>
+          
         </ul>
         
       </li>
@@ -797,7 +817,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="8.1 The mean as a predictor">
       <meta itemprop="description" content="The mean is an interesting value.">
-      <meta itemprop="datePublished" content="February 15, 2019">
+      <meta itemprop="datePublished" content="March 01, 2019">
       
 
       <div class="page__inner-wrap">
@@ -928,7 +948,7 @@ you.  That is your <em>prediction error</em> for that value.</p>
 <span class="n">prediction_error_0</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-118.18122270742359
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-177.4312227074236
 </code></pre></div></div>
 
 <p>We do the same for the second value:</p>
@@ -937,7 +957,7 @@ you.  That is your <em>prediction error</em> for that value.</p>
 <span class="n">prediction_error_1</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>694.3187772925764
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-172.6812227074236
 </code></pre></div></div>
 
 <p>To cut to the end, let’s do all the values at once:</p>
@@ -948,8 +968,8 @@ you.  That is your <em>prediction error</em> for that value.</p>
 </span><span class="n">prediction_errors</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-118.18,  694.32, -152.18,   63.82,  280.07, -178.43, -177.43,
-        -61.43,  710.82, -176.43])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-177.43, -172.68,  -23.93,   98.82, -157.43, -163.68, -174.68,
+        248.07,  -42.68,  -24.68])
 </code></pre></div></div>
 
 <p>What do the prediction errors look like?</p>
@@ -966,7 +986,7 @@ you.  That is your <em>prediction error</em> for that value.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">prediction_errors</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.0463630789890885e-12
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.9326762412674725e-12
 </code></pre></div></div>
 
 <p>The prediction errors add up to (very nearly) 0.  This is a property of the
@@ -993,8 +1013,8 @@ zero</a>.</p>
 </span><span class="n">squared_pes</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 13966.8 , 482078.56,  23159.12,   4072.84,  78438.52,  31837.7 ,
-        31481.84,   3773.8 , 505263.33,  31127.98])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([31481.84, 29818.8 ,   572.7 ,  9765.15, 24784.59, 26791.54,
+       30513.53, 61538.12,  1821.69,   609.16])
 </code></pre></div></div>
 
 <p>With a good prediction, we might want these squared prediction errors to be small.  We can see how small these are by adding them all up.  This gives us the “sum of squares”.</p>
@@ -1003,10 +1023,10 @@ zero</a>.</p>
 <span class="n">sos</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12392168.854257641
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12392168.854257643
 </code></pre></div></div>
 
-<p>That is the sum of squared prediction errors that the mean gives us.  Could some other value give us a better (lower) sum of squared prediction error.</p>
+<p>That is the sum of squared prediction errors that the mean gives us.  Could some other value give us a better (lower) sum of squared prediction error?</p>
 
 <p>Let’s try lots of predictors, to see which gives us the smallest squared prediction error.</p>
 
@@ -1091,7 +1111,7 @@ zero</a>.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12392168.854257643
 </code></pre></div></div>
 
-<p>We would have to use some <a href="https://github.com/matthew-brett/biosciences-intro/blob/master/mean_minimizes_ss_deviations.ipynb">simple
+<p>We would have to use some <a href="https://github.com/matthew-brett/biosciences-intro/blob/master/mean_minimizes_ss_deviations.ipynb">fairly simple
 calculus</a>
 to show this, but the mean has to give the lowest sum of squares error.</p>
 
@@ -1123,7 +1143,7 @@ to show this, but the mean has to give the lowest sum of squares error.</p>
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/exercises/exercises" class="pagination--pager" title="Exercises
+      <a href="/dsfe/chapters/08/where_and_argmin" class="pagination--pager" title="8.2 Where and argmin
 ">Next</a>
     
   </nav>
