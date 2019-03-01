@@ -311,6 +311,9 @@ for i in np.arange(len(fert)):
     plt.plot([x, x], [y_0, y_1], ':', color='black', linewidth=1)
 ```
 
-```{python}
+But now, as a special preview:
 
+```{python}
+from scipy.optimize import minimize
+minimize(sos_error, 100)
 ```
