@@ -148,3 +148,7 @@ In summary:
 | 10   | 22 Mar     | Presentations             |
 | 11   | 29 Mar     |                           |
 | 11   | 30 Mar     | Projects due              |
+
+## Progress report
+
+See: [progress report](projects/progress)
