@@ -4,6 +4,8 @@ title: Progress reports
 permalink: /projects/progress
 ---
 
+# Progress reports
+
 Your progress reports are short presentations on your project progress, to us, your instructors, and the rest of the class.
 
 We hope you will find these useful to get feedback about what to do next in your projects.
@@ -19,3 +21,7 @@ Arrange the progress report to get you the most benefit to your project, but we 
 * What you have tried so far.
 * What worked and what did not.
 * What you plan to do next.
+
+Please negotiate with your team about who prepares and does the
+progress report.  Of course, like all work on the project, this counts
+towards your project contribution \- see the [rubric](rubric).
