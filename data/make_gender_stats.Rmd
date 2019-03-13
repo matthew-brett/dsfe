@@ -1,0 +1,204 @@
+---
+jupyter:
+  jupytext:
+    formats: ''
+    split_at_heading: true
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.0'
+      jupytext_version: 1.0.0-rc0
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+# Schooling and fertility
+
+Here we are processing this dataset from the World Bank on gender and
+inequality:
+
+* [https://data.worldbank.org/data-catalog/gender-statistics](https://data.worldbank.org/data-catalog/gender-statistics)
+
+You can the data as a zip file [from that
+site](http://databank.worldbank.org/data/download/Gender_Stats_csv.zip). I’ve
+make a copy of the extracted data file, available via this link.
+
+* [Gender_StatsData.csv](https://matthew-brett.github.io/les-pilot/_downloads/Gender_StatsData.csv)
+
+That's the link I'm using below.
+
+```{python}
+# Import Pandas with its usual short name
+import pandas as pd
+```
+
+Load the Comma Separated Value text file into Pandas as a data frame:
+
+```{python}
+df = pd.read_csv('https://matthew-brett.github.io/les-pilot/_downloads/Gender_StatsData.csv')
+```
+
+This is a slightly clumsy-looking data frame, because it has years for
+columns, and variables for rows, where there are 630 variables for each
+country.  So there are 630 rows \* the number of countries.  To investigate,
+we first look at the column names:
+
+```{python}
+df.columns
+```
+
+Next we look at the data frame itself:
+
+```{python}
+df
+```
+
+There are lots of countries here, so to start, let’s look at the variables for
+the UK.
+
+We get the UK country code from [http://www.worldatlas.com/aatlas/ctycodes.htm](http://www.worldatlas.com/aatlas/ctycodes.htm).
+The code is `GBR`.
+
+```{python}
+# We select only the UK rows
+gb = df[df['Country Code'] == 'GBR']
+gb
+```
+
+Pandas truncates the output to only show a certain number of rows, and only a
+certain length for the text fields.  To investigate further, you can increase
+these limits to see all 630 rows for the UK, and more of the text for the text
+fields:
+
+```{python}
+# See more of the text, more rows in the displayed output
+pd.options.display.max_colwidth = 80
+pd.options.display.max_rows = 700
+```
+
+If you are working in the Notebook, you will now see all of the rows and the
+whole text field with the variable description.
+
+```{python}
+# This will be different from above when working in the Notebook
+gb
+```
+
+We need to reduce the data.  Let us start by trying to reduce the number of missing values.  Here are the number of valid observations for some recent years:
+
+```{python}
+for year in range(2008, 2018):
+    print(year, df[str(year)].count())
+```
+
+```{python}
+recent = df[[str(year) for year in range(2012, 2017)]]
+recent.columns
+```
+
+Let's try taking the average of 2012 through 2016. This automatically discards missing (NA) values.
+
+```{python}
+recent_mean = recent.mean(axis=1)
+recent_mean.count()
+```
+
+We only want the first four columns of the data frame - the rest are year
+values, many of which are missing.  Drop the columns after the fourth, and
+then add back the 2012 through 2016 data.
+
+```{python}
+thin_df = df[['Country Name', 'Indicator Name']].copy()
+thin_df['recent_mean'] = recent_mean.copy()
+thin_df
+```
+
+This data frame is still a mess, with a new row for each variable.  We can
+solve this using the Pandas
+[pivot](http://pandas.pydata.org/pandas-docs/stable/reshaping.html) function
+to push the rows up into columns, thus:
+
+```{python}
+pivoted = thin_df.pivot(index='Country Name',
+                   columns='Indicator Name',
+                   values='recent_mean')
+pivoted
+```
+
+Now we have 630 columns, one per variable, and 263 rows, one per country.
+
+```{python}
+pivoted.shape
+```
+
+Many of these columns have a lot of missing values.  Which columns have at least 220 non-missing values?
+
+```{python}
+cols_ok = [name for name in pivoted.columns if pivoted[name].count() > 220]
+[(name, pivoted[name].count()) for name in cols_ok]
+```
+
+We will use some of these columns.  The current column names are the whole description.  These are hard to use.  Here's a function to do a first pass in stripping the description down into something more like a variable name.
+
+```{python}
+def col_proc(cname):
+    if '(' in cname:  # Drop phrase in parentheses
+        cname = cname[:cname.index('(')]
+    return '_'.join(word.lower()[:3] for word in cname.split())
+```
+
+Print out the long description and the first-pass variable name the function returns:
+
+```{python}
+[(name, col_proc(name)) for name in cols_ok]
+```
+
+After copy-pasting this output into a text editor, and reflecting for a bit, these variables seem useful.  I've hand-edited the variable names to make them a bit clearer:
+
+
+```{python}
+# (Description, Variable name) pairs.
+# I've edited the Variable name by hand in a text editor.
+renamers = [
+    ('Fertility rate, total (births per woman)', 'fert_rate'),
+    ('GDP (current US$)', 'gdp'),
+    ('Health expenditure per capita, PPP (constant 2011 international $)', 
+     'health_exp_per_cap'),
+    ('Health expenditure, public (% of GDP)', 'health_exp_pub'),
+    ('Primary education, pupils (% female)', 'prim_ed_girls'),
+    ('Maternal mortality ratio (modeled estimate, per 100,000 live births)',
+     'mat_mort_ratio'),
+    ('Population, total', 'population')
+]
+```
+
+Create a new, much smaller data frame, using these columns.  Rename the columns with the new names.
+
+```{python}
+gender_stats = pivoted[[name for (name, rename) in renamers]]
+gender_stats.columns = [rename for (name, rename) in renamers]
+gender_stats
+```
+
+Write the resulting data frame out to CSV.
+
+```{python}
+gender_stats.index.names = ['country']
+gender_stats.to_csv('gender_stats.csv')
+```
+
+```{python}
+gender_stats
+```
+
+We should write a data dictionary too.  We will have to backslash escape dollars for the Markdown output.
+
+```{python}
+with open('gender_stats_data_dict.md', 'wt') as fobj:
+    fobj.write('# Gender statistics data dictionary\n\n')
+    for name, rename in renamers:
+        name = name.replace('$', '\$')  # For Markdown
+        fobj.write(f'* `{rename}`: {name}.\n')
+```
