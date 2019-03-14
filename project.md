@@ -152,3 +152,7 @@ In summary:
 ## Progress report
 
 See: [progress report](projects/progress)
+
+## Presentations
+
+See: [project presentations](projects/presentation)

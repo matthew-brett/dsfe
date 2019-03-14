@@ -9,7 +9,7 @@ permalink: /days/class_15
 ## Announcements
 
 * Yet another reminder about the [project schedule](../project);
-* About progress reports.
+* About [progress reports](../projects/progress).
 
 ## Schedule
 
