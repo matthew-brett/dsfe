@@ -151,23 +151,30 @@ This is the optimization technique known as [gradient descent](https://en.wikipe
 
 Here it is in action, using code modified from the Wikipedia page above.
 
-We try new x (slope) values by moving quickly down the gradient when the gradient is steep, and slowly when the gradient it shallow.
+We try new x (slope) values by making big jumps when the gradient is steep, and small jumps when the gradient is shallow.
 
 ```{python}
-next_x = 100 # The algorithm starts at x=100
+next_x = 100 # We start the search at x=100
 gamma = 0.0001 # Step size multiplier
 precision = 0.00001 # Desired precision of result
 max_iters = 1000 # Maximum number of iterations
 
 for i in np.arange(max_iters):
-    cur_x = next_x
-    gradient = sos_error_gradient(cur_x)
-    next_x = cur_x - gamma * gradient
-    step_size = abs(next_x - cur_x)
-    print('x: {:0.4f}; step size {:0.4f}; gradient {:0.2f}'.format(
-        cur_x, step_size, gradient))
-    if step_size <= precision:
-        # Answer is precise enough, break out of loop.
+    # Go to the next x value
+    current_x = next_x
+    # Estimate the gradient
+    gradient = sos_error_gradient(current_x)
+    # Use gradient to choose the next x value to try.
+    # This takes negative steps when the gradient is positive
+    # and positive steps when the gradient is negative.
+    next_x = current_x - gamma * gradient
+    step = next_x - current_x
+    print('x: {:0.5f}; step {:0.5f}; gradient {:0.2f}'.format(
+        current_x, step, gradient))
+    # When the step size is equal to or smaller than the desired
+    # precision, we are near enough.
+    if abs(step) <= precision:
+        # Break out of the loop.
         break
 
 print("Minimum at", next_x)
