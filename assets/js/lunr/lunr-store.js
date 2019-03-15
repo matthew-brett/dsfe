@@ -215,9 +215,14 @@ var store = [{
         "url": "https://matthew-brett.github.io/dsfe/chapters/07/none",
         "teaser":null},{
         "title": "8.5 Finding lines",
-        "excerpt":"In The Mean as Predictor, we found that the mean had some good properties as a single best predictor for a whole distribution. The mean gives a total prediction error of zero. Put otherwise, onaverage, your prediction error is zero. The mean gives the lowest squared error. Put otherwise, the...","categories": [],
+        "excerpt":"In The Mean and Slopes, we were looking for the best slopeto predict one vector of values from another vector of values. Specifically, we wanted our slope to predict the Maternal Mortality Ratio (MMR) values from the Fertility Rate (FR) values. By analogy with The Mean as Predictor, we decided...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/08/finding_lines",
+        "teaser":null},{
+        "title": "8.6 Believable slopes",
+        "excerpt":"In finding slopes, we found the line the did the best job of predicting one vector of values from another vector of values. Our line was a slope and an intercept. We used it to predict the Maternal Mortality Ratio (MMR) values from the Fertility Rate (FR) values. We chose...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/08/inference_on_slopes",
         "teaser":null},{
         "title": "8. The mean and straight line relationships",
         "excerpt":"The mean is an important value to summarize and predict a distribution. It has two interesting properties: The sum of all deviations around the mean is zero; It is the value that gives the smallest sum of squared deviations.These properties are useful to think about when we are looking for...","categories": [],
@@ -229,15 +234,15 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/08/mean_and_slopes",
         "teaser":null},{
-        "title": "8.4 Mean and straight lines",
-        "excerpt":"In The Mean as Predictor, we found that the mean had some good properties as a single best predictor for a whole distribution. The mean gives a total prediction error of zero. Put otherwise, onaverage, your prediction error is zero. The mean gives the lowest squared error. Put otherwise, the...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/dsfe/chapters/08/mean_and_straight_lines",
-        "teaser":null},{
         "title": "8.1 The mean as a predictor",
         "excerpt":"The mean is an interesting value. In this notebook, we fetch an example sequence of numbers, with a distribution that is far from the standard bell-curve distribution. We look at the properties of the mean as a predictor of the whole distribution. First we load our usual libraries. import numpy...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/08/mean_meaning",
+        "teaser":null},{
+        "title": "8.4 Optimization",
+        "excerpt":"In The Mean and Slopes, we used a simple but slow way tofind the slope that best predicted one vector of values from another vector ofvalues. First we go back to find that slope. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Make plots look a little bit more fancyplt.style.use('fivethirtyeight')#...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/08/optimization",
         "teaser":null},{
         "title": "8.2 Where and argmin",
         "excerpt":"We sometimes want to know where a value is in an array. import numpy as npBy “where” we mean, which element contains a particular value. Here is an array. arr = np.array([2, 99, -1, 4, 99])arrarray([ 2, 99, -1, 4, 99])As you know, we can get element using their index...","categories": [],

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>8.5 Finding lines - Data Science for Everyone</title>
-<meta name="description" content="In The Mean as Predictor, we found that the mean had some good properties as a single best predictor for a whole distribution.">
+<meta name="description" content="In The Mean and Slopes, we were looking for the best slopeto predict one vector of values from another vector of values.">
 
 
 
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/08/finding_lines">
 
 
-  <meta property="og:description" content="In The Mean as Predictor, we found that the mean had some good properties as a single best predictor for a whole distribution.">
+  <meta property="og:description" content="In The Mean and Slopes, we were looking for the best slopeto predict one vector of values from another vector of values.">
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-03-02T11:50:42+00:00">
+  <meta property="article:published_time" content="2019-03-15T08:23:30+00:00">
 
 
 
@@ -651,6 +651,36 @@
 
             <li><a href="/dsfe/chapters/08/mean_and_slopes" class="level_1">8.3 Mean and slopes</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/optimization" class="level_1">8.4 Optimization</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/finding_lines" class="level_1">8.5 Finding lines</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/inference_on_slopes" class="level_1">8.6 Believable slopes</a></li>
+          
         </ul>
         
       </li>
@@ -816,8 +846,8 @@
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="8.5 Finding lines">
-      <meta itemprop="description" content="In The Mean as Predictor, we found that the mean had some good properties as a single best predictor for a whole distribution.">
-      <meta itemprop="datePublished" content="March 02, 2019">
+      <meta itemprop="description" content="In The Mean and Slopes, we were looking for the best slopeto predict one vector of values from another vector of values.">
+      <meta itemprop="datePublished" content="March 15, 2019">
       
 
       <div class="page__inner-wrap">
@@ -845,18 +875,16 @@
     <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F08%2Ffinding_lines.ipynb">Interact</a>
 
 
-          <p>In <a href="mean_meaning">The Mean as Predictor</a>, we found that the mean had some good properties as a single best predictor for a whole distribution.</p>
+          <p>In <a href="mean_and_slopes">The Mean and Slopes</a>, we were looking for the best slope
+to predict one vector of values from another vector of values.</p>
 
-<ul>
-  <li>The mean gives a total prediction error of zero.  Put otherwise, on
-average, your prediction error is zero.</li>
-  <li>The mean gives the lowest squared error.  Put otherwise, the mean
-gives the lowest average squared difference from the observed value.</li>
-</ul>
+<p>Specifically, we wanted our slope to predict the Maternal Mortality Ratio (MMR) values from the Fertility Rate (FR) values.</p>
 
-<p>Now we can consider what predictor we should use when predicting one set of values, from a different set of values.</p>
+<p>By analogy with <a href="mean_meaning">The Mean as Predictor</a>, we decided to choose our line to minimize the average prediction errors, and the sum of squared prediction errors.</p>
 
-<p>We load our usual libraries.</p>
+<p>We found a solution, by trying many slopes, and choosing the slope giving use the smallest error.</p>
+
+<p>Now we might ask the question, what if we wanted a line that had a (not zero) intercept, as well as a slope?</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -868,1129 +896,146 @@ gives the lowest average squared difference from the observed value.</li>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 </code></pre></div></div>
 
-<p>Again, we use the gender data that we first saw in the <a href="../04/data_frame_intro">data frame introduction</a>.</p>
+<p>You can download the
+data from <a href="/dsfe/data/gender_stats.csv">gender_stats.csv</a>.</p>
+
+<p>We fetch the data and process it again:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data file
 </span><span class="n">gender_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'gender_stats.csv'</span><span class="p">)</span>
+
+<span class="c1"># Make new data frame with only MMR and FR
+</span><span class="n">just_mmr_fr</span> <span class="o">=</span> <span class="n">gender_data</span><span class="p">[[</span><span class="s">'mat_mort_ratio'</span><span class="p">,</span> <span class="s">'fert_rate'</span><span class="p">]]</span>
+
+<span class="c1"># Drop the NaN values, and make into arrays.
+</span><span class="n">clean_mmr_fr</span> <span class="o">=</span> <span class="n">just_mmr_fr</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">mmr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">clean_mmr_fr</span><span class="p">[</span><span class="s">'mat_mort_ratio'</span><span class="p">])</span>
+<span class="n">fert</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">clean_mmr_fr</span><span class="p">[</span><span class="s">'fert_rate'</span><span class="p">])</span>
 </code></pre></div></div>
 
-<p>We have already seen the data for the Maternal Mortality Ration <code class="highlighter-rouge">mat_mort_ratio</code>.</p>
+<p>In <a href="mean_and_slopes">The Mean and Slopes</a>, we did a search for the best slope, like this:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="p">[</span><span class="s">'mat_mort_ratio'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sos_error</span><span class="p">(</span><span class="n">slope</span><span class="p">):</span>
+    <span class="c1"># Sum of squared error as a function of slope
+</span>    <span class="n">fitted</span> <span class="o">=</span> <span class="n">fert</span> <span class="o">*</span> <span class="n">slope</span>  <span class="c1"># 'fert' comes from the top level
+</span>    <span class="n">error</span> <span class="o">=</span> <span class="n">mmr</span> <span class="o">-</span> <span class="n">fitted</span>     <span class="c1"># 'mmr' comes from the top level
+</span>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11627ab70&gt;
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/08/finding_lines_5_1.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">columns</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['country', 'fert_rate', 'gdp', 'health_exp_per_cap', 'health_exp_pub',
-       'prim_ed_girls', 'mat_mort_ratio', 'population'],
-      dtype='object')
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'fert_rate'</span><span class="p">,</span> <span class="s">'mat_mort_ratio'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x118404a90&gt;
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/08/finding_lines_7_1.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">just_fert_mmr</span> <span class="o">=</span> <span class="n">gender_data</span><span class="p">[[</span><span class="s">'mat_mort_ratio'</span><span class="p">,</span> <span class="s">'fert_rate'</span><span class="p">]]</span>
-<span class="n">just_fert_mmr</span>
-</code></pre></div></div>
-
-<div>
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>mat_mort_ratio</th>
-      <th>fert_rate</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>444.00</td>
-      <td>4.954500</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>29.25</td>
-      <td>1.769250</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>142.50</td>
-      <td>2.866000</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>501.25</td>
-      <td>6.123000</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>NaN</td>
-      <td>2.082000</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>161.00</td>
-      <td>3.397587</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>53.75</td>
-      <td>2.328000</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>27.25</td>
-      <td>1.545500</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>NaN</td>
-      <td>1.663250</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>6.00</td>
-      <td>1.861500</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>4.00</td>
-      <td>1.455000</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>25.25</td>
-      <td>1.980000</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>81.50</td>
-      <td>1.877250</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>15.25</td>
-      <td>2.065250</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>194.75</td>
-      <td>2.193250</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>28.00</td>
-      <td>1.792250</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>4.00</td>
-      <td>1.677000</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>7.00</td>
-      <td>1.755000</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>29.25</td>
-      <td>2.594750</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>417.50</td>
-      <td>4.806750</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>NaN</td>
-      <td>1.617500</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>161.75</td>
-      <td>2.061250</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>218.25</td>
-      <td>2.995250</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>11.75</td>
-      <td>1.267000</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>138.75</td>
-      <td>2.845000</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>49.50</td>
-      <td>1.795250</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>23.75</td>
-      <td>1.884000</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>233</th>
-      <td>62.00</td>
-      <td>2.967750</td>
-    </tr>
-    <tr>
-      <th>234</th>
-      <td>33.25</td>
-      <td>3.495750</td>
-    </tr>
-    <tr>
-      <th>235</th>
-      <td>429.50</td>
-      <td>5.181250</td>
-    </tr>
-    <tr>
-      <th>236</th>
-      <td>21.00</td>
-      <td>1.516750</td>
-    </tr>
-    <tr>
-      <th>237</th>
-      <td>240.25</td>
-      <td>5.797750</td>
-    </tr>
-    <tr>
-      <th>238</th>
-      <td>380.75</td>
-      <td>4.620000</td>
-    </tr>
-    <tr>
-      <th>239</th>
-      <td>129.25</td>
-      <td>3.745750</td>
-    </tr>
-    <tr>
-      <th>240</th>
-      <td>63.25</td>
-      <td>1.782750</td>
-    </tr>
-    <tr>
-      <th>241</th>
-      <td>63.25</td>
-      <td>2.140000</td>
-    </tr>
-    <tr>
-      <th>242</th>
-      <td>17.50</td>
-      <td>2.078000</td>
-    </tr>
-    <tr>
-      <th>243</th>
-      <td>43.50</td>
-      <td>2.313750</td>
-    </tr>
-    <tr>
-      <th>244</th>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>245</th>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>246</th>
-      <td>366.50</td>
-      <td>5.822500</td>
-    </tr>
-    <tr>
-      <th>247</th>
-      <td>24.25</td>
-      <td>1.510250</td>
-    </tr>
-    <tr>
-      <th>248</th>
-      <td>6.00</td>
-      <td>1.793000</td>
-    </tr>
-    <tr>
-      <th>249</th>
-      <td>9.25</td>
-      <td>1.842500</td>
-    </tr>
-    <tr>
-      <th>250</th>
-      <td>14.00</td>
-      <td>1.860875</td>
-    </tr>
-    <tr>
-      <th>251</th>
-      <td>43.25</td>
-      <td>1.795244</td>
-    </tr>
-    <tr>
-      <th>252</th>
-      <td>15.50</td>
-      <td>2.027000</td>
-    </tr>
-    <tr>
-      <th>253</th>
-      <td>37.00</td>
-      <td>2.372750</td>
-    </tr>
-    <tr>
-      <th>254</th>
-      <td>82.50</td>
-      <td>3.364750</td>
-    </tr>
-    <tr>
-      <th>255</th>
-      <td>97.00</td>
-      <td>2.378250</td>
-    </tr>
-    <tr>
-      <th>256</th>
-      <td>54.75</td>
-      <td>1.959500</td>
-    </tr>
-    <tr>
-      <th>257</th>
-      <td>NaN</td>
-      <td>1.760000</td>
-    </tr>
-    <tr>
-      <th>258</th>
-      <td>47.50</td>
-      <td>4.208000</td>
-    </tr>
-    <tr>
-      <th>259</th>
-      <td>223.75</td>
-      <td>2.464282</td>
-    </tr>
-    <tr>
-      <th>260</th>
-      <td>399.75</td>
-      <td>4.225750</td>
-    </tr>
-    <tr>
-      <th>261</th>
-      <td>233.75</td>
-      <td>5.394250</td>
-    </tr>
-    <tr>
-      <th>262</th>
-      <td>398.00</td>
-      <td>3.943000</td>
-    </tr>
-  </tbody>
-</table>
-<p>263 rows × 2 columns</p>
-</div>
-</div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clean_mmr_fert</span> <span class="o">=</span> <span class="n">just_fert_mmr</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">clean_mmr_fert</span>
-</code></pre></div></div>
-
-<div>
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>mat_mort_ratio</th>
-      <th>fert_rate</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>444.00</td>
-      <td>4.954500</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>29.25</td>
-      <td>1.769250</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>142.50</td>
-      <td>2.866000</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>501.25</td>
-      <td>6.123000</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>161.00</td>
-      <td>3.397587</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>53.75</td>
-      <td>2.328000</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>27.25</td>
-      <td>1.545500</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>6.00</td>
-      <td>1.861500</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>4.00</td>
-      <td>1.455000</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>25.25</td>
-      <td>1.980000</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>81.50</td>
-      <td>1.877250</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>15.25</td>
-      <td>2.065250</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>194.75</td>
-      <td>2.193250</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>28.00</td>
-      <td>1.792250</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>4.00</td>
-      <td>1.677000</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>7.00</td>
-      <td>1.755000</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>29.25</td>
-      <td>2.594750</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>417.50</td>
-      <td>4.806750</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>161.75</td>
-      <td>2.061250</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>218.25</td>
-      <td>2.995250</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>11.75</td>
-      <td>1.267000</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>138.75</td>
-      <td>2.845000</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>49.50</td>
-      <td>1.795250</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>23.75</td>
-      <td>1.884000</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>10.75</td>
-      <td>1.510000</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>384.25</td>
-      <td>5.564500</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>747.25</td>
-      <td>5.992250</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>45.00</td>
-      <td>2.321500</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>169.75</td>
-      <td>2.663000</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>614.00</td>
-      <td>4.743500</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>230</th>
-      <td>400.50</td>
-      <td>3.302000</td>
-    </tr>
-    <tr>
-      <th>231</th>
-      <td>4.00</td>
-      <td>1.890000</td>
-    </tr>
-    <tr>
-      <th>232</th>
-      <td>5.25</td>
-      <td>1.530000</td>
-    </tr>
-    <tr>
-      <th>233</th>
-      <td>62.00</td>
-      <td>2.967750</td>
-    </tr>
-    <tr>
-      <th>234</th>
-      <td>33.25</td>
-      <td>3.495750</td>
-    </tr>
-    <tr>
-      <th>235</th>
-      <td>429.50</td>
-      <td>5.181250</td>
-    </tr>
-    <tr>
-      <th>236</th>
-      <td>21.00</td>
-      <td>1.516750</td>
-    </tr>
-    <tr>
-      <th>237</th>
-      <td>240.25</td>
-      <td>5.797750</td>
-    </tr>
-    <tr>
-      <th>238</th>
-      <td>380.75</td>
-      <td>4.620000</td>
-    </tr>
-    <tr>
-      <th>239</th>
-      <td>129.25</td>
-      <td>3.745750</td>
-    </tr>
-    <tr>
-      <th>240</th>
-      <td>63.25</td>
-      <td>1.782750</td>
-    </tr>
-    <tr>
-      <th>241</th>
-      <td>63.25</td>
-      <td>2.140000</td>
-    </tr>
-    <tr>
-      <th>242</th>
-      <td>17.50</td>
-      <td>2.078000</td>
-    </tr>
-    <tr>
-      <th>243</th>
-      <td>43.50</td>
-      <td>2.313750</td>
-    </tr>
-    <tr>
-      <th>246</th>
-      <td>366.50</td>
-      <td>5.822500</td>
-    </tr>
-    <tr>
-      <th>247</th>
-      <td>24.25</td>
-      <td>1.510250</td>
-    </tr>
-    <tr>
-      <th>248</th>
-      <td>6.00</td>
-      <td>1.793000</td>
-    </tr>
-    <tr>
-      <th>249</th>
-      <td>9.25</td>
-      <td>1.842500</td>
-    </tr>
-    <tr>
-      <th>250</th>
-      <td>14.00</td>
-      <td>1.860875</td>
-    </tr>
-    <tr>
-      <th>251</th>
-      <td>43.25</td>
-      <td>1.795244</td>
-    </tr>
-    <tr>
-      <th>252</th>
-      <td>15.50</td>
-      <td>2.027000</td>
-    </tr>
-    <tr>
-      <th>253</th>
-      <td>37.00</td>
-      <td>2.372750</td>
-    </tr>
-    <tr>
-      <th>254</th>
-      <td>82.50</td>
-      <td>3.364750</td>
-    </tr>
-    <tr>
-      <th>255</th>
-      <td>97.00</td>
-      <td>2.378250</td>
-    </tr>
-    <tr>
-      <th>256</th>
-      <td>54.75</td>
-      <td>1.959500</td>
-    </tr>
-    <tr>
-      <th>258</th>
-      <td>47.50</td>
-      <td>4.208000</td>
-    </tr>
-    <tr>
-      <th>259</th>
-      <td>223.75</td>
-      <td>2.464282</td>
-    </tr>
-    <tr>
-      <th>260</th>
-      <td>399.75</td>
-      <td>4.225750</td>
-    </tr>
-    <tr>
-      <th>261</th>
-      <td>233.75</td>
-      <td>5.394250</td>
-    </tr>
-    <tr>
-      <th>262</th>
-      <td>398.00</td>
-      <td>3.943000</td>
-    </tr>
-  </tbody>
-</table>
-<p>229 rows × 2 columns</p>
-</div>
-</div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clean_mmr_fert</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div>
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>mat_mort_ratio</th>
-      <th>fert_rate</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>229.000000</td>
-      <td>229.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>181.431223</td>
-      <td>2.864952</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>233.134334</td>
-      <td>1.382586</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>3.000000</td>
-      <td>1.232000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>16.250000</td>
-      <td>1.782750</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>70.750000</td>
-      <td>2.375250</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>280.000000</td>
-      <td>3.932750</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>1435.000000</td>
-      <td>7.607750</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mmr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">clean_mmr_fert</span><span class="p">[</span><span class="s">'mat_mort_ratio'</span><span class="p">])</span>
-<span class="n">fert</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">clean_mmr_fert</span><span class="p">[</span><span class="s">'fert_rate'</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Fertility rate'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Maternal mortality ratio'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0, 0.5, 'Maternal mortality ratio')
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/08/finding_lines_11_1.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">'go'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x1185d5080&gt;]
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/08/finding_lines_12_1.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1200</span><span class="p">],</span> <span class="s">'go'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x1186a9ef0&gt;]
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/08/finding_lines_13_1.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fert_bin_centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.5</span>
-<span class="n">n_bins</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fert_bin_centers</span><span class="p">)</span>
-<span class="n">fert_bin_centers</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5])
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert_bin_centers</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bins</span><span class="p">),</span> <span class="s">'go'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Fertility rate'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Maternal mortality ratio'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0, 0.5, 'Maternal mortality ratio')
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/08/finding_lines_15_1.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mmr_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bins</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_bins</span><span class="p">):</span>
-    <span class="n">mid</span> <span class="o">=</span> <span class="n">fert_bin_centers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">we_want</span> <span class="o">=</span> <span class="p">(</span><span class="n">fert</span> <span class="o">&gt;=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">fert</span> <span class="o">&lt;</span> <span class="n">mid</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
-    <span class="n">mmr_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mmr</span><span class="p">[</span><span class="n">we_want</span><span class="p">])</span>
-<span class="n">mmr_means</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 21.84, 106.97, 194.23, 461.48, 548.55, 698.35, 585.5 ])
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert_bin_centers</span><span class="p">,</span> <span class="n">mmr_means</span><span class="p">,</span> <span class="s">'yo'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11883a780&gt;]
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/08/finding_lines_17_1.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">slope</span> <span class="o">=</span> <span class="mi">100</span>
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">center_predicted</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">fert_bin_centers</span>
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert_bin_centers</span><span class="p">,</span> <span class="n">center_predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x118916d68&gt;]
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/08/finding_lines_20_1.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">predicted</span> <span class="o">=</span> <span class="n">fert</span> <span class="o">*</span> <span class="n">slope</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x1189daf98&gt;]
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/08/finding_lines_21_1.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">error</span> <span class="o">=</span> <span class="n">fert</span> <span class="o">-</span> <span class="n">predicted</span>
-<span class="n">error</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-490.5 , -175.16, -283.73, -606.18, -336.36, -230.47, -153.  ,
-       -184.29, -144.04, -196.02])
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="s">'ro'</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fert</span><span class="p">)):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">fert</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">y_0</span> <span class="o">=</span> <span class="n">predicted</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">y_1</span> <span class="o">=</span> <span class="n">mmr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">y_0</span><span class="p">,</span> <span class="n">y_1</span><span class="p">],</span> <span class="s">':'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/08/finding_lines_23_0.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sos_error</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="n">fitted</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">slope</span>
-    <span class="n">error</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">fitted</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7038632.75610837
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>40456091.81253432
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_slopes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Slopes to try
+</span><span class="n">some_slopes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 <span class="n">n_slopes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">some_slopes</span><span class="p">)</span>
-<span class="n">sos_errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_slopes</span><span class="p">)</span>
+<span class="c1"># Try all these slopes, calculate and record sum of squared error
+</span><span class="n">sos_errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_slopes</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_slopes</span><span class="p">):</span>
     <span class="n">slope</span> <span class="o">=</span> <span class="n">some_slopes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">sos_errors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sos_error</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">)</span>
-<span class="n">sos_errors</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([7695798.57, 7682930.13, 7670107.99, 7657332.17, 7644602.66,
-       7631919.45, 7619282.56, 7606691.97, 7594147.7 , 7581649.73])
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">some_slopes</span><span class="p">,</span> <span class="n">sos_errors</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x118dbda20&gt;]
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/08/finding_lines_28_1.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="nb">min</span><span class="p">(</span><span class="n">sos_errors</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5901409.5805078605
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">i_of_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">sos_errors</span><span class="p">)</span>
-<span class="n">i_of_min</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>278
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_errors</span><span class="p">[</span><span class="n">i_of_min</span><span class="p">]</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5901409.5805078605
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best_slope</span> <span class="o">=</span> <span class="n">some_slopes</span><span class="p">[</span><span class="n">i_of_min</span><span class="p">]</span>
-<span class="n">best_slope</span>
+    <span class="n">sos_errors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sos_error</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+<span class="c1"># The slope minimizing the sum of squared error
+# This is the slope corresponding to an intercept of 0.
+</span><span class="n">best_i0_slope</span> <span class="o">=</span> <span class="n">some_slopes</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">sos_errors</span><span class="p">)]</span>
+<span class="n">best_i0_slope</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>77.8000000000004
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best_predicted</span> <span class="o">=</span> <span class="n">fert</span> <span class="o">*</span> <span class="n">best_slope</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">best_predicted</span><span class="p">,</span> <span class="s">'ro'</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fert</span><span class="p">)):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">fert</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">y_0</span> <span class="o">=</span> <span class="n">best_predicted</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">y_1</span> <span class="o">=</span> <span class="n">mmr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">y_0</span><span class="p">,</span> <span class="n">y_1</span><span class="p">],</span> <span class="s">':'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div></div>
+<p>What if we also have a not-zero intercept.  How do we search for a slope as well as an intercept?</p>
 
-<p><img src="../../images/chapters/08/finding_lines_33_0.png" alt="png" /></p>
+<p>First we define a function, that gives the sum of squared error from our line, that has both a slope, and an intercept.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">sos_error</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">))</span>
-<span class="n">result</span><span class="o">.</span><span class="n">x</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([77.84])
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">fmin</span><span class="p">(</span><span class="n">sos_error</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">))</span>
-<span class="n">result</span>
-</code></pre></div></div>
-
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Optimization terminated successfully.
-         Current function value: 5901406.206275
-         Iterations: 20
-         Function evaluations: 40
-
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([77.84])
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([77.84])
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">final</span><span class="p">,</span> <span class="n">tried</span> <span class="o">=</span> <span class="n">fmin</span><span class="p">(</span><span class="n">sos_error</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">),</span> <span class="n">retall</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">final</span>
-</code></pre></div></div>
-
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Optimization terminated successfully.
-         Current function value: 5901406.206275
-         Iterations: 20
-         Function evaluations: 40
-
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([77.84])
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tried</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[array([100.]),
- array([90.]),
- array([80.]),
- array([80.]),
- array([77.5]),
- array([77.5]),
- array([78.12]),
- array([77.81]),
- array([77.81]),
- array([77.81]),
- array([77.85]),
- array([77.83]),
- array([77.84]),
- array([77.84]),
- array([77.84]),
- array([77.84]),
- array([77.84]),
- array([77.84]),
- array([77.84]),
- array([77.84])]
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">some_slopes</span><span class="p">,</span> <span class="n">sos_errors</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tried</span><span class="p">)):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">tried</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">sos_error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/08/finding_lines_41_0.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1500</span><span class="p">])</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 8, -200, 1500]
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/08/finding_lines_42_1.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best_error</span> <span class="o">=</span> <span class="n">sos_error</span><span class="p">(</span><span class="n">best_slope</span><span class="p">,</span> <span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">)</span>
-<span class="n">best_error</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5901409.5805078605
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sos_si_error</span><span class="p">(</span><span class="n">inter_slope</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="n">intercept</span> <span class="o">=</span> <span class="n">inter_slope</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sos_si_error</span><span class="p">(</span><span class="n">inter_slope</span><span class="p">):</span>
+    <span class="c1"># inter_slope has two elements, the intercept value, and the slope value
+</span>    <span class="n">intercept</span> <span class="o">=</span> <span class="n">inter_slope</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">slope</span> <span class="o">=</span> <span class="n">inter_slope</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">fitted</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">slope</span>
-    <span class="n">error</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">fitted</span>
+    <span class="n">fitted</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">fert</span> <span class="o">*</span> <span class="n">slope</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">mmr</span> <span class="o">-</span> <span class="n">fitted</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_si_error</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">best_slope</span><span class="p">],</span> <span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">)</span>
+<p>Here we pass the new function an intercept value of 0 and the slope value we  found with our search:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_si_error</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">best_i0_slope</span><span class="p">])</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5901409.5805078605
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_si_error</span><span class="p">([</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">)</span>
+<p>Of course this gives us the same error as our original function, that assumed an intercept of 0:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error</span><span class="p">(</span><span class="n">best_i0_slope</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4516702.759643463
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5901409.5805078605
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">si_predicted</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span> <span class="o">+</span> <span class="n">fert</span> <span class="o">*</span> <span class="mi">100</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">best_predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">si_predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1500</span><span class="p">])</span>
+<p>We can pass in an intercept value as well.  In this case, adding the intercept value makes the error goes up:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_si_error</span><span class="p">([</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="n">best_i0_slope</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 8, -200, 1500]
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6292448.143258112
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/finding_lines_47_1.png" alt="png" /></p>
+<p>Another value for the intercept makes the error go down:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_intercepts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_si_error</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">best_i0_slope</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5864346.351762867
+</code></pre></div></div>
+
+<p>When we found the slope, we tried lots of slopes, and chose the best one.  What do we do when we are trying to find the best slope <em>and</em> the best intercept?</p>
+
+<p>We can do the same thing, but this time, instead of searching over many slopes, we search over many combinations of slopes and intercepts.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Some slopes and intercepts to try
+</span><span class="n">some_intercepts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">n_intercepts</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">some_intercepts</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Number of intercepts to try:'</span><span class="p">,</span> <span class="n">n_intercepts</span><span class="p">)</span>
 <span class="n">some_slopes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 <span class="n">n_slopes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">some_slopes</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Number of slopes to try:'</span><span class="p">,</span> <span class="n">n_slopes</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_intercepts</span><span class="p">,</span> <span class="n">n_slopes</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">inter_i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_intercepts</span><span class="p">):</span>
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Number of intercepts to try: 350
+Number of slopes to try: 200
+
+</code></pre></div></div>
+
+<p>When we searched many slopes, we collected the errors in a one-dimensional array, with each element carrying the error for a single slope.  For example, if we are trying 200 slopes, we make a one-dimensional array of length 200, to store the matching error values.</p>
+
+<p>Now we are going to search for many slopes and many intercepts.  We need a two-dimensional array, where the rows (say) correspond to the different intercept values we try, and the columns (say) correspond to the slope values we try.  If we try 350 intercepts and 200 slopes, we need a two-dimensional array shape (350, 200) to store the corresponding errors.</p>
+
+<p>For each of the 350 possible intercepts, we try all 200 possible slopes.  We fill in the corresponding values in the array, to have 350 * 200 error values, for the 350 * 200 possible pairs of intercept and slope.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make the two-dimensional array to store the errors.
+</span><span class="n">errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_intercepts</span><span class="p">,</span> <span class="n">n_slopes</span><span class="p">))</span>
+<span class="c1"># Try all possible intercepts
+</span><span class="k">for</span> <span class="n">inter_i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_intercepts</span><span class="p">):</span>
     <span class="n">inter</span> <span class="o">=</span> <span class="n">some_intercepts</span><span class="p">[</span><span class="n">inter_i</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">slope_i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_slopes</span><span class="p">):</span>
+    <span class="c1"># For each intercept, try all possible slopes
+</span>    <span class="k">for</span> <span class="n">slope_i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_slopes</span><span class="p">):</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">some_slopes</span><span class="p">[</span><span class="n">slope_i</span><span class="p">]</span>
-        <span class="n">errors</span><span class="p">[</span><span class="n">inter_i</span><span class="p">,</span> <span class="n">slope_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sos_si_error</span><span class="p">([</span><span class="n">inter</span><span class="p">,</span> <span class="n">s</span><span class="p">],</span> <span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">)</span>
+        <span class="c1"># Fill the corresponding position in the error array
+</span>        <span class="n">errors</span><span class="p">[</span><span class="n">inter_i</span><span class="p">,</span> <span class="n">slope_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sos_si_error</span><span class="p">([</span><span class="n">inter</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
+<p>We now have the error for all pair of intercepts and slopes.  We can display this as an array, to see where the minimum might be.  The smallest values will be black, the largest will be white:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show the error array as an image.
+# Black corresponds to low values, white to high values.
+</span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">errors</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'gray'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.colorbar.Colorbar at 0x120d31390&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.colorbar.Colorbar at 0x118460898&gt;
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/finding_lines_50_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/finding_lines_22_1.png" alt="png" /></p>
+
+<p>The minimum over all pairs of intercepts and slopes is somewhere in the black area in the middle of that array.</p>
+
+<p>We find the smallest error from the whole array:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">min_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">min</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
 <span class="n">min_error</span>
@@ -1999,6 +1044,16 @@ gives the lowest average squared difference from the observed value.</li>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3798981.48102873
 </code></pre></div></div>
 
+<p>Notice that this error is lower than the error we found when we assumed the intercept was zero:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error</span><span class="p">(</span><span class="n">best_i0_slope</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5901409.5805078605
+</code></pre></div></div>
+
+<p>Using the tricks from <a href="where_and_argmin">where and argmin</a>, we find the row and column indices for the minimum value:</p>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">errors</span> <span class="o">==</span> <span class="n">min_error</span><span class="p">)</span>
 <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span>
 </code></pre></div></div>
@@ -2006,57 +1061,75 @@ gives the lowest average squared difference from the observed value.</li>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([80]), array([140]))
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best_intercept</span> <span class="o">=</span> <span class="n">some_intercepts</span><span class="p">[</span><span class="n">rows</span><span class="p">]</span>
+<p>We can now get the corresponding intercept and slope pair:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The intercept giving the minimum error (with the slope below).
+</span><span class="n">best_intercept</span> <span class="o">=</span> <span class="n">some_intercepts</span><span class="p">[</span><span class="n">rows</span><span class="p">]</span>
 <span class="n">best_intercept</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-220])
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best_si_slope</span> <span class="o">=</span> <span class="n">some_slopes</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The slope giving the minimum error (with the intercept above).
+</span><span class="n">best_si_slope</span> <span class="o">=</span> <span class="n">some_slopes</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span>
 <span class="n">best_si_slope</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([140])
 </code></pre></div></div>
 
+<p>We calculate the predicted values for our new best line:</p>
+
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">si_predicted</span> <span class="o">=</span> <span class="n">best_intercept</span> <span class="o">+</span> <span class="n">fert</span> <span class="o">*</span> <span class="n">best_si_slope</span>
+</code></pre></div></div>
+
+<p>Plot the new line along with our original line, that assumed a zero intercept.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">si_predicted</span> <span class="o">=</span> <span class="n">best_intercept</span> <span class="o">+</span> <span class="n">fert</span> <span class="o">*</span> <span class="n">best_si_slope</span>
+<span class="n">just_s_predicted</span> <span class="o">=</span> <span class="n">fert</span> <span class="o">*</span> <span class="n">best_i0_slope</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">best_predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">si_predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">just_s_predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Slope only'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">si_predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'green'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Slope and intercept'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1500</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Best-fit lines with and without intercept'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 8, -200, 1500]
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Best-fit lines with and without intercept')
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/finding_lines_55_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/finding_lines_35_1.png" alt="png" /></p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">minimize</span><span class="p">(</span><span class="n">sos_si_error</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">))</span>
+<p>Now you know about <a href="optimization">optimization</a>, you will not be surprised to discover that Scipy <code class="highlighter-rouge">minimize</code> can also do the search for the intercept and slope pair for us.  We send <code class="highlighter-rouge">minimize</code> the function we are trying to minimize, and a starting guess for the intercept and slope.  In this case, we start with a guess of <code class="highlighter-rouge">[0, 100]</code>, but any reasonable guess will do.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+<span class="n">minimize</span><span class="p">(</span><span class="n">sos_si_error</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 3798879.4982325537
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 3798879.4982295665
  hess_inv: array([[ 0., -0.],
        [-0.,  0.]])
-      jac: array([-0.03, -0.06])
+      jac: array([ 0.  , -0.03])
   message: 'Desired error not necessarily achieved due to precision loss.'
-     nfev: 69
-      nit: 7
-     njev: 17
+     nfev: 65
+      nit: 6
+     njev: 16
    status: 2
   success: False
         x: array([-220.86,  140.42])
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
-</code></pre></div></div>
+<p>We won’t spend any time justifying this, but this is also the answer we get from traditional fitting of the least-squares line, as implemented, for example, in the Scipy <code class="highlighter-rouge">linregress</code> function:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">linregress</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
+<span class="n">linregress</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LinregressResult(slope=140.4171171547987, intercept=-220.8570729056681, rvalue=0.8327335391716736, pvalue=3.3173289077823836e-60, stderr=6.196624287694138)
 </code></pre></div></div>
 
+<p>Notice the values for <code class="highlighter-rouge">slope</code> and <code class="highlighter-rouge">intercept</code> in the output above.</p>
 
           
         </section>
@@ -2073,11 +1146,11 @@ gives the lowest average squared difference from the observed value.</li>
         
   <nav class="pagination">
     
-      <a href="/dsfe/chapters/08/mean_and_straight_lines" class="pagination--pager" title="8.4 Mean and straight lines
+      <a href="/dsfe/chapters/08/optimization" class="pagination--pager" title="8.4 Optimization
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/exercises/exercises" class="pagination--pager" title="Exercises
+      <a href="/dsfe/chapters/08/inference_on_slopes" class="pagination--pager" title="8.6 Believable slopes
 ">Next</a>
     
   </nav>
