@@ -56,3 +56,99 @@ clean_mmr_fr = just_mmr_fr.dropna()
 mmr = np.array(clean_mmr_fr['mat_mort_ratio'])
 fert = np.array(clean_mmr_fr['fert_rate'])
 ```
+
+The function we want to minimize:
+
+```{python}
+def sos_si_error(inter_slope):
+    # inter_slope has two elements, the intercept value, and the slope value
+    intercept = inter_slope[0]
+    slope = inter_slope[1]
+    fitted = intercept + fert * slope
+    error = mmr - fitted
+    return np.sum(error ** 2)
+```
+
+Find the best intercept and slope:
+
+```{python}
+from scipy.optimize import minimize
+observed_result = minimize(sos_si_error, [0, 100])
+observed_result.x
+```
+
+```{python}
+observed_slope = observed_result.x[1]
+observed_slope
+```
+
+This is what we see, in the data we have.
+
+
+What would we see, if we took another random sample of FR and MMR values?  We can't easily to this.  Is there a way we can estimate what this would look like?
+
+
+We return to the permutation trick.  If there is, in fact, no straight-line relationship between MMR and FR, then the association of MMR and FR is just a result of random sampling.
+
+We can simulate that random sampling by making a new, fake FR, MMR pairing.  We do this by shuffling the MMR (or FR) values, to make the relationship between them random.
+
+Then we check what slope we get.
+
+We keep doing this, and keep checking the slope, to build up the *sampling distribution* for the slope.
+
+Then we compare our actual slope to the sampling distribution.  If the actual slope is not a rare value from the sampling distribution, the slope may have come about because of random sampling.  If it is a rare value, random sampling is an unlikely explanation.
+
+```{python}
+# Store the original MMR values
+actual_mmr = mmr.copy()
+```
+
+Now shuffle the MMR values, to make a fake pairing between the FR and MMR values.
+
+```{python}
+# Make a fake pairing of FR and MMR, by shuffling MMR
+np.random.shuffle(mmr)
+```
+
+Use `minimize` to estimate the best-fit slope for this new fake pairing:
+
+```{python}
+# Estimate the slope for the fake pairing
+fake_result = minimize(sos_si_error, [0, 100])
+fake_result.x
+```
+
+Get the slope, as our first estimate from the sampling distribution:
+
+```{python}
+fake_slope = fake_result.x[1]
+fake_slope
+```
+
+We need to do this many times to build up a good estimate of the sampling distribution:
+
+```{python}
+n_samples = 10000
+fake_slopes = np.zeros(n_samples)
+for i in np.arange(n_samples):
+    np.random.shuffle(mmr)
+    fake_slope = minimize(sos_si_error, [0, 100]).x[1]
+    fake_slopes[i] = fake_slope
+```
+
+As usual, we display the sampling distribution:
+
+```{python}
+plt.hist(fake_slopes)
+plt.xlabel('Fake slope values')
+plt.title('Sampling distribution for slope')
+```
+
+We find the proportion of the sampling distribution that is greater than or equal to the value we saw:
+
+```{python}
+p = np.count_nonzero(fake_slopes >= observed_slope) / n_samples
+p
+```
+
+The observed slope is very unlikely, given the sampling distribution.  We conclude that the observed slope is unlikely to be the result of random sampling.

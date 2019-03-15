@@ -24,9 +24,9 @@ Specifically, we wanted our slope to predict the Maternal Mortality Ratio (MMR) 
 
 By analogy with [The Mean as Predictor](mean_meaning), we decided to choose our line to minimize the average prediction errors, and the sum of squared prediction errors.
 
-We found a solution.  Now we might ask the question, what if we wanted a line that had a (not zero) intercept, as well as a slope?
+We found a solution, by trying many slopes, and choosing the slope giving use the smallest error.
 
-First we recover the slope we found.
+Now we might ask the question, what if we wanted a line that had a (not zero) intercept, as well as a slope?
 
 ```{python}
 import numpy as np
@@ -39,9 +39,8 @@ np.set_printoptions(precision=2, suppress=True)
 import pandas as pd
 ```
 
-If you are running on your laptop, you will need to download the
-[gender_stats.csv]({{ site.baseurl }}/data/gender_stats.csv) file to the same
-directory as this notebook.
+You can download the
+data from [gender_stats.csv]({{ site.baseurl }}/data/gender_stats.csv).
 
 We fetch the data and process it again:
 
@@ -58,17 +57,15 @@ mmr = np.array(clean_mmr_fr['mat_mort_ratio'])
 fert = np.array(clean_mmr_fr['fert_rate'])
 ```
 
-We decided on sum of squared error as a criterion:
+In [The Mean and Slopes](mean_and_slopes), we did a search for the best slope, like this:
 
 ```{python}
 def sos_error(slope):
+    # Sum of squared error as a function of slope
     fitted = fert * slope  # 'fert' comes from the top level
     error = mmr - fitted     # 'mmr' comes from the top level
     return np.sum(error ** 2)
 ```
-
-We tried many slopes, and found the one minimizing the `sos_error` value
-above:
 
 ```{python}
 # Slopes to try
@@ -80,24 +77,18 @@ for i in np.arange(n_slopes):
     slope = some_slopes[i]
     sos_errors[i] = sos_error(slope)
 # The slope minimizing the sum of squared error
-best_slope = some_slopes[np.argmin(sos_errors)]
-best_slope
+# This is the slope corresponding to an intercept of 0.
+best_i0_slope = some_slopes[np.argmin(sos_errors)]
+best_i0_slope
 ```
 
-This all comes from the [The Mean and Slopes](mean_and_slopes) notebook.
+What if we also have a not-zero intercept.  How do we search for a slope as well as an intercept?
 
-We also found, mysteriously, that there was a function called `minimize` in
-Scipy that would do the search for us:
-
-```{python}
-from scipy.optimize import minimize
-minimize(sos_error, 100)
-```
-
-We now how to search for the best slope.  What if we also have a not-zero intercept.  How do we search for a slope as well as an intercept?
+First we define a function, that gives the sum of squared error from our line, that has both a slope, and an intercept.
 
 ```{python}
 def sos_si_error(inter_slope):
+    # inter_slope has two elements, the intercept value, and the slope value
     intercept = inter_slope[0]
     slope = inter_slope[1]
     fitted = intercept + fert * slope
@@ -105,73 +96,139 @@ def sos_si_error(inter_slope):
     return np.sum(error ** 2)
 ```
 
-```{python}
-sos_si_error([0, best_slope])
-```
+Here we pass the new function an intercept value of 0 and the slope value we  found with our search:
 
 ```{python}
-sos_si_error([-100, 100])
+sos_si_error([0, best_i0_slope])
 ```
 
+Of course this gives us the same error as our original function, that assumed an intercept of 0:
+
 ```{python}
+sos_error(best_i0_slope)
+```
+
+We can pass in an intercept value as well.  In this case, adding the intercept value makes the error goes up:
+
+```{python}
+sos_si_error([-100, best_i0_slope])
+```
+
+Another value for the intercept makes the error go down:
+
+```{python}
+sos_si_error([-2, best_i0_slope])
+```
+
+When we found the slope, we tried lots of slopes, and chose the best one.  What do we do when we are trying to find the best slope *and* the best intercept?
+
+We can do the same thing, but this time, instead of searching over many slopes, we search over many combinations of slopes and intercepts.
+
+```{python}
+# Some slopes and intercepts to try
 some_intercepts = np.arange(-300, 50)
 n_intercepts = len(some_intercepts)
+print('Number of intercepts to try:', n_intercepts)
 some_slopes = np.arange(0, 200)
 n_slopes = len(some_slopes)
+print('Number of slopes to try:', n_slopes)
 ```
 
+When we searched many slopes, we collected the errors in a one-dimensional array, with each element carrying the error for a single slope.  For example, if we are trying 200 slopes, we make a one-dimensional array of length 200, to store the matching error values.
+
+Now we are going to search for many slopes and many intercepts.  We need a two-dimensional array, where the rows (say) correspond to the different intercept values we try, and the columns (say) correspond to the slope values we try.  If we try 350 intercepts and 200 slopes, we need a two-dimensional array shape (350, 200) to store the corresponding errors.
+
+For each of the 350 possible intercepts, we try all 200 possible slopes.  We fill in the corresponding values in the array, to have 350 * 200 error values, for the 350 * 200 possible pairs of intercept and slope.
+
 ```{python}
+# Make the two-dimensional array to store the errors.
 errors = np.zeros((n_intercepts, n_slopes))
+# Try all possible intercepts
 for inter_i in np.arange(n_intercepts):
     inter = some_intercepts[inter_i]
+    # For each intercept, try all possible slopes
     for slope_i in np.arange(n_slopes):
         s = some_slopes[slope_i]
+        # Fill the corresponding position in the error array
         errors[inter_i, slope_i] = sos_si_error([inter, s])
 ```
 
+We now have the error for all pair of intercepts and slopes.  We can display this as an array, to see where the minimum might be.  The smallest values will be black, the largest will be white:
+
 ```{python}
-plt.imshow(np.sqrt(errors))
+# Show the error array as an image.
+# Black corresponds to low values, white to high values.
+plt.imshow(errors, cmap='gray')
 plt.colorbar()
 ```
+
+The minimum over all pairs of intercepts and slopes is somewhere in the black area in the middle of that array.
+
+We find the smallest error from the whole array:
 
 ```{python}
 min_error = np.min(errors)
 min_error
 ```
 
+Notice that this error is lower than the error we found when we assumed the intercept was zero:
+
+```{python}
+sos_error(best_i0_slope)
+```
+
+Using the tricks from [where and argmin](where_and_argmin), we find the row and column indices for the minimum value:
+
 ```{python}
 rows, cols = np.where(errors == min_error)
 rows, cols
 ```
 
+We can now get the corresponding intercept and slope pair:
+
 ```{python}
+# The intercept giving the minimum error (with the slope below).
 best_intercept = some_intercepts[rows]
 best_intercept
 ```
 
 ```{python}
+# The slope giving the minimum error (with the intercept above).
 best_si_slope = some_slopes[cols]
 best_si_slope
 ```
 
+We calculate the predicted values for our new best line:
+
 ```{python}
 si_predicted = best_intercept + fert * best_si_slope
-just_s_predicted = fert * best_slope
+```
+
+Plot the new line along with our original line, that assumed a zero intercept.
+
+```{python}
+si_predicted = best_intercept + fert * best_si_slope
+just_s_predicted = fert * best_i0_slope
 plt.plot(fert, mmr, 'o')
 plt.plot(fert, just_s_predicted, 'o', color='red', label='Slope only')
 plt.plot(fert, si_predicted, 'o', color='green', label='Slope and intercept')
 plt.legend()
 plt.axis([0, 8, -200, 1500])
+plt.title('Best-fit lines with and without intercept')
 ```
 
+Now you know about [optimization](optimization), you will not be surprised to discover that Scipy `minimize` can also do the search for the intercept and slope pair for us.  We send `minimize` the function we are trying to minimize, and a starting guess for the intercept and slope.  In this case, we start with a guess of `[0, 100]`, but any reasonable guess will do.
+
 ```{python}
-minimize(sos_si_error, [0, 0])
+from scipy.optimize import minimize
+minimize(sos_si_error, [0, 100])
 ```
+
+We won't spend any time justifying this, but this is also the answer we get from traditional fitting of the least-squares line, as implemented, for example, in the Scipy `linregress` function:
 
 ```{python}
 from scipy.stats import linregress
-```
-
-```{python}
 linregress(fert, mmr)
 ```
+
+Notice the values for `slope` and `intercept` in the output above.
