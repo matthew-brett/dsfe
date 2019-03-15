@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-03-15T08:23:30+00:00">
+  <meta property="article:published_time" content="2019-03-15T10:46:46+00:00">
 
 
 
@@ -514,7 +514,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/05/brexit_ages" class="level_1">5.6 Brexit ages</a></li>
+            <li><a href="/dsfe/chapters/05/brexit_ages" class="level_1">5.6 A permutation test</a></li>
           
         </ul>
         
@@ -928,13 +928,7 @@ directory as this notebook.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
 <span class="n">observed_result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">sos_si_error</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
-<span class="n">observed_result</span><span class="o">.</span><span class="n">x</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-220.86,  140.42])
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">observed_slope</span> <span class="o">=</span> <span class="n">observed_result</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">observed_slope</span> <span class="o">=</span> <span class="n">observed_result</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">observed_slope</span>
 </code></pre></div></div>
 
@@ -943,11 +937,14 @@ directory as this notebook.</p>
 
 <p>This is what we see, in the data we have.</p>
 
-<p>What would we see, if we took another random sample of FR and MMR values?  We can’t easily to this.  Is there a way we can estimate what this would look like?</p>
+<p>What would we see, if we took another random sample of FR and MMR values?  We can’t easily do this.  Is there a way we can estimate what this would look like?</p>
 
-<p>We return to the permutation trick.  If there is, in fact, no straight-line relationship between MMR and FR, then the association of MMR and FR is just a result of random sampling.</p>
+<p>We return to the permutation trick we used in <a href="../05/brexit_ages">Brexit
+ages</a>.  If there is, in fact, no relationship between MMR
+and FR, then the slope, suggesting an association of MMR and FR, is just
+a result of random sampling.</p>
 
-<p>We can simulate that random sampling by making a new, fake FR, MMR pairing.  We do this by shuffling the MMR (or FR) values, to make the relationship between them random.</p>
+<p>We can simulate that random sampling by making a new, fake (FR, MMR) pairing.  We do this by shuffling the MMR (or FR) values, to make the relationship between them random.</p>
 
 <p>Then we check what slope we get.</p>
 
@@ -959,7 +956,7 @@ directory as this notebook.</p>
 </span><span class="n">actual_mmr</span> <span class="o">=</span> <span class="n">mmr</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>Now shuffle the MMR values, to make a fake pairing between the FR and MMR values.</p>
+<p>Now shuffle the MMR values, to make a fake and random pairing between the FR and MMR values.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a fake pairing of FR and MMR, by shuffling MMR
 </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">mmr</span><span class="p">)</span>
@@ -972,7 +969,7 @@ directory as this notebook.</p>
 <span class="n">fake_result</span><span class="o">.</span><span class="n">x</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([152.61,  10.06])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([154.68,   9.34])
 </code></pre></div></div>
 
 <p>Get the slope, as our first estimate from the sampling distribution:</p>
@@ -981,7 +978,7 @@ directory as this notebook.</p>
 <span class="n">fake_slope</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10.060284900099676
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9.336527660315454
 </code></pre></div></div>
 
 <p>We need to do this many times to build up a good estimate of the sampling distribution:</p>
@@ -1004,7 +1001,7 @@ directory as this notebook.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Sampling distribution for slope')
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/inference_on_slopes_22_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/inference_on_slopes_21_1.png" alt="png" /></p>
 
 <p>We find the proportion of the sampling distribution that is greater than or equal to the value we saw:</p>
 

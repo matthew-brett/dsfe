@@ -34,7 +34,7 @@
   * [5.3 Iteration with For loops](notebooks/05/iteration.ipynb)
   * [5.4 Indentation, indentation](notebooks/05/indentation.ipynb)
   * [5.5 Ones and zeros](notebooks/05/ones_zeros.ipynb)
-  * [5.6 Brexit ages](notebooks/05/brexit_ages.ipynb)
+  * [5.6 A permutation test](notebooks/05/brexit_ages.ipynb)
 * [6. More on simulation](notebooks/06/more_simulation.md)
   * [6.1 Sorting arrays](notebooks/06/sorting_arrays.ipynb)
   * [6.2 Monty hall problem](notebooks/06/monty_hall.ipynb)

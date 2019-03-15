@@ -238,10 +238,6 @@ Find the best intercept and slope:
 ```{python}
 from scipy.optimize import minimize
 observed_result = minimize(sos_si_error, [0, 100])
-observed_result.x
-```
-
-```{python}
 observed_slope = observed_result.x[1]
 observed_slope
 ```
@@ -249,12 +245,15 @@ observed_slope
 This is what we see, in the data we have.
 
 
-What would we see, if we took another random sample of FR and MMR values?  We can't easily to this.  Is there a way we can estimate what this would look like?
+What would we see, if we took another random sample of FR and MMR values?  We can't easily do this.  Is there a way we can estimate what this would look like?
 
 
-We return to the permutation trick.  If there is, in fact, no straight-line relationship between MMR and FR, then the association of MMR and FR is just a result of random sampling.
+We return to the permutation trick we used in [Brexit
+ages](../05/brexit_ages).  If there is, in fact, no relationship between MMR
+and FR, then the slope, suggesting an association of MMR and FR, is just
+a result of random sampling.
 
-We can simulate that random sampling by making a new, fake FR, MMR pairing.  We do this by shuffling the MMR (or FR) values, to make the relationship between them random.
+We can simulate that random sampling by making a new, fake (FR, MMR) pairing.  We do this by shuffling the MMR (or FR) values, to make the relationship between them random.
 
 Then we check what slope we get.
 
@@ -267,7 +266,7 @@ Then we compare our actual slope to the sampling distribution.  If the actual sl
 actual_mmr = mmr.copy()
 ```
 
-Now shuffle the MMR values, to make a fake pairing between the FR and MMR values.
+Now shuffle the MMR values, to make a fake and random pairing between the FR and MMR values.
 
 ```{python}
 # Make a fake pairing of FR and MMR, by shuffling MMR
