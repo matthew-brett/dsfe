@@ -105,14 +105,18 @@ recent_mean = recent.mean(axis=1)
 recent_mean.count()
 ```
 
-We only want the first four columns of the data frame - the rest are year
-values, many of which are missing.  Drop the columns after the fourth, and
-then add back the 2012 through 2016 data.
+We only want the first three columns of the data frame - the rest are year values, many of which are missing.  Drop the columns after the fourth, and then add back the 2012 through 2016 data.
 
 ```{python}
-thin_df = df[['Country Name', 'Indicator Name']].copy()
+thin_df = df[['Country Name', 'Country Code', 'Indicator Name']].copy()
 thin_df['recent_mean'] = recent_mean.copy()
 thin_df
+```
+
+```{python}
+cols = ['Country Code', 'Country Name']
+country_lookup = thin_df[cols].groupby(cols).nth(0).reset_index()
+country_lookup
 ```
 
 This data frame is still a mess, with a new row for each variable.  We can
@@ -121,10 +125,10 @@ solve this using the Pandas
 to push the rows up into columns, thus:
 
 ```{python}
-pivoted = thin_df.pivot(index='Country Name',
-                   columns='Indicator Name',
-                   values='recent_mean')
-pivoted
+pivoted = thin_df.pivot(index='Country Code',
+                        columns='Indicator Name',
+                        values='recent_mean')
+pivoted.columns
 ```
 
 Now we have 630 columns, one per variable, and 263 rows, one per country.
@@ -182,15 +186,66 @@ gender_stats.columns = [rename for (name, rename) in renamers]
 gender_stats
 ```
 
-Write the resulting data frame out to CSV.
+Add back the country name:
 
 ```{python}
-gender_stats.index.names = ['country']
-gender_stats.to_csv('gender_stats.csv')
+gender_stats = gender_stats.merge(country_lookup, on='Country Code')
+# Reorder Country Name to front
+cols = list(gender_stats)
+gender_stats = gender_stats[[cols[-1]] + cols[:-1]]
+gender_stats
+```
+
+There are a number of not-countries in the remaining rows.  For example `ARB` is not a valid country code.   To remove these, we use the standard list of countries from the [UN statistics division website](https://unstats.un.org/unsd/methodology/m49/overview).
+
+```{python}
+un_countries = pd.read_csv('un_stats_division_countries.csv')
+un_countries.head()
 ```
 
 ```{python}
-gender_stats
+iso3 = un_countries['ISO-alpha3 Code']
+iso3.head()
+```
+
+Check which rows have a country code in the UN list:
+
+```{python}
+valid_country = gender_stats['Country Code'].isin(iso3)
+valid_country.head()
+```
+
+Check the country names of countries with apparently invalid country codes:
+
+```{python}
+bad_countries = gender_stats[~valid_country][['Country Code', 'Country Name']]
+bad_countries
+```
+
+[Kosovo](https://en.wikipedia.org/wiki/Kosovo) seems like it might be a valid country. Add this back to the valid countries:
+
+```{python}
+valid_country[gender_stats['Country Code'] == 'XKX'] = True
+```
+
+Select data for the valid countries:
+
+```{python}
+valid_gender_stats = gender_stats.loc[valid_country]
+valid_gender_stats.head()
+```
+
+Write the resulting data frame out to CSV.
+
+```{python}
+valid_gender_stats.to_csv('valid_gender_stats.csv', index=False)
+```
+
+Read it back in to check it's what we were expecting:
+
+```{python}
+gs_back = pd.read_csv('valid_gender_stats.csv')
+gs_back.head()
 ```
 
 We should write a data dictionary too.  We will have to backslash escape dollars for the Markdown output.

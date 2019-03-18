@@ -18,3 +18,12 @@ from 2012 through 2016.
 
 See the `notes` directory of the source repository for the
 notebooks that generate the data from the original dataset.
+
+## Country codes etc
+
+The file `un_stats_division_countries.csv` contains information about country
+codes and classification. It is a very slightly modified copy of a file
+downloaded in March 2019 from the [UN statistics
+website](https://unstats.un.org/unsd/methodology/m49/overview).  The
+modifications are three single-character edits to replace commas in country
+names with semi-colons.
