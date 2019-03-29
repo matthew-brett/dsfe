@@ -20,54 +20,49 @@ jupyter:
 
 ```{python}
 # HIDDEN
-import matplotlib
-#matplotlib.use('Agg')
-from datascience import *
+import numpy as np
 # %matplotlib inline
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-import numpy as np
-import math
-import scipy.stats as stats
 plt.style.use('fivethirtyeight')
+import pandas as pd
 ```
 
 ```{python}
 # HIDDEN
-
 def standard_units(x):
     return (x - np.mean(x))/np.std(x)
 ```
 
 ```{python}
 # HIDDEN
-
 def distance(point1, point2):
     """The distance between two arrays of numbers."""
     return np.sqrt(np.sum((point1 - point2)**2))
 
 def all_distances(training, point):
     """The distance between p (an array of numbers) and the numbers in row i of attribute_table."""
-    attributes = training.drop('Class')
+    attributes = training.drop(columns='Class')
     def distance_from_point(row):
         return distance(point, np.array(row))
-    return attributes.apply(distance_from_point)
+    return attributes.apply(distance_from_point, axis=1)
 
 def table_with_distances(training, point):
     """A copy of the training table with the distance from each row to array p."""
-    return training.with_column('Distance', all_distances(training, point))
+    out = training.copy()
+    out['Distance'] = all_distances(training, point)
+    return out
 
 def closest(training, point, k):
     """A table containing the k closest rows in the training table to array p."""
     with_dists = table_with_distances(training, point)
-    sorted_by_distance = with_dists.sort('Distance')
-    topk = sorted_by_distance.take(np.arange(k))
+    sorted_by_distance = with_dists.sort_values('Distance')
+    topk = sorted_by_distance.iloc[:k]
     return topk
 
 def majority(topkclasses):
-    """1 if the majority of the "Class" column is 1s, and 0 otherwise."""
-    ones = topkclasses.where('Class', are.equal_to(1)).num_rows
-    zeros = topkclasses.where('Class', are.equal_to(0)).num_rows
+    """1 if the majority of the class values are 1s, 0 otherwise."""
+    ones = np.count_nonzero(topkclasses == 1)
+    zeros = np.count_nonzero(topkclasses == 0)
     if ones > zeros:
         return 1
     else:
@@ -76,11 +71,11 @@ def majority(topkclasses):
 def classify(training, p, k):
     """Classify an example with attributes p using k-nearest neighbor classification with the given training table."""
     closestk = closest(training, p, k)
-    topkclasses = closestk.select('Class')
-    return majority(topkclasses)
+    return majority(closestk['Class'])
 ```
 
 ### Nearest Neighbors ###
+
 In this section we'll develop the *nearest neighbor* method of classification. Just focus on the ideas for now and don't worry if some of the code is mysterious. Later in the chapter we'll see how to organize our ideas into code that performs the classification.
 
 
@@ -88,24 +83,24 @@ In this section we'll develop the *nearest neighbor* method of classification. J
 
 Let's work through an example.  We're going to work with a data set that was collected to help doctors diagnose chronic kidney disease (CKD).  Each row in the data set represents a single patient who was treated in the past and whose diagnosis is known.  For each patient, we have a bunch of measurements from a blood test.  We'd like to find which measurements are most useful for diagnosing CKD, and develop a way to classify future patients as "has CKD" or "doesn't have CKD" based on their blood test results.
 
+If you are running on your laptop, you should download the
+[ckd.csv]({{ site.baseurl }}/data/ckd.csv) file to the same
+directory as this notebook.
+
 ```{python}
-ckd = Table.read_table('ckd.csv').relabeled('Blood Glucose Random', 'Glucose')
-ckd
+ckd_full = pd.read_csv('ckd.csv')
+ckd_full.head()
 ```
 
 Some of the variables are categorical (words like "abnormal"), and some quantitative. The quantitative variables all have different scales. We're going to want to make comparisons and estimate distances, often by eye, so let's select just a few of the variables and work in standard units. Then we won't have to worry about the scale of each of the different variables.
 
 ```{python}
-ckd = Table().with_columns(
-    'Hemoglobin', standard_units(ckd.column('Hemoglobin')),
-    'Glucose', standard_units(ckd.column('Glucose')),
-    'White Blood Cell Count', standard_units(ckd.column('White Blood Cell Count')),
-    'Class', ckd.column('Class')
-)
-```
-
-```{python}
-ckd
+ckd = pd.DataFrame()
+ckd['Hemoglobin'] = standard_units(ckd_full['Hemoglobin'])
+ckd['Glucose'] = standard_units(ckd_full['Blood Glucose Random'])
+ckd['WBC'] = standard_units(ckd_full['White Blood Cell Count'])
+ckd['Class'] = ckd_full['Class']
+ckd.head()
 ```
 
 Let's look at two columns in particular: the hemoglobin level (in the patient's blood), and the blood glucose level (at a random time in the day; without fasting specially for the blood test). 
@@ -113,15 +108,13 @@ Let's look at two columns in particular: the hemoglobin level (in the patient's 
 We'll draw a scatter plot to visualize the relation between the two variables. Blue dots are patients with CKD; gold dots are patients without CKD.  What kind of medical test results seem to indicate CKD?
 
 ```{python}
-color_table = Table().with_columns(
-    'Class', make_array(1, 0),
-    'Color', make_array('darkblue', 'gold')
-)
-ckd = ckd.join('Class', color_table)
+ckd['Color'] = 'darkblue'
+ckd.loc[ckd['Class'] == 0, 'Color'] = 'gold'
+ckd.head()
 ```
 
 ```{python}
-ckd.scatter('Hemoglobin', 'Glucose', colors='Color')
+ckd.plot.scatter('Hemoglobin', 'Glucose', c=ckd['Color']);
 ```
 
 Suppose Alice is a new patient who is not in the data set.  If I tell you Alice's hemoglobin level and blood glucose level, could you predict whether she has CKD?  It sure looks like it!  You can see a very clear pattern here: points in the lower-right tend to represent people who don't have CKD, and the rest tend to be folks with CKD.  To a human, the pattern is obvious.  But how can we program a computer to automatically detect patterns such as this one?
@@ -138,24 +131,24 @@ In the graph below, the red dot represents Alice. It is joined with a black line
 
 ```{python}
 # HIDDEN
-
 def show_closest(point):
-    """point = array([x,y]) 
+    """point = array([x,y])
     gives the coordinates of a new point
     shown in red"""
-    
-    HemoGl = ckd.drop('White Blood Cell Count', 'Color')
+    HemoGl = ckd[['Hemoglobin', 'Glucose', 'Class']]
     t = closest(HemoGl, point, 1)
-    x_closest = t.row(0).item(1)
-    y_closest = t.row(0).item(2)
-    ckd.scatter('Hemoglobin', 'Glucose', colors='Color')
-    plt.scatter(point.item(0), point.item(1), color='red', s=30)
-    plt.plot(make_array(point.item(0), x_closest), make_array(point.item(1), y_closest), color='k', lw=2);
+    x_closest = float(t['Hemoglobin'])
+    y_closest = float(t['Glucose'])
+    ckd.plot.scatter('Hemoglobin', 'Glucose', c=ckd['Color'])
+    plt.scatter(point[0], point[1], color='red', s=30)
+    plt.plot([point[0], x_closest],
+             [point[1], y_closest],
+             color='k', lw=2);
 ```
 
 ```{python}
 # In this example, Alice's Hemoglobin attribute is 0 and her Glucose is 1.5.
-alice = make_array(0, 1.5)
+alice = np.array([0, 1.5])
 show_closest(alice)
 ```
 
@@ -173,7 +166,7 @@ Sometimes a helpful way to visualize a classifier is to map out the kinds of att
 For example, suppose the coordinates of Alice's point are (0, 1.5). Notice that the nearest neighbor is blue. Now try reducing the height (the $y$-coordinate) of the point. You'll see that at around $y = 0.95$ the nearest neighbor turns from blue to gold.
 
 ```{python}
-alice = make_array(0, 0.97)
+alice = np.array([0, 0.97])
 show_closest(alice)
 ```
 
@@ -182,25 +175,33 @@ Here are hundreds of new unclassified points, all in red.
 ```{python}
 # HIDDEN
 
-x_array = make_array()
-y_array = make_array()
-for x in np.arange(-2, 2.1, 0.1):
-    for y in np.arange(-2, 2.1, 0.1):
-        x_array = np.append(x_array, x)
-        y_array = np.append(y_array, y)
-        
-test_grid = Table().with_columns(
-    'Hemoglobin', x_array,
-    'Glucose', y_array
-)
+x_vals = np.arange(-2, 2.1, 0.1)
+y_vals = np.arange(-2, 2.1, 0.1)
+n_xy_vals = len(x_vals) * len(y_vals)
+x_array = np.zeros(n_xy_vals)
+y_array = np.zeros(n_xy_vals)
+index = 0
+for x in x_vals:
+    for y in y_vals:
+        x_array[index] = x
+        y_array[index] = y
+        index = index + 1
+
+test_grid = pd.DataFrame()
+test_grid['Hemoglobin'] = x_array
+test_grid['Glucose'] = y_array
 ```
 
 ```{python}
-# HIDDEN
+# NO CODE
 
-test_grid.scatter('Hemoglobin', 'Glucose', color='red', alpha=0.4, s=30)
+test_grid.plot.scatter('Hemoglobin', 'Glucose',
+                       color='red',
+                       alpha=0.4, s=30)
 
-plt.scatter(ckd.column('Hemoglobin'), ckd.column('Glucose'), c=ckd.column('Color'), edgecolor='k')
+plt.scatter(ckd['Hemoglobin'], ckd['Glucose'],
+            c=ckd['Color'],
+            edgecolor='k')
 
 plt.xlim(-2, 2)
 plt.ylim(-2, 2);
@@ -218,26 +219,37 @@ The resulting graph shows which points will get classified as 'CKD' (all the blu
 # HIDDEN
 
 def classify_grid(training, test, k):
-    c = make_array()
-    for i in range(test.num_rows):
+    n_test = len(test)
+    c = np.zeros(n_test)
+    for i in range(n_test):
         # Run the classifier on the ith patient in the test set
-        c = np.append(c, classify(training, make_array(test.row(i)), k))   
+        c[i] = classify(training, np.array(test.iloc[i]), k)
     return c
 ```
 
 ```{python}
 # HIDDEN
 
-c = classify_grid(ckd.drop('White Blood Cell Count', 'Color'), test_grid, 1)
+c = classify_grid(ckd[['Hemoglobin', 'Glucose', 'Class']],
+                  test_grid,
+                  1)
 ```
 
 ```{python}
-# HIDDEN
+# NO CODE
 
-test_grid = test_grid.with_column('Class', c).join('Class', color_table)
-test_grid.scatter('Hemoglobin', 'Glucose', colors='Color', alpha=0.4, s=30)
+test_grid['Class'] = c
+test_grid['Color'] = 'darkblue'
+test_grid.loc[c == 0, 'Color'] = 'gold'
 
-plt.scatter(ckd.column('Hemoglobin'), ckd.column('Glucose'), c=ckd.column('Color'), edgecolor='k')
+test_grid.plot.scatter('Hemoglobin', 'Glucose',
+                  c=test_grid['Color'],
+                  alpha=0.4, s=30)
+
+plt.scatter(ckd['Hemoglobin'],
+            ckd['Glucose'],
+            c=ckd['Color'],
+            edgecolor='k')
 
 plt.xlim(-2, 2)
 plt.ylim(-2, 2);
@@ -251,12 +263,14 @@ The decision boundary is where the classifier switches from turning the red poin
 However, the separation between the two classes won't always be quite so clean.  For instance, suppose that instead of hemoglobin levels we were to look at white blood cell count.  Look at what happens:
 
 ```{python}
-ckd.scatter('White Blood Cell Count', 'Glucose', colors='Color')
+ckd.plot.scatter('WBC',
+                 'Glucose',
+                 colors=ckd['Color'])
 ```
 
 As you can see, non-CKD individuals are all clustered in the lower-left.  Most of the patients with CKD are above or to the right of that cluster... but not all.  There are some patients with CKD who are in the lower left of the above figure (as indicated by the handful of blue dots scattered among the gold cluster).  What this means is that you can't tell for certain whether someone has CKD from just these two blood test measurements.
 
-If we are given Alice's glucose level and white blood cell count, can we predict whether she has CKD?  Yes, we can make a prediction, but we shouldn't expect it to be 100% accurate.  Intuitively, it seems like there's a natural strategy for predicting: plot where Alice lands in the scatter plot; if she is in the lower-left, predict that she doesn't have CKD, otherwise predict she has CKD.  
+If we are given Alice's glucose level and white blood cell count, can we predict whether she has CKD?  Yes, we can make a prediction, but we shouldn't expect it to be 100% accurate.  Intuitively, it seems like there's a natural strategy for predicting: plot where Alice lands in the scatter plot; if she is in the lower-left, predict that she doesn't have CKD, otherwise predict she has CKD.
 
 This isn't perfect -- our predictions will sometimes be wrong.  (Take a minute and think it through: for which patients will it make a mistake?)  As the scatterplot above indicates, sometimes people with CKD have glucose and white blood cell levels that look identical to those of someone without CKD, so any classifier is inevitably going to make the wrong prediction for them.
 
