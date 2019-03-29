@@ -279,6 +279,11 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/09/classification",
         "teaser":null},{
+        "title": "9.1 Standard scores",
+        "excerpt":"Describing distributions We have seen several examples of distributions. We can describe distributions as having a center, and a spread. In the mean as predictor, we saw that the mean is a useful measure of the center of a distribution. What measure should we use for the spread? Chronic kidney...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/09/standard_scores",
+        "teaser":null},{
         "title": "Brexit analysis",
         "excerpt":"Brexit - the data analysis We start, as usual, by importing all the libraries we need. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdAll about the Brexiteers Every year, the HansardSocietysponsors a survey on political engagement in the UK. They put topical...","categories": [],
         "tags": [],

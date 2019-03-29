@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Class 18 - Data Science for Everyone</title>
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
 <meta name="description" content="">
 
 
@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="Class 18">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/days/class_18">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/09/standard_scores.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/days/class_18">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/09/standard_scores.Rmd">
 
 
 
@@ -166,7 +166,7 @@
   
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Class 18">
+    
     
     
     
@@ -174,29 +174,182 @@
     <div class="page__inner-wrap">
       
         <header>
-          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Class 18
-</h1> -->
+          <!--  -->
           
         </header>
       
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="day-18-the-nineteenth-day">Day 18 (the nineteenth day)</h1>
+        ```{python}
+# HIDDEN
+import numpy as np
+# %matplotlib inline
+import matplotlib.pyplot as plt
+plt.style.use('fivethirtyeight')
+import pandas as pd
+```
 
-<h2 id="schedule">Schedule</h2>
+## Describing distributions
 
-<p>Today - an introduction to machine learning</p>
+We have seen several examples of *distributions*.
 
-<ul>
-  <li><a href="../chapters/09/classification">9. Classification</a></li>
-  <li><a href="../chapters/09/standard_scores">9.1 Standard scores</a></li>
-  <li><a href="../chapters/09/Nearest_Neighbors">9.2 Nearest neighbors</a></li>
-  <li><a href="../chapters/09/Training_and_Testing">9.3 Training and testing</a></li>
-  <li><a href="../chapters/09/Rows_of_Tables">9.4 Rows of tables</a></li>
-  <li><a href="../chapters/09/Implementing_the_Classifier">9.5 Implementing the classifier</a></li>
-  <li><a href="../chapters/09/Accuracy_of_the_Classifier">9.6 Accuracy of the classifier</a></li>
-</ul>
+We can describe distributions as having a *center*, and a *spread*.
+
+In [the mean as predictor](../08/mean_meaning), we saw that the mean is a useful measure of the center of a distribution.
+
+What measure should we use for the spread?
+
+## Chronic kidney disease
+
+We're going to work with a data set that was collected to help doctors diagnose chronic kidney disease (CKD).  Each row in the data set represents a single patient who was treated in the past and whose diagnosis is known.  For each patient, we have a bunch of measurements from a blood test.
+
+You will see more of this dataset soon.
+
+If you are running on your laptop, you should download the
+[ckd.csv](/dsfe/data/ckd.csv) file to the same
+directory as this notebook.
+
+```{python}
+ckd_full = pd.read_csv('ckd.csv')
+ckd_full.head()
+```
+We will use this dataset to get a couple of variables (columns) and therefore a couple of distributions.
+
+Let's start with Blood Pressure (BP).
+
+```{python}
+wbc = ckd_full['White Blood Cell Count']
+wbc.hist()
+plt.title('White Blood Cell Count');
+```
+
+```{python}
+wbc.describe()
+```
+
+Compare this to Hemoglobin concentrations:
+
+```{python}
+hgb = ckd_full['Hemoglobin']
+hgb.hist()
+plt.title('Hemoglobin');
+```
+
+```{python}
+hgb.describe()
+```
+
+Notice that we can't easily plot these two on the same axes, because their units are so different.
+
+
+We could try and fix this by subtracting the mean, as a center value, so the values are now *deviations* from the mean.
+
+```{python}
+wbc_deviations = wbc - np.mean(wbc)
+wbc_deviations.hist()
+plt.title('White Blood Cell Count deviations');
+```
+
+```{python}
+hgb_deviations = hgb - np.mean(hgb)
+hgb_deviations.hist()
+plt.title('Hemoglobin deviations');
+```
+
+The deviations each have a mean very very close to zero, and therefore, they have the same center:
+
+```{python}
+np.mean(wbc_deviations), np.mean(hgb_deviations)
+```
+
+We still cannot plot them on the same axes, because the WBC values have a very different *spread*.  They will completely dominate the x axis of the graph.  We can't reasonably compare the WBC deviations to the Hemoglobin deviations, because they have such different units.
+
+
+We would like a measure of the spread of the distribution, so we can set the two distributions to have the same spread.
+
+
+## The standard deviation
+
+
+In the [mean as predictor](../08/mean_meaning) section, we found that mean was the best value to use as a predictor, to minimize the sum of *squared* deviations.
+
+Maybe we could get an idea of the typical *squared* deviation, as a measure of spread?
+
+```{python}
+hgb_deviations[:10]
+```
+
+```{python}
+hgb_dev_sq = hgb_deviations ** 2
+hgb_dev_sq[:10]
+```
+
+```{python}
+hgb_dev_sq.hist()
+plt.title('HGB squared deviations')
+```
+
+The center, or typical value, of this distribution, could be the *mean*.
+
+```{python}
+hgb_dev_sq_mean = np.mean(hgb_dev_sq)
+hgb_dev_sq_mean
+```
+
+This is the *mean squared deviation*.  This is also called the *variance*.  Numpy has a function to calculate that in one shot:
+
+```{python}
+# The mean squared deviation is the variance
+np.var(hgb)
+```
+
+The mean squared deviation is a good indicator of the typical squared deviation.  What should we used for some measure of the typical devation?
+
+We could take the square root of the mean squared deviation, like this:
+
+```{python}
+np.sqrt(hgb_dev_sq_mean)
+```
+
+This is a measure of the spread of the distribution.  It is a measure of the typical or average deviation.
+
+It is also called the *standard deviation*.
+
+```{python}
+np.std(hgb)
+```
+
+We can make our distribution have a standard center *and* and a standard spread by dividing our mean-centered distribution, by the standard deviation.  Then the distribution will have a standard deviation very close to 1.
+
+This version of the distribution, with mean 0 and standard deviation of 1, is called the *standardized* distribution.
+
+```{python}
+standardized_hgb = hgb_deviations / np.std(hgb)
+standardized_hgb.hist()
+plt.title('Standardized Hemoglobin')
+```
+
+We can make a function to do this:
+
+```{python}
+def standard_units(x):
+    return (x - np.mean(x))/np.std(x)
+```
+
+```{python}
+std_hgb_again = standard_units(hgb)
+std_hgb_again.hist()
+plt.title('Standardized Hemoglobin, again')
+```
+
+If we do the same to the WBC, we can compare values of the distributions:
+
+```{python}
+std_wbc = standard_units(wbc)
+std_wbc.hist()
+plt.title('Standardized White Blood Cell Count')
+```
 
         
       </section>

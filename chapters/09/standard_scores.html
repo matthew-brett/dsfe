@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Conditional statemet exercises - Data Science for Everyone</title>
-<meta name="description" content="Exercises on conditional statements">
+<!-- begin _includes/seo.html --><title>9.1 Standard scores - Data Science for Everyone</title>
+<meta name="description" content="Describing distributions">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
-<meta property="og:title" content="Conditional statemet exercises">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/exercises/conditional_statements_exercises">
+<meta property="og:title" content="9.1 Standard scores">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/09/standard_scores">
 
 
-  <meta property="og:description" content="Exercises on conditional statements">
+  <meta property="og:description" content="Describing distributions">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/exercises/conditional_statements_exercises">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/09/standard_scores">
 
 
 
@@ -920,15 +920,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="Conditional statemet exercises">
-      <meta itemprop="description" content="Exercises on conditional statements">
+      <meta itemprop="headline" content="9.1 Standard scores">
+      <meta itemprop="description" content="Describing distributions">
       <meta itemprop="datePublished" content="March 29, 2019">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">Conditional statemet exercises
+            <h1 id="page-title" class="page__title" itemprop="headline">9.1 Standard scores
 </h1>
           </header>
         
@@ -940,56 +940,425 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#describing-distributions">Describing distributions</a></li>
+  <li><a href="#chronic-kidney-disease">Chronic kidney disease</a></li>
+  <li><a href="#the-standard-deviation">The standard deviation</a></li>
+</ul>
+    </nav>
+  </aside>
+
 
           
           <!-- INTERACT LINKS -->
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/exercises/conditional_statements_exercises.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2Fexercises%2Fconditional_statements_exercises.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/09/standard_scores.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F09%2Fstandard_scores.ipynb">Interact</a>
 
 
-          <h1 id="exercises-on-conditional-statements">Exercises on conditional statements</h1>
+          <h2 id="describing-distributions">Describing distributions</h2>
 
-<p>For background, please read the <a href="../07/conditional_statements">conditional
-statements</a> introduction.</p>
+<p>We have seen several examples of <em>distributions</em>.</p>
 
-<p>This <em>if statement</em> is not properly defined, and will give a <code class="highlighter-rouge">SyntaxError</code>.  Fix it, then run to confirm it prints <code class="highlighter-rouge">'x greater than 4'</code>:</p>
+<p>We can describe distributions as having a <em>center</em>, and a <em>spread</em>.</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = 10
-x &gt; 4:
-    print('x greater than 4')
+<p>In <a href="../08/mean_meaning">the mean as predictor</a>, we saw that the mean is a useful measure of the center of a distribution.</p>
+
+<p>What measure should we use for the spread?</p>
+
+<h2 id="chronic-kidney-disease">Chronic kidney disease</h2>
+
+<p>We’re going to work with a data set that was collected to help doctors diagnose chronic kidney disease (CKD).  Each row in the data set represents a single patient who was treated in the past and whose diagnosis is known.  For each patient, we have a bunch of measurements from a blood test.</p>
+
+<p>You will see more of this dataset soon.</p>
+
+<p>If you are running on your laptop, you should download the
+<a href="/dsfe/data/ckd.csv">ckd.csv</a> file to the same
+directory as this notebook.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ckd_full</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'ckd.csv'</span><span class="p">)</span>
+<span class="n">ckd_full</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>This if statement also gives a <code class="highlighter-rouge">SyntaxError</code>. Fix and run. It should
-print <code class="highlighter-rouge">-8</code>;</p>
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>p = -2
-if p &lt; 0
-    p = p * 4
-print(p)
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Blood Pressure</th>
+      <th>Specific Gravity</th>
+      <th>Albumin</th>
+      <th>Sugar</th>
+      <th>Red Blood Cells</th>
+      <th>Pus Cell</th>
+      <th>Pus Cell clumps</th>
+      <th>Bacteria</th>
+      <th>Blood Glucose Random</th>
+      <th>...</th>
+      <th>Packed Cell Volume</th>
+      <th>White Blood Cell Count</th>
+      <th>Red Blood Cell Count</th>
+      <th>Hypertension</th>
+      <th>Diabetes Mellitus</th>
+      <th>Coronary Artery Disease</th>
+      <th>Appetite</th>
+      <th>Pedal Edema</th>
+      <th>Anemia</th>
+      <th>Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>48</td>
+      <td>70</td>
+      <td>1.005</td>
+      <td>4</td>
+      <td>0</td>
+      <td>normal</td>
+      <td>abnormal</td>
+      <td>present</td>
+      <td>notpresent</td>
+      <td>117</td>
+      <td>...</td>
+      <td>32</td>
+      <td>6700</td>
+      <td>3.9</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>no</td>
+      <td>poor</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>53</td>
+      <td>90</td>
+      <td>1.020</td>
+      <td>2</td>
+      <td>0</td>
+      <td>abnormal</td>
+      <td>abnormal</td>
+      <td>present</td>
+      <td>notpresent</td>
+      <td>70</td>
+      <td>...</td>
+      <td>29</td>
+      <td>12100</td>
+      <td>3.7</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>poor</td>
+      <td>no</td>
+      <td>yes</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>63</td>
+      <td>70</td>
+      <td>1.010</td>
+      <td>3</td>
+      <td>0</td>
+      <td>abnormal</td>
+      <td>abnormal</td>
+      <td>present</td>
+      <td>notpresent</td>
+      <td>380</td>
+      <td>...</td>
+      <td>32</td>
+      <td>4500</td>
+      <td>3.8</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>poor</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>68</td>
+      <td>80</td>
+      <td>1.010</td>
+      <td>3</td>
+      <td>2</td>
+      <td>normal</td>
+      <td>abnormal</td>
+      <td>present</td>
+      <td>present</td>
+      <td>157</td>
+      <td>...</td>
+      <td>16</td>
+      <td>11000</td>
+      <td>2.6</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>poor</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>61</td>
+      <td>80</td>
+      <td>1.015</td>
+      <td>2</td>
+      <td>0</td>
+      <td>abnormal</td>
+      <td>abnormal</td>
+      <td>notpresent</td>
+      <td>notpresent</td>
+      <td>173</td>
+      <td>...</td>
+      <td>24</td>
+      <td>9200</td>
+      <td>3.2</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>poor</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 25 columns</p>
+</div>
+</div>
+
+<p>We will use this dataset to get a couple of variables (columns) and therefore a couple of distributions.</p>
+
+<p>Let’s start with Blood Pressure (BP).</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wbc</span> <span class="o">=</span> <span class="n">ckd_full</span><span class="p">[</span><span class="s">'White Blood Cell Count'</span><span class="p">]</span>
+<span class="n">wbc</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'White Blood Cell Count'</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>Another <code class="highlighter-rouge">SyntaxError</code>; fix and run.  It should print <code class="highlighter-rouge">a divided by 6
-is 4</code></p>
+<p><img src="../../images/chapters/09/standard_scores_3_0.png" alt="png" /></p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 24
-if a / 6 == 4:
-print('a divided by 6 is 4')
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wbc</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>We want an algorithm to choose a newspaper for someone to read in the
-dentist’s waiting room, given what we know about their views on
-Brexit.</p>
-
-<p>Write a cell that prints <code class="highlighter-rouge">Times</code> if <code class="highlighter-rouge">voter</code> has the value <code class="highlighter-rouge">Soft Brexit</code>, otherwise prints <code class="highlighter-rouge">Telegraph</code> if <code class="highlighter-rouge">voter</code> has the value <code class="highlighter-rouge">Hard Brexit</code> otherwise prints <code class="highlighter-rouge">Guardian</code> if <code class="highlighter-rouge">voter</code> has value <code class="highlighter-rouge">remain</code>, otherwise prints <code class="highlighter-rouge">No idea</code>.</p>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Try for different values of voter
-voter = 'Hard Brexit'
-# Your code here
-if voter ...
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count      158.000000
+mean      8475.949367
+std       3126.880181
+min       3800.000000
+25%       6525.000000
+50%       7800.000000
+75%       9775.000000
+max      26400.000000
+Name: White Blood Cell Count, dtype: float64
 </code></pre></div></div>
+
+<p>Compare this to Hemoglobin concentrations:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb</span> <span class="o">=</span> <span class="n">ckd_full</span><span class="p">[</span><span class="s">'Hemoglobin'</span><span class="p">]</span>
+<span class="n">hgb</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Hemoglobin'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/09/standard_scores_6_0.png" alt="png" /></p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count    158.000000
+mean      13.687342
+std        2.882204
+min        3.100000
+25%       12.600000
+50%       14.250000
+75%       15.775000
+max       17.800000
+Name: Hemoglobin, dtype: float64
+</code></pre></div></div>
+
+<p>Notice that we can’t easily plot these two on the same axes, because their units are so different.</p>
+
+<p>We could try and fix this by subtracting the mean, as a center value, so the values are now <em>deviations</em> from the mean.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wbc_deviations</span> <span class="o">=</span> <span class="n">wbc</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">wbc</span><span class="p">)</span>
+<span class="n">wbc_deviations</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'White Blood Cell Count deviations'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/09/standard_scores_10_0.png" alt="png" /></p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_deviations</span> <span class="o">=</span> <span class="n">hgb</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
+<span class="n">hgb_deviations</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Hemoglobin deviations'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/09/standard_scores_11_0.png" alt="png" /></p>
+
+<p>The deviations each have a mean very very close to zero, and therefore, they have the same center:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">wbc_deviations</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hgb_deviations</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(-1.8420145858692217e-13, 7.195369476051647e-16)
+</code></pre></div></div>
+
+<p>We still cannot plot them on the same axes, because the WBC values have a very different <em>spread</em>.  They will completely dominate the x axis of the graph.  We can’t reasonably compare the WBC deviations to the Hemoglobin deviations, because they have such different units.</p>
+
+<p>We would like a measure of the spread of the distribution, so we can set the two distributions to have the same spread.</p>
+
+<h2 id="the-standard-deviation">The standard deviation</h2>
+
+<p>In the <a href="../08/mean_meaning">mean as predictor</a> section, we found that mean was the best value to use as a predictor, to minimize the sum of <em>squared</em> deviations.</p>
+
+<p>Maybe we could get an idea of the typical <em>squared</em> deviation, as a measure of spread?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_deviations</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0   -2.487342
+1   -4.187342
+2   -2.887342
+3   -8.087342
+4   -5.987342
+5   -3.887342
+6   -1.187342
+7   -3.687342
+8   -3.187342
+9   -3.887342
+Name: Hemoglobin, dtype: float64
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_dev_sq</span> <span class="o">=</span> <span class="n">hgb_deviations</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">hgb_dev_sq</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     6.186869
+1    17.533831
+2     8.336743
+3    65.405097
+4    35.848261
+5    15.111426
+6     1.409780
+7    13.596489
+8    10.159148
+9    15.111426
+Name: Hemoglobin, dtype: float64
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_dev_sq</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'HGB squared deviations'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'HGB squared deviations')
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/09/standard_scores_20_1.png" alt="png" /></p>
+
+<p>The center, or typical value, of this distribution, could be the <em>mean</em>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_dev_sq_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hgb_dev_sq</span><span class="p">)</span>
+<span class="n">hgb_dev_sq_mean</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8.254523313571543
+</code></pre></div></div>
+
+<p>This is the <em>mean squared deviation</em>.  This is also called the <em>variance</em>.  Numpy has a function to calculate that in one shot:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The mean squared deviation is the variance
+</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8.254523313571543
+</code></pre></div></div>
+
+<p>The mean squared deviation is a good indicator of the typical squared deviation.  What should we used for some measure of the typical devation?</p>
+
+<p>We could take the square root of the mean squared deviation, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">hgb_dev_sq_mean</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.873068623192203
+</code></pre></div></div>
+
+<p>This is a measure of the spread of the distribution.  It is a measure of the typical or average deviation.</p>
+
+<p>It is also called the <em>standard deviation</em>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.873068623192203
+</code></pre></div></div>
+
+<p>We can make our distribution have a standard center <em>and</em> and a standard spread by dividing our mean-centered distribution, by the standard deviation.  Then the distribution will have a standard deviation very close to 1.</p>
+
+<p>This version of the distribution, with mean 0 and standard deviation of 1, is called the <em>standardized</em> distribution.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">standardized_hgb</span> <span class="o">=</span> <span class="n">hgb_deviations</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
+<span class="n">standardized_hgb</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Standardized Hemoglobin'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Standardized Hemoglobin')
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/09/standard_scores_30_1.png" alt="png" /></p>
+
+<p>We can make a function to do this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">standard_units</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std_hgb_again</span> <span class="o">=</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
+<span class="n">std_hgb_again</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Standardized Hemoglobin, again'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Standardized Hemoglobin, again')
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/09/standard_scores_33_1.png" alt="png" /></p>
+
+<p>If we do the same to the WBC, we can compare values of the distributions:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std_wbc</span> <span class="o">=</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">wbc</span><span class="p">)</span>
+<span class="n">std_wbc</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Standardized White Blood Cell Count'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Standardized White Blood Cell Count')
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/09/standard_scores_35_1.png" alt="png" /></p>
 
 
           
@@ -1007,11 +1376,13 @@ if voter ...
         
   <nav class="pagination">
     
-      <a href="/dsfe/chapters/exercises/function_exercises" class="pagination--pager" title="Function exercises
+      <a href="/dsfe/chapters/09/classification" class="pagination--pager" title="
+  Classification
+
 ">Previous</a>
     
     
-      <a href="/dsfe/chapters/extra/extra" class="pagination--pager" title="Extra pages
+      <a href="/dsfe/chapters/09/Nearest_Neighbors" class="pagination--pager" title="9.2 Nearest neighbors
 ">Next</a>
     
   </nav>
