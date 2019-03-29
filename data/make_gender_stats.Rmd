@@ -235,6 +235,32 @@ valid_gender_stats = gender_stats.loc[valid_country]
 valid_gender_stats.head()
 ```
 
+The GDP is in dollars, giving some annoying exponential numbers.  Can we store this value in billions of dollars, without making lots of small numbers?
+
+```{python}
+gdp_us_billion = valid_gender_stats['gdp'] / 1e9
+gdp_us_billion.sort_values()[:20]
+```
+
+```{python}
+valid_gender_stats.loc[:, 'gdp'] = gdp_us_billion
+valid_gender_stats = valid_gender_stats.rename(columns={'gdp': 'gdp_us_billion'})
+# We need to change the name for later output in the data dictionary.
+renamers = [t if t != ('GDP (current US$)', 'gdp')
+            else ('GDP (current US billion $)', 'gdp_us_billion')
+            for t in renamers]
+valid_gender_stats.head()
+```
+
+Rename country columns to harmonize with format of other names:
+
+```{python}
+valid_gender_stats = valid_gender_stats.rename(
+    columns={'Country Name': 'country_name',
+             'Country Code': 'country_code'})
+valid_gender_stats.head()
+```
+
 Write the resulting data frame out to CSV.
 
 ```{python}
@@ -256,4 +282,17 @@ with open('gender_stats_data_dict.md', 'wt') as fobj:
     for name, rename in renamers:
         name = name.replace('$', '\$')  # For Markdown
         fobj.write(f'* `{rename}`: {name}.\n')
+```
+
+```{python}
+import numpy as np
+np.sort(valid_gender_stats['gdp'] / 1e9)[:10]
+```
+
+```{python}
+# %matplotlib inline
+```
+
+```{python}
+
 ```
