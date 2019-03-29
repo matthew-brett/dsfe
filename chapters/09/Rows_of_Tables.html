@@ -1,0 +1,2101 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>9.3 Rows of tables - Data Science for Everyone</title>
+<meta name="description" content="Rows of Tables">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="9.3 Rows of tables">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/chapters/09/Rows_of_Tables">
+
+
+  <meta property="og:description" content="Rows of Tables">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-03-29T02:13:19+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/chapters/09/Rows_of_Tables">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--textbook">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" class="textbook" role="main">
+  <div id="textbook_wrapper">
+    
+  <div class="sidebar sticky textbook">
+  
+  
+    <img src="/dsfe/images/dsfe_logo.png" class="textbook_logo" />
+    
+
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/"><span class="nav__sub-title">Home</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/01/what-is-data-science"><span class="nav__sub-title">1. Data Science</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/intro" class="level_1">1.1 Introduction</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/computational-tools" class="level_2">1.1.1 Computational Tools</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/statistical-techniques" class="level_2">1.1.2 Statistical Techniques</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/why-data-science" class="level_1">1.2 Why Data Science?</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Plotting_the_Classics" class="level_1">1.3 Plotting the Classics</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Literary_Characters" class="level_2">1.3.1 Literary Characters</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Another_Kind_Of_Character" class="level_2">1.3.2 Another Kind of Character</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/02/to_code"><span class="nav__sub-title">2. Programming</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/sampling_problem" class="level_1">2.1 A sampling problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/three_girls" class="level_1">2.2 A simpler problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Expressions" class="level_1">2.3 Expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/variables" class="level_1">2.4 Variables</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Names" class="level_1">2.5 Names</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/02/Calls" class="level_1">2.6 Call expressions</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/03/data_types"><span class="nav__sub-title">3. Data types</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Numbers" class="level_1">3.1 Numbers</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Strings" class="level_1">3.2 Strings</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Comparison" class="level_1">3.3 Comparison</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Arrays" class="level_1">3.4 Arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/Ranges" class="level_1">3.5 Ranges</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/More_on_Arrays" class="level_1">3.6 More on arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/arrays_and_axes" class="level_1">3.7 Arrays and axes</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/reply_supreme" class="level_1">3.8 Reply to the Supreme Court</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/three_girls" class="level_1">3.9 Revision - three girls</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/03/array_indexing" class="level_1">3.10 Selecting with arrays</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/04/data_frames"><span class="nav__sub-title">4. Data frames</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/04/data_frame_intro" class="level_1">4.1 Introduction to data frames</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/05/permutation"><span class="nav__sub-title">5. Permutations</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/population_permutation" class="level_1">5.1 Population and permutation</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/lists" class="level_1">5.2 lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/iteration" class="level_1">5.3 Iteration with For loops</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/indentation" class="level_1">5.4 Indentation, indentation</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/ones_zeros" class="level_1">5.5 Ones and zeros</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/05/brexit_ages" class="level_1">5.6 A permutation test</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/06/more_simulation"><span class="nav__sub-title">6. More on simulation</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/06/sorting_arrays" class="level_1">6.1 Sorting arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/06/monty_hall" class="level_1">6.2 Monty hall problem</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/07/more_building_blocks"><span class="nav__sub-title">7. More building blocks</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/07/none" class="level_1">7.2 None</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/07/functions" class="level_1">7.1 Functions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/07/functions_as_values" class="level_1">7.1 Functions as values</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/07/conditional_statements" class="level_1">7.2 Conditional statements</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/08/mean"><span class="nav__sub-title">8. The mean and straight line relationships</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/mean_meaning" class="level_1">8.1 The mean as a predictor</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/where_and_argmin" class="level_1">8.2 Where and argmin</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/mean_and_slopes" class="level_1">8.3 Mean and slopes</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/optimization" class="level_1">8.4 Optimization</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/finding_lines" class="level_1">8.5 Finding lines</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/08/inference_on_slopes" class="level_1">8.6 Believable slopes</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/09/classification"><span class="nav__sub-title">9. Classification</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/09/Nearest_Neighbors" class="level_1">9.1 Nearest neighbors</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/09/Training_and_Testing" class="level_1">9.2 Training and testing</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/09/Rows_of_Tables" class="level_1">9.3 Rows of tables</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/09/Implementing_the_Classifier" class="level_1">9.4 Implementing the classifier</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/09/Accuracy_of_the_Classifier" class="level_1">9.5 Accuracy of the classifier</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/exercises/exercises"><span class="nav__sub-title">Exercises</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/simulation" class="level_1">Simulation</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/df_exercises" class="level_1">Data frames</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/brexit_analysis" class="level_1">Brexit analysis</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/for_loops" class="level_1">For loops</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/money_and_death" class="level_1">Money and death</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/function_exercises" class="level_1">Function exercises</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/functions_values_exercises" class="level_1">Function as values exercises</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/conditional_statements_exercises" class="level_1">Conditional statement exercises</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/dsfe/chapters/extra/extra"><span class="nav__sub-title">Extra pages</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/extra/more_on_lists" class="level_1">More on lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/extra/monty_hall_lists" class="level_1">Monty Hall with lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/extra/data8_functions" class="level_1">Berkeley introduction to functions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/extra/mean_deviations" class="level_1">Deviations around the mean</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+
+  
+  </div>
+
+
+    <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="headline" content="9.3 Rows of tables">
+      <meta itemprop="description" content="Rows of Tables">
+      <meta itemprop="datePublished" content="March 29, 2019">
+      
+
+      <div class="page__inner-wrap">
+        
+          <header>
+            <h1 id="page-title" class="page__title" itemprop="headline">9.3 Rows of tables
+</h1>
+          </header>
+        
+
+        <section class="page__content" itemprop="text">
+          
+            
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#rows-of-tables">Rows of Tables</a></li>
+  <li><a href="#converting-rows-to-numpy-arrays">Converting Rows to Numpy arrays</a></li>
+  <li><a href="#distance-between-points-when-there-are-two-attributes">Distance Between Points When There are Two Attributes</a></li>
+  <li><a href="#using-apply-on-an-entire-row">Using apply on an Entire Row</a></li>
+  <li><a href="#alices-k-nearest-neighbors">Alice’s $k$ Nearest Neighbors</a></li>
+</ul>
+    </nav>
+  </aside>
+
+
+          
+          <!-- INTERACT LINKS -->
+
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/dsfe/notebooks/09/Rows_of_Tables.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/dsfe/master?filepath=notebooks%2F09%2FRows_of_Tables.ipynb">Interact</a>
+
+
+          <h3 id="rows-of-tables">Rows of Tables</h3>
+
+<p>Now that we have a qualitative understanding of nearest neighbor classification, it’s time to implement our classifier.</p>
+
+<p>Until this chapter, we have worked mostly with single columns of tables. But now we have to see whether one <em>individual</em> is “close” to another. Data for individuals are contained in <em>rows</em> of tables.</p>
+
+<p>So let’s start by taking a closer look at rows.</p>
+
+<p>Here is the original table <code class="highlighter-rouge">ckd</code> containing data on patients who were tested for chronic kidney disease.</p>
+
+<p>The data file is <a href="/dsfe/data/ckd.csv">ckd.csv</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ckd_full</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'ckd.csv'</span><span class="p">)</span>
+<span class="n">ckd_full</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Blood Pressure</th>
+      <th>Specific Gravity</th>
+      <th>Albumin</th>
+      <th>Sugar</th>
+      <th>Red Blood Cells</th>
+      <th>Pus Cell</th>
+      <th>Pus Cell clumps</th>
+      <th>Bacteria</th>
+      <th>Blood Glucose Random</th>
+      <th>...</th>
+      <th>Packed Cell Volume</th>
+      <th>White Blood Cell Count</th>
+      <th>Red Blood Cell Count</th>
+      <th>Hypertension</th>
+      <th>Diabetes Mellitus</th>
+      <th>Coronary Artery Disease</th>
+      <th>Appetite</th>
+      <th>Pedal Edema</th>
+      <th>Anemia</th>
+      <th>Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>48</td>
+      <td>70</td>
+      <td>1.005</td>
+      <td>4</td>
+      <td>0</td>
+      <td>normal</td>
+      <td>abnormal</td>
+      <td>present</td>
+      <td>notpresent</td>
+      <td>117</td>
+      <td>...</td>
+      <td>32</td>
+      <td>6700</td>
+      <td>3.9</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>no</td>
+      <td>poor</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>53</td>
+      <td>90</td>
+      <td>1.020</td>
+      <td>2</td>
+      <td>0</td>
+      <td>abnormal</td>
+      <td>abnormal</td>
+      <td>present</td>
+      <td>notpresent</td>
+      <td>70</td>
+      <td>...</td>
+      <td>29</td>
+      <td>12100</td>
+      <td>3.7</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>poor</td>
+      <td>no</td>
+      <td>yes</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>63</td>
+      <td>70</td>
+      <td>1.010</td>
+      <td>3</td>
+      <td>0</td>
+      <td>abnormal</td>
+      <td>abnormal</td>
+      <td>present</td>
+      <td>notpresent</td>
+      <td>380</td>
+      <td>...</td>
+      <td>32</td>
+      <td>4500</td>
+      <td>3.8</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>poor</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>68</td>
+      <td>80</td>
+      <td>1.010</td>
+      <td>3</td>
+      <td>2</td>
+      <td>normal</td>
+      <td>abnormal</td>
+      <td>present</td>
+      <td>present</td>
+      <td>157</td>
+      <td>...</td>
+      <td>16</td>
+      <td>11000</td>
+      <td>2.6</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>poor</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>61</td>
+      <td>80</td>
+      <td>1.015</td>
+      <td>2</td>
+      <td>0</td>
+      <td>abnormal</td>
+      <td>abnormal</td>
+      <td>notpresent</td>
+      <td>notpresent</td>
+      <td>173</td>
+      <td>...</td>
+      <td>24</td>
+      <td>9200</td>
+      <td>3.2</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>poor</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 25 columns</p>
+</div>
+</div>
+
+<p>The data corresponding to the first patient is in row 0 of the table, consistent with Python’s indexing system.</p>
+
+<p>We want to fetch the data for this row.</p>
+
+<p>You have already seen how to select rows with boolean arrays, and the <code class="highlighter-rouge">loc</code> attribute of the data frame.</p>
+
+<p>Now we need to select a row by <em>index</em> - 0, 1, 2 etc.</p>
+
+<p>We do this with Pandas’ <em>indexing</em> selection, attached to the <code class="highlighter-rouge">iloc</code> attribute of the data frame, for Indexed LOCate, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">ckd_full</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">first_row</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Age                                48
+Blood Pressure                     70
+Specific Gravity                1.005
+Albumin                             4
+Sugar                               0
+Red Blood Cells                normal
+Pus Cell                     abnormal
+Pus Cell clumps               present
+Bacteria                   notpresent
+Blood Glucose Random              117
+Blood Urea                         56
+Serum Creatinine                  3.8
+Sodium                            111
+Potassium                         2.5
+Hemoglobin                       11.2
+Packed Cell Volume                 32
+White Blood Cell Count           6700
+Red Blood Cell Count              3.9
+Hypertension                      yes
+Diabetes Mellitus                  no
+Coronary Artery Disease            no
+Appetite                         poor
+Pedal Edema                       yes
+Anemia                            yes
+Class                               1
+Name: 0, dtype: object
+</code></pre></div></div>
+
+<p>If the display for this row looks suspiciously like the display you see when fetching a single column from a data frame, this is not a co-incidence.  The row is also a Pandas <code class="highlighter-rouge">Series</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">first_row</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+</code></pre></div></div>
+
+<p>Notice that the data type (<code class="highlighter-rouge">dtype</code>) of the row is <code class="highlighter-rouge">object</code>, and
+not something simpler, like a floating point or integer. This
+is because the elements can be of different types, so the
+Series needs to use the very general <code class="highlighter-rouge">object</code> type to store all
+the values. For example, some of the elements of the row above
+are strings (like <code class="highlighter-rouge">'abnormal'</code>) and some are numerical. So the
+row can’t be converted into floating point values or integers.</p>
+
+<p>For example, to access the Albumin level of Patient 0, we can look at the labels in the printout of the row above to find that it’s the item at index position 3. We can fetch the value with indexing. Again, we use <code class="highlighter-rouge">iloc</code>, this time indexing into the <code class="highlighter-rouge">Series</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<h3 id="converting-rows-to-numpy-arrays">Converting Rows to Numpy arrays</h3>
+
+<p>Rows whose elements are all numerical can be converted to numerical Numpy arrays.  Converting a row to a numerical array gives us access to arithmetic operations and other nice NumPy functions, so it is often useful.</p>
+
+<p>Recall that in the previous section we tried to classify the patients as ‘CKD’ or ‘not CKD’, based on two attributes <code class="highlighter-rouge">Hemoglobin</code> and <code class="highlighter-rouge">Glucose</code>, both measured in standard units.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ckd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">ckd</span><span class="p">[</span><span class="s">'Hemoglobin'</span><span class="p">]</span> <span class="o">=</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">ckd_full</span><span class="p">[</span><span class="s">'Hemoglobin'</span><span class="p">])</span>
+<span class="n">ckd</span><span class="p">[</span><span class="s">'Glucose'</span><span class="p">]</span> <span class="o">=</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">ckd_full</span><span class="p">[</span><span class="s">'Blood Glucose Random'</span><span class="p">])</span>
+<span class="n">ckd</span><span class="p">[</span><span class="s">'Class'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ckd_full</span><span class="p">[</span><span class="s">'Class'</span><span class="p">]</span>
+<span class="n">ckd</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hemoglobin</th>
+      <th>Glucose</th>
+      <th>Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.865744</td>
+      <td>-0.221549</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.457446</td>
+      <td>-0.947597</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.004968</td>
+      <td>3.841231</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-2.814879</td>
+      <td>0.396364</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-2.083954</td>
+      <td>0.643529</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>We add the colors for each point, to reflect the Class (with kidney disease or without).</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ckd</span><span class="p">[</span><span class="s">'Color'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'darkblue'</span>
+<span class="n">ckd</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ckd</span><span class="p">[</span><span class="s">'Class'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'Color'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'gold'</span>
+<span class="n">ckd</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hemoglobin</th>
+      <th>Glucose</th>
+      <th>Class</th>
+      <th>Color</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.865744</td>
+      <td>-0.221549</td>
+      <td>1</td>
+      <td>darkblue</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.457446</td>
+      <td>-0.947597</td>
+      <td>1</td>
+      <td>darkblue</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.004968</td>
+      <td>3.841231</td>
+      <td>1</td>
+      <td>darkblue</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-2.814879</td>
+      <td>0.396364</td>
+      <td>1</td>
+      <td>darkblue</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-2.083954</td>
+      <td>0.643529</td>
+      <td>1</td>
+      <td>darkblue</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Here is a scatter plot of the two attributes, along with a red point corresponding to Alice, a new patient. Her value of hemoglobin is 0 (that is, at the average) and glucose 1.1 (that is, 1.1 SDs above average).</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+<span class="n">ckd</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'Hemoglobin'</span><span class="p">,</span> <span class="s">'Glucose'</span><span class="p">,</span>
+                 <span class="n">c</span><span class="o">=</span><span class="n">ckd</span><span class="p">[</span><span class="s">'Color'</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">alice</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">alice</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/09/Rows_of_Tables_13_0.png" alt="png" /></p>
+
+<p>To find the distance between Alice’s point and any of the other points, we only need the values of the attributes:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select Hemoglobin and Glucose columns from the data frame
+</span><span class="n">ckd_attributes</span> <span class="o">=</span> <span class="n">ckd</span><span class="p">[[</span><span class="s">'Hemoglobin'</span><span class="p">,</span> <span class="s">'Glucose'</span><span class="p">]]</span>
+<span class="n">ckd_attributes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hemoglobin</th>
+      <th>Glucose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.865744</td>
+      <td>-0.221549</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.457446</td>
+      <td>-0.947597</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.004968</td>
+      <td>3.841231</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-2.814879</td>
+      <td>0.396364</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-2.083954</td>
+      <td>0.643529</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Each row consists of the coordinates of one point in our training sample. <strong>Because the rows now consist only of numerical values</strong>, it is possible to convert them to numerical arrays.  For this, we use the function <code class="highlighter-rouge">np.array</code>, which converts any kind of sequential object, like a row, to an array.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ckd_attributes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hemoglobin   -2.814879
+Glucose       0.396364
+Name: 3, dtype: float64
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ckd_attributes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-2.81487943,  0.39636401])
+</code></pre></div></div>
+
+<p>This is very handy because we can now use array operations on the data in each row.</p>
+
+<h3 id="distance-between-points-when-there-are-two-attributes">Distance Between Points When There are Two Attributes</h3>
+
+<p>The main calculation we need to do is to find the distance between Alice’s point and any other point. For this, the first thing we need is a way to compute the distance between any pair of points.</p>
+
+<p>How do we do this?  In 2-dimensional space, it’s pretty easy.  If we have a point at coordinates $(x_0,y_0)$ and another at $(x_1,y_1)$, the distance between them is</p>
+
+<script type="math/tex; mode=display">D = \sqrt{(x_0-x_1)^2 + (y_0-y_1)^2}</script>
+
+<p>(Where did this come from?  It comes from the Pythogorean theorem: we have a right triangle with side lengths $x_0-x_1$ and $y_0-y_1$, and we want to find the length of the hypotenuse.)</p>
+
+<p>In the next section we’ll see that this formula has a straightforward extension when there are more than two attributes. For now, let’s use the formula and array operations to find the distance between Alice and the patient in Row 3.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">patient3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ckd_attributes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">alice</span><span class="p">,</span> <span class="n">patient3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([0. , 1.1]), array([-2.81487943,  0.39636401]))
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">((</span><span class="n">alice</span> <span class="o">-</span> <span class="n">patient3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">distance</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.901490965127261
+</code></pre></div></div>
+
+<p>We’re going to need the distance between Alice and a bunch of points, so let’s write a function called <code class="highlighter-rouge">distance</code> that computes the distance between any pair of points. The function will take two arrays, each containing the $(x, y)$ coordinates of a point.  (Remember, those are really the Hemoglobin and Glucose levels of a patient.)</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">):</span>
+    <span class="s">"""Returns the Euclidean distance between point1 and point2.
+
+    Each argument is an array containing the coordinates of a point."""</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">((</span><span class="n">point1</span> <span class="o">-</span> <span class="n">point2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">distance</span><span class="p">(</span><span class="n">alice</span><span class="p">,</span> <span class="n">patient3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.901490965127261
+</code></pre></div></div>
+
+<p>We have begun to build our classifier: the <code class="highlighter-rouge">distance</code> function is the first building block. Now let’s work on the next piece.</p>
+
+<h3 id="using-apply-on-an-entire-row">Using <code class="highlighter-rouge">apply</code> on an Entire Row</h3>
+
+<p>Sometimes we want to be able to <em>apply</em> some function to a whole row of a data frame.</p>
+
+<p>You won’t be surprised to learn that Pandas has an <code class="highlighter-rouge">apply</code> method that can do this.</p>
+
+<p>Let’s see how this works on a very small table <code class="highlighter-rouge">t</code> containing the information about the first five patients in the training sample.  Here we are using <code class="highlighter-rouge">iloc</code> again, to get values from the data frame by index.  In this case, we want the first five rows.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span> <span class="o">=</span> <span class="n">ckd_attributes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">t</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hemoglobin</th>
+      <th>Glucose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.865744</td>
+      <td>-0.221549</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.457446</td>
+      <td>-0.947597</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.004968</td>
+      <td>3.841231</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-2.814879</td>
+      <td>0.396364</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-2.083954</td>
+      <td>0.643529</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Just as an example, suppose that for each patient we want to know how unusual their most unusual attribute is.  Concretely, if a patient’s hemoglobin level is further from the average than her glucose level, we want to know how far it is from the average.  If her glucose level is further from the average than her hemoglobin level, we want to know how far that is from the average instead.</p>
+
+<p>That’s the same as taking the maximum of the absolute values of the two quantities. To do this for a particular row, we can convert the row to an array and use array operations.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">max_abs</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">max_abs</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.0839536249919064
+</code></pre></div></div>
+
+<p>And now we can apply <code class="highlighter-rouge">max_abs</code> to each row of the table <code class="highlighter-rouge">t</code>. We pass the <code class="highlighter-rouge">axis</code> argument to tell Pandas to apply the function along the <em>rows</em> (and therefore along the second axis).</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">max_abs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    0.865744
+1    1.457446
+2    3.841231
+3    2.814879
+4    2.083954
+dtype: float64
+</code></pre></div></div>
+
+<p>This way of using <code class="highlighter-rouge">apply</code> will help us create the next building block of our classifier.</p>
+
+<h3 id="alices-k-nearest-neighbors">Alice’s $k$ Nearest Neighbors</h3>
+
+<p>If we want to classify Alice using a k-nearest neighbor classifier, we have to identify her $k$ nearest neighbors. What are the steps in this process? Suppose $k = 5$. Then the steps are:</p>
+
+<ul>
+  <li><strong>Step 1.</strong> Find the distance between Alice and each point in the training sample.</li>
+  <li><strong>Step 2.</strong> Sort the data table in increasing order of the distances.</li>
+  <li><strong>Step 3.</strong> Take the top 5 rows of the sorted table.</li>
+</ul>
+
+<p>Steps 2 and 3 seem straightforward, provided we have the distances. So let’s focus on Step 1.</p>
+
+<p>Here’s Alice:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alice</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0. , 1.1])
+</code></pre></div></div>
+
+<p>What we need is a function that finds the distance between Alice and another point whose coordinates are contained in a row. The function <code class="highlighter-rouge">distance</code> returns the distance between any two points whose coordinates are in arrays. We can use that to define <code class="highlighter-rouge">distance_from_alice</code>, which takes a row as its argument and returns the distance between that row and Alice.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">distance_from_alice</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="s">"""Returns distance between Alice and a row of the attributes table"""</span>
+    <span class="k">return</span> <span class="n">distance</span><span class="p">(</span><span class="n">alice</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">distance_from_alice</span><span class="p">(</span><span class="n">ckd_attributes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.901490965127261
+</code></pre></div></div>
+
+<p>Now we can <code class="highlighter-rouge">apply</code> the function <code class="highlighter-rouge">distance_from_alice</code> to each row of <code class="highlighter-rouge">ckd_attributes</code>, and augment the table <code class="highlighter-rouge">ckd</code> with the distances. Step 1 is complete!</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">distances</span> <span class="o">=</span> <span class="n">ckd_attributes</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">distance_from_alice</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ckd_with_distances</span> <span class="o">=</span> <span class="n">ckd</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">ckd_with_distances</span><span class="p">[</span><span class="s">'Distance from Alice'</span><span class="p">]</span> <span class="o">=</span> <span class="n">distances</span>
+<span class="n">ckd_with_distances</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hemoglobin</th>
+      <th>Glucose</th>
+      <th>Class</th>
+      <th>Color</th>
+      <th>Distance from Alice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.865744</td>
+      <td>-0.221549</td>
+      <td>1</td>
+      <td>darkblue</td>
+      <td>1.579875</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.457446</td>
+      <td>-0.947597</td>
+      <td>1</td>
+      <td>darkblue</td>
+      <td>2.513325</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.004968</td>
+      <td>3.841231</td>
+      <td>1</td>
+      <td>darkblue</td>
+      <td>2.919641</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-2.814879</td>
+      <td>0.396364</td>
+      <td>1</td>
+      <td>darkblue</td>
+      <td>2.901491</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-2.083954</td>
+      <td>0.643529</td>
+      <td>1</td>
+      <td>darkblue</td>
+      <td>2.133361</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>For Step 2, let’s sort the table in increasing order of distance:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sorted_by_distance</span> <span class="o">=</span> <span class="n">ckd_with_distances</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'Distance from Alice'</span><span class="p">)</span>
+<span class="n">sorted_by_distance</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hemoglobin</th>
+      <th>Glucose</th>
+      <th>Class</th>
+      <th>Color</th>
+      <th>Distance from Alice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>14</th>
+      <td>0.839750</td>
+      <td>1.215099</td>
+      <td>1</td>
+      <td>darkblue</td>
+      <td>0.847601</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>-0.970162</td>
+      <td>1.276890</td>
+      <td>1</td>
+      <td>darkblue</td>
+      <td>0.986156</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>-0.030400</td>
+      <td>0.087407</td>
+      <td>0</td>
+      <td>gold</td>
+      <td>1.013049</td>
+    </tr>
+    <tr>
+      <th>152</th>
+      <td>0.143630</td>
+      <td>0.087407</td>
+      <td>0</td>
+      <td>gold</td>
+      <td>1.022728</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>-0.413266</td>
+      <td>2.049282</td>
+      <td>1</td>
+      <td>darkblue</td>
+      <td>1.035338</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Step 3: The top 5 rows correspond to Alice’s 5 nearest neighbors; you can replace 5 by any other positive integer.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alice_5_nearest_neighbors</span> <span class="o">=</span> <span class="n">sorted_by_distance</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">alice_5_nearest_neighbors</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hemoglobin</th>
+      <th>Glucose</th>
+      <th>Class</th>
+      <th>Color</th>
+      <th>Distance from Alice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>14</th>
+      <td>0.839750</td>
+      <td>1.215099</td>
+      <td>1</td>
+      <td>darkblue</td>
+      <td>0.847601</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>-0.970162</td>
+      <td>1.276890</td>
+      <td>1</td>
+      <td>darkblue</td>
+      <td>0.986156</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>-0.030400</td>
+      <td>0.087407</td>
+      <td>0</td>
+      <td>gold</td>
+      <td>1.013049</td>
+    </tr>
+    <tr>
+      <th>152</th>
+      <td>0.143630</td>
+      <td>0.087407</td>
+      <td>0</td>
+      <td>gold</td>
+      <td>1.022728</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>-0.413266</td>
+      <td>2.049282</td>
+      <td>1</td>
+      <td>darkblue</td>
+      <td>1.035338</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Three of Alice’s five nearest neighbors are blue points and two are gold. So a 5-nearest neighbor classifier would classify Alice as blue: it would predict that Alice has chronic kidney disease.</p>
+
+<p>The graph below zooms in on Alice and her five nearest neighbors. The two gold ones just inside the circle directly below the red point. The classifier says Alice is more like the three blue ones around her.</p>
+
+<p><img src="../../images/chapters/09/Rows_of_Tables_48_0.png" alt="png" /></p>
+
+<p>We are well on our way to implementing our k-nearest neighbor classifier. In the next two sections we will put it together and assess its accuracy.</p>
+
+<div class="isa_info">
+<i class="fa fa-info-circle"></i>
+This page has content from the
+<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Rows_of_Tables.ipynb">
+Rows_of_Tables</a>
+notebook from the UC Berkeley course.  See the Berkeley course section of the
+<a href="/dsfe/license">license</a>
+</div>
+
+
+          
+        </section>
+
+        <footer class="page__meta">
+          
+          
+
+
+        </footer>
+
+        
+
+        
+  <nav class="pagination">
+    
+      <a href="/dsfe/chapters/09/Training_and_Testing" class="pagination--pager" title="9.2 Training and testing
+">Previous</a>
+    
+    
+      <a href="/dsfe/chapters/09/Implementing_the_Classifier" class="pagination--pager" title="9.4 Implementing the classifier
+">Next</a>
+    
+  </nav>
+
+
+      </div>
+
+      
+    </article>
+  </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>
