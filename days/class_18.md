@@ -9,7 +9,7 @@ permalink: /days/class_18
 
 ## Schedule
 
-Today \- an introduction to machine learning
+An introduction to machine learning:
 
 * [9. Classification](../chapters/09/classification)
 * [9.1 Standard scores](../chapters/09/standard_scores)
