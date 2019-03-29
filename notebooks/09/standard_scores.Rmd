@@ -53,7 +53,7 @@ ckd_full.head()
 ```
 We will use this dataset to get a couple of variables (columns) and therefore a couple of distributions.
 
-Let's start with Blood Pressure (BP).
+Let's start with the White Blood Cell Count, usually abbreviated as WBC.
 
 ```{python}
 wbc = ckd_full['White Blood Cell Count']
