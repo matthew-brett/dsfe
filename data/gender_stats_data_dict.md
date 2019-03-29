@@ -1,7 +1,7 @@
 # Gender statistics data dictionary
 
 * `fert_rate`: Fertility rate, total (births per woman).
-* `gdp_us_billion`: GDP (current US billion \$).
+* `gdp`: GDP (current US\$).
 * `health_exp_per_cap`: Health expenditure per capita, PPP (constant 2011 international \$).
 * `health_exp_pub`: Health expenditure, public (% of GDP).
 * `prim_ed_girls`: Primary education, pupils (% female).
