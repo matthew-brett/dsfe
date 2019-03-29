@@ -1,0 +1,189 @@
+---
+jupyter:
+  anaconda-cloud: {}
+  jupytext:
+    metadata_filter:
+      notebook:
+        additional: all
+        excluded:
+        - language_info
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.0'
+      jupytext_version: 0.8.6
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+```{python}
+# HIDDEN
+import numpy as np
+# %matplotlib inline
+import matplotlib.pyplot as plt
+plt.style.use('fivethirtyeight')
+import pandas as pd
+```
+
+## Describing distributions
+
+We have seen several examples of *distributions*.
+
+We can describe distributions as having a *center*, and a *spread*.
+
+In [the mean as predictor](../08/mean_meaning), we saw that the mean is a useful measure of the center of a distribution.
+
+What measure should we use for the spread?
+
+## Chronic kidney disease
+
+We're going to work with a data set that was collected to help doctors diagnose chronic kidney disease (CKD).  Each row in the data set represents a single patient who was treated in the past and whose diagnosis is known.  For each patient, we have a bunch of measurements from a blood test.
+
+You will see more of this dataset soon.
+
+If you are running on your laptop, you should download the
+[ckd.csv]({{ site.baseurl }}/data/ckd.csv) file to the same
+directory as this notebook.
+
+```{python}
+ckd_full = pd.read_csv('ckd.csv')
+ckd_full.head()
+```
+We will use this dataset to get a couple of variables (columns) and therefore a couple of distributions.
+
+Let's start with Blood Pressure (BP).
+
+```{python}
+wbc = ckd_full['White Blood Cell Count']
+wbc.hist()
+plt.title('White Blood Cell Count');
+```
+
+```{python}
+wbc.describe()
+```
+
+Compare this to Hemoglobin concentrations:
+
+```{python}
+hgb = ckd_full['Hemoglobin']
+hgb.hist()
+plt.title('Hemoglobin');
+```
+
+```{python}
+hgb.describe()
+```
+
+Notice that we can't easily plot these two on the same axes, because their units are so different.
+
+
+We could try and fix this by subtracting the mean, as a center value, so the values are now *deviations* from the mean.
+
+```{python}
+wbc_deviations = wbc - np.mean(wbc)
+wbc_deviations.hist()
+plt.title('White Blood Cell Count deviations');
+```
+
+```{python}
+hgb_deviations = hgb - np.mean(hgb)
+hgb_deviations.hist()
+plt.title('Hemoglobin deviations');
+```
+
+The deviations each have a mean very very close to zero, and therefore, they have the same center:
+
+```{python}
+np.mean(wbc_deviations), np.mean(hgb_deviations)
+```
+
+We still cannot plot them on the same axes, because the WBC values have a very different *spread*.  They will completely dominate the x axis of the graph.  We can't reasonably compare the WBC deviations to the Hemoglobin deviations, because they have such different units.
+
+
+We would like a measure of the spread of the distribution, so we can set the two distributions to have the same spread.
+
+
+## The standard deviation
+
+
+In the [mean as predictor](../08/mean_meaning) section, we found that mean was the best value to use as a predictor, to minimize the sum of *squared* deviations.
+
+Maybe we could get an idea of the typical *squared* deviation, as a measure of spread?
+
+```{python}
+hgb_deviations[:10]
+```
+
+```{python}
+hgb_dev_sq = hgb_deviations ** 2
+hgb_dev_sq[:10]
+```
+
+```{python}
+hgb_dev_sq.hist()
+plt.title('HGB squared deviations')
+```
+
+The center, or typical value, of this distribution, could be the *mean*.
+
+```{python}
+hgb_dev_sq_mean = np.mean(hgb_dev_sq)
+hgb_dev_sq_mean
+```
+
+This is the *mean squared deviation*.  This is also called the *variance*.  Numpy has a function to calculate that in one shot:
+
+```{python}
+# The mean squared deviation is the variance
+np.var(hgb)
+```
+
+The mean squared deviation is a good indicator of the typical squared deviation.  What should we used for some measure of the typical devation?
+
+We could take the square root of the mean squared deviation, like this:
+
+```{python}
+np.sqrt(hgb_dev_sq_mean)
+```
+
+This is a measure of the spread of the distribution.  It is a measure of the typical or average deviation.
+
+It is also called the *standard deviation*.
+
+```{python}
+np.std(hgb)
+```
+
+We can make our distribution have a standard center *and* and a standard spread by dividing our mean-centered distribution, by the standard deviation.  Then the distribution will have a standard deviation very close to 1.
+
+This version of the distribution, with mean 0 and standard deviation of 1, is called the *standardized* distribution.
+
+```{python}
+standardized_hgb = hgb_deviations / np.std(hgb)
+standardized_hgb.hist()
+plt.title('Standardized Hemoglobin')
+```
+
+We can make a function to do this:
+
+```{python}
+def standard_units(x):
+    return (x - np.mean(x))/np.std(x)
+```
+
+```{python}
+std_hgb_again = standard_units(hgb)
+std_hgb_again.hist()
+plt.title('Standardized Hemoglobin, again')
+```
+
+If we do the same to the WBC, we can compare values of the distributions:
+
+```{python}
+std_wbc = standard_units(wbc)
+std_wbc.hist()
+plt.title('Standardized White Blood Cell Count')
+```
