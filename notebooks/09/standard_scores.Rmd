@@ -304,7 +304,7 @@ This is the *mean squared deviation*.  This is also called the *variance*.  Nump
 np.var(hgb)
 ```
 
-The mean squared deviation is a good indicator of the typical squared deviation.  What should we used for some measure of the typical devation?
+The mean squared deviation is a good indicator of the typical squared deviation.  What should we use for some measure of the typical deviation?
 
 We could take the square root of the mean squared deviation, like this:
 
