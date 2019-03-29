@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-03-29T11:37:10+00:00">
+  <meta property="article:published_time" content="2019-03-29T12:04:31+00:00">
 
 
 
@@ -947,6 +947,9 @@
   <li><a href="#data-frames-and-series">Data frames and series</a></li>
   <li><a href="#missing-values-and-nan">Missing values and NaN</a></li>
   <li><a href="#plotting-with-methods">Plotting with methods</a></li>
+  <li><a href="#showing-the-top-5-values-with-the-head-method">Showing the top 5 values with the head method</a></li>
+  <li><a href="#selecting-rows">Selecting rows</a></li>
+  <li><a href="#sorting-data-frames">Sorting data frames</a></li>
 </ul>
     </nav>
   </aside>
@@ -1845,7 +1848,7 @@ Scientific notation is a compact way of writing very large or
 very small numbers.  The value after <code class="highlighter-rouge">e</code> above is the
 <em>exponent</em>, in this case <code class="highlighter-rouge">08</code>.  The number above means $6.405</p>
 <ul>
-  <li>$10^8$. For example, here is $2 * 10^7$:</li>
+  <li>10^8$. For example, here is $2 * 10^7$:</li>
 </ul>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e7</span>
@@ -1895,29 +1898,23 @@ indicate values that are not available, or <em>missing data</em>.</p>
 
 <p>The <code class="highlighter-rouge">gdp</code> variable is a sequence of values, so we can do a histogram on these values, as we have done histograms on arrays.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">gdp</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">gdp</span><span class="p">);</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([226.,   5.,   7.,   4.,   0.,   1.,   2.,   0.,   0.,   1.]),
- array([3.64699913e+07, 7.61303919e+12, 1.52260419e+13, 2.28390446e+13,
-        3.04520473e+13, 3.80650500e+13, 4.56780528e+13, 5.32910555e+13,
-        6.09040582e+13, 6.85170609e+13, 7.61300636e+13]),
- &lt;a list of 10 Patch objects&gt;)
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/04/data_frame_intro_29_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/04/data_frame_intro_31_0.png" alt="png" /></p>
 
 <p>Notice the multiple warnings as Matplotlib tried to calculate the bin widths for the histogram.  These are from the <code class="highlighter-rouge">NaN</code> values.</p>
 
-<p>Another way to do the histogram, is to use the <code class="highlighter-rouge">hist</code> method of the series.  Using the method can make the code a bit easier to read, and the method does discard the <code class="highlighter-rouge">NaN</code> values, by default, so it does not generate the same warnings.</p>
+<p>Another way to do the histogram, is to use the <code class="highlighter-rouge">hist</code> <em>method</em> of the series.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdp</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<p>A method is a function attached to a value.  In this case <code class="highlighter-rouge">hist</code> is a function attached to a value of type <code class="highlighter-rouge">Series</code>.</p>
+
+<p>Using the <code class="highlighter-rouge">hist</code> method instead of the <code class="highlighter-rouge">plt.hist</code> function can make the code a bit easier to read.  The method also has the advantage that it discards the <code class="highlighter-rouge">NaN</code> values, by default, so it does not generate the same warnings.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdp</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a6a5860&gt;
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/04/data_frame_intro_31_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/04/data_frame_intro_34_0.png" alt="png" /></p>
 
 <p>Now we have had a look at the GDP values, we will look at the
 values for the <code class="highlighter-rouge">mat_mort_ratio</code> column.  These are the numbers
@@ -1991,40 +1988,857 @@ of women who die in childbirth for every 100,000 births.</p>
 Name: mat_mort_ratio, Length: 263, dtype: float64
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mmr</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mmr</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a61e048&gt;
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/04/data_frame_intro_34_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/04/data_frame_intro_37_0.png" alt="png" /></p>
 
 <p>We are interested in the relationship of <code class="highlighter-rouge">gpp</code> and <code class="highlighter-rouge">mmr</code>.  Maybe richer countries have better health care, and fewer maternal deaths.</p>
 
 <p>Here is a plot, using the standard Matplotlib <code class="highlighter-rouge">scatter</code>
 function.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">gdp</span><span class="p">,</span> <span class="n">mmr</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">gdp</span><span class="p">,</span> <span class="n">mmr</span><span class="p">);</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.collections.PathCollection at 0x11a91c438&gt;
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/04/data_frame_intro_36_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/04/data_frame_intro_39_0.png" alt="png" /></p>
 
 <p>We can do the same plot using the <code class="highlighter-rouge">plot.scatter</code> method on the data frame.  In that case, we specify the column names that should go on the x and the y axes.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'gdp'</span><span class="p">,</span> <span class="s">'mat_mort_ratio'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'gdp'</span><span class="p">,</span> <span class="s">'mat_mort_ratio'</span><span class="p">);</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11a9bd748&gt;
+<p><img src="../../images/chapters/04/data_frame_intro_41_0.png" alt="png" /></p>
+
+<p>An advantage of doing it this way is that we get the column names on the x and y axes by default.</p>
+
+<h2 id="showing-the-top-5-values-with-the-head-method">Showing the top 5 values with the <code class="highlighter-rouge">head</code> method</h2>
+
+<p>We have already seen that Pandas will display the data frame with nice formatting.  If the data frame is long, it will display only the first few and the last few rows:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span>
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/04/data_frame_intro_38_1.png" alt="png" /></p>
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<p>One advantage of doing it this way is that we get the column names on the x and y axes by default.</p>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<p>We often want to select rows from the data frame.</p>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>fert_rate</th>
+      <th>gdp</th>
+      <th>health_exp_per_cap</th>
+      <th>health_exp_pub</th>
+      <th>prim_ed_girls</th>
+      <th>mat_mort_ratio</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Afghanistan</td>
+      <td>4.954500</td>
+      <td>1.996102e+10</td>
+      <td>161.138034</td>
+      <td>2.834598</td>
+      <td>40.109708</td>
+      <td>444.00</td>
+      <td>3.271584e+07</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Albania</td>
+      <td>1.769250</td>
+      <td>1.232759e+10</td>
+      <td>574.202694</td>
+      <td>2.836021</td>
+      <td>47.201082</td>
+      <td>29.25</td>
+      <td>2.888280e+06</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Algeria</td>
+      <td>2.866000</td>
+      <td>1.907346e+11</td>
+      <td>870.766508</td>
+      <td>4.984252</td>
+      <td>47.675617</td>
+      <td>142.50</td>
+      <td>3.909906e+07</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>American Samoa</td>
+      <td>NaN</td>
+      <td>6.405000e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.542200e+04</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Andorra</td>
+      <td>NaN</td>
+      <td>3.197538e+09</td>
+      <td>4421.224933</td>
+      <td>7.260281</td>
+      <td>47.123345</td>
+      <td>NaN</td>
+      <td>7.954740e+04</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Angola</td>
+      <td>6.123000</td>
+      <td>1.119365e+11</td>
+      <td>254.747970</td>
+      <td>2.447546</td>
+      <td>NaN</td>
+      <td>501.25</td>
+      <td>2.693754e+07</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Antigua and Barbuda</td>
+      <td>2.082000</td>
+      <td>1.298213e+09</td>
+      <td>1152.493656</td>
+      <td>3.676514</td>
+      <td>48.291463</td>
+      <td>NaN</td>
+      <td>9.887240e+04</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Arab World</td>
+      <td>3.397587</td>
+      <td>2.709059e+12</td>
+      <td>761.401727</td>
+      <td>2.873840</td>
+      <td>47.119776</td>
+      <td>161.00</td>
+      <td>3.899620e+08</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Argentina</td>
+      <td>2.328000</td>
+      <td>5.509810e+11</td>
+      <td>1148.256142</td>
+      <td>2.782216</td>
+      <td>48.915810</td>
+      <td>53.75</td>
+      <td>4.297667e+07</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Armenia</td>
+      <td>1.545500</td>
+      <td>1.088536e+10</td>
+      <td>348.663884</td>
+      <td>1.916016</td>
+      <td>46.782180</td>
+      <td>27.25</td>
+      <td>2.904683e+06</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Aruba</td>
+      <td>1.663250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>48.721939</td>
+      <td>NaN</td>
+      <td>1.037444e+05</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Australia</td>
+      <td>1.861500</td>
+      <td>1.422994e+12</td>
+      <td>4256.058988</td>
+      <td>6.292381</td>
+      <td>48.576707</td>
+      <td>6.00</td>
+      <td>2.344456e+07</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Austria</td>
+      <td>1.455000</td>
+      <td>4.074943e+11</td>
+      <td>4930.298893</td>
+      <td>8.504276</td>
+      <td>48.556078</td>
+      <td>4.00</td>
+      <td>8.566294e+06</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Azerbaijan</td>
+      <td>1.980000</td>
+      <td>6.200300e+10</td>
+      <td>956.709718</td>
+      <td>1.197249</td>
+      <td>46.157363</td>
+      <td>25.25</td>
+      <td>9.531856e+06</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Bahamas, The</td>
+      <td>1.877250</td>
+      <td>8.688000e+09</td>
+      <td>1727.128385</td>
+      <td>3.308626</td>
+      <td>NaN</td>
+      <td>81.50</td>
+      <td>3.819036e+05</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Bahrain</td>
+      <td>2.065250</td>
+      <td>3.200401e+10</td>
+      <td>2030.158316</td>
+      <td>2.976386</td>
+      <td>49.116838</td>
+      <td>15.25</td>
+      <td>1.349810e+06</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Bangladesh</td>
+      <td>2.193250</td>
+      <td>1.745451e+11</td>
+      <td>85.968844</td>
+      <td>0.860447</td>
+      <td>50.460564</td>
+      <td>194.75</td>
+      <td>1.593712e+08</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Barbados</td>
+      <td>1.792250</td>
+      <td>4.413080e+09</td>
+      <td>1062.840088</td>
+      <td>4.828680</td>
+      <td>48.878181</td>
+      <td>28.00</td>
+      <td>2.833384e+05</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Belarus</td>
+      <td>1.677000</td>
+      <td>6.478294e+10</td>
+      <td>986.236757</td>
+      <td>3.876601</td>
+      <td>48.685741</td>
+      <td>4.00</td>
+      <td>9.480348e+06</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Belgium</td>
+      <td>1.755000</td>
+      <td>4.942218e+11</td>
+      <td>4297.838005</td>
+      <td>8.221003</td>
+      <td>48.864675</td>
+      <td>7.00</td>
+      <td>1.122850e+07</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Belize</td>
+      <td>2.594750</td>
+      <td>1.680325e+09</td>
+      <td>471.967465</td>
+      <td>3.744844</td>
+      <td>48.317238</td>
+      <td>29.25</td>
+      <td>3.517636e+05</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Benin</td>
+      <td>4.806750</td>
+      <td>8.778151e+09</td>
+      <td>83.726190</td>
+      <td>2.206916</td>
+      <td>47.211127</td>
+      <td>417.50</td>
+      <td>1.029371e+07</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Bermuda</td>
+      <td>1.617500</td>
+      <td>5.555624e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>48.423588</td>
+      <td>NaN</td>
+      <td>6.510080e+04</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Bhutan</td>
+      <td>2.061250</td>
+      <td>1.975145e+09</td>
+      <td>277.526670</td>
+      <td>2.706908</td>
+      <td>49.572296</td>
+      <td>161.75</td>
+      <td>7.759054e+05</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Bolivia</td>
+      <td>2.995250</td>
+      <td>3.150932e+10</td>
+      <td>381.007594</td>
+      <td>4.192031</td>
+      <td>48.464175</td>
+      <td>218.25</td>
+      <td>1.056280e+07</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Bosnia and Herzegovina</td>
+      <td>1.267000</td>
+      <td>1.732333e+10</td>
+      <td>941.504655</td>
+      <td>6.841021</td>
+      <td>48.634905</td>
+      <td>11.75</td>
+      <td>3.574396e+06</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Botswana</td>
+      <td>2.845000</td>
+      <td>1.511339e+10</td>
+      <td>880.909202</td>
+      <td>3.552071</td>
+      <td>48.844009</td>
+      <td>138.75</td>
+      <td>2.169170e+06</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Brazil</td>
+      <td>1.795250</td>
+      <td>2.198766e+12</td>
+      <td>1303.199104</td>
+      <td>3.773473</td>
+      <td>47.784577</td>
+      <td>49.50</td>
+      <td>2.041595e+08</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>British Virgin Islands</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>47.581520</td>
+      <td>NaN</td>
+      <td>2.958540e+04</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Brunei Darussalam</td>
+      <td>1.884000</td>
+      <td>1.571922e+10</td>
+      <td>1795.924160</td>
+      <td>2.335194</td>
+      <td>48.523699</td>
+      <td>23.75</td>
+      <td>4.115812e+05</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>233</th>
+      <td>Syrian Arab Republic</td>
+      <td>2.967750</td>
+      <td>NaN</td>
+      <td>269.945739</td>
+      <td>1.507166</td>
+      <td>48.047394</td>
+      <td>62.00</td>
+      <td>1.931967e+07</td>
+    </tr>
+    <tr>
+      <th>234</th>
+      <td>Tajikistan</td>
+      <td>3.495750</td>
+      <td>8.036228e+09</td>
+      <td>169.745970</td>
+      <td>1.976367</td>
+      <td>48.260680</td>
+      <td>33.25</td>
+      <td>8.363844e+06</td>
+    </tr>
+    <tr>
+      <th>235</th>
+      <td>Tanzania</td>
+      <td>5.181250</td>
+      <td>4.493554e+10</td>
+      <td>131.704162</td>
+      <td>2.648609</td>
+      <td>50.666580</td>
+      <td>429.50</td>
+      <td>5.228132e+07</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>Thailand</td>
+      <td>1.516750</td>
+      <td>4.061369e+11</td>
+      <td>581.927487</td>
+      <td>3.183842</td>
+      <td>48.213034</td>
+      <td>21.00</td>
+      <td>6.838499e+07</td>
+    </tr>
+    <tr>
+      <th>237</th>
+      <td>Timor-Leste</td>
+      <td>5.797750</td>
+      <td>1.361430e+09</td>
+      <td>98.577296</td>
+      <td>1.140440</td>
+      <td>48.337367</td>
+      <td>240.25</td>
+      <td>1.212718e+06</td>
+    </tr>
+    <tr>
+      <th>238</th>
+      <td>Togo</td>
+      <td>4.620000</td>
+      <td>4.183610e+09</td>
+      <td>71.263825</td>
+      <td>2.037809</td>
+      <td>48.270471</td>
+      <td>380.75</td>
+      <td>7.230904e+06</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>Tonga</td>
+      <td>3.745750</td>
+      <td>4.391789e+08</td>
+      <td>250.962504</td>
+      <td>3.987285</td>
+      <td>47.697931</td>
+      <td>129.25</td>
+      <td>1.059094e+05</td>
+    </tr>
+    <tr>
+      <th>240</th>
+      <td>Trinidad and Tobago</td>
+      <td>1.782750</td>
+      <td>2.457095e+10</td>
+      <td>1778.148073</td>
+      <td>3.071370</td>
+      <td>NaN</td>
+      <td>63.25</td>
+      <td>1.353877e+06</td>
+    </tr>
+    <tr>
+      <th>241</th>
+      <td>Tunisia</td>
+      <td>2.140000</td>
+      <td>4.482437e+10</td>
+      <td>782.950522</td>
+      <td>4.118771</td>
+      <td>48.142132</td>
+      <td>63.25</td>
+      <td>1.114441e+07</td>
+    </tr>
+    <tr>
+      <th>242</th>
+      <td>Turkey</td>
+      <td>2.078000</td>
+      <td>8.951756e+11</td>
+      <td>997.374772</td>
+      <td>4.189521</td>
+      <td>48.789477</td>
+      <td>17.50</td>
+      <td>7.703435e+07</td>
+    </tr>
+    <tr>
+      <th>243</th>
+      <td>Turkmenistan</td>
+      <td>2.313750</td>
+      <td>3.797310e+10</td>
+      <td>288.572644</td>
+      <td>1.349303</td>
+      <td>48.906879</td>
+      <td>43.50</td>
+      <td>5.465637e+06</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>Turks and Caicos Islands</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>48.846884</td>
+      <td>NaN</td>
+      <td>3.370340e+04</td>
+    </tr>
+    <tr>
+      <th>245</th>
+      <td>Tuvalu</td>
+      <td>NaN</td>
+      <td>3.646999e+07</td>
+      <td>563.500592</td>
+      <td>15.506929</td>
+      <td>47.472414</td>
+      <td>NaN</td>
+      <td>1.091000e+04</td>
+    </tr>
+    <tr>
+      <th>246</th>
+      <td>Uganda</td>
+      <td>5.822500</td>
+      <td>2.594146e+10</td>
+      <td>132.892684</td>
+      <td>2.014349</td>
+      <td>50.099485</td>
+      <td>366.50</td>
+      <td>3.886534e+07</td>
+    </tr>
+    <tr>
+      <th>247</th>
+      <td>Ukraine</td>
+      <td>1.510250</td>
+      <td>1.353793e+11</td>
+      <td>628.579254</td>
+      <td>3.960185</td>
+      <td>48.984198</td>
+      <td>24.25</td>
+      <td>4.530270e+07</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>United Arab Emirates</td>
+      <td>1.793000</td>
+      <td>3.750271e+11</td>
+      <td>2202.407569</td>
+      <td>2.581168</td>
+      <td>48.789260</td>
+      <td>6.00</td>
+      <td>9.080299e+06</td>
+    </tr>
+    <tr>
+      <th>249</th>
+      <td>United Kingdom</td>
+      <td>1.842500</td>
+      <td>2.768864e+12</td>
+      <td>3357.983675</td>
+      <td>7.720655</td>
+      <td>48.791809</td>
+      <td>9.25</td>
+      <td>6.464156e+07</td>
+    </tr>
+    <tr>
+      <th>250</th>
+      <td>United States</td>
+      <td>1.860875</td>
+      <td>1.736912e+13</td>
+      <td>9060.068657</td>
+      <td>8.121961</td>
+      <td>48.758830</td>
+      <td>14.00</td>
+      <td>3.185582e+08</td>
+    </tr>
+    <tr>
+      <th>251</th>
+      <td>Upper middle income</td>
+      <td>1.795244</td>
+      <td>2.097441e+13</td>
+      <td>870.897512</td>
+      <td>3.358153</td>
+      <td>47.112001</td>
+      <td>43.25</td>
+      <td>2.540966e+09</td>
+    </tr>
+    <tr>
+      <th>252</th>
+      <td>Uruguay</td>
+      <td>2.027000</td>
+      <td>5.434513e+10</td>
+      <td>1721.507752</td>
+      <td>6.044403</td>
+      <td>48.295555</td>
+      <td>15.50</td>
+      <td>3.419977e+06</td>
+    </tr>
+    <tr>
+      <th>253</th>
+      <td>Uzbekistan</td>
+      <td>2.372750</td>
+      <td>6.134065e+10</td>
+      <td>334.476754</td>
+      <td>3.118842</td>
+      <td>48.387434</td>
+      <td>37.00</td>
+      <td>3.078450e+07</td>
+    </tr>
+    <tr>
+      <th>254</th>
+      <td>Vanuatu</td>
+      <td>3.364750</td>
+      <td>7.828760e+08</td>
+      <td>125.568712</td>
+      <td>3.689874</td>
+      <td>47.301617</td>
+      <td>82.50</td>
+      <td>2.588964e+05</td>
+    </tr>
+    <tr>
+      <th>255</th>
+      <td>Venezuela, RB</td>
+      <td>2.378250</td>
+      <td>3.761463e+11</td>
+      <td>896.815314</td>
+      <td>1.587088</td>
+      <td>48.400934</td>
+      <td>97.00</td>
+      <td>3.073452e+07</td>
+    </tr>
+    <tr>
+      <th>256</th>
+      <td>Vietnam</td>
+      <td>1.959500</td>
+      <td>1.818207e+11</td>
+      <td>368.374550</td>
+      <td>3.779501</td>
+      <td>48.021053</td>
+      <td>54.75</td>
+      <td>9.074240e+07</td>
+    </tr>
+    <tr>
+      <th>257</th>
+      <td>Virgin Islands (U.S.)</td>
+      <td>1.760000</td>
+      <td>3.812000e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.041414e+05</td>
+    </tr>
+    <tr>
+      <th>258</th>
+      <td>West Bank and Gaza</td>
+      <td>4.208000</td>
+      <td>1.250822e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>48.828520</td>
+      <td>47.50</td>
+      <td>4.296960e+06</td>
+    </tr>
+    <tr>
+      <th>259</th>
+      <td>World</td>
+      <td>2.464282</td>
+      <td>7.613006e+13</td>
+      <td>1223.941243</td>
+      <td>5.947058</td>
+      <td>48.076575</td>
+      <td>223.75</td>
+      <td>7.269321e+09</td>
+    </tr>
+    <tr>
+      <th>260</th>
+      <td>Yemen, Rep.</td>
+      <td>4.225750</td>
+      <td>3.681934e+10</td>
+      <td>207.949700</td>
+      <td>1.417836</td>
+      <td>44.470076</td>
+      <td>399.75</td>
+      <td>2.624661e+07</td>
+    </tr>
+    <tr>
+      <th>261</th>
+      <td>Zambia</td>
+      <td>5.394250</td>
+      <td>2.428099e+10</td>
+      <td>185.556359</td>
+      <td>2.687290</td>
+      <td>49.934484</td>
+      <td>233.75</td>
+      <td>1.563322e+07</td>
+    </tr>
+    <tr>
+      <th>262</th>
+      <td>Zimbabwe</td>
+      <td>3.943000</td>
+      <td>1.549551e+10</td>
+      <td>115.519881</td>
+      <td>2.695188</td>
+      <td>49.529875</td>
+      <td>398.00</td>
+      <td>1.542096e+07</td>
+    </tr>
+  </tbody>
+</table>
+<p>263 rows × 8 columns</p>
+</div>
+</div>
+
+<p>Notice the <code class="highlighter-rouge">...</code> in the center of this listing, to show that it has not printed some rows.</p>
+
+<p>Sometimes we do not want to see all these rows, but only - say - the top five rows.   The <code class="highlighter-rouge">head</code> method of the data frame is a useful way to do this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>fert_rate</th>
+      <th>gdp</th>
+      <th>health_exp_per_cap</th>
+      <th>health_exp_pub</th>
+      <th>prim_ed_girls</th>
+      <th>mat_mort_ratio</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Afghanistan</td>
+      <td>4.95450</td>
+      <td>1.996102e+10</td>
+      <td>161.138034</td>
+      <td>2.834598</td>
+      <td>40.109708</td>
+      <td>444.00</td>
+      <td>32715838.4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Albania</td>
+      <td>1.76925</td>
+      <td>1.232759e+10</td>
+      <td>574.202694</td>
+      <td>2.836021</td>
+      <td>47.201082</td>
+      <td>29.25</td>
+      <td>2888280.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Algeria</td>
+      <td>2.86600</td>
+      <td>1.907346e+11</td>
+      <td>870.766508</td>
+      <td>4.984252</td>
+      <td>47.675617</td>
+      <td>142.50</td>
+      <td>39099060.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>American Samoa</td>
+      <td>NaN</td>
+      <td>6.405000e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>55422.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Andorra</td>
+      <td>NaN</td>
+      <td>3.197538e+09</td>
+      <td>4421.224933</td>
+      <td>7.260281</td>
+      <td>47.123345</td>
+      <td>NaN</td>
+      <td>79547.4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>The <code class="highlighter-rouge">Series</code> also has a <code class="highlighter-rouge">head</code> method, that does the same thing:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    1.996102e+10
+1    1.232759e+10
+2    1.907346e+11
+3    6.405000e+08
+4    3.197538e+09
+Name: gdp, dtype: float64
+</code></pre></div></div>
+
+<h2 id="selecting-rows">Selecting rows</h2>
+
+<p>We often want to select rows from the data frame that match some criterion.</p>
 
 <p>Say we want to select the rows corresponding the countries with a high GDP.</p>
 
@@ -2106,7 +2920,7 @@ Name: gdp, Length: 263, dtype: bool
 
 <p>Notice that <code class="highlighter-rouge">high_gdp</code> is a Boolean series, like the Boolean arrays you have already seen.  It has <code class="highlighter-rouge">True</code> for elements corresponding to countries with <code class="highlighter-rouge">gdp</code> value greater than <code class="highlighter-rouge">1e13</code> and <code class="highlighter-rouge">False</code> otherwise.</p>
 
-<p>We can use this Boolean series to select rows from the data frame.  The <code class="highlighter-rouge">loc</code> attribute of the data frame allows us to <em>locate</em> values in the data frame.  For our Boolean series, it works like this:</p>
+<p>We can use this Boolean series to select rows from the data frame.  The <code class="highlighter-rouge">loc</code> attribute of the data frame allows us to <em>LOCate</em> values in the data frame.  For our Boolean series, it works like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_gender_data</span> <span class="o">=</span> <span class="n">gender_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">high_gdp</span><span class="p">]</span>
 <span class="n">rich_gender_data</span>
@@ -2386,10 +3200,991 @@ there is little relationship between GDP and maternal mortality.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_gender_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'gdp'</span><span class="p">,</span> <span class="s">'mat_mort_ratio'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11aa64400&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1178bb7b8&gt;
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/04/data_frame_intro_46_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/04/data_frame_intro_59_1.png" alt="png" /></p>
+
+<h2 id="sorting-data-frames">Sorting data frames</h2>
+
+<p>Data frames have a method <code class="highlighter-rouge">sort_value</code>.  This returns a new data frame with the rows sorted by the values in the column we specify.</p>
+
+<p>Here are the first five rows of the original data frame:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>fert_rate</th>
+      <th>gdp</th>
+      <th>health_exp_per_cap</th>
+      <th>health_exp_pub</th>
+      <th>prim_ed_girls</th>
+      <th>mat_mort_ratio</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Afghanistan</td>
+      <td>4.95450</td>
+      <td>1.996102e+10</td>
+      <td>161.138034</td>
+      <td>2.834598</td>
+      <td>40.109708</td>
+      <td>444.00</td>
+      <td>32715838.4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Albania</td>
+      <td>1.76925</td>
+      <td>1.232759e+10</td>
+      <td>574.202694</td>
+      <td>2.836021</td>
+      <td>47.201082</td>
+      <td>29.25</td>
+      <td>2888280.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Algeria</td>
+      <td>2.86600</td>
+      <td>1.907346e+11</td>
+      <td>870.766508</td>
+      <td>4.984252</td>
+      <td>47.675617</td>
+      <td>142.50</td>
+      <td>39099060.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>American Samoa</td>
+      <td>NaN</td>
+      <td>6.405000e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>55422.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Andorra</td>
+      <td>NaN</td>
+      <td>3.197538e+09</td>
+      <td>4421.224933</td>
+      <td>7.260281</td>
+      <td>47.123345</td>
+      <td>NaN</td>
+      <td>79547.4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>We can make a new data frame where the rows are sorted by the values in the <code class="highlighter-rouge">gdp</code> column:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data_by_gdp</span> <span class="o">=</span> <span class="n">gender_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'gdp'</span><span class="p">)</span>
+<span class="n">gender_data_by_gdp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>fert_rate</th>
+      <th>gdp</th>
+      <th>health_exp_per_cap</th>
+      <th>health_exp_pub</th>
+      <th>prim_ed_girls</th>
+      <th>mat_mort_ratio</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>245</th>
+      <td>Tuvalu</td>
+      <td>NaN</td>
+      <td>3.646999e+07</td>
+      <td>563.500592</td>
+      <td>15.506929</td>
+      <td>47.472414</td>
+      <td>NaN</td>
+      <td>10910.0</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>Nauru</td>
+      <td>NaN</td>
+      <td>1.063908e+08</td>
+      <td>611.020856</td>
+      <td>4.527932</td>
+      <td>49.409439</td>
+      <td>NaN</td>
+      <td>11695.4</td>
+    </tr>
+    <tr>
+      <th>121</th>
+      <td>Kiribati</td>
+      <td>3.74525</td>
+      <td>1.774306e+08</td>
+      <td>179.372383</td>
+      <td>8.279184</td>
+      <td>49.557255</td>
+      <td>95.0</td>
+      <td>110481.6</td>
+    </tr>
+    <tr>
+      <th>152</th>
+      <td>Marshall Islands</td>
+      <td>NaN</td>
+      <td>1.843189e+08</td>
+      <td>657.059335</td>
+      <td>14.302529</td>
+      <td>48.397282</td>
+      <td>NaN</td>
+      <td>52882.8</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>Palau</td>
+      <td>2.22000</td>
+      <td>2.548400e+08</td>
+      <td>1389.993077</td>
+      <td>6.623460</td>
+      <td>46.425690</td>
+      <td>NaN</td>
+      <td>21112.6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Notice that the rows are in <em>ascending</em> order of <code class="highlighter-rouge">gdp</code>.  You can imagine, that we often want <em>descending</em> order.  As usual you can explore how you might do this by looking at the help for the <code class="highlighter-rouge">sort_values</code> method with:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gender_data.sort_values?
+</code></pre></div></div>
+
+<p>in a new cell.   If you do that, you discover the <code class="highlighter-rouge">ascending</code> argument, that you can use like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'gdp'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>fert_rate</th>
+      <th>gdp</th>
+      <th>health_exp_per_cap</th>
+      <th>health_exp_pub</th>
+      <th>prim_ed_girls</th>
+      <th>mat_mort_ratio</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>259</th>
+      <td>World</td>
+      <td>2.464282</td>
+      <td>7.613006e+13</td>
+      <td>1223.941243</td>
+      <td>5.947058</td>
+      <td>48.076575</td>
+      <td>223.75</td>
+      <td>7.269321e+09</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>High income</td>
+      <td>1.686585</td>
+      <td>4.884635e+13</td>
+      <td>5045.885008</td>
+      <td>7.602022</td>
+      <td>48.701030</td>
+      <td>10.00</td>
+      <td>1.175934e+09</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>OECD members</td>
+      <td>1.749418</td>
+      <td>4.787743e+13</td>
+      <td>4566.959377</td>
+      <td>7.636198</td>
+      <td>48.704364</td>
+      <td>15.00</td>
+      <td>1.273149e+09</td>
+    </tr>
+    <tr>
+      <th>193</th>
+      <td>Post-demographic dividend</td>
+      <td>1.636470</td>
+      <td>4.541806e+13</td>
+      <td>5124.214162</td>
+      <td>7.858170</td>
+      <td>48.649863</td>
+      <td>10.75</td>
+      <td>1.092637e+09</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>IDA &amp; IBRD total</td>
+      <td>2.587557</td>
+      <td>2.803020e+13</td>
+      <td>507.044258</td>
+      <td>3.013687</td>
+      <td>47.896337</td>
+      <td>244.75</td>
+      <td>6.113147e+09</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>Low &amp; middle income</td>
+      <td>2.595258</td>
+      <td>2.724634e+13</td>
+      <td>498.193061</td>
+      <td>2.982075</td>
+      <td>NaN</td>
+      <td>245.25</td>
+      <td>6.089148e+09</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>Middle income</td>
+      <td>2.361746</td>
+      <td>2.691014e+13</td>
+      <td>542.340940</td>
+      <td>2.996480</td>
+      <td>48.044140</td>
+      <td>185.75</td>
+      <td>5.468296e+09</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>IBRD only</td>
+      <td>2.103185</td>
+      <td>2.607726e+13</td>
+      <td>625.357428</td>
+      <td>3.104682</td>
+      <td>48.026892</td>
+      <td>106.25</td>
+      <td>4.607548e+09</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>Europe &amp; Central Asia</td>
+      <td>1.738094</td>
+      <td>2.191519e+13</td>
+      <td>2518.566323</td>
+      <td>7.130694</td>
+      <td>48.653599</td>
+      <td>16.75</td>
+      <td>9.032073e+08</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>East Asia &amp; Pacific</td>
+      <td>1.781424</td>
+      <td>2.168128e+13</td>
+      <td>835.974259</td>
+      <td>4.687596</td>
+      <td>47.212490</td>
+      <td>63.00</td>
+      <td>2.265974e+09</td>
+    </tr>
+    <tr>
+      <th>251</th>
+      <td>Upper middle income</td>
+      <td>1.795244</td>
+      <td>2.097441e+13</td>
+      <td>870.897512</td>
+      <td>3.358153</td>
+      <td>47.112001</td>
+      <td>43.25</td>
+      <td>2.540966e+09</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>North America</td>
+      <td>1.834404</td>
+      <td>1.908336e+13</td>
+      <td>8615.535450</td>
+      <td>8.066182</td>
+      <td>48.708683</td>
+      <td>13.50</td>
+      <td>3.541404e+08</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>Late-demographic dividend</td>
+      <td>1.667820</td>
+      <td>1.862014e+13</td>
+      <td>838.259199</td>
+      <td>3.335746</td>
+      <td>47.046383</td>
+      <td>36.00</td>
+      <td>2.235352e+09</td>
+    </tr>
+    <tr>
+      <th>250</th>
+      <td>United States</td>
+      <td>1.860875</td>
+      <td>1.736912e+13</td>
+      <td>9060.068657</td>
+      <td>8.121961</td>
+      <td>48.758830</td>
+      <td>14.00</td>
+      <td>3.185582e+08</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>European Union</td>
+      <td>1.570012</td>
+      <td>1.731910e+13</td>
+      <td>3448.910224</td>
+      <td>7.816628</td>
+      <td>48.658777</td>
+      <td>8.00</td>
+      <td>5.082110e+08</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>Euro area</td>
+      <td>1.551004</td>
+      <td>1.255692e+13</td>
+      <td>3913.466364</td>
+      <td>7.956080</td>
+      <td>48.610030</td>
+      <td>6.50</td>
+      <td>3.384615e+08</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>East Asia &amp; Pacific (excluding high income)</td>
+      <td>1.813950</td>
+      <td>1.242383e+13</td>
+      <td>558.702327</td>
+      <td>2.815498</td>
+      <td>47.115173</td>
+      <td>66.75</td>
+      <td>2.022090e+09</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>East Asia &amp; Pacific (IDA &amp; IBRD)</td>
+      <td>1.811850</td>
+      <td>1.239991e+13</td>
+      <td>558.711100</td>
+      <td>2.815573</td>
+      <td>47.098031</td>
+      <td>66.75</td>
+      <td>1.996942e+09</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>Early-demographic dividend</td>
+      <td>2.636376</td>
+      <td>1.019283e+13</td>
+      <td>392.428268</td>
+      <td>2.595967</td>
+      <td>48.651143</td>
+      <td>169.00</td>
+      <td>3.083697e+09</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>China</td>
+      <td>1.558750</td>
+      <td>1.018279e+13</td>
+      <td>657.748859</td>
+      <td>3.015530</td>
+      <td>46.297964</td>
+      <td>28.75</td>
+      <td>1.364446e+09</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>Lower middle income</td>
+      <td>2.877481</td>
+      <td>5.929275e+12</td>
+      <td>254.618642</td>
+      <td>1.657578</td>
+      <td>48.632937</td>
+      <td>262.50</td>
+      <td>2.927329e+09</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>Latin America &amp; Caribbean</td>
+      <td>2.125164</td>
+      <td>5.845138e+12</td>
+      <td>1069.141865</td>
+      <td>3.659621</td>
+      <td>48.378604</td>
+      <td>70.75</td>
+      <td>6.242184e+08</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>Latin America &amp; Caribbean (IDA &amp; IBRD)</td>
+      <td>2.138122</td>
+      <td>5.636800e+12</td>
+      <td>1050.010897</td>
+      <td>3.585924</td>
+      <td>48.382980</td>
+      <td>71.50</td>
+      <td>6.080342e+08</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>Latin America &amp; Caribbean (excluding high income)</td>
+      <td>2.140742</td>
+      <td>5.377437e+12</td>
+      <td>1046.116268</td>
+      <td>3.638974</td>
+      <td>48.379046</td>
+      <td>72.75</td>
+      <td>5.969302e+08</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>Japan</td>
+      <td>1.430000</td>
+      <td>5.106025e+12</td>
+      <td>3687.126279</td>
+      <td>8.496074</td>
+      <td>48.744199</td>
+      <td>5.75</td>
+      <td>1.272971e+08</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>Europe &amp; Central Asia (IDA &amp; IBRD)</td>
+      <td>1.861440</td>
+      <td>4.213635e+12</td>
+      <td>1173.135713</td>
+      <td>3.878399</td>
+      <td>48.632033</td>
+      <td>24.00</td>
+      <td>4.505588e+08</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>Europe &amp; Central Asia (excluding high income)</td>
+      <td>1.909466</td>
+      <td>3.710324e+12</td>
+      <td>1138.169165</td>
+      <td>3.794867</td>
+      <td>48.619737</td>
+      <td>25.50</td>
+      <td>4.125489e+08</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>Germany</td>
+      <td>1.450000</td>
+      <td>3.601226e+12</td>
+      <td>4909.659884</td>
+      <td>8.542615</td>
+      <td>48.568695</td>
+      <td>6.25</td>
+      <td>8.128164e+07</td>
+    </tr>
+    <tr>
+      <th>157</th>
+      <td>Middle East &amp; North Africa</td>
+      <td>2.852531</td>
+      <td>3.380647e+12</td>
+      <td>912.491552</td>
+      <td>3.055660</td>
+      <td>47.621273</td>
+      <td>83.50</td>
+      <td>4.208876e+08</td>
+    </tr>
+    <tr>
+      <th>249</th>
+      <td>United Kingdom</td>
+      <td>1.842500</td>
+      <td>2.768864e+12</td>
+      <td>3357.983675</td>
+      <td>7.720655</td>
+      <td>48.791809</td>
+      <td>9.25</td>
+      <td>6.464156e+07</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>254</th>
+      <td>Vanuatu</td>
+      <td>3.364750</td>
+      <td>7.828760e+08</td>
+      <td>125.568712</td>
+      <td>3.689874</td>
+      <td>47.301617</td>
+      <td>82.50</td>
+      <td>2.588964e+05</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>St. Vincent and the Grenadines</td>
+      <td>1.986000</td>
+      <td>7.301068e+08</td>
+      <td>775.803386</td>
+      <td>4.365757</td>
+      <td>48.536415</td>
+      <td>45.75</td>
+      <td>1.094206e+05</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>American Samoa</td>
+      <td>NaN</td>
+      <td>6.405000e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.542200e+04</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Comoros</td>
+      <td>4.524000</td>
+      <td>6.039190e+08</td>
+      <td>99.221938</td>
+      <td>2.289039</td>
+      <td>47.515774</td>
+      <td>349.50</td>
+      <td>7.595556e+05</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>Dominica</td>
+      <td>NaN</td>
+      <td>5.130350e+08</td>
+      <td>572.413734</td>
+      <td>3.749851</td>
+      <td>48.774225</td>
+      <td>NaN</td>
+      <td>7.278540e+04</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>Tonga</td>
+      <td>3.745750</td>
+      <td>4.391789e+08</td>
+      <td>250.962504</td>
+      <td>3.987285</td>
+      <td>47.697931</td>
+      <td>129.25</td>
+      <td>1.059094e+05</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>Micronesia, Fed. Sts.</td>
+      <td>3.269250</td>
+      <td>3.193208e+08</td>
+      <td>456.403851</td>
+      <td>12.037277</td>
+      <td>48.084030</td>
+      <td>103.25</td>
+      <td>1.041180e+05</td>
+    </tr>
+    <tr>
+      <th>202</th>
+      <td>Sao Tome and Principe</td>
+      <td>4.603750</td>
+      <td>3.145400e+08</td>
+      <td>304.237533</td>
+      <td>3.227125</td>
+      <td>48.664169</td>
+      <td>159.50</td>
+      <td>1.913326e+05</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>Palau</td>
+      <td>2.220000</td>
+      <td>2.548400e+08</td>
+      <td>1389.993077</td>
+      <td>6.623460</td>
+      <td>46.425690</td>
+      <td>NaN</td>
+      <td>2.111260e+04</td>
+    </tr>
+    <tr>
+      <th>152</th>
+      <td>Marshall Islands</td>
+      <td>NaN</td>
+      <td>1.843189e+08</td>
+      <td>657.059335</td>
+      <td>14.302529</td>
+      <td>48.397282</td>
+      <td>NaN</td>
+      <td>5.288280e+04</td>
+    </tr>
+    <tr>
+      <th>121</th>
+      <td>Kiribati</td>
+      <td>3.745250</td>
+      <td>1.774306e+08</td>
+      <td>179.372383</td>
+      <td>8.279184</td>
+      <td>49.557255</td>
+      <td>95.00</td>
+      <td>1.104816e+05</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>Nauru</td>
+      <td>NaN</td>
+      <td>1.063908e+08</td>
+      <td>611.020856</td>
+      <td>4.527932</td>
+      <td>49.409439</td>
+      <td>NaN</td>
+      <td>1.169540e+04</td>
+    </tr>
+    <tr>
+      <th>245</th>
+      <td>Tuvalu</td>
+      <td>NaN</td>
+      <td>3.646999e+07</td>
+      <td>563.500592</td>
+      <td>15.506929</td>
+      <td>47.472414</td>
+      <td>NaN</td>
+      <td>1.091000e+04</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Aruba</td>
+      <td>1.663250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>48.721939</td>
+      <td>NaN</td>
+      <td>1.037444e+05</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>British Virgin Islands</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>47.581520</td>
+      <td>NaN</td>
+      <td>2.958540e+04</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Cayman Islands</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>49.866695</td>
+      <td>NaN</td>
+      <td>5.915880e+04</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Channel Islands</td>
+      <td>1.462250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.629612e+05</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>Curacao</td>
+      <td>2.050000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>47.986740</td>
+      <td>NaN</td>
+      <td>1.559594e+05</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>Eritrea</td>
+      <td>4.324500</td>
+      <td>NaN</td>
+      <td>47.155226</td>
+      <td>1.429902</td>
+      <td>46.331369</td>
+      <td>524.50</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>French Polynesia</td>
+      <td>2.051000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.757226e+05</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>Gibraltar</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.402560e+04</td>
+    </tr>
+    <tr>
+      <th>122</th>
+      <td>Korea, Dem. People's Rep.</td>
+      <td>1.982500</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>49.030281</td>
+      <td>86.25</td>
+      <td>2.511378e+07</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>Libya</td>
+      <td>2.485750</td>
+      <td>NaN</td>
+      <td>955.388861</td>
+      <td>3.231360</td>
+      <td>NaN</td>
+      <td>9.00</td>
+      <td>6.225309e+06</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>Monaco</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6421.678715</td>
+      <td>3.720085</td>
+      <td>49.637143</td>
+      <td>NaN</td>
+      <td>3.813840e+04</td>
+    </tr>
+    <tr>
+      <th>172</th>
+      <td>New Caledonia</td>
+      <td>2.250000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.682000e+05</td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>San Marino</td>
+      <td>1.260000</td>
+      <td>NaN</td>
+      <td>3437.298747</td>
+      <td>5.752693</td>
+      <td>45.616261</td>
+      <td>NaN</td>
+      <td>3.260740e+04</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>Sint Maarten (Dutch part)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>49.508551</td>
+      <td>NaN</td>
+      <td>3.755220e+04</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>St. Martin (French part)</td>
+      <td>1.812500</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.149120e+04</td>
+    </tr>
+    <tr>
+      <th>233</th>
+      <td>Syrian Arab Republic</td>
+      <td>2.967750</td>
+      <td>NaN</td>
+      <td>269.945739</td>
+      <td>1.507166</td>
+      <td>48.047394</td>
+      <td>62.00</td>
+      <td>1.931967e+07</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>Turks and Caicos Islands</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>48.846884</td>
+      <td>NaN</td>
+      <td>3.370340e+04</td>
+    </tr>
+  </tbody>
+</table>
+<p>263 rows × 8 columns</p>
+</div>
+</div>
+
+<p>As you might have guessed by now, <code class="highlighter-rouge">Series</code> also have a <code class="highlighter-rouge">sort_values</code> method.  For a Series, you don’t have to specify the column to sort from, because you are using the Series values.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>259    7.613006e+13
+98     4.884635e+13
+180    4.787743e+13
+193    4.541806e+13
+103    2.803020e+13
+140    2.724634e+13
+160    2.691014e+13
+102    2.607726e+13
+72     2.191519e+13
+61     2.168128e+13
+251    2.097441e+13
+177    1.908336e+13
+128    1.862014e+13
+250    1.736912e+13
+75     1.731910e+13
+71     1.255692e+13
+63     1.242383e+13
+62     1.239991e+13
+60     1.019283e+13
+44     1.018279e+13
+142    5.929275e+12
+129    5.845138e+12
+130    5.636800e+12
+131    5.377437e+12
+117    5.106025e+12
+73     4.213635e+12
+74     3.710324e+12
+85     3.601226e+12
+157    3.380647e+12
+249    2.768864e+12
+           ...     
+254    7.828760e+08
+224    7.301068e+08
+3      6.405000e+08
+46     6.039190e+08
+58     5.130350e+08
+239    4.391789e+08
+156    3.193208e+08
+202    3.145400e+08
+185    2.548400e+08
+152    1.843189e+08
+121    1.774306e+08
+169    1.063908e+08
+245    3.646999e+07
+10              NaN
+28              NaN
+38              NaN
+42              NaN
+53              NaN
+68              NaN
+81              NaN
+87              NaN
+122             NaN
+137             NaN
+162             NaN
+172             NaN
+201             NaN
+209             NaN
+223             NaN
+233             NaN
+244             NaN
+Name: gdp, Length: 263, dtype: float64
+</code></pre></div></div>
 
 
           
