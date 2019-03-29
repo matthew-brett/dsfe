@@ -320,7 +320,7 @@ It is also called the *standard deviation*.
 np.std(hgb)
 ```
 
-We can make our distribution have a standard center *and* and a standard spread by dividing our mean-centered distribution, by the standard deviation.  Then the distribution will have a standard deviation very close to 1.
+We can make our distribution have a standard center *and* a standard spread by dividing our mean-centered distribution, by the standard deviation.  Then the distribution will have a standard deviation very close to 1.
 
 This version of the distribution, with mean 0 and standard deviation of 1, is called the *standardized* distribution.
 
@@ -350,6 +350,8 @@ std_wbc = standard_units(wbc)
 std_wbc.hist()
 plt.title('Standardized White Blood Cell Count')
 ```
+
+Every value in standardized units gives the deviation of the original value from its mean, in terms of the number of standard deviations.
 
         
       </section>
