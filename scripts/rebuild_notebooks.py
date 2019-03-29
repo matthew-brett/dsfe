@@ -172,6 +172,7 @@ class Build:
         # Run .ipynb, unless we've been told not to.
         if self.should_run(nb_built):
             check_call(['jupyter', 'nbconvert', '--inplace',
+                        '--ExecutePreprocessor.timeout=120',
                         '--ExecutePreprocessor.kernel_name=python3',
                         '--to', 'notebook', '--execute', nb_built])
         self._delete_built(base, self.built_exts)
