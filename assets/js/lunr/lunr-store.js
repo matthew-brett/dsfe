@@ -159,7 +159,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/lists",
         "teaser":null},{
-        "title": "5.4 Ones and zeros",
+        "title": "5.5 Ones and zeros",
         "excerpt":"import numpy as npWe often want to create arrays with all zeros, or all ones. We do this with: np.zeros(5)array([0., 0., 0., 0., 0.])np.ones(3)array([1., 1., 1.])As ever, review the help with (for example): np.ones?In a new cell. You can ask for a 2D array by passing a list with the...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/05/ones_zeros",
@@ -249,12 +249,12 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/08/where_and_argmin",
         "teaser":null},{
-        "title": "9.6 Accuracy of the classifier",
+        "title": "9.5 Accuracy of the classifier",
         "excerpt":"You can download the file fromwine.csv. The Accuracy of the Classifier To see how well our classifier does, we might put 50% of the data into the training set and the other 50% into the test set. Basically, we are setting aside some data for later use, so we can...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/09/Accuracy_of_the_Classifier",
         "teaser":null},{
-        "title": "9.5 Implementing the classifier",
+        "title": "9.4 Implementing the classifier",
         "excerpt":"Implementing the Classifier We are now ready to implement a $k$-nearest neighbor classifier based on multiple attributes. We have used only two attributes so far, for ease of visualization. But usually predictions will be based on many attributes. Here is an example that shows how multiple attributes can be better...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/09/Implementing_the_Classifier",
@@ -264,7 +264,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/09/Nearest_Neighbors",
         "teaser":null},{
-        "title": "9.4 Rows of tables",
+        "title": "9.3 Rows of tables",
         "excerpt":"Rows of Tables Now that we have a qualitative understanding of nearest neighbor classification, it’s time to implement our classifier. Until this chapter, we have worked mostly with single columns of tables. But now we have to see whether one individual is “close” to another. Data for individuals are contained...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/09/Rows_of_Tables",

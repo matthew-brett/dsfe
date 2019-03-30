@@ -341,20 +341,21 @@ We get the following classification regions and decision boundary:
 ```{python}
 # HIDDEN
 x_vals = np.arange(-2, 6.1, 0.25)
+n_x = len(x_vals)
 y_vals = np.arange(-2, 6.1, 0.25)
-n_xy_vals = len(x_vals) * len(y_vals)
-x_array = np.zeros(n_xy_vals)
-y_array = np.zeros(n_xy_vals)
-index = 0
-for x in x_vals:
-    for y in y_vals:
-        x_array[index] = x
-        y_array[index] = y
-        index = index + 1
+n_y = len(y_vals)
+
+# Make the vector of x and corresponding y coordinates to cover
+# the whole 2D grid.  For the expert way, see Numpy meshgrid.
+
+# Repeat each value of the x coordinate n_y times
+x_coords = np.repeat(x_vals, n_y)
+# Repeat the whole y_vals vector n_x times
+y_coords = np.tile(y_vals, n_x)
 
 test_grid = pd.DataFrame()
-test_grid['WBC'] = x_array
-test_grid['Glucose'] = y_array
+test_grid['WBC'] = x_coords
+test_grid['Glucose'] = y_coords
 ```
 
 ```{python}
