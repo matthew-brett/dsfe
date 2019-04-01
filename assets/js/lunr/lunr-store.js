@@ -25,7 +25,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/dsfe/chapters/01/intro",
         "teaser":null},{
         "title": "1.1.2 Statistical Techniques",
-        "excerpt":"Statistical Techniques Modern data analysis involves techniques from several fields, includingstatistics and machine learning. Statistics is the body of knowledge about drawing conclusions from incompleteinformation. Put another way, statistics allows us to reason about data inthe presence of uncertainty. Among the statistical tools that we will use are: hypothesis testing,confidence...","categories": [],
+        "excerpt":"Statistical Techniques Modern data analysis involves techniques from several fields, includingstatistics and machine learning. Statistics is the body of knowledge about drawing conclusions from incompleteinformation. Put another way, statistics allows us to reason about data inthe presence of uncertainty. Among the statistical tools that we will use are hypothesis testing...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/01/statistical-techniques",
         "teaser":null},{
