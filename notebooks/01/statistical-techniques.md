@@ -12,8 +12,7 @@ Statistics is the body of knowledge about drawing conclusions from incomplete
 information.  Put another way, statistics allows us to reason about data in
 the presence of uncertainty.
 
-Among the statistical tools that we will use are: hypothesis testing,
-confidence intervals, and tools for prediction of new data.
+Among the statistical tools that we will use are hypothesis testing and tools for prediction of new data.
 
 Because we are doing data science, we will take a rather different approach
 from standard statistical teaching.  Data science puts coding at the heart of
