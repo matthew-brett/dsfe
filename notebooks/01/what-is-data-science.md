@@ -16,7 +16,7 @@ As you will see, we do not think this very broad definition captures what is
 really new in the data science movement.  We prefer to define data science as
 a new *culture* of data analysis - like this:
 
-> Data science is a modern approach to data analysis with a foundation in code
+> Data science is an approach to data analysis with a foundation in code
 > and algorithms.
 
 Why do we choose this definition?  And does it matter?

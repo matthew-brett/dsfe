@@ -293,7 +293,7 @@ multiply(2)
 multiply(2, 3, 4)
 ```
 
-## Function can have no arguments
+## Functions can have no arguments
 
 Perhaps the recipe analogy breaks down here, but sometimes functions take no arguments.  For example:
 
