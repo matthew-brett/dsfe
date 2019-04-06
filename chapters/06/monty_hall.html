@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-04-01T12:07:51+01:00">
+  <meta property="article:published_time" content="2019-04-06T16:35:23+01:00">
 
 
 
@@ -150,7 +150,7 @@
           
           
 
-          <a href="/dsfe/chapters/01/what-is-data-science"><span class="nav__sub-title">1. Data Science</span></a>
+          <a href="/dsfe/chapters/01/intro"><span class="nav__sub-title">1. Data science for everyone</span></a>
         
 
         
@@ -164,7 +164,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/01/intro" class="level_1">1.1 Introduction</a></li>
+            <li><a href="/dsfe/chapters/01/what-is-data-science" class="level_1">1.1 What is data science?</a></li>
           
             
             
@@ -174,7 +174,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/01/computational-tools" class="level_2">1.1.1 Computational Tools</a></li>
+            <li><a href="/dsfe/chapters/01/why-data-science" class="level_1">1.2 Why data science?</a></li>
           
             
             
@@ -184,7 +184,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/01/statistical-techniques" class="level_2">1.1.2 Statistical Techniques</a></li>
+            <li><a href="/dsfe/chapters/01/tools_techniques" class="level_1">1.3 Tools and techniques</a></li>
           
             
             
@@ -194,7 +194,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/01/why-data-science" class="level_1">1.2 Why Data Science?</a></li>
+            <li><a href="/dsfe/chapters/01/computational-tools" class="level_2">1.3.1 Computational tools</a></li>
           
             
             
@@ -204,7 +204,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/01/Plotting_the_Classics" class="level_1">1.3 Plotting the Classics</a></li>
+            <li><a href="/dsfe/chapters/01/statistical-techniques" class="level_2">1.3.2 Statistical techniques</a></li>
           
             
             
@@ -214,7 +214,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/01/Literary_Characters" class="level_2">1.3.1 Literary Characters</a></li>
+            <li><a href="/dsfe/chapters/01/Plotting_the_Classics" class="level_1">1.4 Plotting the classics</a></li>
           
             
             
@@ -224,7 +224,17 @@
 
             
 
-            <li><a href="/dsfe/chapters/01/Another_Kind_Of_Character" class="level_2">1.3.2 Another Kind of Character</a></li>
+            <li><a href="/dsfe/chapters/01/Literary_Characters" class="level_2">1.4.1 Literary characters</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Another_Kind_Of_Character" class="level_2">1.4.2 Another kind of character</a></li>
           
         </ul>
         
@@ -765,6 +775,17 @@
           
           
 
+          <a href="/dsfe/chapters/10/end_of_beginning"><span class="nav__sub-title">10. The end of the beginning</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
           <a href="/dsfe/chapters/exercises/exercises"><span class="nav__sub-title">Exercises</span></a>
         
 
@@ -779,7 +800,37 @@
 
             
 
-            <li><a href="/dsfe/chapters/exercises/simulation" class="level_1">Simulation</a></li>
+            <li><a href="/dsfe/exercises/names" class="level_1">Thinking about names</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/three_girl_simulations" class="level_1">Three girl simulations</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/array_indexing" class="level_1">Array indexing</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/simulation" class="level_1">More simulations</a></li>
           
             
             
@@ -922,7 +973,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="6.2 Monty hall problem">
       <meta itemprop="description" content="The Monty Hall problem">
-      <meta itemprop="datePublished" content="April 01, 2019">
+      <meta itemprop="datePublished" content="April 06, 2019">
       
 
       <div class="page__inner-wrap">
@@ -947,6 +998,7 @@
   <li><a href="#the-simulation">The simulation</a></li>
   <li><a href="#your-turn---try-many-trials">Your turn - try many trials</a></li>
   <li><a href="#another-way-of-doing-the-simulation">Another way of doing the simulation</a></li>
+  <li><a href="#exercises">Exercises</a></li>
 </ul>
     </nav>
   </aside>
@@ -1027,7 +1079,7 @@ one trial.</p>
 <span class="n">doors</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['car', 'goat', 'goat'], dtype='&lt;U4')
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['goat', 'goat', 'car'], dtype='&lt;U4')
 </code></pre></div></div>
 
 <p>Next we use <code class="highlighter-rouge">np.random.choice</code> to choose randomly between the three doors.  We
@@ -1037,7 +1089,7 @@ choose one of 0, 1, or 2 for the first, second and third door, respectively.</p>
 <span class="n">my_door_index</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
 <p>We peek behind our selected door to see what we would have got, if we stayed with our selected door.</p>
@@ -1046,7 +1098,7 @@ choose one of 0, 1, or 2 for the first, second and third door, respectively.</p>
 <span class="n">stay_result</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'car'
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'goat'
 </code></pre></div></div>
 
 <p>Next we replace whatever was behind our chosen door, with the string “mine”, to indicate this was the one we chose.</p>
@@ -1055,7 +1107,7 @@ choose one of 0, 1, or 2 for the first, second and third door, respectively.</p>
 <span class="n">doors</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['mine', 'goat', 'goat'], dtype='&lt;U4')
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['goat', 'mine', 'car'], dtype='&lt;U4')
 </code></pre></div></div>
 
 <p>We now have two possibilities.  The two remaining doors could have:</p>
@@ -1073,7 +1125,7 @@ be the string “mine” that we put in when we chose our door.</p>
 <span class="n">doors</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['goat', 'goat', 'mine'], dtype='&lt;U4')
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['car', 'goat', 'mine'], dtype='&lt;U4')
 </code></pre></div></div>
 
 <p>When Monty does his goat reveal, our two options above drop to one.</p>
@@ -1090,7 +1142,7 @@ will be “car” if the car was present, otherwise it will be “goat”.</p>
 <span class="n">switch_result</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'goat'
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'car'
 </code></pre></div></div>
 
 <h2 id="your-turn---try-many-trials">Your turn - try many trials</h2>
@@ -1147,6 +1199,10 @@ will be “car” if the car was present, otherwise it will be “goat”.</p>
 
 <p>See <a href="../extra/monty_hall_lists">Monty Hall with lists</a> for another way of doing
 this simulation, using <a href="../05/lists">lists</a> instead of arrays.</p>
+
+<h2 id="exercises">Exercises</h2>
+
+<p>Now try the <a href="../exercises/simulation">simulation exercises</a>.</p>
 
           
         </section>

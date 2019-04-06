@@ -133,7 +133,7 @@
           
           
             <li class="masthead__menu-item">
-              <a href="/dsfe/chapters/01/what-is-data-science">Textbook</a>
+              <a href="/dsfe/chapters/01/intro">Textbook</a>
             </li>
           
           
@@ -301,101 +301,7 @@ meal_price_total = meal_price_with_vat + tip
 meal_price_total
 ```
 
-## For reflection
-
-Here are some assignment statements. Are these valid names?  Why - or why not?
-When you have an answer, try the names in a Notebook cell, and see what you
-get:
-
-```
-five = 5
-```
-
-```
-Five = 5
-```
-
-```
-five_Point_three = 5
-```
-
-```
-five3 = 5
-```
-
-```
-_five_ = 5
-```
-
-```
-five_3 = 5
-```
-
-```
-five.3 = 5
-```
-
-```
-3five = 5
-```
-
-```
-five-point-three = 5
-```
-
-Try and work out what each of these expressions will return.  Are they valid
-expressions?  Will they give an error?  When you have the answer, try entering
-the expression as cells in the Notebook:
-
-```
-a = 5
-b = 3
-a + b * 4
-```
-
-```
-a = 5
-b = 3
-a + b * 4
-```
-
-```
-a = 5
-a = a + 3
-a
-```
-
-```
-a = 5
-b = a + 3
-a = 3
-b
-```
-
-```
-first_variable = 5
-second_variable = first_variable + 3
-first_variable = 3
-second_variable
-```
-
-```
-a = 5
-a * 3 * c
-```
-
-```
-a = 5
-a 5 + 4 * 3
-```
-
-This one is more tricky, and uses stuff you have not yet seen.  Ask your
-instructors if you get stuck:
-
-```
-my_variable == 5
-my_variable * 4
-```
+See [the Names exercises](../../exercises/names) to practice the material in this section.
 
 <div class="isa_info">
 <i class="fa fa-info-circle"></i>

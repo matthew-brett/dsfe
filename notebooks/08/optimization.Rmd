@@ -133,7 +133,7 @@
           
           
             <li class="masthead__menu-item">
-              <a href="/dsfe/chapters/01/what-is-data-science">Textbook</a>
+              <a href="/dsfe/chapters/01/intro">Textbook</a>
             </li>
           
           
@@ -272,7 +272,9 @@ plt.ylabel('Sum of squared error')
 plt.title('SSE as a function of slope')
 ```
 
-This is the *function* we are trying minimize.
+This is the *function* we are trying minimize.  Specifically, we are trying to
+optimize the function that gives the *SSE* as a function of the *slope*
+parameter.
 
 We want to avoid trying every possible value for the slope.
 

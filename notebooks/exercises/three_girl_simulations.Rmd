@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Data Science for Everyone">
 <meta property="og:title" content="Data Science for Everyone">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/01/intro/">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/exercises/three_girl_simulations.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/01/intro/">
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/exercises/three_girl_simulations.Rmd">
 
 
 
@@ -133,7 +133,7 @@
           
           
             <li class="masthead__menu-item">
-              <a href="/dsfe/chapters/01/what-is-data-science">Textbook</a>
+              <a href="/dsfe/chapters/01/intro">Textbook</a>
             </li>
           
           
@@ -181,18 +181,120 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="chapter-1-introduction">Chapter 1: Introduction</h1>
+        ## Exercises on the three-girl simulation problem
 
-<p>See also <a href="https://www.inferentialthinking.com/chapters/01/1/intro">Introduction to Data
-Science</a> for the UC
-Berkeley course.</p>
+These exercises follow on from the [three girls section](../03/three_girls).
 
-<ul>
-  <li>Relationship of statistics, computer science, real data</li>
-  <li>Computation and randomization</li>
-  <li>Programming as basis</li>
-  <li>Required background</li>
-</ul>
+Run this cell first:
+
+```{python}
+import numpy as np
+```
+
+### 10000 families
+
+Now you have seen how to simulate 10 families, with a 2D array.
+Copy and paste from the code above, into the cell below, and
+change what you need to change, to simulate 10000 families of
+4 children.  It will have these steps:
+
+* make a 2D array of random numbers between 0 and 1, with 10000
+  rows and 4 columns.
+* make a new array of the same shape, with `True` where the random
+  number corresponds to "girl" and `False` when the number corresponds to "boy"
+* count the number of girls (`True` values) in each row.
+* count the number of times there were exactly 3 girls.
+* divide by the number of rows to give an estimate for the
+  proportion of 4-child families with exactly 3 girls.
+
+```{python}
+# Simulate 10000 families of 4 children.
+# Show proportion with 3 girls.
+# Your code below
+```
+
+
+### No girls in a family of 4.
+
+Estimate the chances that a 4-child family will have no girls.  You can copy the code from the cell above, and modify it, or you may be able to use variables from the code above, to get the answer, without repeating the simulation.
+
+```{python}
+# Show proportion with 0 girls.
+# Your code below
+```
+
+For extra points - the answer above is easier to work out with
+probability than the chance of three girls.  What's the exact answer, from probability?
+
+
+### 3 girls in a family of 5.
+
+Simulate the chances that a family with 5 children will have
+exactly 3 girls.
+
+```{python}
+# Simulate 10000 families of 5 children.
+# Show proportion with 3 girls.
+# Your code below
+```
+
+
+### 3 or fewer girls in a family of 5.
+
+Simulate the chances that a family with 5 children will have 3 or
+fewer girls.
+
+Hint: `<=` tests whether the thing on the left is *less than or equal to* the thing on the right.
+
+```{python}
+3 <= 4
+```
+
+```{python}
+3 <= 3
+```
+
+```{python}
+3 <= 2
+```
+
+```{python}
+my_array = np.array([1, 2, 3, 4])
+my_array <= 2
+```
+
+Hints done, now:
+
+```{python}
+# Proportion of families of 5 children with 3 or fewer girls.
+# Your code below
+```
+
+```{python}
+# Simulate 10000 families of 5 children.
+# Show proportion with 3 girls.
+# Your code below
+```
+
+### More realistic simulation
+
+Now we are back to the situation of exactly 3 girls in a family of 4.
+
+In fact, when you have a child, the probability of having a girl
+is slightly less than 0.5.
+
+In fact, the [proportion of boys born in the
+UK](https://www.gov.uk/government/statistics/gender-ratios-at-birth-in-great-britain-2010-to-2014)
+is 0.513.  Hence the proportion of girls is 1-0.513 = 0.487.
+
+With that probability of having a girl, what are the chances of having exactly three girls in a family of four?
+
+```{python}
+# Simulate 10000 familes of 4 children.
+chance_of_girl = 0.487
+# Estimate chance of having exactly 3 girls.
+# Your code here
+```
 
         
       </section>

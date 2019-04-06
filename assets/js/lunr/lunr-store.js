@@ -19,8 +19,8 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/01/computational-tools",
         "teaser":null},{
-        "title": "1.1 Introduction",
-        "excerpt":"Chapter 1: Introduction See also Introduction to DataScience for the UCBerkeley course.   Relationship of statistics, computer science, real data  Computation and randomization  Programming as basis  Required background","categories": [],
+        "title": "1. Data science for everyone",
+        "excerpt":"About this textbook This is the textbook for the first year undergraduate course in data science atthe University of Birmingham. The course is called “Data science for everyone” because we designed it to beuseful to students from any discipline. We go into some detail about what we mean by “Data...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/01/intro",
         "teaser":null},{
@@ -29,7 +29,12 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/01/statistical-techniques",
         "teaser":null},{
-        "title": "1. Data Science",
+        "title": "1.3 Tools and techniques",
+        "excerpt":"As you remember:   Data science is an approach to data analysis with a foundation in codeand algorithms. The data scientist uses computational tools inorder to apply statistical techniques. ","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/01/tools_techniques",
+        "teaser":null},{
+        "title": "1.1 What is data science?",
         "excerpt":"What is data science? The combination of the words data and science do not give much hint as to what data science might mean. Most science has data, and most work in science is analyzing data. Because the name data science can cover such a broad range of subjects, ithas...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/01/what-is-data-science",
@@ -180,7 +185,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/dsfe/chapters/06/monty_hall",
         "teaser":null},{
         "title": "6. More on simulation",
-        "excerpt":"More on simulation Probability can be confusing, even for experienced mathematicians. In this section, we use more simulation to solve probability problems.  In theprocess, we learn more about arrays. ","categories": [],
+        "excerpt":"More on simulation Probability can be confusing, even for experienced mathematicians. In this section, we use more simulation to solve probability problems.  In theprocess, we learn more about arrays. When you have read this chapter, try the simulation exercises. ","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/06/more_simulation",
         "teaser":null},{
@@ -284,6 +289,16 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/09/standard_scores",
         "teaser":null},{
+        "title": "10. The end of the beginning",
+        "excerpt":"This is the end of the course. The course is an introduction to data science. Along the way, we hope you learned: Some of the computational tools including thePython language, Jupyter notebooks, Numpy arrays, and Pandas data frames. Some of the statistical techniques, includingsimulation, testing for differences between groups with...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/10/end_of_beginning",
+        "teaser":null},{
+        "title": "Array indexing",
+        "excerpt":"These exercises follow on from the array indexing page. Run this cell to start: import numpy as npSo far we have seen arrays that contain numbers. Here is anarray that contains strings: some_words = np.array(['to', 'be', 'or', 'not', 'to', 'be'])some_wordsarray(['to', 'be', 'or', 'not', 'to', 'be'], dtype='&lt;U3')Indexing with integers Use indexing...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/array_indexing",
+        "teaser":null},{
         "title": "Brexit analysis",
         "excerpt":"Brexit - the data analysis We start, as usual, by importing all the libraries we need. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdAll about the Brexiteers Every year, the HansardSocietysponsors a survey on political engagement in the UK. They put topical...","categories": [],
         "tags": [],
@@ -324,10 +339,15 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/money_and_death",
         "teaser":null},{
-        "title": "Simulation",
+        "title": "More simulations",
         "excerpt":"Simulation exercises import numpy as npThree girls Of all families with exactly four children, what proportion have exactly threegirls? Solve by simulation. Penalty shootout technique Jen is the penalty taker for her football team. She’s been doing this for a long time. She thinks she normally has a 80%chance of...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/simulation",
+        "teaser":null},{
+        "title": "Three girl simulations",
+        "excerpt":"Exercises on the three-girl simulation problem These exercises follow on from the three girls section. Run this cell first: import numpy as np10000 families Now you have seen how to simulate 10 families, with a 2D array.Copy and paste from the code above, into the cell below, andchange what you...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/dsfe/chapters/exercises/three_girl_simulations",
         "teaser":null},{
         "title": "Berkeley introduction to functions",
         "excerpt":"import numpy as npWriting functions We are building up a useful inventory of techniques for identifying patternsand themes in a data set by using functions already available in Python. Wewill now explore a core feature of the Python programming language: functiondefinition. We have used functions extensively already in this text,...","categories": [],

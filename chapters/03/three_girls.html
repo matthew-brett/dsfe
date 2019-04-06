@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-04-01T12:07:51+01:00">
+  <meta property="article:published_time" content="2019-04-06T16:35:23+01:00">
 
 
 
@@ -150,7 +150,7 @@
           
           
 
-          <a href="/dsfe/chapters/01/what-is-data-science"><span class="nav__sub-title">1. Data Science</span></a>
+          <a href="/dsfe/chapters/01/intro"><span class="nav__sub-title">1. Data science for everyone</span></a>
         
 
         
@@ -164,7 +164,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/01/intro" class="level_1">1.1 Introduction</a></li>
+            <li><a href="/dsfe/chapters/01/what-is-data-science" class="level_1">1.1 What is data science?</a></li>
           
             
             
@@ -174,7 +174,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/01/computational-tools" class="level_2">1.1.1 Computational Tools</a></li>
+            <li><a href="/dsfe/chapters/01/why-data-science" class="level_1">1.2 Why data science?</a></li>
           
             
             
@@ -184,7 +184,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/01/statistical-techniques" class="level_2">1.1.2 Statistical Techniques</a></li>
+            <li><a href="/dsfe/chapters/01/tools_techniques" class="level_1">1.3 Tools and techniques</a></li>
           
             
             
@@ -194,7 +194,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/01/why-data-science" class="level_1">1.2 Why Data Science?</a></li>
+            <li><a href="/dsfe/chapters/01/computational-tools" class="level_2">1.3.1 Computational tools</a></li>
           
             
             
@@ -204,7 +204,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/01/Plotting_the_Classics" class="level_1">1.3 Plotting the Classics</a></li>
+            <li><a href="/dsfe/chapters/01/statistical-techniques" class="level_2">1.3.2 Statistical techniques</a></li>
           
             
             
@@ -214,7 +214,7 @@
 
             
 
-            <li><a href="/dsfe/chapters/01/Literary_Characters" class="level_2">1.3.1 Literary Characters</a></li>
+            <li><a href="/dsfe/chapters/01/Plotting_the_Classics" class="level_1">1.4 Plotting the classics</a></li>
           
             
             
@@ -224,7 +224,17 @@
 
             
 
-            <li><a href="/dsfe/chapters/01/Another_Kind_Of_Character" class="level_2">1.3.2 Another Kind of Character</a></li>
+            <li><a href="/dsfe/chapters/01/Literary_Characters" class="level_2">1.4.1 Literary characters</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/01/Another_Kind_Of_Character" class="level_2">1.4.2 Another kind of character</a></li>
           
         </ul>
         
@@ -765,6 +775,17 @@
           
           
 
+          <a href="/dsfe/chapters/10/end_of_beginning"><span class="nav__sub-title">10. The end of the beginning</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
           <a href="/dsfe/chapters/exercises/exercises"><span class="nav__sub-title">Exercises</span></a>
         
 
@@ -779,7 +800,37 @@
 
             
 
-            <li><a href="/dsfe/chapters/exercises/simulation" class="level_1">Simulation</a></li>
+            <li><a href="/dsfe/exercises/names" class="level_1">Thinking about names</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/three_girl_simulations" class="level_1">Three girl simulations</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/array_indexing" class="level_1">Array indexing</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/dsfe/chapters/exercises/simulation" class="level_1">More simulations</a></li>
           
             
             
@@ -922,7 +973,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="3.9 Revision - three girls">
       <meta itemprop="description" content="Three girls">
-      <meta itemprop="datePublished" content="April 01, 2019">
+      <meta itemprop="datePublished" content="April 06, 2019">
       
 
       <div class="page__inner-wrap">
@@ -946,15 +997,7 @@
       <ul class="toc__menu">
   <li><a href="#the-problem">The problem</a></li>
   <li><a href="#a-simulation">A simulation</a></li>
-  <li><a href="#exercises">Exercises</a>
-    <ul>
-      <li><a href="#10000-families">10000 families</a></li>
-      <li><a href="#no-girls-in-a-family-of-4">No girls in a family of 4.</a></li>
-      <li><a href="#3-girls-in-a-family-of-5">3 girls in a family of 5.</a></li>
-      <li><a href="#3-or-fewer-girls-in-a-family-of-5">3 or fewer girls in a family of 5.</a></li>
-      <li><a href="#more-realistic-simulation">More realistic simulation</a></li>
-    </ul>
-  </li>
+  <li><a href="#exercises">Exercises</a></li>
 </ul>
     </nav>
   </aside>
@@ -1002,28 +1045,28 @@ than 0.5).</p>
 <span class="n">first_child</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2275878331047121
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.40513462796313826
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">second_child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
 <span class="n">second_child</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.765186012224795
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5363529670678105
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">third_child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
 <span class="n">third_child</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.12518217908956397
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2141145240592952
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fourth_child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
 <span class="n">fourth_child</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.42676148437855577
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.053217053717968255
 </code></pre></div></div>
 
 <p>That gets boring.  It is neater to make an array of 4 numbers in one shot, like this:</p>
@@ -1032,7 +1075,7 @@ than 0.5).</p>
 <span class="n">one_family</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.58, 0.68, 0.46, 0.2 ])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.85, 0.18, 0.99, 0.5 ])
 </code></pre></div></div>
 
 <p>Arrays allow us to do the same operation on all the elements.</p>
@@ -1044,7 +1087,7 @@ than 0.5).</p>
 <span class="n">girls</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False, False,  True,  True])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False,  True, False,  True])
 </code></pre></div></div>
 
 <p>Notice that the new array, <code class="highlighter-rouge">girls</code>, has four elements, like the
@@ -1077,16 +1120,16 @@ array, there is a <code class="highlighter-rouge">True</code> if the correspondi
 <span class="n">ten_families</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.96, 0.61, 0.4 , 0.35],
-       [0.97, 0.17, 0.05, 0.64],
-       [0.98, 0.79, 0.06, 0.6 ],
-       [0.34, 0.53, 0.42, 0.33],
-       [0.29, 0.82, 0.44, 0.52],
-       [0.21, 0.47, 0.79, 0.37],
-       [0.89, 0.49, 0.47, 0.59],
-       [0.47, 0.81, 0.04, 0.65],
-       [0.04, 0.58, 0.17, 0.49],
-       [0.29, 0.37, 0.06, 0.64]])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.02, 0.61, 0.36, 0.09],
+       [0.1 , 0.4 , 0.45, 0.43],
+       [0.33, 0.75, 0.43, 0.05],
+       [0.02, 0.2 , 0.19, 0.82],
+       [0.25, 0.06, 0.35, 0.36],
+       [0.22, 0.83, 0.14, 0.95],
+       [0.21, 0.54, 0.08, 0.59],
+       [0.6 , 0.68, 0.92, 0.75],
+       [0.76, 0.49, 0.01, 0.58],
+       [0.95, 0.25, 0.7 , 0.61]])
 </code></pre></div></div>
 
 <p>Notice the <code class="highlighter-rouge">size=</code> argument to <code class="highlighter-rouge">np.random.uniform</code>.  When we
@@ -1102,16 +1145,16 @@ same time.</p>
 <span class="n">are_girls</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[False, False,  True,  True],
-       [False,  True,  True, False],
-       [False, False,  True, False],
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ True, False,  True,  True],
+       [ True,  True,  True,  True],
        [ True, False,  True,  True],
+       [ True,  True,  True, False],
+       [ True,  True,  True,  True],
        [ True, False,  True, False],
-       [ True,  True, False,  True],
+       [ True, False,  True, False],
+       [False, False, False, False],
        [False,  True,  True, False],
-       [ True, False,  True, False],
-       [ True, False,  True,  True],
-       [ True,  True,  True, False]])
+       [False,  True, False, False]])
 </code></pre></div></div>
 
 <p>Remember, each row represents a family, and each <code class="highlighter-rouge">True</code> value
@@ -1122,7 +1165,7 @@ array, but:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">are_girls</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>23
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>24
 </code></pre></div></div>
 
 <p>By default, <code class="highlighter-rouge">np.count_nonzero</code> counts the number of True values in the entire 2D array.</p>
@@ -1137,7 +1180,7 @@ a more detailed explanation.</p>
 <span class="n">n_girls</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2, 2, 1, 3, 2, 3, 2, 2, 3, 3])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 4, 3, 3, 4, 2, 2, 0, 2, 1])
 </code></pre></div></div>
 
 <p><code class="highlighter-rouge">n_girls</code> has one element per <em>row</em> in the <code class="highlighter-rouge">are_girls</code> array.  The element corresponding to the first row, has the count of <code class="highlighter-rouge">True</code> values in the first row, and so on.</p>
@@ -1206,8 +1249,8 @@ For example:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_girls</span> <span class="o">==</span> <span class="mi">3</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False, False, False,  True, False,  True, False, False,  True,
-        True])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True, False,  True,  True, False, False, False, False, False,
+       False])
 </code></pre></div></div>
 
 <p>To find the number of 3s in <code class="highlighter-rouge">n_girls</code>:</p>
@@ -1215,7 +1258,7 @@ For example:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">n_girls</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
 </code></pre></div></div>
 
 <p>Now the proportion of the counts, that are equal to 3:</p>
@@ -1224,117 +1267,13 @@ For example:</p>
 <span class="n">prop_3</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.4
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.3
 </code></pre></div></div>
 
 <h2 id="exercises">Exercises</h2>
 
-<h3 id="10000-families">10000 families</h3>
-
-<p>Now you have seen how to simulate 10 families, with a 2D array.
-Copy and paste from the code above, into the cell below, and
-change what you need to change, to simulate 10000 families of
-4 children.  It will have these steps:</p>
-
-<ul>
-  <li>make a 2D array of random numbers between 0 and 1, with 10000
-rows and 4 columns.</li>
-  <li>make a new array of the same shape, with <code class="highlighter-rouge">True</code> where the random
-number corresponds to “girl” and <code class="highlighter-rouge">False</code> when the number corresponds to “boy”</li>
-  <li>count the number of girls (<code class="highlighter-rouge">True</code> values) in each row.</li>
-  <li>count the number of times there were exactly 3 girls.</li>
-  <li>divide by the number of rows to give an estimate for the
-proportion of 4-child families with exactly 3 girls.</li>
-</ul>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simulate 10000 families of 4 children.
-# Show proportion with 3 girls.
-# Your code below
-</span></code></pre></div></div>
-
-<h3 id="no-girls-in-a-family-of-4">No girls in a family of 4.</h3>
-
-<p>Estimate the chances that a 4-child family will have no girls.  You can copy the code from the cell above, and modify it, or you may be able to use variables from the code above, to get the answer, without repeating the simulation.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show proportion with 0 girls.
-# Your code below
-</span></code></pre></div></div>
-
-<p>For extra points - the answer above is easier to work out with
-probability than the chance of three girls.  What’s the exact answer, from probability?</p>
-
-<h3 id="3-girls-in-a-family-of-5">3 girls in a family of 5.</h3>
-
-<p>Simulate the chances that a family with 5 children will have
-exactly 3 girls.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simulate 10000 families of 5 children.
-# Show proportion with 3 girls.
-# Your code below
-</span></code></pre></div></div>
-
-<h3 id="3-or-fewer-girls-in-a-family-of-5">3 or fewer girls in a family of 5.</h3>
-
-<p>Simulate the chances that a family with 5 children will have 3 or
-fewer girls.</p>
-
-<p>Hint: <code class="highlighter-rouge">&lt;=</code> tests whether the thing on the left is <em>less than or equal to</em> the thing on the right.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">4</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">3</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">2</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">my_array</span> <span class="o">&lt;=</span> <span class="mi">2</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True,  True, False, False])
-</code></pre></div></div>
-
-<p>Hints done, now:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proportion of families of 5 children with 3 or fewer girls.
-# Your code below
-</span></code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simulate 10000 families of 5 children.
-# Show proportion with 3 girls.
-# Your code below
-</span></code></pre></div></div>
-
-<h3 id="more-realistic-simulation">More realistic simulation</h3>
-
-<p>Now we are back to the situation of exactly 3 girls in a family of 4.</p>
-
-<p>In fact, when you have a child, the probability of having a girl
-is slightly less than 0.5.</p>
-
-<p>In fact, the <a href="https://www.gov.uk/government/statistics/gender-ratios-at-birth-in-great-britain-2010-to-2014">proportion of boys born in the
-UK</a>
-is 0.513.  Hence the proportion of girls is 1-0.513 = 0.487.</p>
-
-<p>With that probability of having a girl, what are the chances of having exactly three girls in a family of four?</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simulate 10000 familes of 4 children.
-</span><span class="n">chance_of_girl</span> <span class="o">=</span> <span class="mf">0.487</span>
-<span class="c1"># Estimate chance of having exactly 3 girls.
-# Your code here
-</span></code></pre></div></div>
-
+<p>See <a href="../exercises/three_girl_simulations">three girl simulation exercises</a> for
+some exercises to extend the simulation on this page.</p>
 
           
         </section>
