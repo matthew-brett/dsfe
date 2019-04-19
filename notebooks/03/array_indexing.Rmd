@@ -119,54 +119,7 @@ randoms[less_than_0p5]
 
 We have selected the numbers in `random` that are less than 0.5.
 
+
 ## Exercises
 
-So far we have seen arrays that contain numbers. Here is an
-array that contains strings:
-
-```{python}
-some_words = np.array(['to', 'be', 'or', 'not', 'to', 'be'])
-some_words
-```
-
-### Indexing with integers
-
-Use indexing with integers to display the first word in
-`some_words`.
-
-```{python}
-# Your code here
-```
-
-Use indexing with integers to display the word "not".
-
-```{python}
-# Your code here
-```
-
-Here is a Boolean array that has `True` where the word in the matching position of `some_words` is "be":
-
-```{python}
-bees = some_words == 'be'
-bees
-```
-
-Use Boolean indexing to show an array with the two instances of "be" from `some_words`.
-
-
-```{python}
-# Your code here
-```
-
-Use Boolean indexing to show an array with the two instances of "to" from `some_words`.
-
-```{python}
-# Your code here
-```
-
-Use Boolean indexing to show an array with the single instance
-of "not" from `some_words`.
-
-```{python}
-# Your code here
-```
+See the [array indexing exercises](../exercises/array_indexing).
