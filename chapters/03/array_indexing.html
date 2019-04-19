@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-04-06T16:35:23+01:00">
+  <meta property="article:published_time" content="2019-04-20T00:30:43+01:00">
 
 
 
@@ -973,7 +973,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="3.10 Selecting with arrays">
       <meta itemprop="description" content="Selecting values from an array">
-      <meta itemprop="datePublished" content="April 06, 2019">
+      <meta itemprop="datePublished" content="April 20, 2019">
       
 
       <div class="page__inner-wrap">
@@ -996,11 +996,7 @@
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
   <li><a href="#indexing-with-boolean-arrays">Indexing with Boolean arrays</a></li>
-  <li><a href="#exercises">Exercises</a>
-    <ul>
-      <li><a href="#indexing-with-integers">Indexing with integers</a></li>
-    </ul>
-  </li>
+  <li><a href="#exercises">Exercises</a></li>
 </ul>
     </nav>
   </aside>
@@ -1091,7 +1087,7 @@ a Boolean array between the square brackets.</p>
 <span class="n">randoms</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.09, 0.53, 0.17, 0.03])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.82, 0.06, 0.52, 0.18])
 </code></pre></div></div>
 
 <p>Here is a Boolean array, created from applying a comparison to an array:</p>
@@ -1100,7 +1096,7 @@ a Boolean array between the square brackets.</p>
 <span class="n">less_than_0p5</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True, False,  True,  True])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False,  True, False,  True])
 </code></pre></div></div>
 
 <p>As you have already seen, we can do things like count the number
@@ -1109,7 +1105,7 @@ of <code class="highlighter-rouge">True</code> values in the Boolean array:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">less_than_0p5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
 </code></pre></div></div>
 
 <p>Now let us say that we wanted to get the elements from <code class="highlighter-rouge">randoms</code>
@@ -1122,61 +1118,14 @@ in <code class="highlighter-rouge">randoms</code> for which the corresponding el
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">randoms</span><span class="p">[</span><span class="n">less_than_0p5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.09, 0.17, 0.03])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.06, 0.18])
 </code></pre></div></div>
 
 <p>We have selected the numbers in <code class="highlighter-rouge">random</code> that are less than 0.5.</p>
 
 <h2 id="exercises">Exercises</h2>
 
-<p>So far we have seen arrays that contain numbers. Here is an
-array that contains strings:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_words</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s">'to'</span><span class="p">,</span> <span class="s">'be'</span><span class="p">,</span> <span class="s">'or'</span><span class="p">,</span> <span class="s">'not'</span><span class="p">,</span> <span class="s">'to'</span><span class="p">,</span> <span class="s">'be'</span><span class="p">])</span>
-<span class="n">some_words</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['to', 'be', 'or', 'not', 'to', 'be'], dtype='&lt;U3')
-</code></pre></div></div>
-
-<h3 id="indexing-with-integers">Indexing with integers</h3>
-
-<p>Use indexing with integers to display the first word in
-<code class="highlighter-rouge">some_words</code>.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Your code here
-</span></code></pre></div></div>
-
-<p>Use indexing with integers to display the word “not”.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Your code here
-</span></code></pre></div></div>
-
-<p>Here is a Boolean array that has <code class="highlighter-rouge">True</code> where the word in the matching position of <code class="highlighter-rouge">some_words</code> is “be”:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bees</span> <span class="o">=</span> <span class="n">some_words</span> <span class="o">==</span> <span class="s">'be'</span>
-<span class="n">bees</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False,  True, False, False, False,  True])
-</code></pre></div></div>
-
-<p>Use Boolean indexing to show an array with the two instances of “be” from <code class="highlighter-rouge">some_words</code>.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Your code here
-</span></code></pre></div></div>
-
-<p>Use Boolean indexing to show an array with the two instances of “to” from <code class="highlighter-rouge">some_words</code>.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Your code here
-</span></code></pre></div></div>
-
-<p>Use Boolean indexing to show an array with the single instance
-of “not” from <code class="highlighter-rouge">some_words</code>.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Your code here
-</span></code></pre></div></div>
-
+<p>See the <a href="../exercises/array_indexing">array indexing exercises</a>.</p>
 
           
         </section>

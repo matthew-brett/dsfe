@@ -1,0 +1,128 @@
+""" Parse Google+ posts
+"""
+
+from os.path import join as pjoin, split as psplit, abspath, dirname
+from glob import glob
+from datetime import datetime as dt
+import re
+import json
+
+import pypandoc
+from bs4 import BeautifulSoup, element as bse
+from nltk import tokenize
+
+
+def title2slug(title):
+    """ Transform title to filename
+    """
+    slug = title.lower()
+    slug = re.sub(r'^[\W]', '', slug)
+    slug = re.sub(r'[\W]$', '', slug)
+    slug = re.sub(r"[';:\"]", '', slug)
+    slug = re.sub(r'[\W]+', '-', slug)
+    return slug
+
+
+def strip_string(text):
+    """ Normalize text to no start / end punctuation
+    """
+    text = re.sub(r'^[\W]+', '', text.strip())
+    return re.sub(r'[\W]+$', '', text)
+
+
+class GPPost:
+    date_fmt = r'%Y-%m-%dT%H:%M:%S%z'
+    parser = 'html.parser'
+
+    def __init__(self, fname):
+        self.fname = fname
+        with open(fname, 'rt') as fobj:
+            content = fobj.read()
+        self.post = json.loads(content)
+
+    def __getitem__(self, key):
+        return self.post[key]
+
+    def __contains__(self, key):
+        return key in self.post
+
+    @property
+    def date_created(self):
+        date_created = self.post['creationTime']
+        return dt.strptime(date_created, self.date_fmt)
+
+    @property
+    def body(self):
+        return BeautifulSoup(self.post['content'], self.parser)
+
+
+    def element2title(self, e):
+        if isinstance(e, bse.NavigableString):
+            text = strip_string(e.string)
+            sentences = tokenize.sent_tokenize(text)
+            for sentence in sentences:
+                if re.search('\w', sentence):
+                    return sentence
+
+    @property
+    def title(self):
+        for e in self.body:
+            out = self.element2title(e)
+            if out is not None:
+                return out
+        # Try using the link item
+        if 'link' in self.post:
+            return self.post['link']['title']
+        raise ValueError("No valid title")
+
+    @property
+    def slug(self):
+        words = [w for w in tokenize.word_tokenize(self.title)
+                 if re.search('\w', w)]
+        return title2slug(' '.join(words[:4]))
+
+    @property
+    def author(self):
+        return self.post['author']['displayName']
+
+    @property
+    def filename(self):
+        prefix = dt.strftime(self.date_created, '%Y%m%d')
+        return f'{prefix}-{self.slug}.pdc'
+
+    def as_markdown(self):
+        center = pypandoc.convert(self.post['content'], 'markdown', 'html')
+        date = dt.strftime(self.date_created, '%Y-%m-%d %H:%M')
+        return f"""\
+---
+Title: {self.title}
+Date: {date}
+Slug: {self.slug}
+Author: {self.author}
+Category: Google+ posts
+---
+
+{center}
+
+
+The Google+ URL for this post was `{self.post['url']}`
+"""
+
+
+def collect_posts(path, my_name):
+    posts = []
+    for fname in glob(pjoin(path, '*.json')):
+        if my_name + ' hung out with ' in fname:
+            continue
+        if my_name + ' was in a video ' in fname:
+            continue
+        post = GPPost(fname)
+        if 'content' in post:
+            posts.append(post)
+    return posts
+
+
+posts = collect_posts('Posts', 'Matthew Brett')
+for p in posts:
+    with open(p.filename, 'wt') as fobj:
+        fobj.write(p.as_markdown())
