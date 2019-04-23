@@ -4,7 +4,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/01/Another_Kind_Of_Character",
         "teaser":null},{
-        "title": "1.3.1 Literary Characters",
+        "title": "1.4.1 Literary characters",
         "excerpt":"Pride and Prejudice isthe story of five sisters: Jane, Elizabeth, Mary, Kitty and Lydia, and theirjourney through the social life of the mid-17th century. You may rememberthat Elizabeth ends up marrying the dashing and aloof Mr Darcy, but along theway, the feckless Lydia runs off with the equally feckless Mr...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/dsfe/chapters/01/Literary_Characters",
