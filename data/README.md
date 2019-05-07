@@ -26,4 +26,6 @@ codes and classification. It is a very slightly modified copy of a file
 downloaded in March 2019 from the [UN statistics
 website](https://unstats.un.org/unsd/methodology/m49/overview).  The
 modifications are three single-character edits to replace commas in country
-names with semi-colons.
+names with semi-colons. It's not clear what the license is, but I will assume,
+until someone tells me otherwise, that the data is public domain, and can be
+distributed freely.
