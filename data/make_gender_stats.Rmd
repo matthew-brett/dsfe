@@ -16,18 +16,23 @@ jupyter:
 
 # Schooling and fertility
 
-Here we are processing this dataset from the World Bank on gender and
-inequality:
+Here we are processing a dataset from the World Bank on gender and
+inequality.
+
+I got the dataset from these pages.
 
 * [https://data.worldbank.org/data-catalog/gender-statistics](https://data.worldbank.org/data-catalog/gender-statistics)
 
-You can the data as a zip file [from that
-site](http://databank.worldbank.org/data/download/Gender_Stats_csv.zip). I’ve
-make a copy of the extracted data file, available via this link.
+The dataset that I'm using is one I downloaded sometime soon before 16 September 2017.  I'm using that version of the dataset because it has entries for health expenditure per capita, that current downloads do not have.
 
-* [Gender_StatsData.csv](https://matthew-brett.github.io/les-pilot/_downloads/Gender_StatsData.csv)
+If you want tolatest version of these data, you can get them as a zip file [from that
+site](http://databank.worldbank.org/data/download/Gender_Stats_csv.zip). 
 
-That's the link I'm using below.
+Here is the September 2017 version of the data, extracted from the corresponding zip file:
+
+* [2017 Gender_StatsData.csv](https://ndownloader.figshare.com/files/17803301)
+
+The last is the link I'm using below.
 
 ```{python}
 # Import Pandas with its usual short name
@@ -37,7 +42,7 @@ import pandas as pd
 Load the Comma Separated Value text file into Pandas as a data frame:
 
 ```{python}
-df = pd.read_csv('https://matthew-brett.github.io/les-pilot/_downloads/Gender_StatsData.csv')
+df = pd.read_csv('https://ndownloader.figshare.com/files/17803301')
 ```
 
 This is a slightly clumsy-looking data frame, because it has years for
@@ -49,10 +54,10 @@ we first look at the column names:
 df.columns
 ```
 
-Next we look at the data frame itself:
+Next we look at the first few rows of the data frame:
 
 ```{python}
-df
+df.head()
 ```
 
 There are lots of countries here, so to start, let’s look at the variables for
@@ -243,34 +248,35 @@ gdp_us_billion.sort_values()[:20]
 ```
 
 ```{python}
-valid_gender_stats.loc[:, 'gdp'] = gdp_us_billion
-valid_gender_stats = valid_gender_stats.rename(columns={'gdp': 'gdp_us_billion'})
-# We need to change the name for later output in the data dictionary.
+gender_stats_2014 = valid_gender_stats.copy()
+gender_stats_2014.loc[:, 'gdp'] = gdp_us_billion
+gender_stats_2014 = gender_stats_2014.rename(columns={'gdp': 'gdp_us_billion'})
+# We will later need to change the name for later output in the data dictionary.
 renamers = [t if t != ('GDP (current US$)', 'gdp')
             else ('GDP (current US billion $)', 'gdp_us_billion')
             for t in renamers]
-valid_gender_stats.head()
+gender_stats_2014.head()
 ```
 
 Rename country columns to harmonize with format of other names:
 
 ```{python}
-valid_gender_stats = valid_gender_stats.rename(
+gender_stats_2014 = gender_stats_2014.rename(
     columns={'Country Name': 'country_name',
              'Country Code': 'country_code'})
-valid_gender_stats.head()
+gender_stats_2014.head()
 ```
 
 Write the resulting data frame out to CSV.
 
 ```{python}
-valid_gender_stats.to_csv('valid_gender_stats.csv', index=False)
+gender_stats_2014.to_csv('gender_stats_2012_16.csv', index=False)
 ```
 
 Read it back in to check it's what we were expecting:
 
 ```{python}
-gs_back = pd.read_csv('valid_gender_stats.csv')
+gs_back = pd.read_csv('gender_stats_2012_16.csv')
 gs_back.head()
 ```
 
@@ -282,17 +288,4 @@ with open('gender_stats_data_dict.md', 'wt') as fobj:
     for name, rename in renamers:
         name = name.replace('$', '\$')  # For Markdown
         fobj.write(f'* `{rename}`: {name}.\n')
-```
-
-```{python}
-import numpy as np
-np.sort(valid_gender_stats['gdp'] / 1e9)[:10]
-```
-
-```{python}
-# %matplotlib inline
-```
-
-```{python}
-
 ```
