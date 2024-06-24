@@ -1,5 +1,7 @@
 # Data science for everyone
 
+This is tomogwen's fork of the README
+
 Course materials and notes for the course Data Science for Everyone.
 
 This textbook is based on the Berkeley Foundations of Data Science
